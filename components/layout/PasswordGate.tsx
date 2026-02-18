@@ -48,6 +48,9 @@ export default function PasswordGate({ children }: PasswordGateProps) {
 
   return (
     <div className="min-h-screen bg-[#0A0A0F] flex items-center justify-center relative overflow-hidden">
+      {/* Version label */}
+      <span className="absolute top-4 left-4 text-xs text-[#606075] font-mono">v3</span>
+
       {/* Atmospheric background */}
       <div className="absolute inset-0" style={{
         background: 'radial-gradient(ellipse at 50% 50%, rgba(212,168,83,0.04), transparent 60%)'
