@@ -3,6 +3,8 @@
  * Source: V2 globe lines 333–341, 356–440.
  */
 
+import { geoBounds } from 'd3';
+
 export function markerRadius(production: number): number {
   if (production > 1000) return 6;
   if (production > 400) return 5;
@@ -67,4 +69,25 @@ export function isVisible(lon: number, lat: number, rotate: [number, number, num
     Math.sin(phi0) * Math.sin(phi) +
     Math.cos(phi0) * Math.cos(phi) * Math.cos(lam) > 0
   );
+}
+
+/**
+ * Fill a GeoJSON land polygon with a grid of dots at a given spacing.
+ * Used by the globe to create the dot-matrix land fill effect.
+ */
+export function generateDotsInPolygon(feature: GeoJSON.Feature, dotSpacing: number): [number, number][] {
+  const dots: [number, number][] = [];
+  const bounds = geoBounds(feature);
+  const [[minLng, minLat], [maxLng, maxLat]] = bounds;
+  const step = dotSpacing * 0.08;
+  const lngRanges: [number, number][] =
+    minLng > maxLng ? [[minLng, 180], [-180, maxLng]] : [[minLng, maxLng]];
+  for (const [lngStart, lngEnd] of lngRanges) {
+    for (let lng = lngStart; lng <= lngEnd; lng += step) {
+      for (let lat = minLat; lat <= maxLat; lat += step) {
+        if (pointInFeature([lng, lat], feature)) dots.push([lng, lat]);
+      }
+    }
+  }
+  return dots;
 }
