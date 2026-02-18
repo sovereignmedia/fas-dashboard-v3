@@ -35,12 +35,12 @@ export function useNAMapInteraction(canvasRef: React.RefObject<HTMLCanvasElement
     canvas.style.height = height + 'px';
     ctx.scale(dpr, dpr);
 
-    // Projection: Conic conformal covering continental US + southern Canada
+    // Projection: Conic conformal covering US + Canada + Mexico
     const projection = d3.geoConicConformal()
-      .parallels([30, 60])
+      .parallels([25, 60])
       .rotate([98, 0])
-      .center([0, 45])
-      .scale(750)
+      .center([0, 40])
+      .scale(620)
       .translate([width / 2, height / 2]);
     projectionRef.current = projection;
 
@@ -67,17 +67,17 @@ export function useNAMapInteraction(canvasRef: React.RefObject<HTMLCanvasElement
         if (!res.ok) throw new Error('Failed to load NA map data');
         const data = await res.json() as GeoJSON.FeatureCollection;
 
-        // Filter to US + Canada only
+        // Filter to US + Canada + Mexico
         const filtered = data.features.filter((f) => {
           const admin = f.properties?.admin;
-          return admin === 'United States of America' || admin === 'Canada';
+          return admin === 'United States of America' || admin === 'Canada' || admin === 'Mexico';
         });
         featuresRef.current = filtered;
 
-        // Generate dot-matrix fill (smaller spacing for flat map — denser dots)
+        // Generate dot-matrix fill (dense dots to match globe aesthetic)
         const allDots: MapDot[] = [];
         filtered.forEach((f) => {
-          generateDotsInPolygon(f, 10).forEach((d) => allDots.push(d));
+          generateDotsInPolygon(f, 6).forEach((d) => allDots.push(d));
         });
         dotsRef.current = allDots;
 
