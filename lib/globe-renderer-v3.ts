@@ -25,11 +25,13 @@ export function renderGlobeBackground(
   hoveredCountry: GlobeCountry | null,
   size: number,
   radius: number,
-  pulsePhase: number
+  pulsePhase: number,
+  globeCenterX?: number,
+  globeCenterY?: number
 ): void {
   const path = d3.geoPath().projection(projection).context(context);
-  const cx = size / 2;
-  const cy = size / 2;
+  const cx = globeCenterX ?? size / 2;
+  const cy = globeCenterY ?? size / 2;
 
   context.clearRect(0, 0, size, size);
   const currentScale = projection.scale();
@@ -248,11 +250,13 @@ export function renderGlobeFastPath(
   hoveredCountry: GlobeCountry | null,
   size: number,
   radius: number,
-  pulsePhase: number
+  pulsePhase: number,
+  globeCenterX?: number,
+  globeCenterY?: number
 ): void {
   const path = d3.geoPath().projection(projection).context(context);
-  const cx = size / 2;
-  const cy = size / 2;
+  const cx = globeCenterX ?? size / 2;
+  const cy = globeCenterY ?? size / 2;
 
   context.clearRect(0, 0, size, size);
   const currentScale = projection.scale();
@@ -413,13 +417,19 @@ export function renderGlobeComposited(
   size: number,
   radius: number,
   blurRadius: number,
-  pulsePhase: number
+  pulsePhase: number,
+  globeCenterX?: number,
+  globeCenterY?: number
 ): void {
+  const gcx = globeCenterX ?? size / 2;
+  const gcy = globeCenterY ?? size / 2;
+
   // Fast path: no blur needed
   if (blurRadius <= 0.1 || !hoveredCountry) {
     renderGlobeFastPath(
       mainCtx, projection, projectionUnclipped, graticule,
-      allDots, landFeatures, hoveredCountry, size, radius, pulsePhase
+      allDots, landFeatures, hoveredCountry, size, radius, pulsePhase,
+      gcx, gcy
     );
     return;
   }
@@ -427,7 +437,8 @@ export function renderGlobeComposited(
   // 1. Draw background to offscreen buffer
   renderGlobeBackground(
     offscreenCtx, projection, projectionUnclipped, graticule,
-    allDots, landFeatures, hoveredCountry, size, radius, pulsePhase
+    allDots, landFeatures, hoveredCountry, size, radius, pulsePhase,
+    gcx, gcy
   );
 
   // 2. Blit offscreen to main canvas with blur filter

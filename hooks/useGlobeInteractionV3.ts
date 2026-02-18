@@ -29,6 +29,10 @@ interface AnimationState {
   toScale: number;
   fromBlur: number;
   toBlur: number;
+  fromTranslateX: number;
+  fromTranslateY: number;
+  toTranslateX: number;
+  toTranslateY: number;
   targetCountry: GlobeCountry | null;
 }
 
@@ -97,12 +101,18 @@ export function useGlobeInteractionV3(canvasRef: React.RefObject<HTMLCanvasEleme
       toScale: radius,
       fromBlur: 0,
       toBlur: 0,
+      fromTranslateX: cx,
+      fromTranslateY: cy,
+      toTranslateX: cx,
+      toTranslateY: cy,
       targetCountry: null,
     };
 
-    // Current interpolated blur for the render loop
+    // Current interpolated values for the render loop
     let currentBlur = 0;
     let pulsePhase = 0;
+    let currentTranslateX = cx;
+    let currentTranslateY = cy;
 
     // Render helper
     function render() {
@@ -110,7 +120,8 @@ export function useGlobeInteractionV3(canvasRef: React.RefObject<HTMLCanvasEleme
         context, offscreenCtx as CanvasRenderingContext2D, offscreenCanvas,
         projection, projectionUnclipped, graticule,
         globeStateRef.current.allDots, globeStateRef.current.landFeatures,
-        hoveredCountryRef.current, size, radius, currentBlur, pulsePhase
+        hoveredCountryRef.current, size, radius, currentBlur, pulsePhase,
+        currentTranslateX, currentTranslateY
       );
     }
 
@@ -161,6 +172,8 @@ export function useGlobeInteractionV3(canvasRef: React.RefObject<HTMLCanvasEleme
           projectionUnclipped.rotate(rotation);
         }
         currentBlur = 0;
+        currentTranslateX = cx;
+        currentTranslateY = cy;
         render();
         return;
       }
@@ -173,19 +186,21 @@ export function useGlobeInteractionV3(canvasRef: React.RefObject<HTMLCanvasEleme
       if (anim.phase === 'focused') {
         // Hold at zoomed values, keep rendering
         currentBlur = anim.toBlur;
+        currentTranslateX = anim.toTranslateX;
+        currentTranslateY = anim.toTranslateY;
         render();
         return;
       }
 
-      // Interpolate scale
+      // Interpolate scale, blur, and translate
       const currentScale = d3.interpolateNumber(anim.fromScale, anim.toScale)(t);
-
-      // Interpolate blur
       currentBlur = d3.interpolateNumber(anim.fromBlur, anim.toBlur)(t);
+      currentTranslateX = d3.interpolateNumber(anim.fromTranslateX, anim.toTranslateX)(t);
+      currentTranslateY = d3.interpolateNumber(anim.fromTranslateY, anim.toTranslateY)(t);
 
-      // Apply scale to both projections (rotation stays fixed during zoom)
-      projection.scale(currentScale);
-      projectionUnclipped.scale(currentScale);
+      // Apply scale + translate to both projections (rotation stays fixed during zoom)
+      projection.scale(currentScale).translate([currentTranslateX, currentTranslateY]);
+      projectionUnclipped.scale(currentScale).translate([currentTranslateX, currentTranslateY]);
 
       render();
 
@@ -195,10 +210,12 @@ export function useGlobeInteractionV3(canvasRef: React.RefObject<HTMLCanvasEleme
           anim.phase = 'focused';
         } else if (anim.phase === 'zooming-out') {
           anim.phase = 'idle';
-          // Restore base scale
-          projection.scale(radius);
-          projectionUnclipped.scale(radius);
+          // Restore base scale and translate
+          projection.scale(radius).translate([cx, cy]);
+          projectionUnclipped.scale(radius).translate([cx, cy]);
           currentBlur = 0;
+          currentTranslateX = cx;
+          currentTranslateY = cy;
           autoRotate = true;
         }
       }
@@ -212,9 +229,11 @@ export function useGlobeInteractionV3(canvasRef: React.RefObject<HTMLCanvasEleme
       // Cancel any zoom animation on drag
       if (anim.phase !== 'idle') {
         anim.phase = 'idle';
-        projection.scale(radius);
-        projectionUnclipped.scale(radius);
+        projection.scale(radius).translate([cx, cy]);
+        projectionUnclipped.scale(radius).translate([cx, cy]);
         currentBlur = 0;
+        currentTranslateX = cx;
+        currentTranslateY = cy;
         anim.targetCountry = null;
         hoveredCountryRef.current = null;
         setHoveredCountry(null);
@@ -254,7 +273,8 @@ export function useGlobeInteractionV3(canvasRef: React.RefObject<HTMLCanvasEleme
       const my = (event.clientY - rect.top) * (size / rect.height);
       let found: GlobeCountry | null = null;
 
-      const dx = mx - cx, dy = my - cy;
+      const globeT = projection.translate();
+      const dx = mx - globeT[0], dy = my - globeT[1];
       const globeR = projection.scale();
       if (dx * dx + dy * dy <= globeR * globeR) {
         const geo = projection.invert!([mx, my]);
@@ -289,9 +309,15 @@ export function useGlobeInteractionV3(canvasRef: React.RefObject<HTMLCanvasEleme
           // Snapshot current state as starting point
           anim.fromScale = projection.scale();
           anim.fromBlur = currentBlur;
+          anim.fromTranslateX = currentTranslateX;
+          anim.fromTranslateY = currentTranslateY;
 
-          // Target: zoom in-place (no rotation change), blur background
-          anim.toScale = radius * ZOOM_SCALE_MULTIPLIER;
+          // Target: zoom toward cursor so point under cursor stays fixed
+          const newScale = radius * ZOOM_SCALE_MULTIPLIER;
+          const scaleRatio = newScale / radius;
+          anim.toTranslateX = mx - (mx - cx) * scaleRatio;
+          anim.toTranslateY = my - (my - cy) * scaleRatio;
+          anim.toScale = newScale;
           anim.toBlur = MAX_BLUR_RADIUS;
           anim.phase = 'zooming-in';
           anim.startTime = d3.now();
@@ -302,9 +328,13 @@ export function useGlobeInteractionV3(canvasRef: React.RefObject<HTMLCanvasEleme
         // Mouse moved off country but still on globe — start zooming out
         anim.fromScale = projection.scale();
         anim.fromBlur = currentBlur;
+        anim.fromTranslateX = currentTranslateX;
+        anim.fromTranslateY = currentTranslateY;
 
         anim.toScale = radius;
         anim.toBlur = 0;
+        anim.toTranslateX = cx;
+        anim.toTranslateY = cy;
         anim.phase = 'zooming-out';
         anim.startTime = d3.now();
         anim.duration = ZOOM_OUT_DURATION;
@@ -324,9 +354,13 @@ export function useGlobeInteractionV3(canvasRef: React.RefObject<HTMLCanvasEleme
         // Reverse animation
         anim.fromScale = projection.scale();
         anim.fromBlur = currentBlur;
+        anim.fromTranslateX = currentTranslateX;
+        anim.fromTranslateY = currentTranslateY;
 
         anim.toScale = radius;
         anim.toBlur = 0;
+        anim.toTranslateX = cx;
+        anim.toTranslateY = cy;
         anim.phase = 'zooming-out';
         anim.startTime = d3.now();
         anim.duration = ZOOM_OUT_DURATION;
