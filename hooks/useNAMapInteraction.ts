@@ -72,7 +72,7 @@ export function useNAMapInteraction(canvasRef: React.RefObject<HTMLCanvasElement
     offscreenCtx.scale(dpr, dpr);
 
     // Base projection values
-    const baseScale = 680;
+    const baseScale = 816;
     const baseTx = width / 2;
     const baseTy = height / 2;
 

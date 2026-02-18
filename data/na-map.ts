@@ -2,7 +2,7 @@
  * North America Commercialization Map — facility data + constants.
  */
 
-export const NA_MAP_SIZE = { width: 800, height: 560 };
+export const NA_MAP_SIZE = { width: 960, height: 640 };
 export const TAU = 2 * Math.PI;
 
 export interface NAFacility {
