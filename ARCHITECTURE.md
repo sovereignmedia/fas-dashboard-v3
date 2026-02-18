@@ -206,3 +206,97 @@ import { countries } from '@/data/countries';
 import { formatCurrency } from '@/lib/formatters';
 import { CHART_COLORS } from '@/lib/colors';
 ```
+
+---
+
+## Deployment Pipeline
+
+### Architecture
+
+```
+Local (main) → git push → GitHub (main) → webhook → Vercel (Production)
+```
+
+All deployments go through GitHub. **Never deploy directly to Vercel via CLI** (`vercel --prod` bypasses the Git integration and can cause inconsistencies).
+
+### Repositories & Services
+
+| Service | URL / Identifier |
+|---------|-----------------|
+| GitHub repo | `sovereignmedia/fas-dashboard-v3` |
+| GitHub default branch | `main` |
+| Vercel project | `sovereign-media-projects/fas-dashboard-v3` |
+| Vercel production URL | https://fas-dashboard-v3-fncb.vercel.app |
+| Vercel production branch | `main` (synced to GitHub default) |
+
+### Workflow
+
+1. Make changes locally on `main`
+2. `git add <files> && git commit -m "message"`
+3. `git push origin main`
+4. Vercel auto-detects the push and builds (~35s)
+5. Production URL updates automatically
+
+### Branch Strategy
+
+- **`main`** — Production branch. All pushes here auto-deploy to Vercel.
+- **`backup/*`** — Snapshot branches for preserving previous versions before major changes. Example: `backup/pre-apple-elevation` at commit `0c2f264`. These are local-only and never trigger deploys.
+- Create a backup before any large refactor: `git branch backup/pre-<feature-name>`
+
+### Static Assets
+
+- Logo and brand images live in `public/` (served at root path)
+- `public/logo-frontieras.png` — Official Frontieras North America logo (transparent PNG, white text)
+- `public/fonts/` — MicroSquare font files for D3 canvas rendering
+
+### Authentication
+
+- Login gate: `components/layout/PasswordGate.tsx`
+- Password stored in `lib/constants.ts` as `DASHBOARD_PASSWORD`
+- Session auth via `sessionStorage` key `fas-authenticated`
+- Logout clears session and redirects to `/`
+
+---
+
+## Animation System
+
+### Shared Library — `lib/animations.ts`
+
+All Framer Motion variants and spring presets are centralized here. Components import from this file rather than defining their own animation configs.
+
+```tsx
+import { container, item, spring, viewport } from '@/lib/animations';
+```
+
+### Spring Presets
+
+| Name | Stiffness | Damping | Use Case |
+|------|-----------|---------|----------|
+| `spring.snappy` | 400 | 30 | Fast interactions (buttons, toggles) |
+| `spring.default` | 300 | 30 | General-purpose animations |
+| `spring.gentle` | 200 | 28 | Slow reveals, page-level transitions |
+| `spring.hover` | 500 | 30 | Hover lift effects |
+
+### Stagger Containers
+
+- `container` — Default stagger (0.06s delay between children)
+- `containerFast` — Quick stagger (0.03s)
+- `containerSlow` — Slow stagger (0.1s)
+- `staggerContainer(delay)` — Custom factory function
+
+### Scroll-Triggered Reveals
+
+Section components use `whileInView` with viewport configs:
+
+```tsx
+<motion.div variants={container} initial="hidden" whileInView="show" viewport={viewport.section}>
+  <motion.div variants={item}>...</motion.div>
+</motion.div>
+```
+
+- `viewport.section` — `{ once: true, margin: '-80px' }` (triggers 80px before entering viewport)
+- `viewport.eager` — `{ once: true, margin: '0px' }` (triggers at viewport edge)
+
+### Page Transitions
+
+`components/layout/PageTransition.tsx` wraps page content with AnimatePresence for fade+slide transitions between routes.

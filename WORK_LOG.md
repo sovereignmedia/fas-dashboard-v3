@@ -172,3 +172,95 @@ Port the V2 D3 interactive globe into V3's expansion module. The globe uses V2's
 ### Verification
 - `npm run build` — zero errors, all pages compile
 - Expansion page JS: 11.5kB → 32.6kB (D3 bundle included)
+
+---
+
+## 2026-02-18 — Apple-Level Design Elevation
+
+**Branch:** `claude/frontieras-dashboard-mvp-MQ4PI` (later renamed to `main`)
+**Checkpoint (pre-work):** `0c2f264` (saved as `backup/pre-apple-elevation`)
+
+### Objective
+Elevate the entire dashboard aesthetic to Apple-level design quality: shared animation library, scroll-triggered reveals, page transitions, hover lift effects, increased spacing, spring physics, and refined typography.
+
+### New Files Created
+
+| File | Purpose |
+|------|---------|
+| `lib/animations.ts` | Shared Framer Motion library: spring presets, stagger containers, item variants, viewport configs |
+| `components/layout/PageTransition.tsx` | AnimatePresence page transition wrapper (fade+slide) |
+| `components/ui/AnimatedValue.tsx` | Spring-based count-up component using useSpring/useInView |
+
+### Files Modified
+
+| File | What Changed |
+|------|-------------|
+| `components/ui/SectionHeader.tsx` | `text-4xl font-light tracking-tight`, gold overline `text-[11px]`, `mb-12` |
+| `components/ui/MetricCard.tsx` | Added Framer Motion hover lift (`y: -2`) with `spring.hover` |
+| `components/ui/Card.tsx` | Removed borders, shadow-only depth, `p-8`, fixed ESLint unused hover prop |
+| `components/layout/Topbar.tsx` | `h-20`, `text-xl font-light`, "Confidential" pill badge, shadow bottom edge |
+| `components/layout/Sidebar.tsx` | `bg-white/[0.04]` active state, `h-5` gold indicator |
+| `app/dashboard/layout.tsx` | Added PageTransition wrapper |
+| `app/globals.css` | Inter wght 200, `--shadow-card-hover`, scoped CSS transitions |
+| 10 section components | All import from `@/lib/animations`, use `whileInView="show"` with `viewport.section`, increased grid gaps |
+| `app/dashboard/page.tsx` | Imports `container, item`, gap-8, mt-12, mt-16 |
+| `app/dashboard/financials/page.tsx` | Imports `containerSlow, item`, space-y-10 |
+| `app/dashboard/expansion/page.tsx` | Uses shared animation variants |
+
+### Build Fixes
+- `PageTransition.tsx`: `ease: [0.25, 0.1, 0.25, 1]` not assignable to `Easing` — fixed with `as const`
+- `Card.tsx`: ESLint `'hover' is assigned but never used` — fixed with `// eslint-disable-next-line`
+
+### Commit
+- `19eeef7` — "Apple-level design elevation: shared animations, scroll reveals, page transitions, hover lift, spacing refinement"
+
+---
+
+## 2026-02-18 — Remove V2 Globe + Widen NA Map
+
+**Branch:** `claude/frontieras-dashboard-mvp-MQ4PI`
+
+### Objective
+Remove the redundant V2 globe from the expansion page (keep V3 cinematic hover/zoom only). Widen the North America commercialization roadmap to match other map elements.
+
+### Changes
+
+| File | What Changed |
+|------|-------------|
+| `app/dashboard/expansion/page.tsx` | Removed InteractiveGlobeV2 Card + import, removed V3 debug label |
+| `data/na-map.ts` | `NA_MAP_SIZE` changed from `800×560` to `960×640` |
+| `hooks/useNAMapInteraction.ts` | `baseScale` changed from `680` to `816` (proportional) |
+
+### Commit
+- `f5a97bf` — "Remove V2 globe from expansion page, widen NA commercialization map"
+
+---
+
+## 2026-02-18 — Logo Replacement + Branch Rename + Deployment Pipeline
+
+**Branch:** `main` (renamed from `claude/frontieras-dashboard-mvp-MQ4PI`)
+
+### Objective
+Replace placeholder logo with actual Frontieras brand image across the app. Rename branch to `main` for production cleanliness. Fix Vercel production branch to auto-deploy from `main`.
+
+### Changes
+
+| File | What Changed |
+|------|-------------|
+| `public/logo-frontieras.png` | NEW — Official Frontieras NA logo (transparent PNG, white text, red/blue circle mark) |
+| `components/layout/Sidebar.tsx` | Replaced gold-gradient square + text with `<img>` logo, `h-10`, centered |
+| `components/layout/PasswordGate.tsx` | Replaced gold placeholder with logo image (`h-16`), added "Confidential" / "Enter password to continue" labels, green outline button, updated disclaimer copy |
+| `ARCHITECTURE.md` | Added Deployment Pipeline, Animation System, and Static Assets documentation |
+
+### Branch Rename Steps
+1. `git branch -m claude/frontieras-dashboard-mvp-MQ4PI main`
+2. `git push origin main`
+3. `gh api repos/sovereignmedia/fas-dashboard-v3 -X PATCH -f default_branch=main`
+4. `git push origin --delete claude/frontieras-dashboard-mvp-MQ4PI`
+5. `git branch -u origin/main main`
+6. Vercel: disconnected + reconnected GitHub integration with `productionBranch: main`
+
+### Commits
+- `b1a733f` — "Replace placeholder sidebar logo with actual Frontieras logo image"
+- `62f2ad2` — "Enlarge & center sidebar logo, add logo to login page"
+- `c45a086` — "Trigger production deploy on main branch"
