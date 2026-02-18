@@ -331,29 +331,24 @@ export function useGlobeInteractionV3(canvasRef: React.RefObject<HTMLCanvasEleme
           anim.targetCountry = found;
         }
       } else if (!found && anim.targetCountry) {
-        // During zooming-in / focused, the country polygon may shift slightly
-        // under the cursor causing false negatives — only zoom-out if:
-        // (a) we're idle, OR (b) mouse is clearly outside the globe circle
-        const mouseOutsideGlobe = dx * dx + dy * dy > globeR * globeR;
-        if (anim.phase === 'idle' || (anim.phase === 'focused' && mouseOutsideGlobe)) {
-          anim.fromScale = projection.scale();
-          anim.fromBlur = currentBlur;
-          anim.fromTranslateX = currentTranslateX;
-          anim.fromTranslateY = currentTranslateY;
+        // Mouse moved off country — start zooming out
+        anim.fromScale = projection.scale();
+        anim.fromBlur = currentBlur;
+        anim.fromTranslateX = currentTranslateX;
+        anim.fromTranslateY = currentTranslateY;
 
-          anim.toScale = radius;
-          anim.toBlur = 0;
-          anim.toTranslateX = cx;
-          anim.toTranslateY = cy;
-          anim.phase = 'zooming-out';
-          anim.startTime = d3.now();
-          anim.duration = ZOOM_OUT_DURATION;
-          anim.targetCountry = null;
-        }
+        anim.toScale = radius;
+        anim.toBlur = 0;
+        anim.toTranslateX = cx;
+        anim.toTranslateY = cy;
+        anim.phase = 'zooming-out';
+        anim.startTime = d3.now();
+        anim.duration = ZOOM_OUT_DURATION;
+        anim.targetCountry = null;
       }
 
-      hoveredCountryRef.current = found ?? anim.targetCountry;
-      setHoveredCountry(found ?? anim.targetCountry);
+      hoveredCountryRef.current = found;
+      setHoveredCountry(found);
       autoRotate = !found && anim.phase === 'idle';
     };
 
