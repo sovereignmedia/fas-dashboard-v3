@@ -116,6 +116,38 @@ import { CHART_COLORS } from '@/lib/colors';
 - No business logic in page files
 - No magic numbers in components — define constants in data files
 
+### Financial Model Mapping
+
+`data/model.ts` is the **single source of truth** for all financial constants. It maps 1:1 to the company's Excel model (Financial Model 4.1.25.xlsx).
+
+**Update workflow:** When the company releases updated financials:
+1. Open `data/model.ts`
+2. Update the constants to match the new Excel model
+3. Update `MODEL_VERSION` to match the new file name
+4. Done — all other files import from model.ts and propagate automatically
+
+**Structure:** model.ts is organized by Excel tab:
+- `FACILITY` — Year 4 steady-state P&L (IS sheet)
+- `FACILITY_RAMP_YEAR` — Year 3 ramp-up figures (IS sheet)
+- `CAPEX` — Total CapEx, EPC costs, contingency (CapEx sheet)
+- `OPERATIONS` — Coal throughput, cost per ton (Rev&COGs sheet)
+- `MONTHLY_VOLUMES` — Per-product monthly volumes (Rev&COGs sheet)
+- `MODELED_PRICES` / `SPOT_PRICES` — Per-product pricing (Rev&COGs sheet)
+- `EXPANSION` — Patent countries, total facility potential
+- `CAPITAL` — Bridge round, shares outstanding, share price, raised, shareholders
+- `VALUATION` — EBITDA multiples (6x, 12x, 18x)
+
+**Forbidden patterns:**
+- No raw financial constants in component files (import from model.ts or a data file that re-exports from model.ts)
+- No hardcoded dollar strings like `"$838M"` — use `formatCurrency(FACILITY.ebitda, true)`
+- No hardcoded EBITDA multiples — use `VALUATION.defaultEbitdaMultiple`
+
+**Volume convention:** model.ts stores MONTHLY volumes (matching Excel Rev&COGs). The `Product` interface has both `monthlyVolume` and `annualVolume` (= monthlyVolume * 12).
+
+**Globe special case:** `globe.ts` intentionally uses `FACILITY_RAMP_YEAR.revenue` (Year 3 ramp-up) for conservative 1% market penetration estimates, not Year 4 steady-state revenue. This is documented in model.ts.
+
+**Bio-Oil note:** Bio-Oil exists in the dashboard but NOT in the Excel model. It is flagged with `inExcelModel: false` in the Product interface.
+
 ---
 
 ## Responsive Design Rules

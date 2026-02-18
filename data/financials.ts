@@ -1,3 +1,5 @@
+import { FACILITY, FACILITY_RAMP_YEAR, CAPEX } from './model';
+
 export const yearlyProjections = [
   {
     year: 'Year 1',
@@ -23,21 +25,21 @@ export const yearlyProjections = [
     year: 'Year 3',
     label: 'Ramp-Up (75% \u2192 100%)',
     facilities: 1,
-    revenue: 1_043_742_806,
-    directCost: 132_187_500,
-    grossProfit: 911_555_306,
-    ebitda: 808_808_440,
-    netIncome: 688_795_915,
+    revenue: FACILITY_RAMP_YEAR.revenue,
+    directCost: FACILITY_RAMP_YEAR.directCost,
+    grossProfit: FACILITY_RAMP_YEAR.grossProfit,
+    ebitda: FACILITY_RAMP_YEAR.ebitda,
+    netIncome: FACILITY_RAMP_YEAR.netIncome,
   },
   {
     year: 'Year 4',
     label: 'Steady State',
     facilities: 1,
-    revenue: 1_079_142_402,
-    directCost: 135_000_000,
-    grossProfit: 944_142_402,
-    ebitda: 837_513_709,
-    netIncome: 722_884_351,
+    revenue: FACILITY.totalRevenue,
+    directCost: FACILITY.totalDirectCost,
+    grossProfit: FACILITY.grossProfit,
+    ebitda: FACILITY.ebitda,
+    netIncome: FACILITY.netIncome,
   },
   {
     year: 'Year 5',
@@ -76,15 +78,11 @@ export const valuationScenarios = [
 ];
 
 export function calculateMultiFacility(facilityCount: number, ebitdaMultiple: number) {
-  const singleFacilityEBITDA = 837_513_709;
-  const singleFacilityRevenue = 1_079_142_402;
-  const singleFacilityCapex = 745_541_205;
-
   return {
     facilities: facilityCount,
-    revenue: singleFacilityRevenue * facilityCount,
-    ebitda: singleFacilityEBITDA * facilityCount,
-    capex: singleFacilityCapex * facilityCount,
-    enterpriseValue: singleFacilityEBITDA * facilityCount * ebitdaMultiple,
+    revenue: FACILITY.totalRevenue * facilityCount,
+    ebitda: FACILITY.ebitda * facilityCount,
+    capex: CAPEX.total * facilityCount,
+    enterpriseValue: FACILITY.ebitda * facilityCount * ebitdaMultiple,
   };
 }

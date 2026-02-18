@@ -1,8 +1,10 @@
+import { CAPITAL } from './model';
+
 export const capitalPhases = [
   {
     phase: 1,
     name: 'Bridge Capital',
-    amount: 25_000_000,
+    amount: CAPITAL.bridgeRoundTotal,
     status: 'active' as const,
     description: 'Current raise. Preferred equity with warrant coverage. Funds FEL3, long-lead procurement, permits, corporate overhead.',
     use: ['FEL3 Engineering ($11.2M)', 'Long-Lead Equipment ($5M)', 'Permits & Applications', 'Corporate & Legal', 'Working Capital'],
@@ -83,9 +85,9 @@ export const strategicPartners = [
 ];
 
 export const regAPerformance = {
-  totalRaised: 9_000_000,
-  shareholders: 3_700,
-  sharePrice: 7.77,
+  totalRaised: CAPITAL.totalRaised,
+  shareholders: CAPITAL.shareholders,
+  sharePrice: CAPITAL.sharePrice,
   singleDayRecord: 3_000_000,
   regCFRaised: 4_491_176,
   regCFSpend: 904_115,

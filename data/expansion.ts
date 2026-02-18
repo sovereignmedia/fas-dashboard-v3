@@ -1,8 +1,9 @@
 import { countries } from './countries';
+import { FACILITY, EXPANSION } from './model';
 
-export const TOTAL_FACILITY_POTENTIAL = 143;
-export const SINGLE_FACILITY_EBITDA = 837_513_709;
-export const SINGLE_FACILITY_REVENUE = 1_079_142_402;
+export const TOTAL_FACILITY_POTENTIAL = EXPANSION.totalFacilityPotential;
+export const SINGLE_FACILITY_EBITDA = FACILITY.ebitda;
+export const SINGLE_FACILITY_REVENUE = FACILITY.totalRevenue;
 export const TOTAL_GLOBAL_COAL = countries.reduce((sum, c) => sum + c.coalProduction, 0);
 
 export const gridPositions: Record<string, { row: number; col: number }> = {

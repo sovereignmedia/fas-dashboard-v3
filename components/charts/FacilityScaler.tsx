@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useSpring, useTransform } from 'framer-motion';
 import { calculateMultiFacility } from '@/data/financials';
+import { FACILITY } from '@/data/model';
 import { formatCurrency } from '@/lib/formatters';
 import { CHART_COLORS } from '@/lib/colors';
 import Card from '@/components/ui/Card';
@@ -98,7 +99,7 @@ export default function FacilityScaler({ ebitdaMultiple }: FacilityScalerProps) 
       {/* Math breakdown */}
       <div className="mt-6 pt-6 border-t border-border-subtle">
         <p className="text-sm text-text-tertiary font-mono">
-          {facilities} {facilities === 1 ? 'facility' : 'facilities'} × $838M EBITDA × {ebitdaMultiple}x ={' '}
+          {facilities} {facilities === 1 ? 'facility' : 'facilities'} × {formatCurrency(FACILITY.ebitda, true)} EBITDA × {ebitdaMultiple}x ={' '}
           <span className="text-accent-gold">{formatCurrency(metrics.enterpriseValue, true)} EV</span>
         </p>
       </div>

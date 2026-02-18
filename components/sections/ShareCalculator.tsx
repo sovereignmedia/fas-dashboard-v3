@@ -4,10 +4,11 @@ import { useState, useMemo } from 'react';
 import { motion } from 'framer-motion';
 
 import { valuationScenarios, calculateMultiFacility } from '@/data/financials';
+import { CAPITAL, FACILITY } from '@/data/model';
 import { formatCurrency, formatNumber } from '@/lib/formatters';
 import Card from '@/components/ui/Card';
 
-const TOTAL_SHARES_OUTSTANDING = 100_000_000;
+const TOTAL_SHARES_OUTSTANDING = CAPITAL.totalSharesOutstanding;
 
 const item = {
   hidden: { opacity: 0, y: 20 },
@@ -136,7 +137,7 @@ export default function ShareCalculator({ selectedMultiple }: Props) {
             <div className="rounded-xl bg-bg-primary border border-border-subtle p-4">
               <p className="text-xs uppercase tracking-[0.2em] font-medium text-text-tertiary mb-1">Calculation Breakdown</p>
               <p className="font-mono text-xs text-text-tertiary leading-relaxed">
-                {shareFacilities} {shareFacilities === 1 ? 'facility' : 'facilities'} &times; $838M EBITDA &times; {selectedMultiple}x = {formatCurrency(shareValuation.enterpriseValue, true)} EV
+                {shareFacilities} {shareFacilities === 1 ? 'facility' : 'facilities'} &times; {formatCurrency(FACILITY.ebitda, true)} EBITDA &times; {selectedMultiple}x = {formatCurrency(shareValuation.enterpriseValue, true)} EV
               </p>
               <p className="font-mono text-xs text-text-tertiary leading-relaxed mt-1">
                 {formatCurrency(shareValuation.enterpriseValue, true)} / {formatNumber(TOTAL_SHARES_OUTSTANDING)} shares = {formatCurrency(shareValuation.pricePerShare)} / share

@@ -3,6 +3,8 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 
+import { FACILITY } from '@/data/model';
+import { formatCurrency } from '@/lib/formatters';
 import SectionHeader from '@/components/ui/SectionHeader';
 import ValuationMethodology from '@/components/sections/ValuationMethodology';
 import FacilityScaler from '@/components/charts/FacilityScaler';
@@ -66,7 +68,7 @@ export default function FinancialsPage() {
               These projections are forward-looking estimates based on internal financial models.
               Actual results may vary. This is not investment advice. Past performance does not
               guarantee future results. All figures assume steady-state Year 4 single-facility EBITDA
-              of $838M with linear multi-facility scaling.
+              of {formatCurrency(FACILITY.ebitda, true)} with linear multi-facility scaling.
             </p>
           </div>
         </motion.div>

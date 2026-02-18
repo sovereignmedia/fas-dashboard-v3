@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 
 import { useOfProceeds } from '@/data/capital';
+import { CAPITAL } from '@/data/model';
 import { formatCurrency } from '@/lib/formatters';
 import Card from '@/components/ui/Card';
 
@@ -27,7 +28,7 @@ export default function UseOfProceedsSection() {
     >
       <motion.div variants={item}>
         <h3 className="text-sm uppercase tracking-[0.2em] font-medium text-text-tertiary mb-6">
-          Use of Proceeds — $25M Bridge Round
+          Use of Proceeds — {formatCurrency(CAPITAL.bridgeRoundTotal, true)} Bridge Round
         </h3>
       </motion.div>
 
@@ -66,7 +67,7 @@ export default function UseOfProceedsSection() {
 
           <div className="mt-4 pt-4 border-t border-border-subtle flex items-center justify-between">
             <span className="text-sm font-semibold text-text-primary">Total Bridge Round</span>
-            <span className="font-mono text-sm font-bold tabular-nums text-accent-gold">{formatCurrency(25_000_000, true)}</span>
+            <span className="font-mono text-sm font-bold tabular-nums text-accent-gold">{formatCurrency(CAPITAL.bridgeRoundTotal, true)}</span>
           </div>
         </Card>
       </motion.div>

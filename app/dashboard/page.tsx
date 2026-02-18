@@ -5,48 +5,49 @@ import { motion } from 'framer-motion';
 import SectionHeader from '@/components/ui/SectionHeader';
 import MetricCard from '@/components/ui/MetricCard';
 import { facilityEconomics } from '@/data/products';
+import { FACILITY, EXPANSION, CAPITAL, OPERATIONS } from '@/data/model';
 import { CHART_COLORS } from '@/lib/colors';
-import { formatCurrency, formatPercent } from '@/lib/formatters';
+import { formatCurrency, formatPercent, formatNumber } from '@/lib/formatters';
 
 const overviewMetrics = [
   {
     label: 'Single Facility Revenue',
-    value: '$1.08B',
+    value: formatCurrency(FACILITY.totalRevenue, true),
     subtitle: 'Year 4 Steady State',
     href: '/dashboard/financials',
     color: CHART_COLORS.blue,
   },
   {
     label: 'Single Facility EBITDA',
-    value: '$838M',
+    value: formatCurrency(FACILITY.ebitda, true),
     subtitle: 'Year 4 Steady State',
     href: '/dashboard/financials',
     color: CHART_COLORS.green,
   },
   {
     label: 'Gross Margin',
-    value: '87.5%',
+    value: formatPercent(FACILITY.grossMargin),
     subtitle: '6 Revenue Streams',
     href: '/dashboard/economics',
     color: CHART_COLORS.gold,
   },
   {
     label: 'Patent-Protected Countries',
-    value: '9',
+    value: String(EXPANSION.patentCountries),
     subtitle: 'Global IP Portfolio',
     href: '/dashboard/expansion',
     color: CHART_COLORS.purple,
   },
   {
     label: 'Reg A+ Raised',
-    value: '$9M+',
-    subtitle: '3,700+ Shareholders',
+    value: `${formatCurrency(CAPITAL.totalRaised, true)}+`,
+    subtitle: `${formatNumber(CAPITAL.shareholders)}+ Shareholders`,
     href: '/dashboard/capital',
     color: CHART_COLORS.green,
   },
   {
     label: 'Shareholders',
-    value: '3,700+',
+    value: `${formatNumber(CAPITAL.shareholders)}+`,
     subtitle: 'Proven Public Demand',
     href: '/dashboard/team',
     color: CHART_COLORS.orange,
@@ -99,8 +100,8 @@ export default function DashboardOverview() {
       <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-6">
         <QuickStat label="Total CapEx" value={formatCurrency(facilityEconomics.totalCapex, true)} />
         <QuickStat label="Net Margin" value={formatPercent(facilityEconomics.netMargin)} />
-        <QuickStat label="Coal Throughput" value="7,500 t/day" />
-        <QuickStat label="Max Facilities" value="143" />
+        <QuickStat label="Coal Throughput" value={`${formatNumber(OPERATIONS.coalThroughputTonsPerDay)} t/day`} />
+        <QuickStat label="Max Facilities" value={String(EXPANSION.totalFacilityPotential)} />
       </div>
     </div>
   );

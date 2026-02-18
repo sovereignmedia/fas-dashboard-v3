@@ -9,6 +9,7 @@ import {
   SINGLE_FACILITY_REVENUE,
   TOTAL_GLOBAL_COAL,
 } from '@/data/expansion';
+import { VALUATION } from '@/data/model';
 import { CHART_COLORS } from '@/lib/colors';
 import { formatCurrency, formatNumber } from '@/lib/formatters';
 import Card from '@/components/ui/Card';
@@ -24,7 +25,7 @@ export default function PenetrationCalculator({ penetration, onChange }: Penetra
     const facilities = Math.round((TOTAL_FACILITY_POTENTIAL * penetration) / 100);
     const annualRevenue = facilities * SINGLE_FACILITY_REVENUE;
     const ebitda = facilities * SINGLE_FACILITY_EBITDA;
-    const enterpriseValue = ebitda * 12;
+    const enterpriseValue = ebitda * VALUATION.defaultEbitdaMultiple;
     return { coalProcessed, facilities, annualRevenue, ebitda, enterpriseValue };
   }, [penetration]);
 
@@ -84,7 +85,7 @@ export default function PenetrationCalculator({ penetration, onChange }: Penetra
           <CalcRow label="Annual Revenue" value={formatCurrency(metrics.annualRevenue, true)} color="var(--text-primary)" />
           <CalcRow label="Annual EBITDA" value={formatCurrency(metrics.ebitda, true)} color={CHART_COLORS.green} />
           <div className="border-t border-border-subtle pt-4">
-            <CalcRow label="Enterprise Value (12x EBITDA)" value={formatCurrency(metrics.enterpriseValue, true)} color={CHART_COLORS.gold} large />
+            <CalcRow label={`Enterprise Value (${VALUATION.defaultEbitdaMultiple}x EBITDA)`} value={formatCurrency(metrics.enterpriseValue, true)} color={CHART_COLORS.gold} large />
           </div>
         </div>
       </Card>
