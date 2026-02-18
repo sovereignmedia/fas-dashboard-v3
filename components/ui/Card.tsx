@@ -9,6 +9,7 @@ interface CardProps {
   hover?: boolean;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export default function Card({ children, className = '', accentLine = true, hover = true }: CardProps) {
   return (
     <div
