@@ -5,6 +5,7 @@ import { useState } from 'react';
 import SectionHeader from '@/components/ui/SectionHeader';
 import Card from '@/components/ui/Card';
 import InteractiveGlobeV2 from '@/components/charts/InteractiveGlobeV2';
+import InteractiveGlobeV3 from '@/components/charts/InteractiveGlobeV3';
 import ExpansionGrid from '@/components/sections/ExpansionGrid';
 import CoalProductionChart from '@/components/charts/CoalProductionChart';
 import PenetrationCalculator from '@/components/sections/PenetrationCalculator';
@@ -22,6 +23,13 @@ export default function ExpansionPage() {
 
       <Card className="!p-8 mb-10 flex justify-center" hover={false}>
         <InteractiveGlobeV2 />
+      </Card>
+
+      <Card className="!p-8 mb-10 flex justify-center" hover={false}>
+        <div className="text-center">
+          <p className="text-xs text-text-tertiary mb-4 uppercase tracking-widest">V3 — Cinematic Hover</p>
+          <InteractiveGlobeV3 />
+        </div>
       </Card>
 
       <ExpansionGrid />
