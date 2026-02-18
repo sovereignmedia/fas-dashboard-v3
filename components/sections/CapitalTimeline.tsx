@@ -9,15 +9,7 @@ import { CHART_COLORS } from '@/lib/colors';
 import { formatCurrency } from '@/lib/formatters';
 import Card from '@/components/ui/Card';
 
-const container = {
-  hidden: { opacity: 0 },
-  show: { opacity: 1, transition: { staggerChildren: 0.08 } },
-};
-
-const item = {
-  hidden: { opacity: 0, y: 20 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.4 } },
-};
+import { container, item, viewport } from '@/lib/animations';
 
 function statusColor(status: string) {
   switch (status) {
@@ -39,7 +31,7 @@ export default function CapitalTimeline() {
   const [expandedPhase, setExpandedPhase] = useState<number | null>(1);
 
   return (
-    <motion.section variants={container} initial="hidden" animate="show" className="mb-16">
+    <motion.section variants={container} initial="hidden" whileInView="show" viewport={viewport.section} className="mb-16">
       <motion.div variants={item}>
         <h3 className="text-sm uppercase tracking-[0.2em] font-medium text-text-tertiary mb-6">Capital Roadmap</h3>
       </motion.div>

@@ -6,16 +6,7 @@ import { advisors } from '@/data/team';
 import SectionHeader from '@/components/ui/SectionHeader';
 import Card from '@/components/ui/Card';
 import InitialsAvatar from '@/components/ui/InitialsAvatar';
-
-const container = {
-  hidden: { opacity: 0 },
-  show: { opacity: 1, transition: { staggerChildren: 0.07 } },
-};
-
-const item = {
-  hidden: { opacity: 0, y: 20 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.4, ease: 'easeOut' as const } },
-};
+import { container, item, viewport } from '@/lib/animations';
 
 function AdvisorCard({ advisor }: { advisor: (typeof advisors)[number] }) {
   return (
@@ -49,8 +40,9 @@ export default function AdvisorGrid() {
       <motion.div
         variants={container}
         initial="hidden"
-        animate="show"
-        className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6"
+        whileInView="show"
+        viewport={viewport.section}
+        className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8"
       >
         {advisors.map((advisor) => (
           <AdvisorCard key={advisor.name} advisor={advisor} />

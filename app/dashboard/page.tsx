@@ -10,6 +10,7 @@ import Card from '@/components/ui/Card';
 import NACommercialization from '@/components/charts/NACommercialization';
 import { CHART_COLORS } from '@/lib/colors';
 import { formatCurrency, formatPercent, formatNumber } from '@/lib/formatters';
+import { container, item } from '@/lib/animations';
 
 const overviewMetrics = [
   {
@@ -56,19 +57,6 @@ const overviewMetrics = [
   },
 ];
 
-const container = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: { staggerChildren: 0.08 },
-  },
-};
-
-const item = {
-  hidden: { opacity: 0, y: 20 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.4 } },
-};
-
 export default function DashboardOverview() {
   const router = useRouter();
 
@@ -84,7 +72,7 @@ export default function DashboardOverview() {
         variants={container}
         initial="hidden"
         animate="show"
-        className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6"
+        className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8"
       >
         {overviewMetrics.map((metric) => (
           <motion.div key={metric.label} variants={item}>
@@ -99,7 +87,7 @@ export default function DashboardOverview() {
         ))}
       </motion.div>
 
-      <Card className="!p-8 mt-10 mb-2" hover={false}>
+      <Card className="!p-10 mt-12 mb-2" hover={false}>
         <div className="text-center mb-6">
           <p className="text-xs uppercase tracking-[0.2em] font-medium text-text-tertiary">
             Commercialization Roadmap
@@ -111,7 +99,7 @@ export default function DashboardOverview() {
         <NACommercialization />
       </Card>
 
-      <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-6">
+      <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8">
         <QuickStat label="Total CapEx" value={formatCurrency(facilityEconomics.totalCapex, true)} />
         <QuickStat label="Net Margin" value={formatPercent(facilityEconomics.netMargin)} />
         <QuickStat label="Coal Throughput" value={`${formatNumber(OPERATIONS.coalThroughputTonsPerDay)} t/day`} />

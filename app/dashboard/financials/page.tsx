@@ -10,16 +10,7 @@ import ValuationMethodology from '@/components/sections/ValuationMethodology';
 import FacilityScaler from '@/components/charts/FacilityScaler';
 import ProjectionAreaChart from '@/components/charts/ProjectionAreaChart';
 import ShareCalculator from '@/components/sections/ShareCalculator';
-
-const container = {
-  hidden: { opacity: 0 },
-  show: { opacity: 1, transition: { staggerChildren: 0.1 } },
-};
-
-const item = {
-  hidden: { opacity: 0, y: 20 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' as const } },
-};
+import { containerSlow as container, item } from '@/lib/animations';
 
 export default function FinancialsPage() {
   const [selectedMultiple, setSelectedMultiple] = useState(12);
@@ -46,7 +37,7 @@ export default function FinancialsPage() {
         subtitle="Interactive financial projections, valuation scenarios, and share value modeling across multi-facility scale."
       />
 
-      <motion.div variants={container} initial="hidden" animate="show" className="space-y-8">
+      <motion.div variants={container} initial="hidden" animate="show" className="space-y-10">
         <ValuationMethodology
           selectedMultiple={selectedMultiple}
           customMultiple={customMultiple}

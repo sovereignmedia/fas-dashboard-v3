@@ -8,15 +8,7 @@ import { CHART_COLORS } from '@/lib/colors';
 import { formatCurrency, formatNumber } from '@/lib/formatters';
 import Card from '@/components/ui/Card';
 
-const container = {
-  hidden: { opacity: 0 },
-  show: { opacity: 1, transition: { staggerChildren: 0.08 } },
-};
-
-const item = {
-  hidden: { opacity: 0, y: 20 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.4 } },
-};
+import { container, item, viewport } from '@/lib/animations';
 
 const primaryMetrics = [
   { label: 'Total Raised', value: formatCurrency(regAPerformance.totalRaised, true), icon: DollarSign, color: CHART_COLORS.gold, subtitle: 'Reg A+ Offering' },
@@ -31,7 +23,7 @@ export default function RegAPerformanceSection() {
       variants={container}
       initial="hidden"
       whileInView="show"
-      viewport={{ once: true, margin: '-50px' }}
+      viewport={viewport.section}
       className="mb-16"
     >
       <motion.div variants={item}>

@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
 
 @font-face {
   font-family: 'MicroSquare';
@@ -44,6 +44,7 @@
 
   /* Shadows */
   --shadow-card: 0 1px 2px rgba(0,0,0,0.4), 0 4px 16px rgba(0,0,0,0.3), 0 12px 40px rgba(0,0,0,0.2);
+  --shadow-card-hover: 0 2px 4px rgba(0,0,0,0.5), 0 8px 24px rgba(0,0,0,0.4), 0 20px 60px rgba(0,0,0,0.3);
   --shadow-card-sm: 0 1px 2px rgba(0,0,0,0.3), 0 4px 12px rgba(0,0,0,0.2);
   --shadow-card-lg: 0 4px 24px rgba(0,0,0,0.4), 0 0 80px rgba(0,204,136,0.03);
   --shadow-tooltip: 0 2px 4px rgba(0,0,0,0.4), 0 8px 24px rgba(0,0,0,0.3);
@@ -92,6 +93,7 @@
 
   /* Shadows */
   --shadow-card: 0 1px 2px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.04), 0 12px 40px rgba(0,0,0,0.03);
+  --shadow-card-hover: 0 2px 4px rgba(0,0,0,0.08), 0 8px 24px rgba(0,0,0,0.06), 0 20px 60px rgba(0,0,0,0.04);
   --shadow-card-sm: 0 1px 2px rgba(0,0,0,0.05), 0 4px 12px rgba(0,0,0,0.03);
   --shadow-card-lg: 0 4px 24px rgba(0,0,0,0.08), 0 0 80px rgba(0,204,136,0.02);
   --shadow-tooltip: 0 2px 4px rgba(0,0,0,0.08), 0 8px 24px rgba(0,0,0,0.06);
@@ -233,8 +235,14 @@ input[type='range']::-moz-range-thumb {
   color: var(--text-secondary) !important;
 }
 
-/* Smooth theme transition */
+/* Smooth theme transition — scoped to layout elements only */
 html,
-html * {
+body,
+header,
+nav,
+aside,
+main,
+section,
+footer {
   transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 }

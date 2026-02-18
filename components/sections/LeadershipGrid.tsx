@@ -6,16 +6,7 @@ import { team } from '@/data/team';
 import SectionHeader from '@/components/ui/SectionHeader';
 import Card from '@/components/ui/Card';
 import InitialsAvatar from '@/components/ui/InitialsAvatar';
-
-const container = {
-  hidden: { opacity: 0 },
-  show: { opacity: 1, transition: { staggerChildren: 0.07 } },
-};
-
-const item = {
-  hidden: { opacity: 0, y: 20 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.4, ease: 'easeOut' as const } },
-};
+import { container, item, viewport } from '@/lib/animations';
 
 function ExecutiveCard({ member }: { member: (typeof team)[number] }) {
   return (
@@ -47,8 +38,9 @@ export default function LeadershipGrid() {
       <motion.div
         variants={container}
         initial="hidden"
-        animate="show"
-        className="grid grid-cols-1 md:grid-cols-2 gap-6"
+        whileInView="show"
+        viewport={viewport.section}
+        className="grid grid-cols-1 md:grid-cols-2 gap-8"
       >
         {team.map((member) => (
           <ExecutiveCard key={member.name} member={member} />

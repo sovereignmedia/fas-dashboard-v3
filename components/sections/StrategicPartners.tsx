@@ -16,15 +16,7 @@ import {
 import { strategicPartners } from '@/data/capital';
 import Card from '@/components/ui/Card';
 
-const container = {
-  hidden: { opacity: 0 },
-  show: { opacity: 1, transition: { staggerChildren: 0.08 } },
-};
-
-const item = {
-  hidden: { opacity: 0, y: 20 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.4 } },
-};
+import { container, item, viewport } from '@/lib/animations';
 
 const iconMap: Record<string, LucideIcon> = {
   TrendingUp,
@@ -43,7 +35,7 @@ export default function StrategicPartnersSection() {
       variants={container}
       initial="hidden"
       whileInView="show"
-      viewport={{ once: true, margin: '-50px' }}
+      viewport={viewport.section}
     >
       <motion.div variants={item}>
         <h3 className="text-sm uppercase tracking-[0.2em] font-medium text-text-tertiary mb-6">Key Relationships</h3>

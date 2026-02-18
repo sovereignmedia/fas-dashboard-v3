@@ -8,20 +8,7 @@ import { timeline } from '@/data/team';
 import SectionHeader from '@/components/ui/SectionHeader';
 import Card from '@/components/ui/Card';
 
-const container = {
-  hidden: { opacity: 0 },
-  show: { opacity: 1, transition: { staggerChildren: 0.07 } },
-};
-
-const item = {
-  hidden: { opacity: 0, y: 20 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.4, ease: 'easeOut' as const } },
-};
-
-const fadeIn = {
-  hidden: { opacity: 0, y: 12 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-};
+import { container, item, itemGentle as fadeIn, viewport } from '@/lib/animations';
 
 function TimelineEvent({
   event,
@@ -133,7 +120,7 @@ export default function CompanyTimeline() {
         title="Milestones"
         subtitle="From technology origins to IPO preparation — a decade of systematic de-risking."
       />
-      <motion.div variants={container} initial="hidden" animate="show" className="mt-8 ml-2">
+      <motion.div variants={container} initial="hidden" whileInView="show" viewport={viewport.section} className="mt-8 ml-2">
         {timeline.map((event, index) => (
           <TimelineEvent
             key={`${event.year}-${event.title}`}

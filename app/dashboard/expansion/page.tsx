@@ -21,11 +21,11 @@ export default function ExpansionPage() {
         subtitle="9 patent-protected markets spanning 143 facility opportunities across major coal-producing nations."
       />
 
-      <Card className="!p-8 mb-10 flex justify-center" hover={false}>
+      <Card className="!p-10 mb-12 flex justify-center" hover={false}>
         <InteractiveGlobeV2 />
       </Card>
 
-      <Card className="!p-8 mb-10 flex justify-center !overflow-visible" hover={false}>
+      <Card className="!p-10 mb-12 flex justify-center !overflow-visible" hover={false}>
         <div className="text-center">
           <p className="text-xs text-text-tertiary mb-4 uppercase tracking-widest">V3 — Cinematic Hover</p>
           <InteractiveGlobeV3 />
@@ -34,7 +34,7 @@ export default function ExpansionPage() {
 
       <ExpansionGrid />
 
-      <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 xl:grid-cols-2 gap-8">
         <PenetrationCalculator penetration={penetration} onChange={setPenetration} />
         <CoalProductionChart selectedCountry={null} />
       </div>

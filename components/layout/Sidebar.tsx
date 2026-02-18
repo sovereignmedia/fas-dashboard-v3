@@ -53,7 +53,7 @@ export default function Sidebar() {
                 flex items-center gap-3 px-6 lg:px-4 xl:px-6 py-3 mx-2 rounded-lg
                 transition-all duration-200 group
                 ${isActive || isExactActive
-                  ? 'bg-accent-gold-muted text-accent-gold'
+                  ? 'bg-white/[0.04] text-accent-gold'
                   : 'text-text-tertiary hover:text-text-secondary hover:bg-bg-tertiary'
                 }
               `}
@@ -61,7 +61,7 @@ export default function Sidebar() {
               <Icon size={20} className="flex-shrink-0" />
               <span className="text-sm font-medium lg:hidden xl:block">{item.label}</span>
               {(isActive || isExactActive) && (
-                <div className="absolute left-0 w-[2px] h-8 bg-accent-gold rounded-r" />
+                <div className="absolute left-0 w-[2px] h-5 bg-accent-gold rounded-r" />
               )}
             </Link>
           );
