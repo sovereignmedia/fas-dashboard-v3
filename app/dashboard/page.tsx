@@ -108,8 +108,8 @@ export default function DashboardOverview() {
 function QuickStat({ label, value }: { label: string; value: string }) {
   return (
     <div className="text-center py-4">
-      <p className="text-xs uppercase tracking-[0.2em] font-medium text-[#606075] mb-1">{label}</p>
-      <p className="font-mono text-xl font-semibold tabular-nums text-[#A0A0B0]">{value}</p>
+      <p className="text-xs uppercase tracking-[0.2em] font-medium text-text-tertiary mb-1">{label}</p>
+      <p className="font-mono text-xl font-semibold tabular-nums text-text-secondary">{value}</p>
     </div>
   );
 }

@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
+import ThemeProvider from '@/components/providers/ThemeProvider';
+import ThemeToggle from '@/components/ui/ThemeToggle';
 
 export const metadata: Metadata = {
   title: 'Frontieras North America | Investor Dashboard',
@@ -12,9 +14,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="dark">
-      <body className="font-sans antialiased bg-[#0A0A0F] text-[#F0F0F5]">
-        {children}
+    <html lang="en" suppressHydrationWarning>
+      <body className="font-sans antialiased bg-bg-primary text-text-primary">
+        <ThemeProvider>
+          {children}
+          <ThemeToggle />
+        </ThemeProvider>
       </body>
     </html>
   );

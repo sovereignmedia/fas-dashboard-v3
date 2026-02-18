@@ -39,15 +39,15 @@ function CompanyOverview() {
       <Card className="mb-12">
         <div className="flex items-start gap-4">
           <div className="flex-shrink-0 mt-1">
-            <div className="w-10 h-10 rounded-xl bg-[#D4A853]/10 border border-[#D4A853]/20 flex items-center justify-center">
-              <Building2 className="w-5 h-5 text-[#D4A853]" />
+            <div className="w-10 h-10 rounded-xl bg-accent-gold/10 border border-accent-gold/20 flex items-center justify-center">
+              <Building2 className="w-5 h-5 text-accent-gold" />
             </div>
           </div>
           <div>
-            <h3 className="text-lg font-semibold text-[#F0F0F5] mb-3">
+            <h3 className="text-lg font-semibold text-text-primary mb-3">
               Industrial Restorationist Thesis
             </h3>
-            <p className="text-[15px] leading-relaxed text-[#A0A0B0]">
+            <p className="text-[15px] leading-relaxed text-text-secondary">
               Frontieras North America is an industrial restoration company converting coal
               &mdash; the world&rsquo;s most abundant and underutilized hydrocarbon resource
               &mdash; into six high-value products through patented FASForm&trade; and
@@ -86,7 +86,7 @@ function TimelineEvent({
       {/* Connector line + dot */}
       <div className="flex flex-col items-center flex-shrink-0 w-20">
         {/* Year label */}
-        <span className="text-xs font-mono font-semibold text-[#D4A853] tracking-wide mb-3 whitespace-nowrap">
+        <span className="text-xs font-mono font-semibold text-accent-gold tracking-wide mb-3 whitespace-nowrap">
           {event.year}
         </span>
         {/* Dot */}
@@ -94,14 +94,14 @@ function TimelineEvent({
           <div
             className={`w-3 h-3 rounded-full border-2 transition-all duration-300 ${
               isExpanded
-                ? 'bg-[#D4A853] border-[#D4A853] shadow-[0_0_12px_rgba(212,168,83,0.4)]'
-                : 'bg-[#0A0A0F] border-[#D4A853]/50 group-hover:border-[#D4A853]'
+                ? 'bg-accent-gold border-accent-gold shadow-[0_0_12px_rgba(212,168,83,0.4)]'
+                : 'bg-bg-primary border-accent-gold/50 group-hover:border-accent-gold'
             }`}
           />
         </div>
         {/* Vertical line */}
         {!isLast && (
-          <div className="w-[1px] flex-1 bg-gradient-to-b from-[#D4A853]/40 to-[#D4A853]/10 mt-0" />
+          <div className="w-[1px] flex-1 bg-gradient-to-b from-accent-gold/40 to-accent-gold/10 mt-0" />
         )}
       </div>
 
@@ -116,15 +116,15 @@ function TimelineEvent({
               rounded-xl border transition-all duration-300 px-5 py-4
               ${
                 isExpanded
-                  ? 'bg-[#12121A] border-[#D4A853]/30 shadow-[0_0_20px_rgba(212,168,83,0.06)]'
-                  : 'bg-[#12121A]/60 border-[#1F1F2E] hover:border-[#2A2A3D] hover:bg-[#12121A]'
+                  ? 'bg-bg-secondary border-accent-gold/30 shadow-[0_0_20px_rgba(212,168,83,0.06)]'
+                  : 'bg-bg-secondary/60 border-border-subtle hover:border-border-medium hover:bg-bg-secondary'
               }
             `}
           >
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-3">
-                <Calendar className="w-4 h-4 text-[#606075]" />
-                <h4 className="text-[15px] font-semibold text-[#F0F0F5]">
+                <Calendar className="w-4 h-4 text-text-tertiary" />
+                <h4 className="text-[15px] font-semibold text-text-primary">
                   {event.title}
                 </h4>
               </div>
@@ -132,7 +132,7 @@ function TimelineEvent({
                 animate={{ rotate: isExpanded ? 180 : 0 }}
                 transition={{ duration: 0.25 }}
               >
-                <ChevronDown className="w-4 h-4 text-[#606075] group-hover/btn:text-[#A0A0B0] transition-colors" />
+                <ChevronDown className="w-4 h-4 text-text-tertiary group-hover/btn:text-text-secondary transition-colors" />
               </motion.div>
             </div>
 
@@ -145,7 +145,7 @@ function TimelineEvent({
                   transition={{ duration: 0.3, ease: 'easeInOut' }}
                   className="overflow-hidden"
                 >
-                  <p className="text-sm leading-relaxed text-[#A0A0B0] mt-3 pt-3 border-t border-[#1F1F2E]">
+                  <p className="text-sm leading-relaxed text-text-secondary mt-3 pt-3 border-t border-border-subtle">
                     {event.description}
                   </p>
                 </motion.div>
@@ -209,7 +209,7 @@ function InitialsAvatar({ name, size = 'md' }: { name: string; size?: 'sm' | 'md
 
   return (
     <div
-      className={`${sizeClasses} rounded-full bg-[#D4A853]/10 border border-[#D4A853]/20 flex items-center justify-center font-semibold text-[#D4A853] tracking-wide flex-shrink-0`}
+      className={`${sizeClasses} rounded-full bg-accent-gold/10 border border-accent-gold/20 flex items-center justify-center font-semibold text-accent-gold tracking-wide flex-shrink-0`}
     >
       {initials}
     </div>
@@ -227,15 +227,15 @@ function ExecutiveCard({ member }: { member: (typeof team)[number] }) {
         <div className="flex items-start gap-4">
           <InitialsAvatar name={member.name} />
           <div className="min-w-0">
-            <h4 className="text-lg font-semibold text-[#F0F0F5] truncate">
+            <h4 className="text-lg font-semibold text-text-primary truncate">
               {member.name}
             </h4>
-            <p className="text-xs uppercase tracking-[0.15em] font-medium text-[#D4A853] mt-0.5">
+            <p className="text-xs uppercase tracking-[0.15em] font-medium text-accent-gold mt-0.5">
               {member.title}
             </p>
           </div>
         </div>
-        <p className="text-sm leading-relaxed text-[#A0A0B0] mt-4">
+        <p className="text-sm leading-relaxed text-text-secondary mt-4">
           {member.description}
         </p>
       </Card>
@@ -277,16 +277,16 @@ function AdvisorCard({ advisor }: { advisor: (typeof advisors)[number] }) {
           <InitialsAvatar name={advisor.name} size="sm" />
           <div className="min-w-0 flex-1">
             <div className="flex items-start justify-between gap-3">
-              <h4 className="text-base font-semibold text-[#F0F0F5] truncate">
+              <h4 className="text-base font-semibold text-text-primary truncate">
                 {advisor.name}
               </h4>
-              <span className="flex-shrink-0 text-[10px] uppercase tracking-[0.15em] font-semibold px-2.5 py-1 rounded-full bg-[#D4A853]/10 border border-[#D4A853]/20 text-[#D4A853] whitespace-nowrap">
+              <span className="flex-shrink-0 text-[10px] uppercase tracking-[0.15em] font-semibold px-2.5 py-1 rounded-full bg-accent-gold/10 border border-accent-gold/20 text-accent-gold whitespace-nowrap">
                 {advisor.role}
               </span>
             </div>
           </div>
         </div>
-        <p className="text-sm leading-relaxed text-[#A0A0B0] mt-4">
+        <p className="text-sm leading-relaxed text-text-secondary mt-4">
           {advisor.description}
         </p>
       </Card>

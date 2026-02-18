@@ -40,11 +40,11 @@ const item = {
 function statusColor(status: string) {
   switch (status) {
     case 'active':
-      return '#D4A853';
+      return 'var(--accent-gold)';
     case 'upcoming':
       return '#4A9EFF';
     default:
-      return '#606075';
+      return 'var(--text-tertiary)';
   }
 }
 
@@ -131,7 +131,7 @@ export default function CapitalStructurePage() {
         className="mb-16"
       >
         <motion.div variants={item}>
-          <h3 className="text-sm uppercase tracking-[0.2em] font-medium text-[#606075] mb-6">
+          <h3 className="text-sm uppercase tracking-[0.2em] font-medium text-text-tertiary mb-6">
             Capital Roadmap
           </h3>
         </motion.div>
@@ -139,7 +139,7 @@ export default function CapitalStructurePage() {
         {/* Horizontal Timeline */}
         <motion.div variants={item} className="relative">
           {/* Connector line */}
-          <div className="hidden md:block absolute top-[28px] left-0 right-0 h-[2px] bg-[#1F1F2E] z-0" />
+          <div className="hidden md:block absolute top-[28px] left-0 right-0 h-[2px] bg-border-subtle z-0" />
 
           <div className="grid grid-cols-1 md:grid-cols-5 gap-4 md:gap-0 relative z-10">
             {capitalPhases.map((phase) => {
@@ -167,7 +167,7 @@ export default function CapitalStructurePage() {
                         borderColor: color,
                         backgroundColor: isActive
                           ? 'rgba(212,168,83,0.12)'
-                          : 'rgba(18,18,26,0.9)',
+                          : 'var(--bg-secondary)',
                         boxShadow: isActive
                           ? '0 0 20px rgba(212,168,83,0.35), 0 0 40px rgba(212,168,83,0.15)'
                           : 'none',
@@ -180,7 +180,7 @@ export default function CapitalStructurePage() {
                         {phase.phase}
                       </span>
                       {isActive && (
-                        <span className="absolute inset-0 rounded-full animate-ping opacity-20 border-2 border-[#D4A853]" />
+                        <span className="absolute inset-0 rounded-full animate-ping opacity-20 border-2 border-accent-gold" />
                       )}
                     </div>
 
@@ -193,7 +193,7 @@ export default function CapitalStructurePage() {
                     </p>
 
                     {/* Amount */}
-                    <p className="mt-1 font-mono text-sm tabular-nums text-[#A0A0B0]">
+                    <p className="mt-1 font-mono text-sm tabular-nums text-text-secondary">
                       {phase.amount > 0
                         ? formatCurrency(phase.amount, true)
                         : 'Funded via Phase 1'}
@@ -214,7 +214,7 @@ export default function CapitalStructurePage() {
                     {/* Expand indicator */}
                     <ChevronRight
                       size={14}
-                      className="mt-2 transition-transform duration-200 text-[#606075] group-hover:text-[#A0A0B0]"
+                      className="mt-2 transition-transform duration-200 text-text-tertiary group-hover:text-text-secondary"
                       style={{
                         transform: isExpanded
                           ? 'rotate(90deg)'
@@ -260,30 +260,30 @@ export default function CapitalStructurePage() {
                             >
                               {phase.phase}
                             </span>
-                            <h4 className="text-lg font-semibold text-[#F0F0F5]">
+                            <h4 className="text-lg font-semibold text-text-primary">
                               {phase.name}
                             </h4>
                             {phase.amount > 0 && (
-                              <span className="font-mono text-sm text-[#D4A853]">
+                              <span className="font-mono text-sm text-accent-gold">
                                 {formatCurrency(phase.amount, true)}
                               </span>
                             )}
                           </div>
-                          <p className="text-sm leading-relaxed text-[#A0A0B0]">
+                          <p className="text-sm leading-relaxed text-text-secondary">
                             {phase.description}
                           </p>
                         </div>
 
                         {/* Right: Use of Proceeds list */}
                         <div className="md:w-72 shrink-0">
-                          <p className="text-[10px] uppercase tracking-[0.2em] font-medium text-[#606075] mb-3">
+                          <p className="text-[10px] uppercase tracking-[0.2em] font-medium text-text-tertiary mb-3">
                             Key Deliverables
                           </p>
                           <ul className="space-y-2">
                             {phase.use.map((item, i) => (
                               <li
                                 key={i}
-                                className="flex items-start gap-2 text-sm text-[#C0C0D0]"
+                                className="flex items-start gap-2 text-sm text-text-secondary"
                               >
                                 <ChevronRight
                                   size={12}
@@ -314,7 +314,7 @@ export default function CapitalStructurePage() {
         className="mb-16"
       >
         <motion.div variants={item}>
-          <h3 className="text-sm uppercase tracking-[0.2em] font-medium text-[#606075] mb-6">
+          <h3 className="text-sm uppercase tracking-[0.2em] font-medium text-text-tertiary mb-6">
             Reg A+ Performance
           </h3>
         </motion.div>
@@ -361,7 +361,7 @@ export default function CapitalStructurePage() {
                     <metric.icon size={20} style={{ color: metric.color }} />
                   </div>
                 </div>
-                <p className="text-xs uppercase tracking-[0.15em] font-medium text-[#606075] mb-1">
+                <p className="text-xs uppercase tracking-[0.15em] font-medium text-text-tertiary mb-1">
                   {metric.label}
                 </p>
                 <p
@@ -370,7 +370,7 @@ export default function CapitalStructurePage() {
                 >
                   {metric.value}
                 </p>
-                <p className="text-xs text-[#808090] mt-1">{metric.subtitle}</p>
+                <p className="text-xs text-text-mid mt-1">{metric.subtitle}</p>
               </Card>
             </motion.div>
           ))}
@@ -379,45 +379,45 @@ export default function CapitalStructurePage() {
         {/* Secondary Row: Reg CF Comparison */}
         <motion.div variants={item}>
           <Card hover={false}>
-            <p className="text-[10px] uppercase tracking-[0.2em] font-medium text-[#606075] mb-4">
+            <p className="text-[10px] uppercase tracking-[0.2em] font-medium text-text-tertiary mb-4">
               Reg CF Campaign Performance
             </p>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
               <div>
-                <p className="text-xs text-[#606075] mb-1">Reg CF Raised</p>
-                <p className="font-mono text-xl font-semibold tabular-nums text-[#F0F0F5]">
+                <p className="text-xs text-text-tertiary mb-1">Reg CF Raised</p>
+                <p className="font-mono text-xl font-semibold tabular-nums text-text-primary">
                   {formatCurrency(regAPerformance.regCFRaised, true)}
                 </p>
               </div>
               <div>
-                <p className="text-xs text-[#606075] mb-1">Ad Spend</p>
-                <p className="font-mono text-xl font-semibold tabular-nums text-[#F0F0F5]">
+                <p className="text-xs text-text-tertiary mb-1">Ad Spend</p>
+                <p className="font-mono text-xl font-semibold tabular-nums text-text-primary">
                   {formatCurrency(regAPerformance.regCFSpend, true)}
                 </p>
               </div>
               <div>
-                <p className="text-xs text-[#606075] mb-1">ROAS</p>
-                <p className="font-mono text-xl font-semibold tabular-nums text-[#00D4AA]">
+                <p className="text-xs text-text-tertiary mb-1">ROAS</p>
+                <p className="font-mono text-xl font-semibold tabular-nums text-data-cyan">
                   {regAPerformance.regCFROAS.toFixed(2)}x
                 </p>
               </div>
               <div>
-                <p className="text-xs text-[#606075] mb-1">Investors Funded</p>
-                <p className="font-mono text-xl font-semibold tabular-nums text-[#F0F0F5]">
+                <p className="text-xs text-text-tertiary mb-1">Investors Funded</p>
+                <p className="font-mono text-xl font-semibold tabular-nums text-text-primary">
                   {formatNumber(regAPerformance.regCFFunded)}
                 </p>
               </div>
             </div>
 
             {/* ROAS visual bar */}
-            <div className="mt-5 pt-4 border-t border-[#1F1F2E]">
-              <div className="flex items-center justify-between text-xs text-[#606075] mb-2">
+            <div className="mt-5 pt-4 border-t border-border-subtle">
+              <div className="flex items-center justify-between text-xs text-text-tertiary mb-2">
                 <span>Return on Ad Spend</span>
-                <span className="font-mono text-[#00D4AA]">
+                <span className="font-mono text-data-cyan">
                   {regAPerformance.regCFROAS.toFixed(2)}x
                 </span>
               </div>
-              <div className="h-2 rounded-full bg-[#1F1F2E] overflow-hidden">
+              <div className="h-2 rounded-full bg-border-subtle overflow-hidden">
                 <motion.div
                   initial={{ width: 0 }}
                   whileInView={{ width: `${Math.min((regAPerformance.regCFROAS / 6) * 100, 100)}%` }}
@@ -426,7 +426,7 @@ export default function CapitalStructurePage() {
                   className="h-full rounded-full bg-gradient-to-r from-[#00D4AA] to-[#4A9EFF]"
                 />
               </div>
-              <div className="flex justify-between text-[10px] text-[#606075] mt-1">
+              <div className="flex justify-between text-[10px] text-text-tertiary mt-1">
                 <span>0x</span>
                 <span>3x</span>
                 <span>6x</span>
@@ -445,7 +445,7 @@ export default function CapitalStructurePage() {
         className="mb-16"
       >
         <motion.div variants={item}>
-          <h3 className="text-sm uppercase tracking-[0.2em] font-medium text-[#606075] mb-6">
+          <h3 className="text-sm uppercase tracking-[0.2em] font-medium text-text-tertiary mb-6">
             Use of Proceeds — $25M Bridge Round
           </h3>
         </motion.div>
@@ -479,12 +479,12 @@ export default function CapitalStructurePage() {
                       className="w-3 h-3 rounded-sm shrink-0"
                       style={{ backgroundColor: item.color }}
                     />
-                    <span className="text-sm text-[#C0C0D0]">
+                    <span className="text-sm text-text-secondary">
                       {item.label}
                     </span>
                   </div>
                   <div className="flex items-center gap-4">
-                    <span className="font-mono text-sm tabular-nums text-[#A0A0B0]">
+                    <span className="font-mono text-sm tabular-nums text-text-secondary">
                       {formatCurrency(item.amount, true)}
                     </span>
                     <span
@@ -499,11 +499,11 @@ export default function CapitalStructurePage() {
             </div>
 
             {/* Total */}
-            <div className="mt-4 pt-4 border-t border-[#1F1F2E] flex items-center justify-between">
-              <span className="text-sm font-semibold text-[#F0F0F5]">
+            <div className="mt-4 pt-4 border-t border-border-subtle flex items-center justify-between">
+              <span className="text-sm font-semibold text-text-primary">
                 Total Bridge Round
               </span>
-              <span className="font-mono text-sm font-bold tabular-nums text-[#D4A853]">
+              <span className="font-mono text-sm font-bold tabular-nums text-accent-gold">
                 {formatCurrency(25_000_000, true)}
               </span>
             </div>
@@ -519,7 +519,7 @@ export default function CapitalStructurePage() {
         viewport={{ once: true, margin: '-50px' }}
       >
         <motion.div variants={item}>
-          <h3 className="text-sm uppercase tracking-[0.2em] font-medium text-[#606075] mb-6">
+          <h3 className="text-sm uppercase tracking-[0.2em] font-medium text-text-tertiary mb-6">
             Key Relationships
           </h3>
         </motion.div>
@@ -529,17 +529,17 @@ export default function CapitalStructurePage() {
             <motion.div key={partner.name} variants={item}>
               <Card>
                 <div className="flex items-start gap-4">
-                  <div className="flex items-center justify-center w-11 h-11 rounded-xl bg-[#D4A853]/10 shrink-0">
-                    <partner.icon size={20} className="text-[#D4A853]" />
+                  <div className="flex items-center justify-center w-11 h-11 rounded-xl bg-accent-gold/10 shrink-0">
+                    <partner.icon size={20} className="text-accent-gold" />
                   </div>
                   <div className="min-w-0">
-                    <h4 className="text-sm font-semibold text-[#F0F0F5] truncate">
+                    <h4 className="text-sm font-semibold text-text-primary truncate">
                       {partner.name}
                     </h4>
-                    <p className="text-xs uppercase tracking-wider text-[#D4A853] mt-0.5">
+                    <p className="text-xs uppercase tracking-wider text-accent-gold mt-0.5">
                       {partner.role}
                     </p>
-                    <p className="text-xs leading-relaxed text-[#808090] mt-2">
+                    <p className="text-xs leading-relaxed text-text-mid mt-2">
                       {partner.detail}
                     </p>
                   </div>

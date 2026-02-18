@@ -26,15 +26,15 @@ export default function Sidebar() {
   const pathname = usePathname();
 
   return (
-    <aside className="fixed left-0 top-0 h-screen w-64 xl:w-64 lg:w-16 bg-[#0A0A0F] border-r border-[#1F1F2E] z-40 flex flex-col">
-      <div className="p-6 lg:p-4 xl:p-6 border-b border-[#1F1F2E]">
+    <aside className="fixed left-0 top-0 h-screen w-64 xl:w-64 lg:w-16 bg-bg-primary border-r border-border-subtle z-40 flex flex-col">
+      <div className="p-6 lg:p-4 xl:p-6 border-b border-border-subtle">
         <Link href="/dashboard" className="flex items-center gap-3">
-          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#D4A853] to-[#E0B86A] flex items-center justify-center flex-shrink-0">
-            <span className="text-[#0A0A0F] font-bold text-sm">F</span>
+          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-accent-gold to-accent-gold-hover flex items-center justify-center flex-shrink-0">
+            <span className="text-text-inverse font-bold text-sm">F</span>
           </div>
           <div className="lg:hidden xl:block">
-            <h1 className="text-sm font-semibold text-[#F0F0F5] leading-tight">FRONTIERAS</h1>
-            <p className="text-[10px] uppercase tracking-[0.15em] text-[#606075]">North America</p>
+            <h1 className="text-sm font-semibold text-text-primary leading-tight">FRONTIERAS</h1>
+            <p className="text-[10px] uppercase tracking-[0.15em] text-text-tertiary">North America</p>
           </div>
         </Link>
       </div>
@@ -53,23 +53,23 @@ export default function Sidebar() {
                 flex items-center gap-3 px-6 lg:px-4 xl:px-6 py-3 mx-2 rounded-lg
                 transition-all duration-200 group
                 ${isActive || isExactActive
-                  ? 'bg-[#D4A853]/10 text-[#D4A853]'
-                  : 'text-[#606075] hover:text-[#A0A0B0] hover:bg-[#1A1A25]'
+                  ? 'bg-accent-gold-muted text-accent-gold'
+                  : 'text-text-tertiary hover:text-text-secondary hover:bg-bg-tertiary'
                 }
               `}
             >
               <Icon size={20} className="flex-shrink-0" />
               <span className="text-sm font-medium lg:hidden xl:block">{item.label}</span>
               {(isActive || isExactActive) && (
-                <div className="absolute left-0 w-[2px] h-8 bg-[#D4A853] rounded-r" />
+                <div className="absolute left-0 w-[2px] h-8 bg-accent-gold rounded-r" />
               )}
             </Link>
           );
         })}
       </nav>
 
-      <div className="p-4 lg:p-2 xl:p-4 border-t border-[#1F1F2E]">
-        <p className="text-[10px] text-[#606075] lg:hidden xl:block">Investor Dashboard v1.0</p>
+      <div className="p-4 lg:p-2 xl:p-4 border-t border-border-subtle">
+        <p className="text-[10px] text-text-tertiary lg:hidden xl:block">Investor Dashboard v1.0</p>
       </div>
     </aside>
   );

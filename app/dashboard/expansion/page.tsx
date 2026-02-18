@@ -56,15 +56,15 @@ function ChartTooltip({ active, payload }: any) {
   if (!active || !payload?.length) return null;
   const d = payload[0].payload;
   return (
-    <div className="rounded-xl bg-[#1A1A25] border border-[#2A2A3D] px-4 py-3 shadow-2xl">
-      <p className="text-sm font-semibold text-[#F0F0F5]">{d.name}</p>
-      <p className="text-xs text-[#A0A0B0] mt-1">
+    <div className="rounded-xl bg-bg-tertiary border border-border-medium px-4 py-3 shadow-2xl">
+      <p className="text-sm font-semibold text-text-primary">{d.name}</p>
+      <p className="text-xs text-text-secondary mt-1">
         Facility potential:&nbsp;
-        <span className="font-mono text-[#D4A853]">{d.facilityPotential}</span>
+        <span className="font-mono text-accent-gold">{d.facilityPotential}</span>
       </p>
-      <p className="text-xs text-[#A0A0B0]">
+      <p className="text-xs text-text-secondary">
         Coal production:&nbsp;
-        <span className="font-mono text-[#F0F0F5]">{formatNumber(d.coalProduction)} Mt</span>
+        <span className="font-mono text-text-primary">{formatNumber(d.coalProduction)} Mt</span>
       </p>
     </div>
   );
@@ -131,18 +131,18 @@ export default function ExpansionPage() {
       <Card className="!p-0 mb-10 overflow-visible" accentLine hover={false}>
         <div className="px-6 pt-6 pb-2 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <div className="w-2 h-2 rounded-full bg-[#D4A853] animate-pulse" />
-            <p className="text-xs uppercase tracking-[0.2em] font-medium text-[#606075]">
+            <div className="w-2 h-2 rounded-full bg-accent-gold animate-pulse" />
+            <p className="text-xs uppercase tracking-[0.2em] font-medium text-text-tertiary">
               Global Operations Map
             </p>
           </div>
-          <div className="flex items-center gap-4 text-[10px] text-[#606075] uppercase tracking-wider">
+          <div className="flex items-center gap-4 text-[10px] text-text-tertiary uppercase tracking-wider">
             <span className="flex items-center gap-1.5">
               <span className="inline-block w-2 h-2 rounded-full bg-[#10B981]" />
               Patent Granted
             </span>
             <span className="flex items-center gap-1.5">
-              <span className="inline-block w-2 h-2 rounded-full bg-[#D4A853]" />
+              <span className="inline-block w-2 h-2 rounded-full bg-accent-gold" />
               Patent Filed
             </span>
           </div>
@@ -155,7 +155,7 @@ export default function ExpansionPage() {
             className="absolute inset-0 pointer-events-none opacity-[0.04]"
             style={{
               backgroundImage:
-                'linear-gradient(to right, #F0F0F5 1px, transparent 1px), linear-gradient(to bottom, #F0F0F5 1px, transparent 1px)',
+                'linear-gradient(to right, var(--text-primary) 1px, transparent 1px), linear-gradient(to bottom, var(--text-primary) 1px, transparent 1px)',
               backgroundSize: '60px 60px',
             }}
           />
@@ -188,8 +188,8 @@ export default function ExpansionPage() {
                       border backdrop-blur-sm group relative overflow-hidden
                       ${
                         isSelected
-                          ? 'bg-[#1A1A25] border-[#D4A853]/60 shadow-[0_0_30px_rgba(212,168,83,0.12)]'
-                          : 'bg-[#12121A]/80 border-[#1F1F2E] hover:border-[#2A2A3D] hover:bg-[#16161F]'
+                          ? 'bg-bg-tertiary border-accent-gold/60 shadow-[0_0_30px_rgba(212,168,83,0.12)]'
+                          : 'bg-bg-secondary/80 border-border-subtle hover:border-border-medium hover:bg-bg-hover'
                       }
                     `}
                   >
@@ -211,7 +211,7 @@ export default function ExpansionPage() {
                         >
                           {country.code}
                         </span>
-                        <span className="text-sm font-semibold text-[#F0F0F5] truncate">
+                        <span className="text-sm font-semibold text-text-primary truncate">
                           {country.name}
                         </span>
                       </div>
@@ -219,7 +219,7 @@ export default function ExpansionPage() {
                         className={`text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full ${
                           isGranted
                             ? 'bg-[#10B981]/15 text-[#10B981]'
-                            : 'bg-[#D4A853]/15 text-[#D4A853]'
+                            : 'bg-accent-gold/15 text-accent-gold'
                         }`}
                       >
                         {country.patentStatus}
@@ -229,33 +229,33 @@ export default function ExpansionPage() {
                     {/* Metrics row */}
                     <div className="grid grid-cols-3 gap-2 mt-3">
                       <div>
-                        <p className="text-[9px] uppercase tracking-wider text-[#606075]">
+                        <p className="text-[9px] uppercase tracking-wider text-text-tertiary">
                           Facilities
                         </p>
-                        <p className="font-mono text-lg font-bold text-[#F0F0F5]">
+                        <p className="font-mono text-lg font-bold text-text-primary">
                           {country.facilityPotential}
                         </p>
                       </div>
                       <div>
-                        <p className="text-[9px] uppercase tracking-wider text-[#606075]">
+                        <p className="text-[9px] uppercase tracking-wider text-text-tertiary">
                           Coal (Mt)
                         </p>
-                        <p className="font-mono text-sm font-semibold text-[#A0A0B0]">
+                        <p className="font-mono text-sm font-semibold text-text-secondary">
                           {formatNumber(country.coalProduction)}
                         </p>
                       </div>
                       <div>
-                        <p className="text-[9px] uppercase tracking-wider text-[#606075]">
+                        <p className="text-[9px] uppercase tracking-wider text-text-tertiary">
                           Market
                         </p>
-                        <p className="font-mono text-sm font-semibold text-[#A0A0B0]">
+                        <p className="font-mono text-sm font-semibold text-text-secondary">
                           {country.marketPotential}
                         </p>
                       </div>
                     </div>
 
                     {/* Facility potential bar */}
-                    <div className="mt-3 w-full h-1 rounded-full bg-[#1F1F2E] overflow-hidden">
+                    <div className="mt-3 w-full h-1 rounded-full bg-border-subtle overflow-hidden">
                       <motion.div
                         initial={{ width: 0 }}
                         animate={{
@@ -306,17 +306,17 @@ export default function ExpansionPage() {
                       >
                         {selectedCountry.code}
                       </span>
-                      <h3 className="text-2xl font-semibold text-[#F0F0F5]">
+                      <h3 className="text-2xl font-semibold text-text-primary">
                         {selectedCountry.name}
                       </h3>
                     </div>
-                    <p className="text-sm text-[#A0A0B0] mt-1">
+                    <p className="text-sm text-text-secondary mt-1">
                       Detailed market analysis and facility deployment overview
                     </p>
                   </div>
                   <button
                     onClick={() => setSelectedCountry(null)}
-                    className="text-[#606075] hover:text-[#F0F0F5] transition-colors text-xl leading-none p-2"
+                    className="text-text-tertiary hover:text-text-primary transition-colors text-xl leading-none p-2"
                     aria-label="Close detail panel"
                   >
                     &times;
@@ -352,20 +352,20 @@ export default function ExpansionPage() {
                         : 'Application in progress'
                     }
                     color={
-                      selectedCountry.patentStatus === 'Granted' ? '#10B981' : '#D4A853'
+                      selectedCountry.patentStatus === 'Granted' ? '#10B981' : 'var(--accent-gold)'
                     }
                   />
                 </div>
 
                 {/* Projected financials for this country */}
-                <div className="border-t border-[#1F1F2E] pt-6">
-                  <p className="text-xs uppercase tracking-[0.2em] font-medium text-[#606075] mb-4">
+                <div className="border-t border-border-subtle pt-6">
+                  <p className="text-xs uppercase tracking-[0.2em] font-medium text-text-tertiary mb-4">
                     Projected Country-Level Financials (Full Deployment)
                   </p>
                   <div className="grid grid-cols-3 gap-6">
                     <div>
-                      <p className="text-xs text-[#606075] mb-1">Annual Revenue</p>
-                      <p className="font-mono text-xl font-bold text-[#F0F0F5]">
+                      <p className="text-xs text-text-tertiary mb-1">Annual Revenue</p>
+                      <p className="font-mono text-xl font-bold text-text-primary">
                         {formatCurrency(
                           selectedCountry.facilityPotential * SINGLE_FACILITY_REVENUE,
                           true,
@@ -373,8 +373,8 @@ export default function ExpansionPage() {
                       </p>
                     </div>
                     <div>
-                      <p className="text-xs text-[#606075] mb-1">Annual EBITDA</p>
-                      <p className="font-mono text-xl font-bold text-[#00D4AA]">
+                      <p className="text-xs text-text-tertiary mb-1">Annual EBITDA</p>
+                      <p className="font-mono text-xl font-bold text-data-cyan">
                         {formatCurrency(
                           selectedCountry.facilityPotential * SINGLE_FACILITY_EBITDA,
                           true,
@@ -382,8 +382,8 @@ export default function ExpansionPage() {
                       </p>
                     </div>
                     <div>
-                      <p className="text-xs text-[#606075] mb-1">Enterprise Value (12x)</p>
-                      <p className="font-mono text-xl font-bold text-[#D4A853]">
+                      <p className="text-xs text-text-tertiary mb-1">Enterprise Value (12x)</p>
+                      <p className="font-mono text-xl font-bold text-accent-gold">
                         {formatCurrency(
                           selectedCountry.facilityPotential * SINGLE_FACILITY_EBITDA * 12,
                           true,
@@ -408,8 +408,8 @@ export default function ExpansionPage() {
         >
           <Card hover={false}>
             <div className="flex items-center gap-2 mb-6">
-              <div className="w-2 h-2 rounded-full bg-[#D4A853] animate-pulse" />
-              <p className="text-xs uppercase tracking-[0.2em] font-medium text-[#606075]">
+              <div className="w-2 h-2 rounded-full bg-accent-gold animate-pulse" />
+              <p className="text-xs uppercase tracking-[0.2em] font-medium text-text-tertiary">
                 Market Penetration Calculator
               </p>
             </div>
@@ -417,8 +417,8 @@ export default function ExpansionPage() {
             {/* Slider */}
             <div className="mb-8">
               <div className="flex items-end justify-between mb-3">
-                <p className="text-sm text-[#A0A0B0]">Global coal processing penetration</p>
-                <p className="font-mono text-3xl font-bold text-[#D4A853]">{penetration}%</p>
+                <p className="text-sm text-text-secondary">Global coal processing penetration</p>
+                <p className="font-mono text-3xl font-bold text-accent-gold">{penetration}%</p>
               </div>
               <input
                 type="range"
@@ -427,21 +427,21 @@ export default function ExpansionPage() {
                 value={penetration}
                 onChange={(e) => setPenetration(Number(e.target.value))}
                 className="w-full h-2 rounded-full appearance-none cursor-pointer
-                  bg-[#1F1F2E] accent-[#D4A853]
+                  bg-border-subtle accent-accent-gold
                   [&::-webkit-slider-thumb]:appearance-none
                   [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:h-5
                   [&::-webkit-slider-thumb]:rounded-full
-                  [&::-webkit-slider-thumb]:bg-[#D4A853]
+                  [&::-webkit-slider-thumb]:bg-accent-gold
                   [&::-webkit-slider-thumb]:shadow-[0_0_12px_rgba(212,168,83,0.5)]
                   [&::-webkit-slider-thumb]:border-2
-                  [&::-webkit-slider-thumb]:border-[#0A0A0F]
+                  [&::-webkit-slider-thumb]:border-bg-primary
                   [&::-moz-range-thumb]:w-5 [&::-moz-range-thumb]:h-5
                   [&::-moz-range-thumb]:rounded-full
-                  [&::-moz-range-thumb]:bg-[#D4A853]
+                  [&::-moz-range-thumb]:bg-accent-gold
                   [&::-moz-range-thumb]:border-2
-                  [&::-moz-range-thumb]:border-[#0A0A0F]"
+                  [&::-moz-range-thumb]:border-bg-primary"
               />
-              <div className="flex justify-between text-[10px] text-[#606075] mt-1 font-mono">
+              <div className="flex justify-between text-[10px] text-text-tertiary mt-1 font-mono">
                 <span>1%</span>
                 <span>25%</span>
                 <span>50%</span>
@@ -460,18 +460,18 @@ export default function ExpansionPage() {
               <CalcRow
                 label="Annual Revenue"
                 value={formatCurrency(penetrationMetrics.annualRevenue, true)}
-                color="#F0F0F5"
+                color="var(--text-primary)"
               />
               <CalcRow
                 label="Annual EBITDA"
                 value={formatCurrency(penetrationMetrics.ebitda, true)}
                 color="#00D4AA"
               />
-              <div className="border-t border-[#1F1F2E] pt-4">
+              <div className="border-t border-border-subtle pt-4">
                 <CalcRow
                   label="Enterprise Value (12x EBITDA)"
                   value={formatCurrency(penetrationMetrics.enterpriseValue, true)}
-                  color="#D4A853"
+                  color="var(--accent-gold)"
                   large
                 />
               </div>
@@ -488,7 +488,7 @@ export default function ExpansionPage() {
           <Card hover={false}>
             <div className="flex items-center gap-2 mb-6">
               <div className="w-2 h-2 rounded-full bg-[#4A9EFF] animate-pulse" />
-              <p className="text-xs uppercase tracking-[0.2em] font-medium text-[#606075]">
+              <p className="text-xs uppercase tracking-[0.2em] font-medium text-text-tertiary">
                 Facility Potential by Country
               </p>
             </div>
@@ -503,20 +503,20 @@ export default function ExpansionPage() {
                 >
                   <CartesianGrid
                     strokeDasharray="3 3"
-                    stroke="#1F1F2E"
+                    stroke="var(--border-subtle)"
                     horizontal={false}
                   />
                   <XAxis
                     type="number"
-                    tick={{ fill: '#606075', fontSize: 11, fontFamily: 'JetBrains Mono, monospace' }}
-                    axisLine={{ stroke: '#1F1F2E' }}
+                    tick={{ fill: 'var(--text-tertiary)', fontSize: 11, fontFamily: 'JetBrains Mono, monospace' }}
+                    axisLine={{ stroke: 'var(--border-subtle)' }}
                     tickLine={false}
                   />
                   <YAxis
                     dataKey="name"
                     type="category"
                     width={110}
-                    tick={{ fill: '#A0A0B0', fontSize: 12 }}
+                    tick={{ fill: 'var(--text-secondary)', fontSize: 12 }}
                     axisLine={false}
                     tickLine={false}
                   />
@@ -562,13 +562,13 @@ function StatPill({
   value: string;
 }) {
   return (
-    <div className="flex items-center gap-3 rounded-xl bg-[#12121A] border border-[#1F1F2E] px-4 py-3">
-      <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-[#D4A853]/10 text-[#D4A853]">
+    <div className="flex items-center gap-3 rounded-xl bg-bg-secondary border border-border-subtle px-4 py-3">
+      <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-accent-gold-muted text-accent-gold">
         {icon}
       </div>
       <div>
-        <p className="text-[10px] uppercase tracking-[0.15em] text-[#606075]">{label}</p>
-        <p className="font-mono text-lg font-bold text-[#F0F0F5]">{value}</p>
+        <p className="text-[10px] uppercase tracking-[0.15em] text-text-tertiary">{label}</p>
+        <p className="font-mono text-lg font-bold text-text-primary">{value}</p>
       </div>
     </div>
   );
@@ -587,14 +587,14 @@ function DetailMetric({
 }) {
   return (
     <div>
-      <p className="text-[10px] uppercase tracking-[0.15em] text-[#606075] mb-2">{label}</p>
+      <p className="text-[10px] uppercase tracking-[0.15em] text-text-tertiary mb-2">{label}</p>
       <p
         className="font-mono text-2xl font-bold mb-1"
         style={{ color, textShadow: `0 0 20px ${color}30` }}
       >
         {value}
       </p>
-      <p className="text-xs text-[#A0A0B0]">{sub}</p>
+      <p className="text-xs text-text-secondary">{sub}</p>
     </div>
   );
 }
@@ -612,7 +612,7 @@ function CalcRow({
 }) {
   return (
     <div className="flex items-center justify-between">
-      <p className={`${large ? 'text-sm font-medium' : 'text-sm'} text-[#A0A0B0]`}>{label}</p>
+      <p className={`${large ? 'text-sm font-medium' : 'text-sm'} text-text-secondary`}>{label}</p>
       <p
         className={`font-mono font-bold tabular-nums ${large ? 'text-2xl' : 'text-lg'}`}
         style={{ color, textShadow: `0 0 16px ${color}30` }}

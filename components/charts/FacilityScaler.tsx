@@ -36,13 +36,13 @@ export default function FacilityScaler({ ebitdaMultiple }: FacilityScalerProps) 
   return (
     <Card className="p-8">
       <div className="mb-8">
-        <p className="text-xs uppercase tracking-[0.2em] font-medium text-[#D4A853] mb-2">
+        <p className="text-xs uppercase tracking-[0.2em] font-medium text-accent-gold mb-2">
           Facility Scaler
         </p>
-        <h3 className="text-2xl font-semibold text-[#F0F0F5]">
+        <h3 className="text-2xl font-semibold text-text-primary">
           Scale the Vision
         </h3>
-        <p className="text-sm text-[#A0A0B0] mt-1">
+        <p className="text-sm text-text-secondary mt-1">
           Drag to model multi-facility economics
         </p>
       </div>
@@ -50,8 +50,8 @@ export default function FacilityScaler({ ebitdaMultiple }: FacilityScalerProps) 
       {/* Slider */}
       <div className="mb-10">
         <div className="flex justify-between items-baseline mb-3">
-          <span className="text-sm text-[#606075]">Facilities</span>
-          <span className="font-mono text-4xl font-bold text-[#D4A853] glow-gold tabular-nums">
+          <span className="text-sm text-text-tertiary">Facilities</span>
+          <span className="font-mono text-4xl font-bold text-accent-gold glow-gold tabular-nums">
             {facilities}
           </span>
         </div>
@@ -63,7 +63,7 @@ export default function FacilityScaler({ ebitdaMultiple }: FacilityScalerProps) 
           onChange={(e) => setFacilities(Number(e.target.value))}
           className="w-full"
         />
-        <div className="flex justify-between text-xs text-[#606075] mt-1">
+        <div className="flex justify-between text-xs text-text-tertiary mt-1">
           <span>1 Facility</span>
           <span>64 Facilities</span>
         </div>
@@ -95,10 +95,10 @@ export default function FacilityScaler({ ebitdaMultiple }: FacilityScalerProps) 
       </div>
 
       {/* Math breakdown */}
-      <div className="mt-6 pt-6 border-t border-[#1F1F2E]">
-        <p className="text-sm text-[#606075] font-mono">
+      <div className="mt-6 pt-6 border-t border-border-subtle">
+        <p className="text-sm text-text-tertiary font-mono">
           {facilities} {facilities === 1 ? 'facility' : 'facilities'} × $838M EBITDA × {ebitdaMultiple}x ={' '}
-          <span className="text-[#D4A853]">{formatCurrency(metrics.enterpriseValue, true)} EV</span>
+          <span className="text-accent-gold">{formatCurrency(metrics.enterpriseValue, true)} EV</span>
         </p>
       </div>
     </Card>
@@ -108,7 +108,7 @@ export default function FacilityScaler({ ebitdaMultiple }: FacilityScalerProps) 
 function ScalerMetric({ label, value, color, glow }: { label: string; value: number; color: string; glow?: boolean }) {
   return (
     <div>
-      <p className="text-xs uppercase tracking-[0.2em] font-medium text-[#606075] mb-2">{label}</p>
+      <p className="text-xs uppercase tracking-[0.2em] font-medium text-text-tertiary mb-2">{label}</p>
       <p
         className="font-mono text-2xl lg:text-3xl font-bold tabular-nums"
         style={{

@@ -20,8 +20,8 @@ function RedirectToDashboard() {
   }, [router]);
 
   return (
-    <div className="min-h-screen bg-[#0A0A0F] flex items-center justify-center">
-      <div className="w-8 h-8 border-2 border-[#D4A853] border-t-transparent rounded-full animate-spin" />
+    <div className="min-h-screen bg-bg-primary flex items-center justify-center">
+      <div className="w-8 h-8 border-2 border-accent-gold border-t-transparent rounded-full animate-spin" />
     </div>
   );
 }

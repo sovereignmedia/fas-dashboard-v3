@@ -36,8 +36,8 @@ const item = {
 function CustomTooltip({ active, payload, label }: any) {
   if (!active || !payload?.length) return null;
   return (
-    <div className="rounded-xl bg-[#1A1A28] border border-[#2A2A3D] px-4 py-3 shadow-2xl">
-      <p className="text-xs font-medium text-[#A0A0B0] mb-2">{label}</p>
+    <div className="rounded-xl bg-bg-elevated border border-border-medium px-4 py-3 shadow-2xl">
+      <p className="text-xs font-medium text-text-secondary mb-2">{label}</p>
       {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
       {payload.map((entry: any) => (
         <div key={entry.name} className="flex items-center gap-2 mb-1 last:mb-0">
@@ -45,8 +45,8 @@ function CustomTooltip({ active, payload, label }: any) {
             className="w-2 h-2 rounded-full"
             style={{ backgroundColor: entry.color }}
           />
-          <span className="text-xs text-[#A0A0B0]">{entry.name}:</span>
-          <span className="text-xs font-mono font-semibold text-[#F0F0F5]">
+          <span className="text-xs text-text-secondary">{entry.name}:</span>
+          <span className="text-xs font-mono font-semibold text-text-primary">
             {formatCurrency(entry.value, true)}
           </span>
         </div>
@@ -114,10 +114,10 @@ export default function FinancialsPage() {
         {/* ─── Valuation Methodology Toggle ─── */}
         <motion.div variants={item}>
           <div className="mb-4">
-            <h3 className="text-lg font-semibold text-[#F0F0F5]">
+            <h3 className="text-lg font-semibold text-text-primary">
               Valuation Methodology
             </h3>
-            <p className="text-sm text-[#A0A0B0] mt-1">
+            <p className="text-sm text-text-secondary mt-1">
               Select a valuation framework or enter a custom EBITDA multiple
             </p>
           </div>
@@ -139,8 +139,8 @@ export default function FinancialsPage() {
                       border transition-all duration-300 cursor-pointer
                       ${
                         isActive
-                          ? 'bg-[#12121A] border-[#D4A853]/60 shadow-[0_0_30px_rgba(212,168,83,0.08)]'
-                          : 'bg-[#12121A] border-[#1F1F2E] hover:border-[#2A2A3D]'
+                          ? 'bg-bg-secondary border-accent-gold/60 shadow-[0_0_30px_rgba(212,168,83,0.08)]'
+                          : 'bg-bg-secondary border-border-subtle hover:border-border-medium'
                       }
                     `}
                   >
@@ -160,7 +160,7 @@ export default function FinancialsPage() {
                           transition-all duration-300
                         `}
                         style={{
-                          borderColor: isActive ? scenario.color : '#2A2A3D',
+                          borderColor: isActive ? scenario.color : 'var(--border-medium)',
                         }}
                       >
                         {isActive && (
@@ -174,7 +174,7 @@ export default function FinancialsPage() {
                       </div>
                       <span
                         className="font-mono text-2xl font-bold tabular-nums"
-                        style={{ color: isActive ? scenario.color : '#606075' }}
+                        style={{ color: isActive ? scenario.color : 'var(--text-tertiary)' }}
                       >
                         {scenario.multiple}x
                       </span>
@@ -183,21 +183,21 @@ export default function FinancialsPage() {
                     <h4
                       className="text-base font-semibold mb-1 transition-colors duration-300"
                       style={{
-                        color: isActive ? '#F0F0F5' : '#A0A0B0',
+                        color: isActive ? 'var(--text-primary)' : 'var(--text-secondary)',
                       }}
                     >
                       {scenario.name}
                     </h4>
-                    <p className="text-xs text-[#606075] leading-relaxed">
+                    <p className="text-xs text-text-tertiary leading-relaxed">
                       {scenario.description}
                     </p>
 
                     {/* EV preview */}
-                    <div className="mt-4 pt-3 border-t border-[#1F1F2E]">
-                      <p className="text-xs text-[#606075]">Single Facility EV</p>
+                    <div className="mt-4 pt-3 border-t border-border-subtle">
+                      <p className="text-xs text-text-tertiary">Single Facility EV</p>
                       <p
                         className="font-mono text-lg font-semibold tabular-nums mt-0.5"
-                        style={{ color: isActive ? scenario.color : '#606075' }}
+                        style={{ color: isActive ? scenario.color : 'var(--text-tertiary)' }}
                       >
                         {formatCurrency(837_513_709 * scenario.multiple, true)}
                       </p>
@@ -214,10 +214,10 @@ export default function FinancialsPage() {
           <Card className="p-6">
             <div className="flex flex-col sm:flex-row sm:items-center gap-4">
               <div className="flex-1">
-                <h4 className="text-sm font-semibold text-[#F0F0F5] mb-1">
+                <h4 className="text-sm font-semibold text-text-primary mb-1">
                   Custom EBITDA Multiple
                 </h4>
-                <p className="text-xs text-[#606075]">
+                <p className="text-xs text-text-tertiary">
                   Override the preset methodology with a custom multiple
                 </p>
               </div>
@@ -233,10 +233,10 @@ export default function FinancialsPage() {
                     placeholder={String(selectedMultiple)}
                     className="
                       w-28 h-11 px-4 pr-8
-                      bg-[#0A0A0F] border border-[#1F1F2E] rounded-xl
-                      font-mono text-lg font-semibold text-[#F0F0F5]
-                      placeholder:text-[#3A3A4D]
-                      focus:outline-none focus:border-[#D4A853]/60
+                      bg-bg-primary border border-border-subtle rounded-xl
+                      font-mono text-lg font-semibold text-text-primary
+                      placeholder:text-text-muted
+                      focus:outline-none focus:border-accent-gold/60
                       focus:shadow-[0_0_15px_rgba(212,168,83,0.1)]
                       transition-all duration-300
                       [appearance:textfield]
@@ -244,13 +244,13 @@ export default function FinancialsPage() {
                       [&::-webkit-inner-spin-button]:appearance-none
                     "
                   />
-                  <span className="absolute right-3 top-1/2 -translate-y-1/2 text-sm text-[#606075] font-mono">
+                  <span className="absolute right-3 top-1/2 -translate-y-1/2 text-sm text-text-tertiary font-mono">
                     x
                   </span>
                 </div>
                 <div className="text-right">
-                  <p className="text-xs text-[#606075]">Active Multiple</p>
-                  <p className="font-mono text-lg font-bold text-[#D4A853] tabular-nums">
+                  <p className="text-xs text-text-tertiary">Active Multiple</p>
+                  <p className="font-mono text-lg font-bold text-accent-gold tabular-nums">
                     {selectedMultiple}x
                   </p>
                 </div>
@@ -268,13 +268,13 @@ export default function FinancialsPage() {
         <motion.div variants={item}>
           <Card className="p-8">
             <div className="mb-8">
-              <p className="text-xs uppercase tracking-[0.2em] font-medium text-[#D4A853] mb-2">
+              <p className="text-xs uppercase tracking-[0.2em] font-medium text-accent-gold mb-2">
                 5-Year Projection
               </p>
-              <h3 className="text-2xl font-semibold text-[#F0F0F5]">
+              <h3 className="text-2xl font-semibold text-text-primary">
                 Profit & Loss Trajectory
               </h3>
-              <p className="text-sm text-[#A0A0B0] mt-1">
+              <p className="text-sm text-text-secondary mt-1">
                 Revenue, EBITDA, and Net Income across the initial five-year horizon
               </p>
             </div>
@@ -282,16 +282,16 @@ export default function FinancialsPage() {
             {/* Legend */}
             <div className="flex flex-wrap gap-6 mb-6">
               <div className="flex items-center gap-2">
-                <div className="w-3 h-3 rounded-full bg-[#4A9EFF]" />
-                <span className="text-xs text-[#A0A0B0] font-medium">Revenue</span>
+                <div className="w-3 h-3 rounded-full bg-data-blue" />
+                <span className="text-xs text-text-secondary font-medium">Revenue</span>
               </div>
               <div className="flex items-center gap-2">
-                <div className="w-3 h-3 rounded-full bg-[#00D4AA]" />
-                <span className="text-xs text-[#A0A0B0] font-medium">EBITDA</span>
+                <div className="w-3 h-3 rounded-full bg-data-cyan" />
+                <span className="text-xs text-text-secondary font-medium">EBITDA</span>
               </div>
               <div className="flex items-center gap-2">
-                <div className="w-3 h-3 rounded-full bg-[#D4A853]" />
-                <span className="text-xs text-[#A0A0B0] font-medium">Net Income</span>
+                <div className="w-3 h-3 rounded-full bg-accent-gold" />
+                <span className="text-xs text-text-secondary font-medium">Net Income</span>
               </div>
             </div>
 
@@ -317,19 +317,19 @@ export default function FinancialsPage() {
                   </defs>
                   <CartesianGrid
                     strokeDasharray="3 3"
-                    stroke="#1F1F2E"
+                    stroke="var(--border-subtle)"
                     vertical={false}
                   />
                   <XAxis
                     dataKey="name"
                     axisLine={false}
                     tickLine={false}
-                    tick={{ fill: '#606075', fontSize: 12, fontFamily: 'monospace' }}
+                    tick={{ fill: 'var(--text-tertiary)', fontSize: 12, fontFamily: 'monospace' }}
                   />
                   <YAxis
                     axisLine={false}
                     tickLine={false}
-                    tick={{ fill: '#606075', fontSize: 11, fontFamily: 'monospace' }}
+                    tick={{ fill: 'var(--text-tertiary)', fontSize: 11, fontFamily: 'monospace' }}
                     tickFormatter={(v) => formatCurrency(v, true)}
                     width={70}
                   />
@@ -340,8 +340,8 @@ export default function FinancialsPage() {
                     stroke="#4A9EFF"
                     strokeWidth={2}
                     fill="url(#gradRevenue)"
-                    dot={{ r: 4, fill: '#4A9EFF', stroke: '#0A0A0F', strokeWidth: 2 }}
-                    activeDot={{ r: 6, fill: '#4A9EFF', stroke: '#0A0A0F', strokeWidth: 2 }}
+                    dot={{ r: 4, fill: '#4A9EFF', stroke: 'var(--bg-primary)', strokeWidth: 2 }}
+                    activeDot={{ r: 6, fill: '#4A9EFF', stroke: 'var(--bg-primary)', strokeWidth: 2 }}
                   />
                   <Area
                     type="monotone"
@@ -349,8 +349,8 @@ export default function FinancialsPage() {
                     stroke="#00D4AA"
                     strokeWidth={2}
                     fill="url(#gradEBITDA)"
-                    dot={{ r: 4, fill: '#00D4AA', stroke: '#0A0A0F', strokeWidth: 2 }}
-                    activeDot={{ r: 6, fill: '#00D4AA', stroke: '#0A0A0F', strokeWidth: 2 }}
+                    dot={{ r: 4, fill: '#00D4AA', stroke: 'var(--bg-primary)', strokeWidth: 2 }}
+                    activeDot={{ r: 6, fill: '#00D4AA', stroke: 'var(--bg-primary)', strokeWidth: 2 }}
                   />
                   <Area
                     type="monotone"
@@ -358,19 +358,19 @@ export default function FinancialsPage() {
                     stroke="#D4A853"
                     strokeWidth={2}
                     fill="url(#gradNetIncome)"
-                    dot={{ r: 4, fill: '#D4A853', stroke: '#0A0A0F', strokeWidth: 2 }}
-                    activeDot={{ r: 6, fill: '#D4A853', stroke: '#0A0A0F', strokeWidth: 2 }}
+                    dot={{ r: 4, fill: '#D4A853', stroke: 'var(--bg-primary)', strokeWidth: 2 }}
+                    activeDot={{ r: 6, fill: '#D4A853', stroke: 'var(--bg-primary)', strokeWidth: 2 }}
                   />
                 </AreaChart>
               </ResponsiveContainer>
             </div>
 
             {/* Year labels beneath chart */}
-            <div className="grid grid-cols-5 gap-2 mt-4 pt-4 border-t border-[#1F1F2E]">
+            <div className="grid grid-cols-5 gap-2 mt-4 pt-4 border-t border-border-subtle">
               {yearlyProjections.map((y) => (
                 <div key={y.year} className="text-center">
-                  <p className="text-xs font-mono text-[#606075]">{y.year}</p>
-                  <p className="text-[10px] text-[#3A3A4D] mt-0.5">{y.label}</p>
+                  <p className="text-xs font-mono text-text-tertiary">{y.year}</p>
+                  <p className="text-[10px] text-text-muted mt-0.5">{y.label}</p>
                 </div>
               ))}
             </div>
@@ -381,13 +381,13 @@ export default function FinancialsPage() {
         <motion.div variants={item}>
           <Card className="p-8">
             <div className="mb-8">
-              <p className="text-xs uppercase tracking-[0.2em] font-medium text-[#D4A853] mb-2">
+              <p className="text-xs uppercase tracking-[0.2em] font-medium text-accent-gold mb-2">
                 Investor Tool
               </p>
-              <h3 className="text-2xl font-semibold text-[#F0F0F5]">
+              <h3 className="text-2xl font-semibold text-text-primary">
                 Share Value Calculator
               </h3>
-              <p className="text-sm text-[#A0A0B0] mt-1">
+              <p className="text-sm text-text-secondary mt-1">
                 Model projected share value across facility count and valuation scenarios
               </p>
             </div>
@@ -397,7 +397,7 @@ export default function FinancialsPage() {
               <div className="space-y-6">
                 {/* Share Count Input */}
                 <div>
-                  <label className="block text-xs uppercase tracking-[0.2em] font-medium text-[#606075] mb-2">
+                  <label className="block text-xs uppercase tracking-[0.2em] font-medium text-text-tertiary mb-2">
                     Number of Shares
                   </label>
                   <input
@@ -410,9 +410,9 @@ export default function FinancialsPage() {
                     }}
                     className="
                       w-full h-12 px-4
-                      bg-[#0A0A0F] border border-[#1F1F2E] rounded-xl
-                      font-mono text-lg font-semibold text-[#F0F0F5]
-                      focus:outline-none focus:border-[#D4A853]/60
+                      bg-bg-primary border border-border-subtle rounded-xl
+                      font-mono text-lg font-semibold text-text-primary
+                      focus:outline-none focus:border-accent-gold/60
                       focus:shadow-[0_0_15px_rgba(212,168,83,0.1)]
                       transition-all duration-300
                       [appearance:textfield]
@@ -420,7 +420,7 @@ export default function FinancialsPage() {
                       [&::-webkit-inner-spin-button]:appearance-none
                     "
                   />
-                  <p className="text-xs text-[#3A3A4D] mt-1 font-mono">
+                  <p className="text-xs text-text-muted mt-1 font-mono">
                     {formatNumber(shareCount)} shares of {formatNumber(TOTAL_SHARES_OUTSTANDING)} total outstanding
                   </p>
                 </div>
@@ -428,10 +428,10 @@ export default function FinancialsPage() {
                 {/* Facility Count Slider */}
                 <div>
                   <div className="flex justify-between items-baseline mb-2">
-                    <label className="text-xs uppercase tracking-[0.2em] font-medium text-[#606075]">
+                    <label className="text-xs uppercase tracking-[0.2em] font-medium text-text-tertiary">
                       Facility Count
                     </label>
-                    <span className="font-mono text-xl font-bold text-[#D4A853] tabular-nums">
+                    <span className="font-mono text-xl font-bold text-accent-gold tabular-nums">
                       {shareFacilities}
                     </span>
                   </div>
@@ -443,21 +443,21 @@ export default function FinancialsPage() {
                     onChange={(e) => setShareFacilities(Number(e.target.value))}
                     className="w-full"
                   />
-                  <div className="flex justify-between text-xs text-[#3A3A4D] mt-1">
+                  <div className="flex justify-between text-xs text-text-muted mt-1">
                     <span>1 Facility</span>
                     <span>64 Facilities</span>
                   </div>
                 </div>
 
                 {/* Active Multiple Display */}
-                <div className="rounded-xl bg-[#0A0A0F] border border-[#1F1F2E] p-4">
-                  <p className="text-xs uppercase tracking-[0.2em] font-medium text-[#606075] mb-1">
+                <div className="rounded-xl bg-bg-primary border border-border-subtle p-4">
+                  <p className="text-xs uppercase tracking-[0.2em] font-medium text-text-tertiary mb-1">
                     Active EBITDA Multiple
                   </p>
-                  <p className="font-mono text-2xl font-bold text-[#D4A853] tabular-nums">
+                  <p className="font-mono text-2xl font-bold text-accent-gold tabular-nums">
                     {selectedMultiple}x
                   </p>
-                  <p className="text-xs text-[#3A3A4D] mt-1">
+                  <p className="text-xs text-text-muted mt-1">
                     {activeScenario
                       ? `${activeScenario.name} methodology`
                       : `Custom ${selectedMultiple}x multiple`}
@@ -467,50 +467,50 @@ export default function FinancialsPage() {
 
               {/* Results */}
               <div className="space-y-4">
-                <div className="rounded-2xl bg-gradient-to-br from-[#D4A853]/10 to-[#D4A853]/5 border border-[#D4A853]/20 p-6">
-                  <p className="text-xs uppercase tracking-[0.2em] font-medium text-[#D4A853] mb-2">
+                <div className="rounded-2xl bg-gradient-to-br from-accent-gold/10 to-accent-gold/5 border border-accent-gold/20 p-6">
+                  <p className="text-xs uppercase tracking-[0.2em] font-medium text-accent-gold mb-2">
                     Projected Share Value
                   </p>
-                  <p className="font-mono text-4xl lg:text-5xl font-bold text-[#D4A853] tabular-nums leading-tight"
+                  <p className="font-mono text-4xl lg:text-5xl font-bold text-accent-gold tabular-nums leading-tight"
                     style={{ textShadow: '0 0 30px rgba(212,168,83,0.2)' }}
                   >
                     {formatCurrency(shareValuation.totalValue, true)}
                   </p>
-                  <p className="text-sm text-[#A0A0B0] mt-2">
+                  <p className="text-sm text-text-secondary mt-2">
                     for {formatNumber(shareCount)} shares
                   </p>
                 </div>
 
                 <div className="grid grid-cols-2 gap-4">
-                  <div className="rounded-xl bg-[#0A0A0F] border border-[#1F1F2E] p-4">
-                    <p className="text-xs uppercase tracking-[0.2em] font-medium text-[#606075] mb-1">
+                  <div className="rounded-xl bg-bg-primary border border-border-subtle p-4">
+                    <p className="text-xs uppercase tracking-[0.2em] font-medium text-text-tertiary mb-1">
                       Price / Share
                     </p>
-                    <p className="font-mono text-xl font-semibold text-[#4A9EFF] tabular-nums">
+                    <p className="font-mono text-xl font-semibold text-data-blue tabular-nums">
                       {formatCurrency(shareValuation.pricePerShare)}
                     </p>
                   </div>
-                  <div className="rounded-xl bg-[#0A0A0F] border border-[#1F1F2E] p-4">
-                    <p className="text-xs uppercase tracking-[0.2em] font-medium text-[#606075] mb-1">
+                  <div className="rounded-xl bg-bg-primary border border-border-subtle p-4">
+                    <p className="text-xs uppercase tracking-[0.2em] font-medium text-text-tertiary mb-1">
                       Enterprise Value
                     </p>
-                    <p className="font-mono text-xl font-semibold text-[#00D4AA] tabular-nums">
+                    <p className="font-mono text-xl font-semibold text-data-cyan tabular-nums">
                       {formatCurrency(shareValuation.enterpriseValue, true)}
                     </p>
                   </div>
                 </div>
 
-                <div className="rounded-xl bg-[#0A0A0F] border border-[#1F1F2E] p-4">
-                  <p className="text-xs uppercase tracking-[0.2em] font-medium text-[#606075] mb-1">
+                <div className="rounded-xl bg-bg-primary border border-border-subtle p-4">
+                  <p className="text-xs uppercase tracking-[0.2em] font-medium text-text-tertiary mb-1">
                     Calculation Breakdown
                   </p>
-                  <p className="font-mono text-xs text-[#606075] leading-relaxed">
+                  <p className="font-mono text-xs text-text-tertiary leading-relaxed">
                     {shareFacilities} {shareFacilities === 1 ? 'facility' : 'facilities'} &times; $838M EBITDA &times; {selectedMultiple}x = {formatCurrency(shareValuation.enterpriseValue, true)} EV
                   </p>
-                  <p className="font-mono text-xs text-[#606075] leading-relaxed mt-1">
+                  <p className="font-mono text-xs text-text-tertiary leading-relaxed mt-1">
                     {formatCurrency(shareValuation.enterpriseValue, true)} / {formatNumber(TOTAL_SHARES_OUTSTANDING)} shares = {formatCurrency(shareValuation.pricePerShare)} / share
                   </p>
-                  <p className="font-mono text-xs text-[#D4A853] leading-relaxed mt-1">
+                  <p className="font-mono text-xs text-accent-gold leading-relaxed mt-1">
                     {formatCurrency(shareValuation.pricePerShare)} &times; {formatNumber(shareCount)} shares = {formatCurrency(shareValuation.totalValue, true)}
                   </p>
                 </div>
@@ -522,7 +522,7 @@ export default function FinancialsPage() {
         {/* ─── Disclaimer ─── */}
         <motion.div variants={item}>
           <div className="text-center py-6">
-            <p className="text-xs text-[#3A3A4D] leading-relaxed max-w-2xl mx-auto">
+            <p className="text-xs text-text-muted leading-relaxed max-w-2xl mx-auto">
               These projections are forward-looking estimates based on internal financial models.
               Actual results may vary. This is not investment advice. Past performance does not
               guarantee future results. All figures assume steady-state Year 4 single-facility EBITDA

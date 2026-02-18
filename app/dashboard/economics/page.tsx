@@ -36,9 +36,9 @@ function DonutTooltip({ active, payload }: { active?: boolean; payload?: Array<{
   if (!active || !payload || !payload.length) return null;
   const data = payload[0].payload;
   return (
-    <div className="bg-[#1A1A28] border border-[#2A2A3D] rounded-xl px-4 py-3 shadow-2xl">
-      <p className="text-sm font-medium text-[#F0F0F5] mb-1">{data.displayName}</p>
-      <p className="text-xs text-[#A0A0B0]">
+    <div className="bg-bg-elevated border border-border-medium rounded-xl px-4 py-3 shadow-2xl">
+      <p className="text-sm font-medium text-text-primary mb-1">{data.displayName}</p>
+      <p className="text-xs text-text-secondary">
         {formatCurrency(data.annualRevenue, true)} &middot; {data.pct.toFixed(1)}%
       </p>
     </div>
@@ -203,14 +203,14 @@ export default function EconomicsPage() {
                   style={{ backgroundColor: metric.color }}
                 />
                 <div>
-                  <p className="text-xs uppercase tracking-[0.15em] font-medium text-[#606075] mb-1">
+                  <p className="text-xs uppercase tracking-[0.15em] font-medium text-text-tertiary mb-1">
                     {metric.label}
                   </p>
-                  <p className="text-2xl font-semibold font-mono tabular-nums text-[#F0F0F5]">
+                  <p className="text-2xl font-semibold font-mono tabular-nums text-text-primary">
                     {metric.value}
                   </p>
                   {'subtitle' in metric && metric.subtitle && (
-                    <p className="text-xs text-[#707085] mt-1">{metric.subtitle}</p>
+                    <p className="text-xs text-text-mid mt-1">{metric.subtitle}</p>
                   )}
                 </div>
               </div>
@@ -228,10 +228,10 @@ export default function EconomicsPage() {
           transition={{ delay: 0.3, duration: 0.5 }}
         >
           <Card className="h-full">
-            <p className="text-xs uppercase tracking-[0.15em] font-medium text-[#D4A853] mb-4">
+            <p className="text-xs uppercase tracking-[0.15em] font-medium text-accent-gold mb-4">
               Product Mix
             </p>
-            <p className="text-sm text-[#A0A0B0] mb-4">
+            <p className="text-sm text-text-secondary mb-4">
               Revenue contribution by product (single facility)
             </p>
             <div className="w-full h-[280px]">
@@ -264,7 +264,7 @@ export default function EconomicsPage() {
                     className="w-2.5 h-2.5 rounded-full shrink-0"
                     style={{ backgroundColor: entry.color }}
                   />
-                  <span className="text-xs text-[#A0A0B0] truncate">
+                  <span className="text-xs text-text-secondary truncate">
                     {entry.displayName}
                   </span>
                 </div>
@@ -283,39 +283,39 @@ export default function EconomicsPage() {
           {products.map((product) => (
             <motion.div key={product.id} variants={item}>
               <div
-                className="relative overflow-hidden rounded-2xl bg-[#12121A] border border-[#1F1F2E] hover:border-[#2A2A3D] transition-all duration-300 p-5 h-full"
+                className="relative overflow-hidden rounded-2xl bg-bg-secondary border border-border-subtle hover:border-border-medium transition-all duration-300 p-5 h-full"
               >
                 {/* Color-coded left border */}
                 <div
                   className="absolute left-0 top-0 bottom-0 w-[3px]"
                   style={{ backgroundColor: product.color }}
                 />
-                <p className="text-sm font-semibold text-[#F0F0F5] mb-3 pl-2">
+                <p className="text-sm font-semibold text-text-primary mb-3 pl-2">
                   {product.displayName}
                 </p>
                 <div className="space-y-2 pl-2">
                   <div className="flex justify-between items-baseline">
-                    <span className="text-xs text-[#606075]">Volume</span>
-                    <span className="text-xs font-mono tabular-nums text-[#A0A0B0]">
+                    <span className="text-xs text-text-tertiary">Volume</span>
+                    <span className="text-xs font-mono tabular-nums text-text-secondary">
                       {formatNumber(product.annualVolume)} {product.volumeUnit}
                     </span>
                   </div>
                   <div className="flex justify-between items-baseline">
-                    <span className="text-xs text-[#606075]">Price</span>
-                    <span className="text-xs font-mono tabular-nums text-[#A0A0B0]">
+                    <span className="text-xs text-text-tertiary">Price</span>
+                    <span className="text-xs font-mono tabular-nums text-text-secondary">
                       {formatCurrency(product.modeledPrice)}{' '}
-                      <span className="text-[#505065]">{product.priceUnit}</span>
+                      <span className="text-text-muted">{product.priceUnit}</span>
                     </span>
                   </div>
                   <div className="flex justify-between items-baseline">
-                    <span className="text-xs text-[#606075]">Revenue</span>
-                    <span className="text-sm font-mono tabular-nums font-semibold text-[#F0F0F5]">
+                    <span className="text-xs text-text-tertiary">Revenue</span>
+                    <span className="text-sm font-mono tabular-nums font-semibold text-text-primary">
                       {formatCurrency(product.annualRevenue, true)}
                     </span>
                   </div>
                   <div className="flex justify-between items-baseline">
-                    <span className="text-xs text-[#606075]">Market Size</span>
-                    <span className="text-xs font-mono tabular-nums text-[#A0A0B0]">
+                    <span className="text-xs text-text-tertiary">Market Size</span>
+                    <span className="text-xs font-mono tabular-nums text-text-secondary">
                       {product.globalMarketSize}
                     </span>
                   </div>
@@ -336,10 +336,10 @@ export default function EconomicsPage() {
         <Card>
           <div className="flex items-center justify-between mb-6">
             <div>
-              <p className="text-xs uppercase tracking-[0.15em] font-medium text-[#D4A853] mb-1">
+              <p className="text-xs uppercase tracking-[0.15em] font-medium text-accent-gold mb-1">
                 Pricing Sensitivity
               </p>
-              <p className="text-sm text-[#A0A0B0]">
+              <p className="text-sm text-text-secondary">
                 Adjust product pricing to model revenue impact
               </p>
             </div>
@@ -351,8 +351,8 @@ export default function EconomicsPage() {
                 transition-all duration-200
                 ${
                   isModified
-                    ? 'bg-[#1F1F2E] text-[#F0F0F5] hover:bg-[#2A2A3D] border border-[#2A2A3D]'
-                    : 'bg-[#12121A] text-[#404055] border border-[#1F1F2E] cursor-not-allowed'
+                    ? 'bg-bg-hover text-text-primary hover:bg-bg-tertiary border border-border-medium'
+                    : 'bg-bg-secondary text-text-muted border border-border-subtle cursor-not-allowed'
                 }
               `}
             >
@@ -366,20 +366,20 @@ export default function EconomicsPage() {
             <motion.div
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
-              className="mb-6 px-4 py-3 rounded-xl bg-[#0A0A0F] border border-[#1F1F2E]"
+              className="mb-6 px-4 py-3 rounded-xl bg-bg-primary border border-border-subtle"
             >
               <div className="flex items-center justify-between">
                 <div>
-                  <span className="text-xs text-[#606075]">Adjusted Total Revenue</span>
-                  <p className="text-xl font-mono tabular-nums font-semibold text-[#F0F0F5]">
+                  <span className="text-xs text-text-tertiary">Adjusted Total Revenue</span>
+                  <p className="text-xl font-mono tabular-nums font-semibold text-text-primary">
                     {formatCurrency(totalAdjustedRevenue, true)}
                   </p>
                 </div>
                 <div className="text-right">
-                  <span className="text-xs text-[#606075]">Delta from Base Case</span>
+                  <span className="text-xs text-text-tertiary">Delta from Base Case</span>
                   <p
                     className={`text-xl font-mono tabular-nums font-semibold ${
-                      totalRevenueDelta >= 0 ? 'text-[#00D4AA]' : 'text-[#FF4C4C]'
+                      totalRevenueDelta >= 0 ? 'text-data-cyan' : 'text-data-red'
                     }`}
                   >
                     {totalRevenueDelta >= 0 ? '+' : ''}
@@ -401,7 +401,7 @@ export default function EconomicsPage() {
               return (
                 <div
                   key={product.id}
-                  className="grid grid-cols-1 lg:grid-cols-[200px_1fr_180px_140px] gap-4 items-center py-3 border-b border-[#1F1F2E] last:border-0"
+                  className="grid grid-cols-1 lg:grid-cols-[200px_1fr_180px_140px] gap-4 items-center py-3 border-b border-border-subtle last:border-0"
                 >
                   {/* Product name */}
                   <div className="flex items-center gap-2">
@@ -409,14 +409,14 @@ export default function EconomicsPage() {
                       className="w-2 h-2 rounded-full shrink-0"
                       style={{ backgroundColor: product.color }}
                     />
-                    <span className="text-sm font-medium text-[#F0F0F5] truncate">
+                    <span className="text-sm font-medium text-text-primary truncate">
                       {product.displayName}
                     </span>
                   </div>
 
                   {/* Slider */}
                   <div className="flex items-center gap-3">
-                    <span className="text-xs font-mono text-[#505065] w-14 text-right">
+                    <span className="text-xs font-mono text-text-muted w-14 text-right">
                       {formatCurrency(bounds.min)}
                     </span>
                     <div className="relative flex-1">
@@ -433,41 +433,41 @@ export default function EconomicsPage() {
                           [&::-webkit-slider-thumb]:h-4
                           [&::-webkit-slider-thumb]:rounded-full
                           [&::-webkit-slider-thumb]:border-2
-                          [&::-webkit-slider-thumb]:border-[#D4A853]
-                          [&::-webkit-slider-thumb]:bg-[#0A0A0F]
+                          [&::-webkit-slider-thumb]:border-accent-gold
+                          [&::-webkit-slider-thumb]:bg-bg-primary
                           [&::-webkit-slider-thumb]:shadow-[0_0_8px_rgba(212,168,83,0.3)]
                           [&::-webkit-slider-thumb]:cursor-pointer
                           [&::-moz-range-thumb]:w-4
                           [&::-moz-range-thumb]:h-4
                           [&::-moz-range-thumb]:rounded-full
                           [&::-moz-range-thumb]:border-2
-                          [&::-moz-range-thumb]:border-[#D4A853]
-                          [&::-moz-range-thumb]:bg-[#0A0A0F]
+                          [&::-moz-range-thumb]:border-accent-gold
+                          [&::-moz-range-thumb]:bg-bg-primary
                           [&::-moz-range-thumb]:cursor-pointer
                         "
                         style={{
                           background: `linear-gradient(to right, ${product.color} 0%, ${product.color} ${
                             ((product.adjPrice - bounds.min) / (bounds.max - bounds.min)) * 100
-                          }%, #1F1F2E ${
+                          }%, var(--border-subtle) ${
                             ((product.adjPrice - bounds.min) / (bounds.max - bounds.min)) * 100
-                          }%, #1F1F2E 100%)`,
+                          }%, var(--border-subtle) 100%)`,
                         }}
                       />
                     </div>
-                    <span className="text-xs font-mono text-[#505065] w-14">
+                    <span className="text-xs font-mono text-text-muted w-14">
                       {formatCurrency(bounds.max)}
                     </span>
                   </div>
 
                   {/* Current price + delta */}
                   <div className="text-right">
-                    <p className="text-sm font-mono tabular-nums font-semibold text-[#F0F0F5]">
+                    <p className="text-sm font-mono tabular-nums font-semibold text-text-primary">
                       {formatCurrency(product.adjPrice)}
                     </p>
                     {isChanged && (
                       <p
                         className={`text-xs font-mono tabular-nums ${
-                          priceDiff >= 0 ? 'text-[#00D4AA]' : 'text-[#FF4C4C]'
+                          priceDiff >= 0 ? 'text-data-cyan' : 'text-data-red'
                         }`}
                       >
                         {priceDiff >= 0 ? '+' : ''}
@@ -481,14 +481,14 @@ export default function EconomicsPage() {
                     {isChanged ? (
                       <p
                         className={`text-sm font-mono tabular-nums font-semibold ${
-                          product.delta >= 0 ? 'text-[#00D4AA]' : 'text-[#FF4C4C]'
+                          product.delta >= 0 ? 'text-data-cyan' : 'text-data-red'
                         }`}
                       >
                         {product.delta >= 0 ? '+' : ''}
                         {formatCurrency(product.delta, true)}
                       </p>
                     ) : (
-                      <p className="text-sm font-mono tabular-nums text-[#505065]">
+                      <p className="text-sm font-mono tabular-nums text-text-muted">
                         {formatCurrency(product.annualRevenue, true)}
                       </p>
                     )}
@@ -508,10 +508,10 @@ export default function EconomicsPage() {
         className="mb-10"
       >
         <Card>
-          <p className="text-xs uppercase tracking-[0.15em] font-medium text-[#D4A853] mb-1">
+          <p className="text-xs uppercase tracking-[0.15em] font-medium text-accent-gold mb-1">
             Margin Waterfall
           </p>
-          <p className="text-sm text-[#A0A0B0] mb-6">
+          <p className="text-sm text-text-secondary mb-6">
             Revenue to EBITDA bridge (single facility, steady state)
           </p>
 
@@ -526,12 +526,12 @@ export default function EconomicsPage() {
               return (
                 <div key={step.label} className="group">
                   <div className="flex items-center justify-between mb-1.5">
-                    <span className="text-sm font-medium text-[#F0F0F5]">{step.label}</span>
-                    <span className="text-sm font-mono tabular-nums text-[#A0A0B0]">
+                    <span className="text-sm font-medium text-text-primary">{step.label}</span>
+                    <span className="text-sm font-mono tabular-nums text-text-secondary">
                       {isSubtract ? '−' : ''}{formatCurrency(step.displayValue, true)}
                     </span>
                   </div>
-                  <div className="relative w-full h-8 rounded-lg bg-[#0A0A0F] overflow-hidden">
+                  <div className="relative w-full h-8 rounded-lg bg-bg-primary overflow-hidden">
                     {/* Invisible spacer for waterfall offset */}
                     <div
                       className="absolute top-0 left-0 h-full"
@@ -552,7 +552,7 @@ export default function EconomicsPage() {
                     {/* Connector dashed line for subtract items */}
                     {isSubtract && (
                       <div
-                        className="absolute top-0 h-full border-l border-dashed border-[#2A2A3D]"
+                        className="absolute top-0 h-full border-l border-dashed border-border-medium"
                         style={{ left: `${offsetWidth + barWidth}%` }}
                       />
                     )}
@@ -563,28 +563,28 @@ export default function EconomicsPage() {
           </div>
 
           {/* Summary stats below waterfall */}
-          <div className="grid grid-cols-3 gap-6 mt-8 pt-6 border-t border-[#1F1F2E]">
+          <div className="grid grid-cols-3 gap-6 mt-8 pt-6 border-t border-border-subtle">
             <div className="text-center">
-              <p className="text-xs uppercase tracking-[0.15em] text-[#606075] mb-1">
+              <p className="text-xs uppercase tracking-[0.15em] text-text-tertiary mb-1">
                 Direct Cost Ratio
               </p>
-              <p className="text-lg font-mono tabular-nums font-semibold text-[#F0F0F5]">
+              <p className="text-lg font-mono tabular-nums font-semibold text-text-primary">
                 {formatPercent(facilityEconomics.totalDirectCost / facilityEconomics.totalRevenue)}
               </p>
             </div>
             <div className="text-center">
-              <p className="text-xs uppercase tracking-[0.15em] text-[#606075] mb-1">
+              <p className="text-xs uppercase tracking-[0.15em] text-text-tertiary mb-1">
                 Gross Margin
               </p>
-              <p className="text-lg font-mono tabular-nums font-semibold text-[#00D4AA]">
+              <p className="text-lg font-mono tabular-nums font-semibold text-data-cyan">
                 {formatPercent(facilityEconomics.grossMargin)}
               </p>
             </div>
             <div className="text-center">
-              <p className="text-xs uppercase tracking-[0.15em] text-[#606075] mb-1">
+              <p className="text-xs uppercase tracking-[0.15em] text-text-tertiary mb-1">
                 EBITDA Margin
               </p>
-              <p className="text-lg font-mono tabular-nums font-semibold text-[#D4A853]">
+              <p className="text-lg font-mono tabular-nums font-semibold text-accent-gold">
                 {formatPercent(facilityEconomics.ebitdaMargin)}
               </p>
             </div>

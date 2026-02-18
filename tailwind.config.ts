@@ -6,25 +6,29 @@ const config: Config = {
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  darkMode: 'class',
   theme: {
     extend: {
       colors: {
         bg: {
-          primary: '#0A0A0F',
-          secondary: '#12121A',
-          tertiary: '#1A1A25',
-          hover: '#22222E',
+          primary: 'var(--bg-primary)',
+          secondary: 'var(--bg-secondary)',
+          tertiary: 'var(--bg-tertiary)',
+          hover: 'var(--bg-hover)',
+          elevated: 'var(--bg-elevated)',
         },
         text: {
-          primary: '#F0F0F5',
-          secondary: '#A0A0B0',
-          tertiary: '#606075',
-          inverse: '#0A0A0F',
+          primary: 'var(--text-primary)',
+          secondary: 'var(--text-secondary)',
+          tertiary: 'var(--text-tertiary)',
+          muted: 'var(--text-muted)',
+          inverse: 'var(--text-inverse)',
+          mid: 'var(--text-mid)',
         },
         accent: {
-          gold: '#D4A853',
-          'gold-muted': 'rgba(212,168,83,0.19)',
-          'gold-hover': '#E0B86A',
+          gold: 'var(--accent-gold)',
+          'gold-muted': 'var(--accent-gold-muted)',
+          'gold-hover': 'var(--accent-gold-hover)',
         },
         data: {
           blue: '#4A9EFF',
@@ -35,9 +39,9 @@ const config: Config = {
           green: '#10B981',
         },
         border: {
-          subtle: '#1F1F2E',
-          medium: '#2A2A3D',
-          strong: '#3A3A50',
+          subtle: 'var(--border-subtle)',
+          medium: 'var(--border-medium)',
+          strong: 'var(--border-strong)',
         },
       },
       fontFamily: {
