@@ -49,5 +49,10 @@ export const NA_FACILITIES: NAFacility[] = [
   },
 ];
 
-export const NA_GEOJSON_URL =
+// States/provinces (US + Canada with state borders)
+export const NA_GEOJSON_STATES_URL =
   'https://raw.githubusercontent.com/martynafford/natural-earth-geojson/refs/heads/master/50m/cultural/ne_50m_admin_1_states_provinces.json';
+
+// Country-level (for Mexico — not in the states dataset)
+export const NA_GEOJSON_COUNTRIES_URL =
+  'https://raw.githubusercontent.com/martynafford/natural-earth-geojson/refs/heads/master/50m/cultural/ne_50m_admin_0_countries.json';

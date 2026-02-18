@@ -34,8 +34,8 @@ export function renderNAMap(
     const projected = projection([dot[0], dot[1]]);
     if (projected) {
       ctx.beginPath();
-      ctx.arc(projected[0], projected[1], 1.0, 0, TAU);
-      ctx.fillStyle = 'rgba(75,140,200,0.85)';
+      ctx.arc(projected[0], projected[1], 0.8, 0, TAU);
+      ctx.fillStyle = 'rgba(75,140,200,0.75)';
       ctx.fill();
     }
   });

@@ -3,7 +3,7 @@
 import { useRef, useState, useEffect } from 'react';
 import * as d3 from 'd3';
 
-import { NA_MAP_SIZE, NA_FACILITIES, NA_GEOJSON_URL, NAFacility } from '@/data/na-map';
+import { NA_MAP_SIZE, NA_FACILITIES, NA_GEOJSON_STATES_URL, NA_GEOJSON_COUNTRIES_URL, NAFacility } from '@/data/na-map';
 import { generateDotsInPolygon } from '@/lib/globe-utils';
 import { renderNAMap } from '@/lib/na-map-renderer';
 
@@ -37,10 +37,10 @@ export function useNAMapInteraction(canvasRef: React.RefObject<HTMLCanvasElement
 
     // Projection: Conic conformal covering US + Canada + Mexico
     const projection = d3.geoConicConformal()
-      .parallels([25, 60])
+      .parallels([25, 55])
       .rotate([98, 0])
-      .center([0, 40])
-      .scale(620)
+      .center([0, 42])
+      .scale(650)
       .translate([width / 2, height / 2]);
     projectionRef.current = projection;
 
@@ -60,24 +60,37 @@ export function useNAMapInteraction(canvasRef: React.RefObject<HTMLCanvasElement
       render();
     });
 
-    // Load GeoJSON
+    // Load GeoJSON — states/provinces for US+Canada, country-level for Mexico
     const loadData = async () => {
       try {
-        const res = await fetch(NA_GEOJSON_URL);
-        if (!res.ok) throw new Error('Failed to load NA map data');
-        const data = await res.json() as GeoJSON.FeatureCollection;
+        const [statesRes, countriesRes] = await Promise.all([
+          fetch(NA_GEOJSON_STATES_URL),
+          fetch(NA_GEOJSON_COUNTRIES_URL),
+        ]);
+        if (!statesRes.ok || !countriesRes.ok) throw new Error('Failed to load NA map data');
 
-        // Filter to US + Canada + Mexico
-        const filtered = data.features.filter((f) => {
+        const statesData = await statesRes.json() as GeoJSON.FeatureCollection;
+        const countriesData = await countriesRes.json() as GeoJSON.FeatureCollection;
+
+        // US + Canada states/provinces
+        const stateFeatures = statesData.features.filter((f) => {
           const admin = f.properties?.admin;
-          return admin === 'United States of America' || admin === 'Canada' || admin === 'Mexico';
+          return admin === 'United States of America' || admin === 'Canada';
         });
-        featuresRef.current = filtered;
 
-        // Generate dot-matrix fill (dense dots to match globe aesthetic)
+        // Mexico from country-level dataset
+        const mexicoFeatures = countriesData.features.filter((f) => {
+          const iso = f.properties?.ISO_A2;
+          return iso === 'MX';
+        });
+
+        const allFeatures = [...stateFeatures, ...mexicoFeatures];
+        featuresRef.current = allFeatures;
+
+        // Generate dot-matrix fill
         const allDots: MapDot[] = [];
-        filtered.forEach((f) => {
-          generateDotsInPolygon(f, 6).forEach((d) => allDots.push(d));
+        allFeatures.forEach((f) => {
+          generateDotsInPolygon(f, 10).forEach((d) => allDots.push(d));
         });
         dotsRef.current = allDots;
 
