@@ -28,14 +28,12 @@ export default function Sidebar() {
   return (
     <aside className="fixed left-0 top-0 h-screen w-64 xl:w-64 lg:w-16 bg-bg-primary border-r border-border-subtle z-40 flex flex-col">
       <div className="p-6 lg:p-4 xl:p-6 border-b border-border-subtle">
-        <Link href="/dashboard" className="flex items-center gap-3">
-          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-accent-gold to-accent-gold-hover flex items-center justify-center flex-shrink-0">
-            <span className="text-text-inverse font-bold text-sm">F</span>
-          </div>
-          <div className="lg:hidden xl:block">
-            <h1 className="text-sm font-semibold text-text-primary leading-tight">FRONTIERAS</h1>
-            <p className="text-[10px] uppercase tracking-[0.15em] text-text-tertiary">North America</p>
-          </div>
+        <Link href="/dashboard">
+          <img
+            src="/logo-frontieras.png"
+            alt="Frontieras North America"
+            className="h-8 w-auto lg:h-6 xl:h-8"
+          />
         </Link>
       </div>
 
