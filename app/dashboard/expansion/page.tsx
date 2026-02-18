@@ -25,7 +25,7 @@ export default function ExpansionPage() {
         <InteractiveGlobeV2 />
       </Card>
 
-      <Card className="!p-8 mb-10 flex justify-center" hover={false}>
+      <Card className="!p-8 mb-10 flex justify-center !overflow-visible" hover={false}>
         <div className="text-center">
           <p className="text-xs text-text-tertiary mb-4 uppercase tracking-widest">V3 — Cinematic Hover</p>
           <InteractiveGlobeV3 />
