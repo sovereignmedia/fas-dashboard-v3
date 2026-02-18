@@ -24,7 +24,8 @@ export function renderGlobeBackground(
   landFeatures: GeoJSON.FeatureCollection | null,
   hoveredCountry: GlobeCountry | null,
   size: number,
-  radius: number
+  radius: number,
+  pulsePhase: number
 ): void {
   const path = d3.geoPath().projection(projection).context(context);
   const cx = size / 2;
@@ -93,6 +94,14 @@ export function renderGlobeBackground(
     const projected = projectionUnclipped([coord.lon, coord.lat]) as [number, number] | null;
     if (!projected || !isInBounds(projected, size)) return;
     const r = markerRadius(c.production);
+    // Dimmed pulse ring (back-side)
+    const bPulseR = r * (1.2 + pulsePhase * 1.2) * sf;
+    const bPulseAlpha = 0.2 * (1 - pulsePhase);
+    context.beginPath();
+    context.arc(projected[0], projected[1], bPulseR, 0, TAU);
+    context.strokeStyle = `rgba(0,204,136,${bPulseAlpha})`;
+    context.lineWidth = 1 * sf;
+    context.stroke();
     context.beginPath();
     context.arc(projected[0], projected[1], r * 0.8 * sf, 0, TAU);
     context.fillStyle = 'rgba(0,204,136,0.55)';
@@ -122,6 +131,14 @@ export function renderGlobeBackground(
     glow.addColorStop(1, 'rgba(0,204,136,0)');
     context.fillStyle = glow;
     context.fill();
+    // Pulse ring
+    const fPulseR = r * (1.5 + pulsePhase * 1.5) * sf;
+    const fPulseAlpha = 0.4 * (1 - pulsePhase);
+    context.beginPath();
+    context.arc(projected[0], projected[1], fPulseR, 0, TAU);
+    context.strokeStyle = `rgba(0,204,136,${fPulseAlpha})`;
+    context.lineWidth = 1.5 * sf;
+    context.stroke();
     // Core marker
     context.beginPath();
     context.arc(projected[0], projected[1], r * sf, 0, TAU);
@@ -155,7 +172,8 @@ export function renderGlobeForeground(
   allDots: GlobeDot[],
   hoveredCountry: GlobeCountry,
   size: number,
-  radius: number
+  radius: number,
+  pulsePhase: number
 ): void {
   const currentScale = projection.scale();
   const sf = currentScale / radius;
@@ -174,7 +192,7 @@ export function renderGlobeForeground(
     }
   });
 
-  // Hovered country front-side marker (bloom + core + label)
+  // Hovered country front-side marker (bloom + pulse + core + label)
   const coord = PATENT_COORDS[hoveredCountry.code];
   if (coord && isVisible(coord.lon, coord.lat, rot)) {
     const projected = projection([coord.lon, coord.lat]) as [number, number] | null;
@@ -191,6 +209,14 @@ export function renderGlobeForeground(
       glow.addColorStop(1, 'rgba(0,204,136,0)');
       context.fillStyle = glow;
       context.fill();
+      // Pulse ring
+      const fPulseR = r * (1.5 + pulsePhase * 1.5) * sf;
+      const fPulseAlpha = 0.4 * (1 - pulsePhase);
+      context.beginPath();
+      context.arc(projected[0], projected[1], fPulseR, 0, TAU);
+      context.strokeStyle = `rgba(0,204,136,${fPulseAlpha})`;
+      context.lineWidth = 1.5 * sf;
+      context.stroke();
       // Core marker
       context.beginPath();
       context.arc(projected[0], projected[1], r * sf, 0, TAU);
@@ -221,7 +247,8 @@ export function renderGlobeFastPath(
   landFeatures: GeoJSON.FeatureCollection | null,
   hoveredCountry: GlobeCountry | null,
   size: number,
-  radius: number
+  radius: number,
+  pulsePhase: number
 ): void {
   const path = d3.geoPath().projection(projection).context(context);
   const cx = size / 2;
@@ -305,6 +332,14 @@ export function renderGlobeFastPath(
     const projected = projectionUnclipped([coord.lon, coord.lat]) as [number, number] | null;
     if (!projected || !isInBounds(projected, size)) return;
     const r = markerRadius(c.production);
+    // Dimmed pulse ring (back-side)
+    const bPulseR = r * (1.2 + pulsePhase * 1.2) * sf;
+    const bPulseAlpha = 0.2 * (1 - pulsePhase);
+    context.beginPath();
+    context.arc(projected[0], projected[1], bPulseR, 0, TAU);
+    context.strokeStyle = `rgba(0,204,136,${bPulseAlpha})`;
+    context.lineWidth = 1 * sf;
+    context.stroke();
     context.beginPath();
     context.arc(projected[0], projected[1], r * 0.8 * sf, 0, TAU);
     context.fillStyle = 'rgba(0,204,136,0.55)';
@@ -332,6 +367,14 @@ export function renderGlobeFastPath(
     glow.addColorStop(1, 'rgba(0,204,136,0)');
     context.fillStyle = glow;
     context.fill();
+    // Pulse ring
+    const fPulseR = r * (1.5 + pulsePhase * 1.5) * sf;
+    const fPulseAlpha = 0.4 * (1 - pulsePhase);
+    context.beginPath();
+    context.arc(projected[0], projected[1], fPulseR, 0, TAU);
+    context.strokeStyle = `rgba(0,204,136,${fPulseAlpha})`;
+    context.lineWidth = 1.5 * sf;
+    context.stroke();
     context.beginPath();
     context.arc(projected[0], projected[1], r * sf, 0, TAU);
     context.fillStyle = CHART_COLORS.green;
@@ -369,13 +412,14 @@ export function renderGlobeComposited(
   hoveredCountry: GlobeCountry | null,
   size: number,
   radius: number,
-  blurRadius: number
+  blurRadius: number,
+  pulsePhase: number
 ): void {
   // Fast path: no blur needed
   if (blurRadius <= 0.1 || !hoveredCountry) {
     renderGlobeFastPath(
       mainCtx, projection, projectionUnclipped, graticule,
-      allDots, landFeatures, hoveredCountry, size, radius
+      allDots, landFeatures, hoveredCountry, size, radius, pulsePhase
     );
     return;
   }
@@ -383,7 +427,7 @@ export function renderGlobeComposited(
   // 1. Draw background to offscreen buffer
   renderGlobeBackground(
     offscreenCtx, projection, projectionUnclipped, graticule,
-    allDots, landFeatures, hoveredCountry, size, radius
+    allDots, landFeatures, hoveredCountry, size, radius, pulsePhase
   );
 
   // 2. Blit offscreen to main canvas with blur filter
@@ -394,5 +438,5 @@ export function renderGlobeComposited(
   mainCtx.restore();
 
   // 3. Draw foreground sharp on top
-  renderGlobeForeground(mainCtx, projection, allDots, hoveredCountry, size, radius);
+  renderGlobeForeground(mainCtx, projection, allDots, hoveredCountry, size, radius, pulsePhase);
 }

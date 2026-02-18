@@ -64,14 +64,14 @@ function drawMarker(
   ctx.fillStyle = glow;
   ctx.fill();
 
-  // Pulse ring
+  // Pulse ring (25% boosted intensity)
   if (isActive) {
-    const pulseR = r * (1.5 + pulsePhase * 1.5);
-    const pulseAlpha = (bright ? 0.5 : 0.4) * (1 - pulsePhase);
+    const pulseR = r * (1.5 + pulsePhase * 1.875);
+    const pulseAlpha = (bright ? 0.625 : 0.5) * (1 - pulsePhase);
     ctx.beginPath();
     ctx.arc(pos[0], pos[1], pulseR, 0, TAU);
     ctx.strokeStyle = `rgba(0,204,136,${pulseAlpha})`;
-    ctx.lineWidth = bright ? 2 : 1.5;
+    ctx.lineWidth = bright ? 2.5 : 2;
     ctx.stroke();
   }
 

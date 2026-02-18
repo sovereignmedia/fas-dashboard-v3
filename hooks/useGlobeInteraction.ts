@@ -54,12 +54,15 @@ export function useGlobeInteraction(canvasRef: React.RefObject<HTMLCanvasElement
     const graticule = d3.geoGraticule();
     globeStateRef.current.projection = projection;
 
+    // Pulse phase for marker animation
+    let pulsePhase = 0;
+
     // Render helper — delegates to the extracted renderer
     function render() {
       renderGlobe(
         context, projection, projectionUnclipped, graticule,
         globeStateRef.current.allDots, globeStateRef.current.landFeatures,
-        hoveredCountryRef.current, size, radius
+        hoveredCountryRef.current, size, radius, pulsePhase
       );
     }
 
@@ -100,12 +103,13 @@ export function useGlobeInteraction(canvasRef: React.RefObject<HTMLCanvasElement
     projectionUnclipped.rotate(rotation);
 
     const rotationTimer = d3.timer(() => {
+      pulsePhase = (pulsePhase + 0.008) % 1;
       if (autoRotate) {
         rotation[0] += 0.08;
         projection.rotate(rotation);
         projectionUnclipped.rotate(rotation);
-        render();
       }
+      render();
     });
 
     // Drag-to-rotate

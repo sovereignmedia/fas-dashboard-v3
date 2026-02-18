@@ -14,7 +14,8 @@ export function renderGlobe(
   landFeatures: GeoJSON.FeatureCollection | null,
   hoveredCountry: GlobeCountry | null,
   size: number,
-  radius: number
+  radius: number,
+  pulsePhase: number
 ): void {
   const path = d3.geoPath().projection(projection).context(context);
   const cx = size / 2;
@@ -98,6 +99,14 @@ export function renderGlobe(
     const projected = projectionUnclipped([coord.lon, coord.lat]) as [number, number] | null;
     if (!projected || !isInBounds(projected, size)) return;
     const r = markerRadius(c.production);
+    // Dimmed pulse ring (back-side)
+    const bPulseR = r * (1.2 + pulsePhase * 1.2) * sf;
+    const bPulseAlpha = 0.2 * (1 - pulsePhase);
+    context.beginPath();
+    context.arc(projected[0], projected[1], bPulseR, 0, TAU);
+    context.strokeStyle = `rgba(0,204,136,${bPulseAlpha})`;
+    context.lineWidth = 1 * sf;
+    context.stroke();
     context.beginPath();
     context.arc(projected[0], projected[1], r * 0.8 * sf, 0, TAU);
     context.fillStyle = 'rgba(0,204,136,0.55)';
@@ -133,6 +142,14 @@ export function renderGlobe(
     context.fill();
     context.strokeStyle = 'rgba(0,204,136,0.5)';
     context.lineWidth = 1 * sf;
+    context.stroke();
+    // Pulse ring
+    const fPulseR = r * (1.5 + pulsePhase * 1.5) * sf;
+    const fPulseAlpha = 0.4 * (1 - pulsePhase);
+    context.beginPath();
+    context.arc(projected[0], projected[1], fPulseR, 0, TAU);
+    context.strokeStyle = `rgba(0,204,136,${fPulseAlpha})`;
+    context.lineWidth = 1.5 * sf;
     context.stroke();
     // Label
     context.fillStyle = 'rgba(255,255,255,0.9)';

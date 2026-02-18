@@ -107,6 +107,7 @@ export function useGlobeInteractionV3(canvasRef: React.RefObject<HTMLCanvasEleme
 
     // Current interpolated blur for the render loop
     let currentBlur = 0;
+    let pulsePhase = 0;
 
     // Render helper
     function render() {
@@ -114,7 +115,7 @@ export function useGlobeInteractionV3(canvasRef: React.RefObject<HTMLCanvasEleme
         context, offscreenCtx as CanvasRenderingContext2D, offscreenCanvas,
         projection, projectionUnclipped, graticule,
         globeStateRef.current.allDots, globeStateRef.current.landFeatures,
-        hoveredCountryRef.current, size, radius, currentBlur
+        hoveredCountryRef.current, size, radius, currentBlur, pulsePhase
       );
     }
 
@@ -155,6 +156,8 @@ export function useGlobeInteractionV3(canvasRef: React.RefObject<HTMLCanvasEleme
     projectionUnclipped.rotate(rotation);
 
     const rotationTimer = d3.timer(() => {
+      pulsePhase = (pulsePhase + 0.008) % 1;
+
       if (anim.phase === 'idle') {
         // Normal auto-rotation
         if (autoRotate) {
