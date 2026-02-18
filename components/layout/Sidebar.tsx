@@ -27,12 +27,12 @@ export default function Sidebar() {
 
   return (
     <aside className="fixed left-0 top-0 h-screen w-64 xl:w-64 lg:w-16 bg-bg-primary border-r border-border-subtle z-40 flex flex-col">
-      <div className="p-6 lg:p-4 xl:p-6 border-b border-border-subtle">
+      <div className="p-6 lg:p-4 xl:p-6 border-b border-border-subtle flex items-center justify-center">
         <Link href="/dashboard">
           <img
             src="/logo-frontieras.png"
             alt="Frontieras North America"
-            className="h-8 w-auto lg:h-6 xl:h-8"
+            className="h-10 w-auto lg:h-7 xl:h-10"
           />
         </Link>
       </div>

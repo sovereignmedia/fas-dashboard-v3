@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { DASHBOARD_PASSWORD } from '@/lib/constants';
-import { Lock, ArrowRight } from 'lucide-react';
+import { Lock } from 'lucide-react';
 
 interface PasswordGateProps {
   children: React.ReactNode;
@@ -64,11 +64,13 @@ export default function PasswordGate({ children }: PasswordGateProps) {
 
           {/* Logo */}
           <div className="flex flex-col items-center mb-8">
-            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-accent-gold to-accent-gold-hover flex items-center justify-center mb-4">
-              <span className="text-text-inverse font-bold text-xl">F</span>
-            </div>
-            <h1 className="text-2xl font-semibold text-text-primary tracking-tight">FRONTIERAS</h1>
-            <p className="text-xs uppercase tracking-[0.2em] text-text-tertiary mt-1">Investor Dashboard</p>
+            <img
+              src="/logo-frontieras.png"
+              alt="Frontieras North America"
+              className="h-16 w-auto mb-4"
+            />
+            <p className="text-[11px] uppercase tracking-[0.25em] text-accent-gold/70 font-medium">Confidential</p>
+            <p className="text-sm text-text-tertiary mt-1">Enter password to continue</p>
           </div>
 
           {/* Form */}
@@ -82,7 +84,7 @@ export default function PasswordGate({ children }: PasswordGateProps) {
                   setPassword(e.target.value);
                   setError(false);
                 }}
-                placeholder="Enter access code"
+                placeholder="Password"
                 className={`
                   w-full bg-bg-primary border rounded-lg py-3 pl-11 pr-4
                   text-text-primary placeholder-text-tertiary
@@ -100,16 +102,15 @@ export default function PasswordGate({ children }: PasswordGateProps) {
 
             <button
               type="submit"
-              className="w-full bg-gradient-to-r from-accent-gold to-accent-gold-hover text-text-inverse font-semibold py-3 rounded-lg
-                hover:opacity-90 transition-opacity duration-200 flex items-center justify-center gap-2"
+              className="w-full border border-accent-green/40 text-accent-green font-semibold py-3 rounded-lg
+                hover:border-accent-green/60 hover:bg-accent-green/5 transition-all duration-200 flex items-center justify-center gap-2"
             >
               Access Dashboard
-              <ArrowRight size={16} />
             </button>
           </form>
 
           <p className="text-[10px] text-text-tertiary text-center mt-6 leading-relaxed">
-            This is a confidential investor portal. Unauthorized access is prohibited.
+            This dashboard contains proprietary financial projections and is intended for authorized recipients only.
           </p>
 
           <button
