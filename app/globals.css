@@ -6,14 +6,14 @@
 
 @font-face {
   font-family: 'MicroSquare';
-  src: url('/fonts/microsquare.ttf') format('truetype');
+  src: url('/fonts/MicroSquare Regular.ttf') format('truetype');
   font-weight: 400;
   font-display: swap;
 }
 
 @font-face {
   font-family: 'MicroSquare';
-  src: url('/fonts/microsquare bold.ttf') format('truetype');
+  src: url('/fonts/MicroSquare Bold.ttf') format('truetype');
   font-weight: 700;
   font-display: swap;
 }
