@@ -54,7 +54,6 @@ export const MONTHLY_VOLUMES = {
   naphtha:           15_930,   // US Tons
   sulfuricAcid:      18_644,   // US Tons
   ammoniumSulfate:    3_580,   // US Tons (converted from sulfuric acid at 0.4615 rate)
-  // Bio-Oil is NOT in the Excel model. See products.ts.
 } as const;
 
 export const MODELED_PRICES = {
@@ -84,7 +83,7 @@ export const CAPITAL = {
   bridgeRoundTotal:     25_000_000,
   totalSharesOutstanding: 100_000_000,
   sharePrice:                 7.77,
-  totalRaised:          9_000_000,
+  totalRaised:         20_000_000,
   shareholders:             3_700,
 } as const;
 

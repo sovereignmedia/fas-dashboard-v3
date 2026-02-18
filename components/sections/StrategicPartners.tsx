@@ -7,6 +7,9 @@ import {
   TrendingUp,
   Building2,
   Briefcase,
+  Shield,
+  Settings,
+  Hammer,
   type LucideIcon,
 } from 'lucide-react';
 
@@ -29,6 +32,9 @@ const iconMap: Record<string, LucideIcon> = {
   DollarSign,
   Users,
   Briefcase,
+  Shield,
+  Settings,
+  Hammer,
 };
 
 export default function StrategicPartnersSection() {

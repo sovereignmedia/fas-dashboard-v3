@@ -110,24 +110,6 @@ export const products: Product[] = [
     color: '#c084fc',
     inExcelModel: true,
   },
-  {
-    id: 'bio-oil',
-    name: 'Bio-Oil',
-    displayName: 'Bio-Oil',
-    monthlyVolume: 3_750,
-    annualVolume: 45_000,
-    volumeUnit: 'Barrels',
-    spotPrice: 85,
-    modeledPrice: 70,
-    priceUnit: '$/barrel',
-    annualRevenue: 3_150_000,
-    directCost: 0,
-    grossMargin: 1.0,
-    globalMarketSize: '$8B',
-    description: 'Liquid bio-oil byproduct with applications in industrial heating and chemical feedstock. Conservative pricing.',
-    color: '#e84040',
-    inExcelModel: false,
-  },
 ];
 
 export const facilityEconomics = {
