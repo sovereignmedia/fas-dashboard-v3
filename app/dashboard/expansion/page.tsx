@@ -4,6 +4,8 @@ import { useState } from 'react';
 import { AnimatePresence } from 'framer-motion';
 
 import SectionHeader from '@/components/ui/SectionHeader';
+import Card from '@/components/ui/Card';
+import InteractiveGlobe from '@/components/charts/InteractiveGlobe';
 import ExpansionGrid from '@/components/sections/ExpansionGrid';
 import CountryDetailPanel from '@/components/cards/CountryDetailPanel';
 import CoalProductionChart from '@/components/charts/CoalProductionChart';
@@ -21,6 +23,10 @@ export default function ExpansionPage() {
         title="Market Command Center"
         subtitle="9 patent-protected markets spanning 143 facility opportunities across major coal-producing nations. Click a country to explore."
       />
+
+      <Card className="!p-8 mb-10 flex justify-center" hover={false}>
+        <InteractiveGlobe />
+      </Card>
 
       <ExpansionGrid selectedCountry={selectedCountry} onSelect={setSelectedCountry} />
 

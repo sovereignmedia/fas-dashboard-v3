@@ -120,3 +120,55 @@ Decompose 5 fat page files into focused, reusable components per the new ARCHITE
 - CapitalTimeline owns expandedPhase state locally
 - strategicPartners data uses iconKey strings mapped to components via iconMap in StrategicPartners.tsx
 - CompanyOverview exported as named export from CompanyTimeline.tsx (co-located)
+
+---
+
+## 2026-02-18 — D3 Interactive Globe
+
+**Branch:** `claude/frontieras-dashboard-mvp-MQ4PI`
+**Checkpoint (pre-work):** `85bb561`
+
+### Objective
+Port the V2 D3 interactive globe into V3's expansion module. The globe uses V2's exact 9 countries, V2's exact data values, V2's MicroSquare font, and V2's exact rendering pipeline. Globe data is self-contained (does NOT depend on data/countries.ts).
+
+### New Files Created
+
+| File | Purpose |
+|------|---------|
+| `lib/globe-utils.ts` | Pure geometry helpers: markerRadius, isInBounds, pointInPolygon, pointInFeature, isVisible |
+| `data/globe.ts` | V2 verbatim globe data: 9 patent territories, coordinates, country stats, GeoJSON URL |
+| `components/charts/InteractiveGlobe.tsx` | Main globe component: D3 orthographic projection, canvas rendering, auto-rotation, drag, hover |
+| `components/charts/GlobeTooltip.tsx` | Glassmorphic tooltip with country data grid and context narrative |
+
+### Files Modified
+
+| File | What Changed |
+|------|-------------|
+| `app/globals.css` | Added MicroSquare @font-face declaration |
+| `app/dashboard/expansion/page.tsx` | Added InteractiveGlobe inside a Card above the ExpansionGrid |
+| `package.json` | Added d3, @types/d3 dependencies |
+
+### Dependencies Added
+- `d3` — D3.js for geographic projections and canvas rendering
+- `@types/d3` — TypeScript definitions
+
+### Globe Features
+1. Auto-rotates starting with Americas in view (0.08 deg/frame)
+2. 9 patent countries: US, China, India, Indonesia, Australia, Russia, South Africa, Germany, Canada
+3. Green markers with bloom glow on front-side, dimmed on back-side
+4. MicroSquare font on canvas text labels (falls back to sans-serif if font unavailable)
+5. Drag to rotate (0.4 deg/px, vertical clamped to ±90°)
+6. Pauses rotation on hover/drag, resumes after 1.5s
+7. Hit-tests patent country polygons on hover
+8. V2's exact glassmorphic tooltip with all data fields and context narrative
+9. Dot-matrix land fill with highlighted dots for hovered patent country
+10. HiDPI canvas support (devicePixelRatio scaling)
+
+### Build Fixes
+- `context` null check: reassigned to `const context = ctx` to satisfy TS closure narrowing
+- `Set` iteration: converted `for...of PATENT_ISO_CODES` to `Array.from()` for TS target compat
+- Unused import: removed `GLOBE_SIZE` from GlobeTooltip (uses `globeSize` prop instead)
+
+### Verification
+- `npm run build` — zero errors, all pages compile
+- Expansion page JS: 11.5kB → 32.6kB (D3 bundle included)
