@@ -6,6 +6,8 @@ import SectionHeader from '@/components/ui/SectionHeader';
 import MetricCard from '@/components/ui/MetricCard';
 import { facilityEconomics } from '@/data/products';
 import { FACILITY, EXPANSION, CAPITAL, OPERATIONS } from '@/data/model';
+import Card from '@/components/ui/Card';
+import NACommercialization from '@/components/charts/NACommercialization';
 import { CHART_COLORS } from '@/lib/colors';
 import { formatCurrency, formatPercent, formatNumber } from '@/lib/formatters';
 
@@ -96,6 +98,18 @@ export default function DashboardOverview() {
           </motion.div>
         ))}
       </motion.div>
+
+      <Card className="!p-8 mt-10 mb-2" hover={false}>
+        <div className="text-center mb-6">
+          <p className="text-xs uppercase tracking-[0.2em] font-medium text-text-tertiary">
+            Commercialization Roadmap
+          </p>
+          <h3 className="text-lg font-semibold text-text-primary mt-1">
+            North America Facility Pipeline
+          </h3>
+        </div>
+        <NACommercialization />
+      </Card>
 
       <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-6">
         <QuickStat label="Total CapEx" value={formatCurrency(facilityEconomics.totalCapex, true)} />
