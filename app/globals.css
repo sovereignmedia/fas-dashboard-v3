@@ -1,0 +1,120 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+:root {
+  --bg-primary: #0A0A0F;
+  --bg-secondary: #12121A;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #2A2A3D #0A0A0F;
+}
+
+*::-webkit-scrollbar {
+  width: 6px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #0A0A0F;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #2A2A3D;
+  border-radius: 3px;
+}
+
+body {
+  background: #0A0A0F;
+  color: #F0F0F5;
+}
+
+/* Noise texture overlay */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.015;
+  z-index: 0;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Custom range slider */
+input[type='range'] {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  width: 100%;
+  cursor: pointer;
+}
+
+input[type='range']::-webkit-slider-track {
+  height: 6px;
+  background: #1F1F2E;
+  border-radius: 3px;
+}
+
+input[type='range']::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #D4A853, #E0B86A);
+  border: 2px solid #0A0A0F;
+  box-shadow: 0 0 10px rgba(212,168,83,0.4);
+  margin-top: -9px;
+}
+
+input[type='range']::-moz-range-track {
+  height: 6px;
+  background: #1F1F2E;
+  border-radius: 3px;
+  border: none;
+}
+
+input[type='range']::-moz-range-thumb {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #D4A853, #E0B86A);
+  border: 2px solid #0A0A0F;
+  box-shadow: 0 0 10px rgba(212,168,83,0.4);
+}
+
+/* Animated number glow */
+.glow-gold {
+  text-shadow: 0 0 20px rgba(212,168,83,0.3);
+}
+
+.glow-blue {
+  text-shadow: 0 0 20px rgba(74,158,255,0.3);
+}
+
+.glow-green {
+  text-shadow: 0 0 20px rgba(0,212,170,0.3);
+}
+
+/* Recharts tooltip override */
+.recharts-default-tooltip {
+  background: #12121A !important;
+  border: 1px solid #2A2A3D !important;
+  border-radius: 12px !important;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4) !important;
+}
+
+.recharts-tooltip-label {
+  color: #F0F0F5 !important;
+  font-weight: 600 !important;
+}
+
+.recharts-tooltip-item {
+  color: #A0A0B0 !important;
+}

@@ -1,0 +1,76 @@
+'use client';
+
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { LayoutDashboard, FlaskConical, TrendingUp, Globe, Landmark, Users } from 'lucide-react';
+
+const iconMap = {
+  LayoutDashboard,
+  FlaskConical,
+  TrendingUp,
+  Globe,
+  Landmark,
+  Users,
+} as const;
+
+const NAV_ITEMS = [
+  { label: 'Overview', href: '/dashboard', icon: 'LayoutDashboard' as const },
+  { label: 'Economics', href: '/dashboard/economics', icon: 'FlaskConical' as const },
+  { label: 'Financials', href: '/dashboard/financials', icon: 'TrendingUp' as const },
+  { label: 'Expansion', href: '/dashboard/expansion', icon: 'Globe' as const },
+  { label: 'Capital', href: '/dashboard/capital', icon: 'Landmark' as const },
+  { label: 'Team', href: '/dashboard/team', icon: 'Users' as const },
+];
+
+export default function Sidebar() {
+  const pathname = usePathname();
+
+  return (
+    <aside className="fixed left-0 top-0 h-screen w-64 xl:w-64 lg:w-16 bg-[#0A0A0F] border-r border-[#1F1F2E] z-40 flex flex-col">
+      <div className="p-6 lg:p-4 xl:p-6 border-b border-[#1F1F2E]">
+        <Link href="/dashboard" className="flex items-center gap-3">
+          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#D4A853] to-[#E0B86A] flex items-center justify-center flex-shrink-0">
+            <span className="text-[#0A0A0F] font-bold text-sm">F</span>
+          </div>
+          <div className="lg:hidden xl:block">
+            <h1 className="text-sm font-semibold text-[#F0F0F5] leading-tight">FRONTIERAS</h1>
+            <p className="text-[10px] uppercase tracking-[0.15em] text-[#606075]">North America</p>
+          </div>
+        </Link>
+      </div>
+
+      <nav className="flex-1 py-4">
+        {NAV_ITEMS.map((item) => {
+          const Icon = iconMap[item.icon];
+          const isActive = pathname === item.href || (item.href !== '/dashboard' && pathname.startsWith(item.href));
+          const isExactActive = pathname === item.href;
+
+          return (
+            <Link
+              key={item.href}
+              href={item.href}
+              className={`
+                flex items-center gap-3 px-6 lg:px-4 xl:px-6 py-3 mx-2 rounded-lg
+                transition-all duration-200 group
+                ${isActive || isExactActive
+                  ? 'bg-[#D4A853]/10 text-[#D4A853]'
+                  : 'text-[#606075] hover:text-[#A0A0B0] hover:bg-[#1A1A25]'
+                }
+              `}
+            >
+              <Icon size={20} className="flex-shrink-0" />
+              <span className="text-sm font-medium lg:hidden xl:block">{item.label}</span>
+              {(isActive || isExactActive) && (
+                <div className="absolute left-0 w-[2px] h-8 bg-[#D4A853] rounded-r" />
+              )}
+            </Link>
+          );
+        })}
+      </nav>
+
+      <div className="p-4 lg:p-2 xl:p-4 border-t border-[#1F1F2E]">
+        <p className="text-[10px] text-[#606075] lg:hidden xl:block">Investor Dashboard v1.0</p>
+      </div>
+    </aside>
+  );
+}

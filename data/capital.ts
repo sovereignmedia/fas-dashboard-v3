@@ -1,0 +1,55 @@
+export const capitalPhases = [
+  {
+    phase: 1,
+    name: 'Bridge Capital',
+    amount: 25_000_000,
+    status: 'active' as const,
+    description: 'Current raise. Preferred equity with warrant coverage. Funds FEL3, long-lead procurement, permits, corporate overhead.',
+    use: ['FEL3 Engineering ($11.2M)', 'Long-Lead Equipment ($5M)', 'Permits & Applications', 'Corporate & Legal', 'Working Capital'],
+  },
+  {
+    phase: 2,
+    name: 'FEL3 Completion',
+    amount: 0,
+    status: 'upcoming' as const,
+    description: 'Front-End Loading Phase 3 engineering. Produces bankable feasibility study. Triggers project finance conversations.',
+    use: ['Detailed Engineering ($26.2M)', 'Updated Cost Estimates', 'Construction Schedule', 'Equipment Specifications'],
+  },
+  {
+    phase: 3,
+    name: 'Project Finance',
+    amount: 850_000_000,
+    status: 'planned' as const,
+    description: 'Senior secured project finance for Plant 1 construction. ~$850M+ including contingency, interest reserve, insurance. Standard project finance structure.',
+    use: ['Plant Construction', 'Equipment Procurement', 'Contingency ($150M)', 'Interest Reserve', 'Insurance'],
+  },
+  {
+    phase: 4,
+    name: 'IPO',
+    amount: 250_000_000,
+    status: 'planned' as const,
+    description: '$250M+ offering. Provides growth capital, liquidity for early investors, public currency for acquisitions. Pre-money valuation guidance: $1B-$1.5B conservative.',
+    use: ['Growth Capital', 'Early Investor Liquidity', 'Acquisition Currency', 'Corporate Treasury'],
+  },
+  {
+    phase: 5,
+    name: 'Post-IPO Execution',
+    amount: 150_000_000,
+    status: 'planned' as const,
+    description: 'GEM $150M equity line plus public market access. Funds multi-facility replication strategy. Public stock as currency for acquiring abandoned refinery assets.',
+    use: ['Multi-Facility Replication', 'Asset Acquisitions', 'International Expansion', 'R&D'],
+  },
+];
+
+export const regAPerformance = {
+  totalRaised: 9_000_000,
+  shareholders: 3_700,
+  sharePrice: 7.77,
+  singleDayRecord: 3_000_000,
+  regCFRaised: 4_491_176,
+  regCFSpend: 904_115,
+  regCFROAS: 4.97,
+  regCFFunded: 1_615,
+  regCFTOFU: 13_852_456,
+  regCFConversion: 0.3337,
+};
