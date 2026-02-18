@@ -36,7 +36,7 @@ const item = {
 function CustomTooltip({ active, payload, label }: any) {
   if (!active || !payload?.length) return null;
   return (
-    <div className="rounded-xl bg-bg-elevated border border-border-medium px-4 py-3 shadow-2xl">
+    <div className="rounded-xl bg-bg-tertiary border border-border-medium px-4 py-3 shadow-2xl">
       <p className="text-xs font-medium text-text-secondary mb-2">{label}</p>
       {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
       {payload.map((entry: any) => (
@@ -235,7 +235,7 @@ export default function FinancialsPage() {
                       w-28 h-11 px-4 pr-8
                       bg-bg-primary border border-border-subtle rounded-xl
                       font-mono text-lg font-semibold text-text-primary
-                      placeholder:text-text-muted
+                      placeholder:text-text-tertiary
                       focus:outline-none focus:border-accent-gold/60
                       focus:shadow-[0_0_15px_rgba(212,168,83,0.1)]
                       transition-all duration-300
@@ -286,7 +286,7 @@ export default function FinancialsPage() {
                 <span className="text-xs text-text-secondary font-medium">Revenue</span>
               </div>
               <div className="flex items-center gap-2">
-                <div className="w-3 h-3 rounded-full bg-data-cyan" />
+                <div className="w-3 h-3 rounded-full bg-data-green" />
                 <span className="text-xs text-text-secondary font-medium">EBITDA</span>
               </div>
               <div className="flex items-center gap-2">
@@ -303,16 +303,16 @@ export default function FinancialsPage() {
                 >
                   <defs>
                     <linearGradient id="gradRevenue" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="0%" stopColor="#4A9EFF" stopOpacity={0.3} />
-                      <stop offset="100%" stopColor="#4A9EFF" stopOpacity={0} />
+                      <stop offset="0%" stopColor="#4088e8" stopOpacity={0.3} />
+                      <stop offset="100%" stopColor="#4088e8" stopOpacity={0} />
                     </linearGradient>
                     <linearGradient id="gradEBITDA" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="0%" stopColor="#00D4AA" stopOpacity={0.3} />
-                      <stop offset="100%" stopColor="#00D4AA" stopOpacity={0} />
+                      <stop offset="0%" stopColor="#00cc88" stopOpacity={0.3} />
+                      <stop offset="100%" stopColor="#00cc88" stopOpacity={0} />
                     </linearGradient>
                     <linearGradient id="gradNetIncome" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="0%" stopColor="#D4A853" stopOpacity={0.3} />
-                      <stop offset="100%" stopColor="#D4A853" stopOpacity={0} />
+                      <stop offset="0%" stopColor="#d4a852" stopOpacity={0.3} />
+                      <stop offset="100%" stopColor="#d4a852" stopOpacity={0} />
                     </linearGradient>
                   </defs>
                   <CartesianGrid
@@ -337,29 +337,29 @@ export default function FinancialsPage() {
                   <Area
                     type="monotone"
                     dataKey="Revenue"
-                    stroke="#4A9EFF"
+                    stroke="#4088e8"
                     strokeWidth={2}
                     fill="url(#gradRevenue)"
-                    dot={{ r: 4, fill: '#4A9EFF', stroke: 'var(--bg-primary)', strokeWidth: 2 }}
-                    activeDot={{ r: 6, fill: '#4A9EFF', stroke: 'var(--bg-primary)', strokeWidth: 2 }}
+                    dot={{ r: 4, fill: '#4088e8', stroke: 'var(--bg-primary)', strokeWidth: 2 }}
+                    activeDot={{ r: 6, fill: '#4088e8', stroke: 'var(--bg-primary)', strokeWidth: 2 }}
                   />
                   <Area
                     type="monotone"
                     dataKey="EBITDA"
-                    stroke="#00D4AA"
+                    stroke="#00cc88"
                     strokeWidth={2}
                     fill="url(#gradEBITDA)"
-                    dot={{ r: 4, fill: '#00D4AA', stroke: 'var(--bg-primary)', strokeWidth: 2 }}
-                    activeDot={{ r: 6, fill: '#00D4AA', stroke: 'var(--bg-primary)', strokeWidth: 2 }}
+                    dot={{ r: 4, fill: '#00cc88', stroke: 'var(--bg-primary)', strokeWidth: 2 }}
+                    activeDot={{ r: 6, fill: '#00cc88', stroke: 'var(--bg-primary)', strokeWidth: 2 }}
                   />
                   <Area
                     type="monotone"
                     dataKey="Net Income"
-                    stroke="#D4A853"
+                    stroke="#d4a852"
                     strokeWidth={2}
                     fill="url(#gradNetIncome)"
-                    dot={{ r: 4, fill: '#D4A853', stroke: 'var(--bg-primary)', strokeWidth: 2 }}
-                    activeDot={{ r: 6, fill: '#D4A853', stroke: 'var(--bg-primary)', strokeWidth: 2 }}
+                    dot={{ r: 4, fill: '#d4a852', stroke: 'var(--bg-primary)', strokeWidth: 2 }}
+                    activeDot={{ r: 6, fill: '#d4a852', stroke: 'var(--bg-primary)', strokeWidth: 2 }}
                   />
                 </AreaChart>
               </ResponsiveContainer>
@@ -370,7 +370,7 @@ export default function FinancialsPage() {
               {yearlyProjections.map((y) => (
                 <div key={y.year} className="text-center">
                   <p className="text-xs font-mono text-text-tertiary">{y.year}</p>
-                  <p className="text-[10px] text-text-muted mt-0.5">{y.label}</p>
+                  <p className="text-[10px] text-text-tertiary mt-0.5">{y.label}</p>
                 </div>
               ))}
             </div>
@@ -420,7 +420,7 @@ export default function FinancialsPage() {
                       [&::-webkit-inner-spin-button]:appearance-none
                     "
                   />
-                  <p className="text-xs text-text-muted mt-1 font-mono">
+                  <p className="text-xs text-text-tertiary mt-1 font-mono">
                     {formatNumber(shareCount)} shares of {formatNumber(TOTAL_SHARES_OUTSTANDING)} total outstanding
                   </p>
                 </div>
@@ -443,7 +443,7 @@ export default function FinancialsPage() {
                     onChange={(e) => setShareFacilities(Number(e.target.value))}
                     className="w-full"
                   />
-                  <div className="flex justify-between text-xs text-text-muted mt-1">
+                  <div className="flex justify-between text-xs text-text-tertiary mt-1">
                     <span>1 Facility</span>
                     <span>64 Facilities</span>
                   </div>
@@ -457,7 +457,7 @@ export default function FinancialsPage() {
                   <p className="font-mono text-2xl font-bold text-accent-gold tabular-nums">
                     {selectedMultiple}x
                   </p>
-                  <p className="text-xs text-text-muted mt-1">
+                  <p className="text-xs text-text-tertiary mt-1">
                     {activeScenario
                       ? `${activeScenario.name} methodology`
                       : `Custom ${selectedMultiple}x multiple`}
@@ -494,7 +494,7 @@ export default function FinancialsPage() {
                     <p className="text-xs uppercase tracking-[0.2em] font-medium text-text-tertiary mb-1">
                       Enterprise Value
                     </p>
-                    <p className="font-mono text-xl font-semibold text-data-cyan tabular-nums">
+                    <p className="font-mono text-xl font-semibold text-data-green tabular-nums">
                       {formatCurrency(shareValuation.enterpriseValue, true)}
                     </p>
                   </div>
@@ -522,7 +522,7 @@ export default function FinancialsPage() {
         {/* ─── Disclaimer ─── */}
         <motion.div variants={item}>
           <div className="text-center py-6">
-            <p className="text-xs text-text-muted leading-relaxed max-w-2xl mx-auto">
+            <p className="text-xs text-text-tertiary leading-relaxed max-w-2xl mx-auto">
               These projections are forward-looking estimates based on internal financial models.
               Actual results may vary. This is not investment advice. Past performance does not
               guarantee future results. All figures assume steady-state Year 4 single-facility EBITDA

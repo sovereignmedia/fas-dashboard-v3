@@ -40,9 +40,9 @@ const item = {
 function statusColor(status: string) {
   switch (status) {
     case 'active':
-      return 'var(--accent-gold)';
+      return '#D4A853';
     case 'upcoming':
-      return '#4A9EFF';
+      return '#4088e8';
     default:
       return 'var(--text-tertiary)';
   }
@@ -64,11 +64,11 @@ function statusLabel(status: string) {
    ──────────────────────────────────────────────────────────── */
 
 const useOfProceeds = [
-  { label: 'FEL3 Engineering', amount: 11_200_000, pct: 0.448, color: '#4A9EFF' },
-  { label: 'Long-Lead Equipment', amount: 5_000_000, pct: 0.20, color: '#00D4AA' },
-  { label: 'Permits & Applications', amount: 3_800_000, pct: 0.152, color: '#D4A853' },
-  { label: 'Corporate & Legal', amount: 3_000_000, pct: 0.12, color: '#8B5CF6' },
-  { label: 'Working Capital', amount: 2_000_000, pct: 0.08, color: '#FF8C42' },
+  { label: 'FEL3 Engineering', amount: 11_200_000, pct: 0.448, color: '#4088e8' },
+  { label: 'Long-Lead Equipment', amount: 5_000_000, pct: 0.20, color: '#00cc88' },
+  { label: 'Permits & Applications', amount: 3_800_000, pct: 0.152, color: '#d4a852' },
+  { label: 'Corporate & Legal', amount: 3_000_000, pct: 0.12, color: '#c084fc' },
+  { label: 'Working Capital', amount: 2_000_000, pct: 0.08, color: '#e88a30' },
 ];
 
 /* ────────────────────────────────────────────────────────────
@@ -326,28 +326,28 @@ export default function CapitalStructurePage() {
               label: 'Total Raised',
               value: formatCurrency(regAPerformance.totalRaised, true),
               icon: DollarSign,
-              color: '#D4A853',
+              color: '#d4a852',
               subtitle: 'Reg A+ Offering',
             },
             {
               label: 'Shareholders',
               value: formatNumber(regAPerformance.shareholders) + '+',
               icon: Users,
-              color: '#4A9EFF',
+              color: '#4088e8',
               subtitle: 'Verified Investors',
             },
             {
               label: 'Share Price',
               value: '$' + regAPerformance.sharePrice.toFixed(2),
               icon: TrendingUp,
-              color: '#00D4AA',
+              color: '#00cc88',
               subtitle: 'Current Offering Price',
             },
             {
               label: 'Single-Day Record',
               value: formatCurrency(regAPerformance.singleDayRecord, true),
               icon: Zap,
-              color: '#FF8C42',
+              color: '#e88a30',
               subtitle: 'Peak Demand Signal',
             },
           ].map((metric) => (
@@ -370,7 +370,7 @@ export default function CapitalStructurePage() {
                 >
                   {metric.value}
                 </p>
-                <p className="text-xs text-text-mid mt-1">{metric.subtitle}</p>
+                <p className="text-xs text-text-secondary mt-1">{metric.subtitle}</p>
               </Card>
             </motion.div>
           ))}
@@ -397,7 +397,7 @@ export default function CapitalStructurePage() {
               </div>
               <div>
                 <p className="text-xs text-text-tertiary mb-1">ROAS</p>
-                <p className="font-mono text-xl font-semibold tabular-nums text-data-cyan">
+                <p className="font-mono text-xl font-semibold tabular-nums text-data-green">
                   {regAPerformance.regCFROAS.toFixed(2)}x
                 </p>
               </div>
@@ -413,7 +413,7 @@ export default function CapitalStructurePage() {
             <div className="mt-5 pt-4 border-t border-border-subtle">
               <div className="flex items-center justify-between text-xs text-text-tertiary mb-2">
                 <span>Return on Ad Spend</span>
-                <span className="font-mono text-data-cyan">
+                <span className="font-mono text-data-green">
                   {regAPerformance.regCFROAS.toFixed(2)}x
                 </span>
               </div>
@@ -423,7 +423,7 @@ export default function CapitalStructurePage() {
                   whileInView={{ width: `${Math.min((regAPerformance.regCFROAS / 6) * 100, 100)}%` }}
                   viewport={{ once: true }}
                   transition={{ duration: 1.2, ease: 'easeOut' }}
-                  className="h-full rounded-full bg-gradient-to-r from-[#00D4AA] to-[#4A9EFF]"
+                  className="h-full rounded-full bg-gradient-to-r from-[#00cc88] to-[#4088e8]"
                 />
               </div>
               <div className="flex justify-between text-[10px] text-text-tertiary mt-1">
@@ -539,7 +539,7 @@ export default function CapitalStructurePage() {
                     <p className="text-xs uppercase tracking-wider text-accent-gold mt-0.5">
                       {partner.role}
                     </p>
-                    <p className="text-xs leading-relaxed text-text-mid mt-2">
+                    <p className="text-xs leading-relaxed text-text-secondary mt-2">
                       {partner.detail}
                     </p>
                   </div>

@@ -30,7 +30,7 @@ export const products: Product[] = [
     grossMargin: 1.0,
     globalMarketSize: '$28B',
     description: 'High-purity carbon product for steel production, thermal applications, and specialty markets. Primary pricing based on steel-grade carbon at $250/ton.',
-    color: '#4A9EFF',
+    color: '#00cc88',
   },
   {
     id: 'diesel',
@@ -46,7 +46,7 @@ export const products: Product[] = [
     grossMargin: 1.0,
     globalMarketSize: '$450B',
     description: 'ULSD meeting ASTM D975 specifications. Hydrotreated to ultra-low sulfur standards. Priced ~18% below NYMEX ULSD futures.',
-    color: '#00D4AA',
+    color: '#d4a852',
   },
   {
     id: 'naphtha',
@@ -62,7 +62,7 @@ export const products: Product[] = [
     grossMargin: 1.0,
     globalMarketSize: '$180B',
     description: 'Light hydrocarbon fraction used as petrochemical feedstock and gasoline blendstock. Priced ~18% below spot.',
-    color: '#8B5CF6',
+    color: '#4088e8',
   },
   {
     id: 'sulfuric-acid',
@@ -78,7 +78,7 @@ export const products: Product[] = [
     grossMargin: 1.0,
     globalMarketSize: '$15B',
     description: 'Industrial-grade sulfuric acid. ~70% sold to market; remainder converted to ammonium sulfate fertilizer. Priced ~17% below spot.',
-    color: '#FF8C42',
+    color: '#e88a30',
   },
   {
     id: 'fertilizer',
@@ -94,7 +94,7 @@ export const products: Product[] = [
     grossMargin: 1.0,
     globalMarketSize: '$4B',
     description: 'Produced from sulfuric acid not sold to market. Converted at 0.4615 tons per ton of sulfuric acid input. Priced ~18% below spot.',
-    color: '#10B981',
+    color: '#c084fc',
   },
   {
     id: 'bio-oil',
@@ -110,7 +110,7 @@ export const products: Product[] = [
     grossMargin: 1.0,
     globalMarketSize: '$8B',
     description: 'Liquid bio-oil byproduct with applications in industrial heating and chemical feedstock. Conservative pricing.',
-    color: '#FF4C4C',
+    color: '#e84040',
   },
 ];
 

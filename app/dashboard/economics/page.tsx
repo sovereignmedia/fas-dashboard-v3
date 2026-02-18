@@ -36,7 +36,7 @@ function DonutTooltip({ active, payload }: { active?: boolean; payload?: Array<{
   if (!active || !payload || !payload.length) return null;
   const data = payload[0].payload;
   return (
-    <div className="bg-bg-elevated border border-border-medium rounded-xl px-4 py-3 shadow-2xl">
+    <div className="bg-bg-tertiary border border-border-medium rounded-xl px-4 py-3 shadow-2xl">
       <p className="text-sm font-medium text-text-primary mb-1">{data.displayName}</p>
       <p className="text-xs text-text-secondary">
         {formatCurrency(data.annualRevenue, true)} &middot; {data.pct.toFixed(1)}%
@@ -105,7 +105,7 @@ export default function EconomicsPage() {
       value: facilityEconomics.totalRevenue,
       displayValue: facilityEconomics.totalRevenue,
       type: 'total',
-      fill: '#4A9EFF',
+      fill: '#4088e8',
     },
     {
       label: 'Direct Costs',
@@ -113,7 +113,7 @@ export default function EconomicsPage() {
       value: facilityEconomics.totalDirectCost,
       displayValue: facilityEconomics.totalDirectCost,
       type: 'subtract',
-      fill: '#FF4C4C',
+      fill: '#e84040',
     },
     {
       label: 'Gross Profit',
@@ -121,7 +121,7 @@ export default function EconomicsPage() {
       value: facilityEconomics.grossProfit,
       displayValue: facilityEconomics.grossProfit,
       type: 'total',
-      fill: '#00D4AA',
+      fill: '#00cc88',
     },
     {
       label: 'Operating Costs',
@@ -129,7 +129,7 @@ export default function EconomicsPage() {
       value: opEx,
       displayValue: opEx,
       type: 'subtract',
-      fill: '#FF8C42',
+      fill: '#e88a30',
     },
     {
       label: 'EBITDA',
@@ -137,7 +137,7 @@ export default function EconomicsPage() {
       value: facilityEconomics.ebitda,
       displayValue: facilityEconomics.ebitda,
       type: 'total',
-      fill: '#D4A853',
+      fill: '#d4a852',
     },
   ];
 
@@ -147,23 +147,23 @@ export default function EconomicsPage() {
     {
       label: 'Total Revenue',
       value: formatCurrency(facilityEconomics.totalRevenue, true),
-      color: '#4A9EFF',
+      color: '#4088e8',
     },
     {
       label: 'Gross Margin',
       value: formatPercent(facilityEconomics.grossMargin),
-      color: '#00D4AA',
+      color: '#00cc88',
     },
     {
       label: 'EBITDA',
       value: formatCurrency(facilityEconomics.ebitda, true),
-      color: '#D4A853',
+      color: '#d4a852',
     },
     {
       label: 'Coal Cost / Day',
       value: formatCurrency(facilityEconomics.coalThroughput * facilityEconomics.coalCostPerTon),
       subtitle: `${formatNumber(facilityEconomics.coalThroughput)} t/day × $${facilityEconomics.coalCostPerTon}/t`,
-      color: '#8B5CF6',
+      color: '#c084fc',
     },
   ];
 
@@ -210,7 +210,7 @@ export default function EconomicsPage() {
                     {metric.value}
                   </p>
                   {'subtitle' in metric && metric.subtitle && (
-                    <p className="text-xs text-text-mid mt-1">{metric.subtitle}</p>
+                    <p className="text-xs text-text-secondary mt-1">{metric.subtitle}</p>
                   )}
                 </div>
               </div>
@@ -304,7 +304,7 @@ export default function EconomicsPage() {
                     <span className="text-xs text-text-tertiary">Price</span>
                     <span className="text-xs font-mono tabular-nums text-text-secondary">
                       {formatCurrency(product.modeledPrice)}{' '}
-                      <span className="text-text-muted">{product.priceUnit}</span>
+                      <span className="text-text-tertiary">{product.priceUnit}</span>
                     </span>
                   </div>
                   <div className="flex justify-between items-baseline">
@@ -352,7 +352,7 @@ export default function EconomicsPage() {
                 ${
                   isModified
                     ? 'bg-bg-hover text-text-primary hover:bg-bg-tertiary border border-border-medium'
-                    : 'bg-bg-secondary text-text-muted border border-border-subtle cursor-not-allowed'
+                    : 'bg-bg-secondary text-text-tertiary border border-border-subtle cursor-not-allowed'
                 }
               `}
             >
@@ -379,7 +379,7 @@ export default function EconomicsPage() {
                   <span className="text-xs text-text-tertiary">Delta from Base Case</span>
                   <p
                     className={`text-xl font-mono tabular-nums font-semibold ${
-                      totalRevenueDelta >= 0 ? 'text-data-cyan' : 'text-data-red'
+                      totalRevenueDelta >= 0 ? 'text-data-green' : 'text-data-red'
                     }`}
                   >
                     {totalRevenueDelta >= 0 ? '+' : ''}
@@ -416,7 +416,7 @@ export default function EconomicsPage() {
 
                   {/* Slider */}
                   <div className="flex items-center gap-3">
-                    <span className="text-xs font-mono text-text-muted w-14 text-right">
+                    <span className="text-xs font-mono text-text-tertiary w-14 text-right">
                       {formatCurrency(bounds.min)}
                     </span>
                     <div className="relative flex-1">
@@ -454,7 +454,7 @@ export default function EconomicsPage() {
                         }}
                       />
                     </div>
-                    <span className="text-xs font-mono text-text-muted w-14">
+                    <span className="text-xs font-mono text-text-tertiary w-14">
                       {formatCurrency(bounds.max)}
                     </span>
                   </div>
@@ -467,7 +467,7 @@ export default function EconomicsPage() {
                     {isChanged && (
                       <p
                         className={`text-xs font-mono tabular-nums ${
-                          priceDiff >= 0 ? 'text-data-cyan' : 'text-data-red'
+                          priceDiff >= 0 ? 'text-data-green' : 'text-data-red'
                         }`}
                       >
                         {priceDiff >= 0 ? '+' : ''}
@@ -481,14 +481,14 @@ export default function EconomicsPage() {
                     {isChanged ? (
                       <p
                         className={`text-sm font-mono tabular-nums font-semibold ${
-                          product.delta >= 0 ? 'text-data-cyan' : 'text-data-red'
+                          product.delta >= 0 ? 'text-data-green' : 'text-data-red'
                         }`}
                       >
                         {product.delta >= 0 ? '+' : ''}
                         {formatCurrency(product.delta, true)}
                       </p>
                     ) : (
-                      <p className="text-sm font-mono tabular-nums text-text-muted">
+                      <p className="text-sm font-mono tabular-nums text-text-tertiary">
                         {formatCurrency(product.annualRevenue, true)}
                       </p>
                     )}
@@ -576,7 +576,7 @@ export default function EconomicsPage() {
               <p className="text-xs uppercase tracking-[0.15em] text-text-tertiary mb-1">
                 Gross Margin
               </p>
-              <p className="text-lg font-mono tabular-nums font-semibold text-data-cyan">
+              <p className="text-lg font-mono tabular-nums font-semibold text-data-green">
                 {formatPercent(facilityEconomics.grossMargin)}
               </p>
             </div>

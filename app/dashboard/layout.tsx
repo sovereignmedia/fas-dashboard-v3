@@ -38,7 +38,7 @@ export default function DashboardLayout({
         <Topbar />
         <main className="flex-1 p-8 relative">
           <div className="fixed inset-0 pointer-events-none z-0" style={{
-            background: 'radial-gradient(ellipse at 20% 50%, rgba(74,158,255,0.03), transparent 60%), radial-gradient(ellipse at 80% 20%, rgba(212,168,83,0.02), transparent 50%)'
+            background: 'radial-gradient(ellipse at 20% 50%, rgba(0,204,136,0.06), rgba(0,204,136,0.02) 35%, transparent 70%), radial-gradient(ellipse at 80% 20%, rgba(212,168,82,0.03), transparent 60%)'
           }} />
           <div className="relative z-10">
             {children}

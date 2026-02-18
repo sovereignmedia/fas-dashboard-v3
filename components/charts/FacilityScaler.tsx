@@ -74,23 +74,23 @@ export default function FacilityScaler({ ebitdaMultiple }: FacilityScalerProps) 
         <ScalerMetric
           label="Annual Revenue"
           value={metrics.revenue}
-          color="#4A9EFF"
+          color="#4088e8"
         />
         <ScalerMetric
           label="Annual EBITDA"
           value={metrics.ebitda}
-          color="#00D4AA"
+          color="#00cc88"
         />
         <ScalerMetric
           label="Enterprise Value"
           value={metrics.enterpriseValue}
-          color="#D4A853"
+          color="#d4a852"
           glow
         />
         <ScalerMetric
           label="Total CapEx"
           value={metrics.capex}
-          color="#8B5CF6"
+          color="#c084fc"
         />
       </div>
 

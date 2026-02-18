@@ -138,7 +138,7 @@ export default function ExpansionPage() {
           </div>
           <div className="flex items-center gap-4 text-[10px] text-text-tertiary uppercase tracking-wider">
             <span className="flex items-center gap-1.5">
-              <span className="inline-block w-2 h-2 rounded-full bg-[#10B981]" />
+              <span className="inline-block w-2 h-2 rounded-full bg-[#00cc88]" />
               Patent Granted
             </span>
             <span className="flex items-center gap-1.5">
@@ -218,7 +218,7 @@ export default function ExpansionPage() {
                       <span
                         className={`text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full ${
                           isGranted
-                            ? 'bg-[#10B981]/15 text-[#10B981]'
+                            ? 'bg-[#00cc88]/15 text-[#00cc88]'
                             : 'bg-accent-gold/15 text-accent-gold'
                         }`}
                       >
@@ -352,7 +352,7 @@ export default function ExpansionPage() {
                         : 'Application in progress'
                     }
                     color={
-                      selectedCountry.patentStatus === 'Granted' ? '#10B981' : 'var(--accent-gold)'
+                      selectedCountry.patentStatus === 'Granted' ? '#00cc88' : '#D4A853'
                     }
                   />
                 </div>
@@ -374,7 +374,7 @@ export default function ExpansionPage() {
                     </div>
                     <div>
                       <p className="text-xs text-text-tertiary mb-1">Annual EBITDA</p>
-                      <p className="font-mono text-xl font-bold text-data-cyan">
+                      <p className="font-mono text-xl font-bold text-data-green">
                         {formatCurrency(
                           selectedCountry.facilityPotential * SINGLE_FACILITY_EBITDA,
                           true,
@@ -455,7 +455,7 @@ export default function ExpansionPage() {
               <CalcRow
                 label="Facilities Required"
                 value={formatNumber(penetrationMetrics.facilities)}
-                color="#4A9EFF"
+                color="#4088e8"
               />
               <CalcRow
                 label="Annual Revenue"
@@ -465,13 +465,13 @@ export default function ExpansionPage() {
               <CalcRow
                 label="Annual EBITDA"
                 value={formatCurrency(penetrationMetrics.ebitda, true)}
-                color="#00D4AA"
+                color="#00cc88"
               />
               <div className="border-t border-border-subtle pt-4">
                 <CalcRow
                   label="Enterprise Value (12x EBITDA)"
                   value={formatCurrency(penetrationMetrics.enterpriseValue, true)}
-                  color="var(--accent-gold)"
+                  color="#D4A853"
                   large
                 />
               </div>
@@ -487,7 +487,7 @@ export default function ExpansionPage() {
         >
           <Card hover={false}>
             <div className="flex items-center gap-2 mb-6">
-              <div className="w-2 h-2 rounded-full bg-[#4A9EFF] animate-pulse" />
+              <div className="w-2 h-2 rounded-full bg-[#4088e8] animate-pulse" />
               <p className="text-xs uppercase tracking-[0.2em] font-medium text-text-tertiary">
                 Facility Potential by Country
               </p>
