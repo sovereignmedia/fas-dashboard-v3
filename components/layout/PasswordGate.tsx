@@ -111,6 +111,17 @@ export default function PasswordGate({ children }: PasswordGateProps) {
           <p className="text-[10px] text-text-tertiary text-center mt-6 leading-relaxed">
             This is a confidential investor portal. Unauthorized access is prohibited.
           </p>
+
+          <button
+            type="button"
+            onClick={() => {
+              sessionStorage.setItem('fas-authenticated', 'true');
+              setAuthenticated(true);
+            }}
+            className="w-full mt-3 text-xs text-text-tertiary hover:text-accent-gold transition-colors duration-200 py-2"
+          >
+            Dev Bypass &rarr;
+          </button>
         </div>
       </div>
     </div>
