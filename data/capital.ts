@@ -41,6 +41,47 @@ export const capitalPhases = [
   },
 ];
 
+export const useOfProceeds = [
+  { label: 'FEL3 Engineering', amount: 11_200_000, pct: 0.448, color: '#4088e8' },
+  { label: 'Long-Lead Equipment', amount: 5_000_000, pct: 0.20, color: '#00cc88' },
+  { label: 'Permits & Applications', amount: 3_800_000, pct: 0.152, color: '#d4a852' },
+  { label: 'Corporate & Legal', amount: 3_000_000, pct: 0.12, color: '#c084fc' },
+  { label: 'Working Capital', amount: 2_000_000, pct: 0.08, color: '#e88a30' },
+];
+
+export const strategicPartners = [
+  {
+    name: 'Market Street Capital',
+    role: 'IPO Advisory',
+    iconKey: 'TrendingUp' as const,
+    detail: 'Advising on IPO readiness, valuation positioning, and public market strategy for $250M+ offering.',
+  },
+  {
+    name: 'RF Lafferty',
+    role: 'Investment Banking',
+    iconKey: 'Building2' as const,
+    detail: 'Full-service investment banking relationship covering capital raises, M&A advisory, and institutional placement.',
+  },
+  {
+    name: 'Texas Capital',
+    role: 'Banking Relationship',
+    iconKey: 'DollarSign' as const,
+    detail: 'Primary commercial banking partner providing treasury management and corporate banking services.',
+  },
+  {
+    name: 'Hybrid Financial',
+    role: 'Institutional Distribution',
+    iconKey: 'Users' as const,
+    detail: '1,900 institutional followers. Driving institutional awareness and demand ahead of public listing.',
+  },
+  {
+    name: 'GEM',
+    role: 'Post-IPO Equity Line',
+    iconKey: 'Briefcase' as const,
+    detail: '$150M committed equity facility. Provides post-IPO growth capital on demand without dilutive financing terms.',
+  },
+];
+
 export const regAPerformance = {
   totalRaised: 9_000_000,
   shareholders: 3_700,

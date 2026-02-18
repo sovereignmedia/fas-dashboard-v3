@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { useSpring, useTransform } from 'framer-motion';
 import { calculateMultiFacility } from '@/data/financials';
 import { formatCurrency } from '@/lib/formatters';
+import { CHART_COLORS } from '@/lib/colors';
 import Card from '@/components/ui/Card';
 
 function AnimatedNumber({ value, format = 'currency' }: { value: number; format?: 'currency' | 'number' }) {
@@ -74,23 +75,23 @@ export default function FacilityScaler({ ebitdaMultiple }: FacilityScalerProps) 
         <ScalerMetric
           label="Annual Revenue"
           value={metrics.revenue}
-          color="#4088e8"
+          color={CHART_COLORS.blue}
         />
         <ScalerMetric
           label="Annual EBITDA"
           value={metrics.ebitda}
-          color="#00cc88"
+          color={CHART_COLORS.green}
         />
         <ScalerMetric
           label="Enterprise Value"
           value={metrics.enterpriseValue}
-          color="#d4a852"
+          color={CHART_COLORS.gold}
           glow
         />
         <ScalerMetric
           label="Total CapEx"
           value={metrics.capex}
-          color="#c084fc"
+          color={CHART_COLORS.purple}
         />
       </div>
 

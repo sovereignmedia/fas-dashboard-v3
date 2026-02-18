@@ -41,4 +41,82 @@ Replace the V3 neutral-black color system with V2's deep navy blue palette acros
 - No remaining `var(--accent-gold)` in inline styles
 
 ### Commit
-- [x] Complete — see commit hash below
+- `bac9d80` — "complete: V2 dark mode color system — replace neutral blacks with navy blues, V2 data viz palette, card gradients, rgba borders"
+
+---
+
+## 2026-02-18 — Architecture Overhaul: Component Extraction
+
+**Branch:** `claude/frontieras-dashboard-mvp-MQ4PI`
+**Checkpoint (pre-work):** `bac9d80`
+
+### Objective
+Decompose 5 fat page files into focused, reusable components per the new ARCHITECTURE.md standards (page files max 150 lines, no hardcoded hex in components).
+
+### New Files Created
+
+| File | Purpose |
+|------|---------|
+| `ARCHITECTURE.md` | Development standards doc (page max 150 lines, component organization, color rules) |
+| `lib/colors.ts` | Single source of truth for chart hex colors (CHART_COLORS, PRODUCT_COLORS) |
+| **Expansion** | |
+| `data/expansion.ts` | Constants extracted from expansion page |
+| `components/cards/CountryCard.tsx` | Individual country card with flag, stats, progress bar |
+| `components/cards/CountryDetailPanel.tsx` | Expanded detail panel with AnimatePresence |
+| `components/sections/ExpansionGrid.tsx` | War room grid layout with StatPill sub-components |
+| `components/charts/CoalProductionChart.tsx` | Horizontal bar chart with tooltip |
+| `components/sections/PenetrationCalculator.tsx` | Slider + derived metrics calculator |
+| **Economics** | |
+| `components/cards/ProductCard.tsx` | Product card with color-coded left border |
+| `components/charts/ProductDonutChart.tsx` | PieChart with custom tooltip and legend |
+| `components/charts/WaterfallChart.tsx` | Revenue to EBITDA waterfall |
+| `components/sections/PricingSensitivity.tsx` | Self-contained pricing slider tool |
+| `components/sections/FacilityEconomics.tsx` | Key metrics cards row |
+| `components/sections/ProductGrid.tsx` | Composes donut + product cards |
+| **Financials** | |
+| `components/sections/ValuationMethodology.tsx` | Scenario cards + custom multiple input |
+| `components/charts/ProjectionAreaChart.tsx` | 5-year P&L area chart with CHART_COLORS |
+| `components/sections/ShareCalculator.tsx` | Share value calculator with own state |
+| **Capital** | |
+| `components/sections/CapitalTimeline.tsx` | Roadmap with expandable phase details |
+| `components/sections/RegAPerformance.tsx` | Reg A+ metrics + Reg CF comparison |
+| `components/sections/UseOfProceeds.tsx` | $25M bridge allocation chart |
+| `components/sections/StrategicPartners.tsx` | Key relationships grid |
+| **Team** | |
+| `components/ui/InitialsAvatar.tsx` | Shared initials avatar component |
+| `components/sections/CompanyTimeline.tsx` | Company overview + interactive timeline |
+| `components/sections/LeadershipGrid.tsx` | Executive team grid |
+| `components/sections/AdvisorGrid.tsx` | Advisory partners grid |
+
+### Page Line Counts (Before → After)
+
+| Page | Before | After |
+|------|--------|-------|
+| `expansion/page.tsx` | 624 | 42 |
+| `economics/page.tsx` | 596 | 24 |
+| `financials/page.tsx` | 536 | 77 |
+| `capital/page.tsx` | 554 | 24 |
+| `team/page.tsx` | 338 | 24 |
+| **Total** | **2,648** | **191** |
+
+### Data Files Updated
+- `data/capital.ts` — Added `useOfProceeds` and `strategicPartners` arrays (moved from page)
+
+### Hardcoded Colors Fixed
+- `components/charts/FacilityScaler.tsx` — 4 hex colors → CHART_COLORS imports
+- `components/sections/RegAPerformance.tsx` — 4 hex colors → CHART_COLORS imports
+- `components/sections/CapitalTimeline.tsx` — 2 hex colors → CHART_COLORS imports
+- `app/dashboard/page.tsx` — 6 hex colors → CHART_COLORS imports
+- Zero hardcoded hex remaining in components/ and app/dashboard/
+
+### Verification
+- `npm run build` — zero errors after each page extraction (5 builds)
+- Final build — zero errors, all 10 pages compile
+- `grep` scan confirms zero `#[0-9a-fA-F]{6}` in components/ or app/dashboard/
+
+### Decisions
+- PricingSensitivity owns its own state (not lifted to page) since no sibling needs it
+- ShareCalculator owns shareCount/shareFacilities state; only selectedMultiple comes from page
+- CapitalTimeline owns expandedPhase state locally
+- strategicPartners data uses iconKey strings mapped to components via iconMap in StrategicPartners.tsx
+- CompanyOverview exported as named export from CompanyTimeline.tsx (co-located)

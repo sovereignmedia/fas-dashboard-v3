@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import SectionHeader from '@/components/ui/SectionHeader';
 import MetricCard from '@/components/ui/MetricCard';
 import { facilityEconomics } from '@/data/products';
+import { CHART_COLORS } from '@/lib/colors';
 import { formatCurrency, formatPercent } from '@/lib/formatters';
 
 const overviewMetrics = [
@@ -13,42 +14,42 @@ const overviewMetrics = [
     value: '$1.08B',
     subtitle: 'Year 4 Steady State',
     href: '/dashboard/financials',
-    color: '#4088e8',
+    color: CHART_COLORS.blue,
   },
   {
     label: 'Single Facility EBITDA',
     value: '$838M',
     subtitle: 'Year 4 Steady State',
     href: '/dashboard/financials',
-    color: '#00cc88',
+    color: CHART_COLORS.green,
   },
   {
     label: 'Gross Margin',
     value: '87.5%',
     subtitle: '6 Revenue Streams',
     href: '/dashboard/economics',
-    color: '#d4a852',
+    color: CHART_COLORS.gold,
   },
   {
     label: 'Patent-Protected Countries',
     value: '9',
     subtitle: 'Global IP Portfolio',
     href: '/dashboard/expansion',
-    color: '#c084fc',
+    color: CHART_COLORS.purple,
   },
   {
     label: 'Reg A+ Raised',
     value: '$9M+',
     subtitle: '3,700+ Shareholders',
     href: '/dashboard/capital',
-    color: '#00cc88',
+    color: CHART_COLORS.green,
   },
   {
     label: 'Shareholders',
     value: '3,700+',
     subtitle: 'Proven Public Demand',
     href: '/dashboard/team',
-    color: '#e88a30',
+    color: CHART_COLORS.orange,
   },
 ];
 
