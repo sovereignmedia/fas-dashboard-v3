@@ -8,7 +8,6 @@ import {
   GLOBE_COUNTRIES, GEOJSON_URL, GlobeCountry,
 } from '@/data/globe';
 import { isVisible, pointInFeature, generateDotsInPolygon } from '@/lib/globe-utils';
-import { rotationToCenter } from '@/lib/globe-utils-v3';
 import { renderGlobeComposited } from '@/lib/globe-renderer-v3';
 
 type GlobeDot = [number, number, string | null];
@@ -26,8 +25,6 @@ interface AnimationState {
   phase: ZoomPhase;
   startTime: number;
   duration: number;
-  fromRotation: [number, number, number];
-  toRotation: [number, number, number];
   fromScale: number;
   toScale: number;
   fromBlur: number;
@@ -96,8 +93,6 @@ export function useGlobeInteractionV3(canvasRef: React.RefObject<HTMLCanvasEleme
       phase: 'idle',
       startTime: 0,
       duration: ZOOM_IN_DURATION,
-      fromRotation: [0, 0, 0],
-      toRotation: [0, 0, 0],
       fromScale: radius,
       toScale: radius,
       fromBlur: 0,
@@ -182,20 +177,15 @@ export function useGlobeInteractionV3(canvasRef: React.RefObject<HTMLCanvasEleme
         return;
       }
 
-      // Interpolate rotation
-      rotation[0] = d3.interpolateNumber(anim.fromRotation[0], anim.toRotation[0])(t);
-      rotation[1] = d3.interpolateNumber(anim.fromRotation[1], anim.toRotation[1])(t);
-      rotation[2] = d3.interpolateNumber(anim.fromRotation[2], anim.toRotation[2])(t);
-
       // Interpolate scale
       const currentScale = d3.interpolateNumber(anim.fromScale, anim.toScale)(t);
 
       // Interpolate blur
       currentBlur = d3.interpolateNumber(anim.fromBlur, anim.toBlur)(t);
 
-      // Apply to both projections
-      projection.scale(currentScale).rotate(rotation);
-      projectionUnclipped.scale(currentScale).rotate(rotation);
+      // Apply scale to both projections (rotation stays fixed during zoom)
+      projection.scale(currentScale);
+      projectionUnclipped.scale(currentScale);
 
       render();
 
@@ -297,12 +287,10 @@ export function useGlobeInteractionV3(canvasRef: React.RefObject<HTMLCanvasEleme
         const coord = PATENT_COORDS[found.code];
         if (coord) {
           // Snapshot current state as starting point
-          anim.fromRotation = [...rotation];
           anim.fromScale = projection.scale();
           anim.fromBlur = currentBlur;
 
-          // Target: center on country, zoom in, blur background
-          anim.toRotation = rotationToCenter(coord.lon, coord.lat);
+          // Target: zoom in-place (no rotation change), blur background
           anim.toScale = radius * ZOOM_SCALE_MULTIPLIER;
           anim.toBlur = MAX_BLUR_RADIUS;
           anim.phase = 'zooming-in';
@@ -312,11 +300,9 @@ export function useGlobeInteractionV3(canvasRef: React.RefObject<HTMLCanvasEleme
         }
       } else if (!found && anim.targetCountry) {
         // Mouse moved off country but still on globe — start zooming out
-        anim.fromRotation = [...rotation];
         anim.fromScale = projection.scale();
         anim.fromBlur = currentBlur;
 
-        anim.toRotation = [...rotation]; // stay at current rotation
         anim.toScale = radius;
         anim.toBlur = 0;
         anim.phase = 'zooming-out';
@@ -336,11 +322,9 @@ export function useGlobeInteractionV3(canvasRef: React.RefObject<HTMLCanvasEleme
 
       if (anim.phase === 'zooming-in' || anim.phase === 'focused') {
         // Reverse animation
-        anim.fromRotation = [...rotation];
         anim.fromScale = projection.scale();
         anim.fromBlur = currentBlur;
 
-        anim.toRotation = [...rotation]; // stay at current rotation, auto-rotate resumes after
         anim.toScale = radius;
         anim.toBlur = 0;
         anim.phase = 'zooming-out';
