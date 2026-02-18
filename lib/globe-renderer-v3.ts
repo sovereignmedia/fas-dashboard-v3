@@ -65,8 +65,8 @@ export function renderGlobeBackground(
   // 3. Graticule
   context.beginPath();
   path(graticule());
-  context.strokeStyle = 'rgba(75,140,200,0.12)';
-  context.lineWidth = 0.4 * sf;
+  context.strokeStyle = 'rgba(75,140,200,0.20)';
+  context.lineWidth = 0.5 * sf;
   context.stroke();
 
   // 4. Land outlines
@@ -290,8 +290,8 @@ export function renderGlobeFastPath(
   // 3. Graticule
   context.beginPath();
   path(graticule());
-  context.strokeStyle = 'rgba(75,140,200,0.12)';
-  context.lineWidth = 0.4 * sf;
+  context.strokeStyle = 'rgba(75,140,200,0.20)';
+  context.lineWidth = 0.5 * sf;
   context.stroke();
 
   // 4. Land outlines
