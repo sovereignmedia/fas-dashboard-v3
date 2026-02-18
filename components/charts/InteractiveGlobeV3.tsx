@@ -15,10 +15,7 @@ export default function InteractiveGlobeV3() {
         <canvas ref={canvasRef} className="block rounded-2xl" />
 
         {isLoading && (
-          <div
-            className="absolute inset-0 flex items-center justify-center text-text-tertiary text-sm"
-            style={{ width: GLOBE_SIZE, height: GLOBE_SIZE }}
-          >
+          <div className="absolute inset-0 flex items-center justify-center text-text-tertiary text-sm">
             Loading globe data...
           </div>
         )}
