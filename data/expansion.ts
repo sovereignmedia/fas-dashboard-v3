@@ -9,8 +9,8 @@ export const TOTAL_GLOBAL_COAL = countries.reduce((sum, c) => sum + c.coalProduc
 export const gridPositions: Record<string, { row: number; col: number }> = {
   CA: { row: 0, col: 1 },
   US: { row: 1, col: 1 },
-  CO: { row: 2, col: 2 },
-  PL: { row: 0, col: 5 },
+  RU: { row: 0, col: 6 },
+  DE: { row: 0, col: 5 },
   ZA: { row: 3, col: 5 },
   IN: { row: 1, col: 7 },
   CN: { row: 0, col: 8 },

@@ -60,7 +60,7 @@ export default function StrategicPartnersSection() {
                     {Icon && <Icon size={20} className="text-accent-gold" />}
                   </div>
                   <div className="min-w-0">
-                    <h4 className="text-sm font-semibold text-text-primary truncate">{partner.name}</h4>
+                    <h4 className="text-sm font-semibold text-text-primary">{partner.name}</h4>
                     <p className="text-xs uppercase tracking-wider text-accent-gold mt-0.5">{partner.role}</p>
                     <p className="text-xs leading-relaxed text-text-secondary mt-2">{partner.detail}</p>
                   </div>
