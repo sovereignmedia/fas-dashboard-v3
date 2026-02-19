@@ -4,7 +4,6 @@ import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
 import SectionHeader from '@/components/ui/SectionHeader';
 import MetricCard from '@/components/ui/MetricCard';
-import { facilityEconomics } from '@/data/products';
 import { EXPANSION, CAPITAL, OPERATIONS, CAPEX } from '@/data/model';
 import Card from '@/components/ui/Card';
 import NACommercialization from '@/components/charts/NACommercialization';
