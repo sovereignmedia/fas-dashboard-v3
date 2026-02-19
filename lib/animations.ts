@@ -1,23 +1,33 @@
 import type { Variants, Transition } from 'framer-motion';
 
+// ─── Easing ─────────────────────────────────────────────────
+// Premium cubic-bezier curves used throughout
+
+export const ease = {
+  /** Default — smooth deceleration, Apple-style */
+  default: [0.25, 0.1, 0.25, 1] as const,
+  /** Emphasis — slightly more dramatic entry */
+  emphasis: [0.16, 1, 0.3, 1] as const,
+};
+
 // ─── Spring Presets ─────────────────────────────────────────
-// Apple-grade spring physics: no duration, pure physical feel
+// Tuned for smooth, non-bouncy motion — premium feel
 
 export const spring = {
   /** Default card/element hover — snappy with minimal overshoot */
-  snappy: { type: 'spring', stiffness: 400, damping: 30 } as const,
-  /** Standard entrance/exit — balanced feel */
-  default: { type: 'spring', stiffness: 300, damping: 30 } as const,
+  snappy: { type: 'spring', stiffness: 300, damping: 35 } as const,
+  /** Standard entrance/exit — smooth, no bounce */
+  default: { type: 'spring', stiffness: 200, damping: 30 } as const,
   /** Soft, slow reveal — page-level or large sections */
-  gentle: { type: 'spring', stiffness: 200, damping: 28 } as const,
+  gentle: { type: 'spring', stiffness: 120, damping: 24 } as const,
   /** Hover lift — very quick, tactile */
-  hover: { type: 'spring', stiffness: 500, damping: 30 } as const,
+  hover: { type: 'spring', stiffness: 400, damping: 30 } as const,
 } satisfies Record<string, Transition>;
 
 // ─── Stagger Containers ────────────────────────────────────
 // Parent variants that orchestrate child stagger timing
 
-export function staggerContainer(staggerDelay = 0.07): Variants {
+export function staggerContainer(staggerDelay = 0.08): Variants {
   return {
     hidden: { opacity: 0 },
     show: {
@@ -27,42 +37,42 @@ export function staggerContainer(staggerDelay = 0.07): Variants {
   };
 }
 
-/** Default stagger — 0.07s between children */
-export const container: Variants = staggerContainer(0.07);
+/** Default stagger — 0.08s between children */
+export const container: Variants = staggerContainer(0.08);
 
 /** Faster stagger for dense grids (products, metrics) */
-export const containerFast: Variants = staggerContainer(0.05);
+export const containerFast: Variants = staggerContainer(0.06);
 
 /** Slower stagger for sequential reveals (timelines, lists) */
-export const containerSlow: Variants = staggerContainer(0.1);
+export const containerSlow: Variants = staggerContainer(0.12);
 
 // ─── Child Item Variants ───────────────────────────────────
-// Individual element entrance animations using spring physics
+// Individual element entrance animations — subtle Y movement
 
 export const item: Variants = {
-  hidden: { opacity: 0, y: 20 },
-  show: {
-    opacity: 1,
-    y: 0,
-    transition: spring.default,
-  },
-};
-
-export const itemGentle: Variants = {
-  hidden: { opacity: 0, y: 16 },
-  show: {
-    opacity: 1,
-    y: 0,
-    transition: spring.gentle,
-  },
-};
-
-export const itemSnappy: Variants = {
   hidden: { opacity: 0, y: 12 },
   show: {
     opacity: 1,
     y: 0,
-    transition: spring.snappy,
+    transition: { duration: 0.5, ease: ease.default },
+  },
+};
+
+export const itemGentle: Variants = {
+  hidden: { opacity: 0, y: 8 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: ease.default },
+  },
+};
+
+export const itemSnappy: Variants = {
+  hidden: { opacity: 0, y: 6 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.35, ease: ease.default },
   },
 };
 
@@ -72,7 +82,7 @@ export const fadeIn: Variants = {
   hidden: { opacity: 0 },
   show: {
     opacity: 1,
-    transition: { duration: 0.5, ease: [0.25, 0.1, 0.25, 1] },
+    transition: { duration: 0.6, ease: ease.default },
   },
 };
 
