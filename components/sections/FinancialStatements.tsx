@@ -29,13 +29,13 @@ export default function FinancialStatements() {
           <ToggleButton
             active={view === 'balance'}
             onClick={() => setView('balance')}
-            icon={<BarChart3 size={14} />}
+            icon={<BarChart3 size={18} />}
             label="Balance Sheet"
           />
           <ToggleButton
             active={view === 'cashflow'}
             onClick={() => setView('cashflow')}
-            icon={<Wallet size={14} />}
+            icon={<Wallet size={18} />}
             label="Cash Flow"
           />
         </div>
@@ -160,14 +160,14 @@ function ToggleButton({ active, onClick, icon, label }: {
   return (
     <button
       onClick={onClick}
-      className={`flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-medium transition-all duration-200 cursor-pointer ${
+      className={`flex items-center gap-2.5 px-6 py-3 rounded-xl text-sm font-medium transition-all duration-300 cursor-pointer ${
         active
-          ? 'bg-accent-gold/15 text-accent-gold shadow-sm'
-          : 'text-text-tertiary hover:text-text-secondary'
+          ? 'bg-accent-gold/15 text-accent-gold border border-accent-gold/25 shadow-sm'
+          : 'text-text-tertiary hover:text-text-secondary hover:bg-white/[0.04]'
       }`}
     >
       {icon}
-      <span className="hidden sm:inline">{label}</span>
+      {label}
     </button>
   );
 }
