@@ -66,14 +66,18 @@ export default function PageName() {
   // Minimal state (tab selection, filters — NOT business logic)
 
   return (
-    <div className="space-y-8">
+    <div>
       <SectionHeader ... />
       <SomeSection ... />
-      <AnotherSection ... />
+      <div className="mt-14">
+        <AnotherSection ... />
+      </div>
     </div>
   );
 }
 ```
+
+**Spacing convention:** Use explicit `mt-14` or `mt-16` wrapper divs between major sections. Do NOT use `space-y-*` on the page container — it conflicts with built-in margins in `CollapsibleSection` (`mb-16`) and `SectionHeader` (`mb-12`).
 
 Pages should NOT contain:
 - Chart configurations or Recharts imports
@@ -154,7 +158,8 @@ import { CHART_COLORS } from '@/lib/colors';
 | `model.ts` | FACILITY, CAPEX, OPERATIONS, MONTHLY_VOLUMES, MODELED_PRICES, SPOT_PRICES, EXPANSION, CAPITAL, VALUATION | — |
 | `products.ts` | products[], facilityEconomics | 5 revenue products |
 | `process.ts` | PROCESS_OUTPUTS[], CTL_DIFFERENTIATION | 8 outputs (5 revenue + 1 TBD + 2 internal) |
-| `financials.ts` | yearlyProjections[], valuationScenarios[] | 5 years, 3 scenarios |
+| `financials.ts` | yearlyProjections[], valuationScenarios[], balanceSheet[], cashFlow[] | 5 years, 3 scenarios, 5-year BS/CF |
+| `macro.ts` | MACRO_TAILWINDS[] | 6 tailwinds |
 | `partnerships.ts` | PARTNERS[] | 15 partners, 7 categories |
 | `risks.ts` | RISK_CATEGORIES[] | 14 categories |
 | `team.ts` | team[], advisors[], timeline[] | 5 execs, 8 advisors, 8 milestones |
@@ -168,7 +173,7 @@ import { CHART_COLORS } from '@/lib/colors';
 - `getCapExByCategory()` returns `{ baseCost, totalCost, items }` aggregated per category — NOT arrays. Use `CAPEX_ITEMS.filter()` for line items.
 - `MONTHLY_VOLUMES` are monthly — multiply by 12 for annual.
 - Products array in `products.ts` has 5 items (revenue-generating). `process.ts` has 8 outputs.
-- Sidebar nav in `Sidebar.tsx` differs from `lib/constants.ts` NAV_ITEMS (Sidebar is authoritative, 10 items).
+- Sidebar nav in `Sidebar.tsx` and `lib/constants.ts` NAV_ITEMS should stay in sync (10 items). Tab names: Executive Overview, FASForm™ Process, Product Economics, Financial Projections & Valuation, Capital Structure, Risk Mitigation, Strategic Partners, Team, Expansion, Fundraising & Execution.
 
 ---
 
@@ -250,6 +255,10 @@ All deployments go through GitHub. **Never deploy directly to Vercel via CLI** (
 | Vercel project | `sovereign-media-projects/fas-dashboard-v3` |
 | Vercel production URL | https://fas-dashboard-v3-fncb.vercel.app |
 | Vercel production branch | `main` (synced to GitHub default) |
+
+### Build Config
+
+- `next.config.mjs` has `eslint: { ignoreDuringBuilds: true }` to prevent lint warnings (e.g. unused imports) from failing Vercel builds. Always remove unused imports anyway, but this guard prevents deploy failures.
 
 ### Workflow
 
