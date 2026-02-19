@@ -2,7 +2,6 @@
 
 import { motion } from 'framer-motion';
 import { container, item, viewport } from '@/lib/animations';
-import SectionHeader from '@/components/ui/SectionHeader';
 import { SWOT } from '@/data/swot';
 
 const quadrants = [
@@ -14,13 +13,7 @@ const quadrants = [
 
 export default function SWOTAnalysis() {
   return (
-    <section className="mb-16">
-      <SectionHeader
-        overline="Strategic Analysis"
-        title="SWOT Analysis"
-        subtitle="Strengths, weaknesses, opportunities, and threats — institutional-grade strategic assessment of Frontieras' competitive position."
-      />
-
+    <section>
       <motion.div
         variants={container}
         initial="hidden"
