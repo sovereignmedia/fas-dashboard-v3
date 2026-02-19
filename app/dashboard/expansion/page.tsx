@@ -8,6 +8,7 @@ import InteractiveGlobeV3 from '@/components/charts/InteractiveGlobeV3';
 import ExpansionGrid from '@/components/sections/ExpansionGrid';
 import CoalProductionChart from '@/components/charts/CoalProductionChart';
 import PenetrationCalculator from '@/components/sections/PenetrationCalculator';
+import Disclaimer from '@/components/ui/Disclaimer';
 
 export default function ExpansionPage() {
   const [penetration, setPenetration] = useState(25);
@@ -29,6 +30,10 @@ export default function ExpansionPage() {
       <div className="grid grid-cols-1 xl:grid-cols-2 gap-8">
         <PenetrationCalculator penetration={penetration} onChange={setPenetration} />
         <CoalProductionChart selectedCountry={null} />
+      </div>
+
+      <div className="mt-12">
+        <Disclaimer type="projectionDisclaimer" size="md" collapsed />
       </div>
     </div>
   );

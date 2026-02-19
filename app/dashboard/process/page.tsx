@@ -2,6 +2,7 @@
 
 import SectionHeader from '@/components/ui/SectionHeader';
 import ProcessFlow from '@/components/sections/ProcessFlow';
+import MarginExplainer from '@/components/sections/MarginExplainer';
 import CTLComparison from '@/components/sections/CTLComparison';
 import MarketOpportunity from '@/components/sections/MarketOpportunity';
 import Disclaimer from '@/components/ui/Disclaimer';
@@ -16,6 +17,8 @@ export default function ProcessPage() {
       />
 
       <ProcessFlow />
+
+      <MarginExplainer />
 
       <SectionHeader
         overline="Technology Comparison"

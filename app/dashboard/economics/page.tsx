@@ -6,6 +6,7 @@ import ProductGrid from '@/components/sections/ProductGrid';
 import PricingSensitivity from '@/components/sections/PricingSensitivity';
 import WaterfallChart from '@/components/charts/WaterfallChart';
 import OpExBreakdown from '@/components/sections/OpExBreakdown';
+import Disclaimer from '@/components/ui/Disclaimer';
 
 export default function EconomicsPage() {
   return (
@@ -22,6 +23,10 @@ export default function EconomicsPage() {
       <WaterfallChart />
 
       <OpExBreakdown />
+
+      <div className="mt-12">
+        <Disclaimer type="projectionDisclaimer" size="md" collapsed />
+      </div>
     </div>
   );
 }

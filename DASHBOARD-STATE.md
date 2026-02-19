@@ -46,8 +46,9 @@
 
 **Sections rendered:**
 1. **ProcessFlow** — Visual process flow (input → outputs)
-2. **CTLComparison** — FASForm™ vs. Fischer-Tropsch table
-3. **MarketOpportunity** — TAM across 6 markets
+2. **MarginExplainer** — Interactive 5-step margin walkthrough: Input Cost → Product Revenue → Gross Profit (87.5%) → EBITDA (77.6%) → Why This Works. All data imported from model.ts and products.ts. Step navigation with animated transitions. Includes feedstock math, product revenue bars with running total, gross profit visual bar, EBITDA waterfall, and 5 structural defensibility reasons.
+3. **CTLComparison** — FASForm™ vs. Fischer-Tropsch table
+4. **MarketOpportunity** — TAM across 6 markets
 
 **Process Input:**
 - Pittsburgh #8 Coal — 2.7 million tons/yr — ~$50/ton — $135M/yr
@@ -383,10 +384,25 @@ All 15 partners have `agreementStatus: 'executed'`.
 
 **Regulatory & compliance text displayed:**
 1. **Compliance Disclaimer** (from `lib/constants.ts`): "This dashboard is provided for informational purposes only and does not constitute an offer to sell or a solicitation of an offer to buy any securities..."
-2. **Forward-Looking Disclaimer** (Disclaimer component, type="forwardLooking"): Displayed on Risk Mitigation and Roadmap pages
-3. **Projection Disclaimer** (Disclaimer component, type="projectionDisclaimer"): Displayed on FASForm™ page
-4. **Confidentiality Disclaimer** (Disclaimer component, type="confidentiality"): Displayed on Due Diligence page
+2. **Forward-Looking Disclaimer** (Disclaimer component, type="forwardLooking"): Displayed on Overview (sm, collapsed), Risk Mitigation (md, collapsed), Capital (md, collapsed), Roadmap (md, collapsed)
+3. **Projection Disclaimer** (Disclaimer component, type="projectionDisclaimer"): Displayed on FASForm™ (md, collapsed), Economics (md, collapsed), Expansion (md, collapsed)
+4. **Confidentiality Disclaimer** (Disclaimer component, type="confidentiality"): Displayed on Due Diligence (md, collapsed)
 5. **Financials page inline disclaimer:** "These projections are forward-looking estimates..."
+6. **ShareCalculator inline disclaimer:** "Implied share price is a theoretical valuation metric..."
+
+**Disclaimer coverage audit:**
+| Page | Has Disclaimer | Type |
+|------|---------------|------|
+| Overview | ✅ | forwardLooking (sm, collapsed) |
+| FASForm™ | ✅ | projectionDisclaimer (md, collapsed) |
+| Economics | ✅ | projectionDisclaimer (md, collapsed) |
+| Risk Mitigation | ✅ | forwardLooking (md, collapsed) |
+| Due Diligence | ✅ | confidentiality (md, collapsed) |
+| Team | — | No projections shown |
+| Financials | ✅ | Inline text disclaimer |
+| Capital | ✅ | forwardLooking (md, collapsed) |
+| Expansion | ✅ | projectionDisclaimer (md, collapsed) |
+| Roadmap | ✅ | forwardLooking (md, collapsed) |
 
 ---
 
@@ -408,6 +424,7 @@ All 15 partners have `agreementStatus: 'executed'`.
 | Risk | DiligenceQA | Accordion Q&A, category filter tabs |
 | Team | LeadershipGrid | Click "Read Full Bio" to expand/collapse |
 | Due Diligence | PartnerGrid | Category filter tabs (All, Operations, Engineering, etc.) |
+| FASForm™ | MarginExplainer | 5-step interactive walkthrough: step tabs, prev/next nav, animated bars/charts per step |
 | FASForm™ | CTLComparison | Side-by-side comparison table |
 
 ---
@@ -497,13 +514,14 @@ All 5 executives have `fullBio` fields enabling expandable bios in LeadershipGri
 
 ## 12. Disclaimers & Legal Text
 
-| Type | Location | Content Summary |
-|------|----------|----------------|
+| Type | Pages | Content Summary |
+|------|-------|----------------|
 | Main Compliance | `lib/constants.ts` COMPLIANCE_DISCLAIMER | Not an offer/solicitation, forward-looking risks, confidential |
-| Forward-Looking | Disclaimer component | Risk/uncertainty warning |
-| Projection | Disclaimer component | Model estimate caveat |
-| Confidentiality | Disclaimer component | Not for redistribution |
+| Forward-Looking | Overview, Risk Mitigation, Capital, Roadmap | Section 27A/21E risk/uncertainty warning |
+| Projection | FASForm™, Economics, Expansion | Model estimate caveat — commodity/regulatory/timeline risks |
+| Confidentiality | Due Diligence | Not for redistribution |
 | Financials Inline | Financials page | "Not investment advice" + Year 4 EBITDA assumption |
+| ShareCalculator Inline | Financials page | "Theoretical valuation metric, not a market/offer price" |
 
 ---
 

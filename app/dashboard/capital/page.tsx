@@ -6,6 +6,7 @@ import RegAPerformanceSection from '@/components/sections/RegAPerformance';
 import UseOfProceedsSection from '@/components/sections/UseOfProceeds';
 import StrategicPartnersSection from '@/components/sections/StrategicPartners';
 import CapExWaterfall from '@/components/sections/CapExWaterfall';
+import Disclaimer from '@/components/ui/Disclaimer';
 
 export default function CapitalStructurePage() {
   return (
@@ -22,6 +23,10 @@ export default function CapitalStructurePage() {
       <StrategicPartnersSection />
 
       <CapExWaterfall />
+
+      <div className="mt-12">
+        <Disclaimer type="forwardLooking" size="md" collapsed />
+      </div>
     </div>
   );
 }
