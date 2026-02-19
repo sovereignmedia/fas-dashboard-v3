@@ -31,7 +31,7 @@ export default function RiskAnalysis() {
 
       {/* Risk cards */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        {RISK_CATEGORIES.map((risk, i) => (
+        {RISK_CATEGORIES.map((risk) => (
           <motion.div key={risk.id} variants={item}>
             <RiskCard risk={risk} defaultExpanded={false} />
           </motion.div>
