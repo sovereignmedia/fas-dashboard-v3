@@ -24,7 +24,7 @@ const NAV_ITEMS = [
   { label: 'Capital', href: '/dashboard/capital', icon: 'Landmark' as const },
   { label: 'Team', href: '/dashboard/team', icon: 'Users' as const },
   { label: 'FASForm™', href: '/dashboard/process', icon: 'GitBranch' as const },
-  { label: 'Risk', href: '/dashboard/risk-analysis', icon: 'ShieldCheck' as const },
+  { label: 'Risk Mitigation', href: '/dashboard/risk-analysis', icon: 'ShieldCheck' as const },
   { label: 'Due Diligence', href: '/dashboard/due-diligence', icon: 'FileSearch' as const },
 ];
 

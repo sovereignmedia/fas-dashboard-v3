@@ -11,7 +11,7 @@ const pageTitles: Record<string, string> = {
   '/dashboard/capital': 'Capital Structure',
   '/dashboard/team': 'Genesis & Management',
   '/dashboard/process': 'FASForm™ Process',
-  '/dashboard/risk-analysis': 'Risk Analysis',
+  '/dashboard/risk-analysis': 'Risk Mitigation',
   '/dashboard/due-diligence': 'Due Diligence',
 };
 
