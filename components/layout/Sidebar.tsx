@@ -27,7 +27,7 @@ const NAV_ITEMS = [
   { label: 'FASForm™', href: '/dashboard/process', icon: 'GitBranch' as const },
   { label: 'Risk Mitigation', href: '/dashboard/risk-analysis', icon: 'ShieldCheck' as const },
   { label: 'Due Diligence', href: '/dashboard/due-diligence', icon: 'FileSearch' as const },
-  { label: 'Roadmap', href: '/dashboard/roadmap', icon: 'Map' as const },
+  { label: 'Execution Roadmap', href: '/dashboard/roadmap', icon: 'Map' as const },
 ];
 
 export default function Sidebar() {
