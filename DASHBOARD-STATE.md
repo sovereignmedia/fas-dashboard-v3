@@ -82,7 +82,7 @@
 | Aspect | FASForm™ | CTL (Fischer-Tropsch) |
 |--------|----------|----------------------|
 | Process | Thermal cracking, no combustion | Gasification → synthesis gas |
-| Products | 7 distinct streams | Primarily synthetic crude |
+| Products | 6 revenue streams + 2 internal-use gas streams | Primarily synthetic crude |
 | Catalysts | None required | Expensive: cobalt, iron |
 | Byproducts | Zero waste | Toxic byproducts |
 | Emissions | No direct CO₂, 25-35% net reduction | Significant CO₂ |
