@@ -66,7 +66,10 @@ function TimelineEvent({
                   initial={{ height: 0, opacity: 0 }}
                   animate={{ height: 'auto', opacity: 1 }}
                   exit={{ height: 0, opacity: 0 }}
-                  transition={{ duration: 0.3, ease: 'easeInOut' }}
+                  transition={{
+                    height: { type: 'spring', stiffness: 300, damping: 30 },
+                    opacity: { duration: 0.15, delay: 0.06 },
+                  }}
                   className="overflow-hidden"
                 >
                   <p className="text-sm leading-relaxed text-text-secondary mt-3 pt-3 border-t border-border-subtle">
