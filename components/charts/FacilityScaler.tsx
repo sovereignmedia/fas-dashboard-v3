@@ -29,10 +29,11 @@ function AnimatedNumber({ value, format = 'currency' }: { value: number; format?
 
 interface FacilityScalerProps {
   ebitdaMultiple: number;
+  facilities: number;
+  onFacilitiesChange: (count: number) => void;
 }
 
-export default function FacilityScaler({ ebitdaMultiple }: FacilityScalerProps) {
-  const [facilities, setFacilities] = useState(1);
+export default function FacilityScaler({ ebitdaMultiple, facilities, onFacilitiesChange }: FacilityScalerProps) {
   const metrics = calculateMultiFacility(facilities, ebitdaMultiple);
 
   return (
@@ -42,10 +43,10 @@ export default function FacilityScaler({ ebitdaMultiple }: FacilityScalerProps) 
           Facility Scaler
         </p>
         <h3 className="text-2xl font-semibold text-text-primary">
-          Scale the Vision
+          Multi-Facility Economics
         </h3>
         <p className="text-sm text-text-secondary mt-1">
-          Drag to model multi-facility economics
+          Model enterprise-level economics across planned facility buildout
         </p>
       </div>
 
@@ -60,14 +61,14 @@ export default function FacilityScaler({ ebitdaMultiple }: FacilityScalerProps) 
         <input
           type="range"
           min={1}
-          max={64}
+          max={5}
           value={facilities}
-          onChange={(e) => setFacilities(Number(e.target.value))}
+          onChange={(e) => onFacilitiesChange(Number(e.target.value))}
           className="w-full"
         />
         <div className="flex justify-between text-xs text-text-tertiary mt-1">
           <span>1 Facility</span>
-          <span>64 Facilities</span>
+          <span>5 Facilities</span>
         </div>
       </div>
 

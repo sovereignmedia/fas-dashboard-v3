@@ -13,7 +13,7 @@ export default function EconomicsPage() {
       <SectionHeader
         overline="Facility Economics"
         title="Product Economics & Revenue"
-        subtitle="Single-facility steady-state economics across eight product lines. All figures represent Year 4+ annual projections at modeled pricing."
+        subtitle="Single-facility steady-state economics across six product streams. All figures represent Year 4+ annual projections at modeled pricing."
       />
 
       <FacilityEconomicsSection />

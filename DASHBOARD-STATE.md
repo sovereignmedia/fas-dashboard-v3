@@ -42,7 +42,7 @@
 ### FASForm™ (`/dashboard/process`)
 
 **Header:** "FASForm™ Process" / "Input → Process → Output"
-**Subtitle:** "Single-feedstock thermal cracking process converting Pittsburgh #8 coal into eight distinct product streams with zero waste."
+**Subtitle:** "Single-feedstock thermal cracking process converting Pittsburgh #8 coal into six high-value product streams — plus two internal-use gas streams enabling zero-waste closed-loop operation."
 
 **Sections rendered:**
 1. **ProcessFlow** — Visual process flow (input → outputs)
@@ -95,7 +95,7 @@ Total Current TAM: ~$1,528.8B → Projected: ~$2,094.5B
 ### Economics (`/dashboard/economics`)
 
 **Header:** "Facility Economics" / "Product Economics & Revenue"
-**Subtitle:** "Single-facility steady-state economics across eight product lines. All figures represent Year 4+ annual projections at modeled pricing."
+**Subtitle:** "Single-facility steady-state economics across six product streams. All figures represent Year 4+ annual projections at modeled pricing."
 
 **Sections rendered:**
 1. **FacilityEconomicsSection** — Key facility-level metrics
@@ -239,13 +239,13 @@ Total Current TAM: ~$1,528.8B → Projected: ~$2,094.5B
 ### Financials (`/dashboard/financials`)
 
 **Header:** "Financial Model" / "Financials & Valuation"
-**Subtitle:** "Interactive financial projections, valuation scenarios, and share value modeling across multi-facility scale."
+**Subtitle:** "Interactive financial projections, valuation scenarios, and enterprise valuation modeling across multi-facility scale."
 
 **Sections rendered:**
 1. **ValuationMethodology** — 3 valuation scenarios (interactive toggle)
-2. **FacilityScaler** — Multi-facility EBITDA × multiple calculator
+2. **FacilityScaler** — Multi-facility economics slider (1–5 facilities, capped for institutional credibility). Facility count state shared with ShareCalculator.
 3. **ProjectionAreaChart** — 5-year revenue/EBITDA/net income projection
-4. **ShareCalculator** — Per-share value at selected multiple
+4. **ShareCalculator** — Enterprise valuation model showing implied price per share (EV ÷ total shares outstanding). Reframed from personal investment return calculator to institutional valuation tool. No personal share count input — shows enterprise-level metrics only. Includes forward-looking disclaimer.
 
 **Valuation Scenarios:**
 | Scenario | Multiple | Description |
@@ -399,8 +399,8 @@ All 15 partners have `agreementStatus: 'executed'`.
 | Economics | PricingSensitivity | Spot vs. modeled comparison |
 | Economics | OpExBreakdown | Static display |
 | Financials | ValuationMethodology | Click scenario cards (6x/12x/18x) or enter custom multiple |
-| Financials | FacilityScaler | Slider: 1–143 facilities × selected EBITDA multiple |
-| Financials | ShareCalculator | Per-share value at selected multiple |
+| Financials | FacilityScaler | Slider: 1–5 facilities × selected EBITDA multiple (state shared with ShareCalculator) |
+| Financials | ShareCalculator | Implied price per share — enterprise valuation ÷ total shares outstanding (no personal share count input) |
 | Expansion | InteractiveGlobeV3 | 3D rotating globe, hover/click countries |
 | Expansion | PenetrationCalculator | Slider: market penetration % |
 | Capital | CapExWaterfall | Toggle: Category View ↔ Line Items table |
@@ -512,6 +512,6 @@ All 5 executives have `fullBio` fields enabling expandable bios in LeadershipGri
 1. **Jet Fuel / Kerosene** — Added as product output but revenue = $0, production = "TBD", yield = "TBD — pending financial model integration", status = "Under evaluation"
 2. **Balance Sheet / Cash Flow** — Not yet added to Financials page (mentioned in plan but not implemented)
 3. **Bio-Oil** — Referenced in ARCHITECTURE.md as existing in dashboard with `inExcelModel: false` flag but not found in current `products.ts` (may have been removed in v3)
-4. **Process Economics `valueMultiplier: '8x'`** — Claims $1 coal input → $8 product revenue, but `process.ts` says "seven distinct product streams" while there are actually 8 outputs listed
-5. **Subtitle inconsistencies** — Overview says "six high-value products", Process page says "eight distinct product streams", Economics says "eight product lines"
+4. ~~**Process Economics product count**~~ — **RESOLVED**: All pages now consistently say "six high-value product streams" (5 revenue + Jet Fuel under evaluation), with internal gas streams noted separately where relevant
+5. ~~**Subtitle inconsistencies**~~ — **RESOLVED**: Consistent "six" language across Overview, Process, Economics, CompanyTimeline, and data/process.ts
 6. **NAV_ITEMS in `lib/constants.ts`** now matches `Sidebar.tsx` (10 items, institutional narrative order)

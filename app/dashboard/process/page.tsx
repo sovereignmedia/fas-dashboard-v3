@@ -12,7 +12,7 @@ export default function ProcessPage() {
       <SectionHeader
         overline="FASForm™ Process"
         title="Input → Process → Output"
-        subtitle="Single-feedstock thermal cracking process converting Pittsburgh #8 coal into eight distinct product streams with zero waste."
+        subtitle="Single-feedstock thermal cracking process converting Pittsburgh #8 coal into six high-value product streams — plus two internal-use gas streams enabling zero-waste closed-loop operation."
       />
 
       <ProcessFlow />

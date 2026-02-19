@@ -131,7 +131,7 @@ export const PROCESS_ECONOMICS = {
   ebitda: 837_513_709,
   ebitdaMargin: 0.776,
   valueMultiplier: '8x',
-  keyInsight: 'Every $1 of coal input generates approximately $8 in product revenue across seven distinct product streams from a single low-cost feedstock.',
+  keyInsight: 'Every $1 of coal input generates approximately $8 in product revenue across six high-value product streams from a single low-cost feedstock.',
 };
 
 export const CTL_DIFFERENTIATION = {
@@ -139,7 +139,7 @@ export const CTL_DIFFERENTIATION = {
     label: 'FASForm™ (Solid Carbon Fractionation)',
     rows: [
       { aspect: 'Process', value: 'Thermal cracking in reducing atmosphere — no combustion, no direct CO₂' },
-      { aspect: 'Products', value: '7 distinct product streams (solids, liquids, gases, chemicals)' },
+      { aspect: 'Products', value: '6 product streams + 2 internal-use gas streams (solids, liquids, gases, chemicals)' },
       { aspect: 'Catalysts', value: 'None required' },
       { aspect: 'Byproducts', value: 'Zero waste — all components become marketable products' },
       { aspect: 'Emissions', value: 'No direct CO₂ during processing. 25-35% net reduction.' },

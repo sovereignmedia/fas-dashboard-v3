@@ -15,6 +15,7 @@ import { containerSlow as container, item } from '@/lib/animations';
 export default function FinancialsPage() {
   const [selectedMultiple, setSelectedMultiple] = useState(12);
   const [customMultiple, setCustomMultiple] = useState('');
+  const [facilityCount, setFacilityCount] = useState(1);
 
   const handleScenarioSelect = (multiple: number) => {
     setSelectedMultiple(multiple);
@@ -34,7 +35,7 @@ export default function FinancialsPage() {
       <SectionHeader
         overline="Financial Model"
         title="Financials & Valuation"
-        subtitle="Interactive financial projections, valuation scenarios, and share value modeling across multi-facility scale."
+        subtitle="Interactive financial projections, valuation scenarios, and enterprise valuation modeling across multi-facility scale."
       />
 
       <motion.div variants={container} initial="hidden" animate="show" className="space-y-10">
@@ -46,11 +47,15 @@ export default function FinancialsPage() {
         />
 
         <motion.div variants={item}>
-          <FacilityScaler ebitdaMultiple={selectedMultiple} />
+          <FacilityScaler
+            ebitdaMultiple={selectedMultiple}
+            facilities={facilityCount}
+            onFacilitiesChange={setFacilityCount}
+          />
         </motion.div>
 
         <ProjectionAreaChart />
-        <ShareCalculator selectedMultiple={selectedMultiple} />
+        <ShareCalculator selectedMultiple={selectedMultiple} facilityCount={facilityCount} />
 
         {/* Disclaimer */}
         <motion.div variants={item}>
