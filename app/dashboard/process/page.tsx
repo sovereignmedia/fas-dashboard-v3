@@ -18,17 +18,22 @@ export default function ProcessPage() {
 
       <ProcessFlow />
 
-      <MarginExplainer />
+      <div className="mt-16">
+        <MarginExplainer />
+      </div>
 
-      <SectionHeader
-        overline="Technology Comparison"
-        title="FASForm™ vs. Coal-to-Liquids"
-        subtitle="Side-by-side comparison of FASForm™ solid carbon fractionation against traditional Fischer-Tropsch coal-to-liquids technology."
-      />
+      <div className="mt-16">
+        <SectionHeader
+          overline="Technology Comparison"
+          title="FASForm™ vs. Coal-to-Liquids"
+          subtitle="Side-by-side comparison of FASForm™ solid carbon fractionation against traditional Fischer-Tropsch coal-to-liquids technology."
+        />
+        <CTLComparison />
+      </div>
 
-      <CTLComparison />
-
-      <MarketOpportunity />
+      <div className="mt-16">
+        <MarketOpportunity />
+      </div>
 
       <div className="mt-12">
         <Disclaimer type="projectionDisclaimer" size="md" collapsed />

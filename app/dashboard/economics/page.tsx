@@ -18,11 +18,22 @@ export default function EconomicsPage() {
       />
 
       <FacilityEconomicsSection />
-      <ProductGrid />
-      <PricingSensitivity />
-      <WaterfallChart />
 
-      <OpExBreakdown />
+      <div className="mt-14">
+        <ProductGrid />
+      </div>
+
+      <div className="mt-14">
+        <PricingSensitivity />
+      </div>
+
+      <div className="mt-14">
+        <WaterfallChart />
+      </div>
+
+      <div className="mt-14">
+        <OpExBreakdown />
+      </div>
 
       <div className="mt-12">
         <Disclaimer type="projectionDisclaimer" size="md" collapsed />

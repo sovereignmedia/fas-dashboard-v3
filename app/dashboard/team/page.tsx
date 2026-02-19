@@ -16,9 +16,18 @@ export default function TeamPage() {
       />
 
       <CompanyOverview />
-      <CompanyTimeline />
-      <LeadershipGrid />
-      <AdvisorGrid />
+
+      <div className="mt-14">
+        <CompanyTimeline />
+      </div>
+
+      <div className="mt-14">
+        <LeadershipGrid />
+      </div>
+
+      <div className="mt-14">
+        <AdvisorGrid />
+      </div>
     </div>
   );
 }

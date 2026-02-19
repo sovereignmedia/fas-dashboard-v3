@@ -16,13 +16,14 @@ export default function RoadmapPage() {
 
       <CapitalTimeline />
 
-      <SectionHeader
-        overline="Execution Tracking"
-        title="Milestone Timeline"
-        subtitle="16 milestones tracked against original guidance. 100% accuracy rate on completed items — no delays, no missed targets."
-      />
-
-      <MilestoneTracker />
+      <div className="mt-16">
+        <SectionHeader
+          overline="Execution Tracking"
+          title="Milestone Timeline"
+          subtitle="16 milestones tracked against original guidance. 100% accuracy rate on completed items — no delays, no missed targets."
+        />
+        <MilestoneTracker />
+      </div>
 
       <div className="mt-12">
         <Disclaimer type="forwardLooking" size="md" collapsed />

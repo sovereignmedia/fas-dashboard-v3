@@ -16,7 +16,9 @@ export default function DueDiligencePage() {
 
       <PartnerGrid />
 
-      <CompetitorTable />
+      <div className="mt-16">
+        <CompetitorTable />
+      </div>
 
       <div className="mt-12">
         <Disclaimer type="confidentiality" size="md" collapsed />

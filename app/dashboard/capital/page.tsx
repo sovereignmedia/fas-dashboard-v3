@@ -18,11 +18,22 @@ export default function CapitalStructurePage() {
       />
 
       <CapitalTimeline />
-      <RegAPerformanceSection />
-      <UseOfProceedsSection />
-      <StrategicPartnersSection />
 
-      <CapExWaterfall />
+      <div className="mt-14">
+        <RegAPerformanceSection />
+      </div>
+
+      <div className="mt-14">
+        <UseOfProceedsSection />
+      </div>
+
+      <div className="mt-14">
+        <StrategicPartnersSection />
+      </div>
+
+      <div className="mt-16">
+        <CapExWaterfall />
+      </div>
 
       <div className="mt-12">
         <Disclaimer type="forwardLooking" size="md" collapsed />

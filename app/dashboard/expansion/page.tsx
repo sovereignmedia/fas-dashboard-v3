@@ -40,9 +40,11 @@ export default function ExpansionPage() {
 
       <ExpansionGrid />
 
-      <CoalProductionChart selectedCountry={null} />
+      <div className="mt-14">
+        <CoalProductionChart selectedCountry={null} />
+      </div>
 
-      <div className="mt-10">
+      <div className="mt-14">
         <CollapsibleSection
           overline="Deep Dive"
           title="Market Penetration Modeling"
