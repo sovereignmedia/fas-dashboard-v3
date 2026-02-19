@@ -11,6 +11,7 @@ import NACommercialization from '@/components/charts/NACommercialization';
 import { CHART_COLORS } from '@/lib/colors';
 import { formatCurrency, formatNumber } from '@/lib/formatters';
 import { container, item } from '@/lib/animations';
+import MacroTailwinds from '@/components/sections/MacroTailwinds';
 import Disclaimer from '@/components/ui/Disclaimer';
 
 const overviewMetrics = [
@@ -98,6 +99,10 @@ export default function DashboardOverview() {
       <div className="mt-16 grid grid-cols-2 gap-8">
         <QuickStat label="Total CapEx" value={formatCurrency(CAPEX.total, true)} />
         <QuickStat label="Coal Throughput" value={`${formatNumber(OPERATIONS.coalThroughputTonsPerDay)} t/day`} />
+      </div>
+
+      <div className="mt-16">
+        <MacroTailwinds />
       </div>
 
       <div className="mt-12">

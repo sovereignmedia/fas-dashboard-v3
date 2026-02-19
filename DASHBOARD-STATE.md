@@ -32,6 +32,17 @@
 | Total CapEx | $745.5M | `CAPEX.total` → $745,541,205 |
 | Coal Throughput | 7,500 t/day | `OPERATIONS.coalThroughputTonsPerDay` → 7,500 |
 
+**MacroTailwinds** — "Market & Macro Environment" section. 6 cards in responsive grid (1/2/3 col). Each card has category label, headline, body, and sourced data anchor. Data from `data/macro.ts`. Scroll-triggered stagger animation.
+
+| Card | Category | Data Anchor Source |
+|------|----------|--------------------|
+| 1 | Energy Demand | EIA — 8.77B tons global coal consumption 2024 |
+| 2 | Technology Demand | IEA — 2.7% annual electricity demand growth |
+| 3 | Regulatory Climate | AP News — 31 EPA regulations rolled back |
+| 4 | Industry Repositioning | IEA — 1 trillion+ tons proven reserves |
+| 5 | Domestic Manufacturing | Industry research — $1.53T total addressable market |
+| 6 | Competitive Dynamics | EPA — 1.2M metric tons CO₂-eq per refinery |
+
 **Relocated to other pages (not deleted):**
 - Single Facility Revenue ($1.1B), EBITDA ($837.5M), Gross Margin (87.5%) → already on Economics page (FacilityEconomics section)
 - Net Margin (67.0%) → already on Financials page
