@@ -89,7 +89,7 @@ export const PARTNERS: Partner[] = [
   },
   {
     id: 'hybrid',
-    name: 'HyBrid Financial',
+    name: 'Hybrid Financial',
     role: 'Institutional IR',
     category: 'capital-markets',
     description: 'Institutional investor relations — funds, family offices, asset managers.',

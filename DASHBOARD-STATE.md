@@ -190,7 +190,7 @@ Total Current TAM: ~$1,528.8B → Projected: ~$2,094.5B
 | Lockton | Insurance | Insurance | Executed |
 | Ariel Green | Performance Bond | Insurance | Executed |
 | Market Street IR | Retail IR | Capital Markets | Executed |
-| HyBrid Financial | Institutional IR | Capital Markets | Executed |
+| Hybrid Financial | Institutional IR | Capital Markets | Executed |
 | InServ | Asset Services | Operations | Executed |
 | TOPSOE | Catalyst & Licensing | Licensing | Executed |
 | AEP | Power Supply | Infrastructure | Executed |

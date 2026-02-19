@@ -117,27 +117,35 @@ export default function MarginExplainer() {
             </div>
 
             {/* Navigation Arrows */}
-            <div className="flex items-center justify-between px-8 pb-6">
+            <div className="flex items-center justify-between px-8 pb-8 pt-2">
               <button
                 onClick={() => canGoBack && setActiveStep((s) => s - 1)}
-                className={`flex items-center gap-2 text-sm transition-colors duration-200 ${
-                  canGoBack ? 'text-text-secondary hover:text-text-primary' : 'text-text-tertiary/30 cursor-default'
-                }`}
+                className={`
+                  w-11 h-11 rounded-full flex items-center justify-center transition-all duration-300
+                  ${canGoBack
+                    ? 'bg-white/[0.06] border border-white/10 text-text-secondary hover:bg-white/[0.12] hover:border-white/20 hover:text-text-primary hover:scale-105 active:scale-95'
+                    : 'bg-white/[0.02] border border-white/[0.04] text-text-tertiary/20 cursor-default'
+                  }
+                `}
                 disabled={!canGoBack}
               >
-                <ChevronLeft size={16} /> Previous
+                <ChevronLeft size={20} />
               </button>
               <span className="text-[10px] uppercase tracking-[0.2em] text-text-tertiary font-medium">
                 Step {activeStep} of 5
               </span>
               <button
                 onClick={() => canGoForward && setActiveStep((s) => s + 1)}
-                className={`flex items-center gap-2 text-sm transition-colors duration-200 ${
-                  canGoForward ? 'text-text-secondary hover:text-text-primary' : 'text-text-tertiary/30 cursor-default'
-                }`}
+                className={`
+                  w-11 h-11 rounded-full flex items-center justify-center transition-all duration-300
+                  ${canGoForward
+                    ? 'bg-white/[0.06] border border-white/10 text-text-secondary hover:bg-white/[0.12] hover:border-white/20 hover:text-text-primary hover:scale-105 active:scale-95'
+                    : 'bg-white/[0.02] border border-white/[0.04] text-text-tertiary/20 cursor-default'
+                  }
+                `}
                 disabled={!canGoForward}
               >
-                Next <ChevronRight size={16} />
+                <ChevronRight size={20} />
               </button>
             </div>
           </Card>

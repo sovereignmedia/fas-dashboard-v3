@@ -23,7 +23,7 @@ export const MILESTONES: Milestone[] = [
   { id: 'land', category: 'construction', title: 'Site Acquisition', description: 'Mason County, WV — Ohio River access, CSX rail spur.', status: 'completed', guidanceAccuracy: 'Completed' },
   { id: 'reg-a', category: 'capital', title: 'Reg A+ Launched', description: '$10M+ raised from 3,700+ shareholders.', status: 'completed', guidanceAccuracy: 'Completed' },
   { id: 'board', category: 'legal', title: 'Board Placement (3 of 4)', description: 'Independent board members placed.', status: 'completed', guidanceAccuracy: '3 of 4 — final seat in progress' },
-  { id: 'ir-firms', category: 'capital', title: 'IR Firms Engaged', description: 'Market Street IR + HyBrid Financial engaged.', status: 'completed', guidanceAccuracy: 'Completed' },
+  { id: 'ir-firms', category: 'capital', title: 'IR Firms Engaged', description: 'Market Street IR + Hybrid Financial engaged.', status: 'completed', guidanceAccuracy: 'Completed' },
   { id: 'fel-3', category: 'engineering', title: 'FEL-3 In Progress', description: 'Detailed engineering and Class 3 cost estimate.', status: 'on-track' },
   { id: 'reg-a-75m', category: 'capital', title: 'Reg A Target: $75M', description: 'Scaling retail offering. $371M indicated interest in funnel.', status: 'on-track' },
   { id: 'ipo', category: 'capital', title: 'IPO Target: Q3 2026', description: 'Initial Public Offering.', status: 'upcoming' },
