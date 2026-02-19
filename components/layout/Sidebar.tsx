@@ -27,7 +27,7 @@ const NAV_ITEMS = [
   { label: 'Financials', href: '/dashboard/financials', icon: 'TrendingUp' as const },
   { label: 'Capital', href: '/dashboard/capital', icon: 'Landmark' as const },
   { label: 'Expansion', href: '/dashboard/expansion', icon: 'Globe' as const },
-  { label: 'Execution Roadmap', href: '/dashboard/roadmap', icon: 'Map' as const },
+  { label: 'Fundraising & Execution', href: '/dashboard/roadmap', icon: 'Map' as const },
 ];
 
 export default function Sidebar() {

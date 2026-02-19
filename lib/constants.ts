@@ -13,5 +13,5 @@ export const NAV_ITEMS = [
   { label: 'Financials', href: '/dashboard/financials', icon: 'TrendingUp' },
   { label: 'Capital', href: '/dashboard/capital', icon: 'Landmark' },
   { label: 'Expansion', href: '/dashboard/expansion', icon: 'Globe' },
-  { label: 'Execution Roadmap', href: '/dashboard/roadmap', icon: 'Map' },
+  { label: 'Fundraising & Execution', href: '/dashboard/roadmap', icon: 'Map' },
 ] as const;

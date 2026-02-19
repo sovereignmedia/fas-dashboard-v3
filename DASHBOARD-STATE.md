@@ -340,7 +340,7 @@ Total Current TAM: ~$1,528.8B → Projected: ~$2,094.5B
 
 ---
 
-### Execution Roadmap (`/dashboard/roadmap`)
+### Fundraising & Execution (`/dashboard/roadmap`)
 
 **Header:** "Project Roadmap" / "Capital Roadmap & Fundraising"
 **Subtitle:** "Five-phase capital strategy from bridge financing through post-IPO execution. $1.275B total capital deployment across the full lifecycle."
