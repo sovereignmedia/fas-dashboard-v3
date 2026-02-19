@@ -3,6 +3,7 @@
 import SectionHeader from '@/components/ui/SectionHeader';
 import RiskAnalysis from '@/components/sections/RiskAnalysis';
 import MilestoneTracker from '@/components/sections/MilestoneTracker';
+import DiligenceQA from '@/components/sections/DiligenceQA';
 import Disclaimer from '@/components/ui/Disclaimer';
 
 export default function RiskAnalysisPage() {
@@ -15,6 +16,14 @@ export default function RiskAnalysisPage() {
       />
 
       <RiskAnalysis />
+
+      <SectionHeader
+        overline="Institutional Diligence"
+        title="Risk Mitigation Q&A"
+        subtitle="30 institutional-grade risk mitigation questions across 10 categories — addressing the concerns sophisticated investors raise during diligence, with detailed responses and management commentary."
+      />
+
+      <DiligenceQA />
 
       <SectionHeader
         overline="Execution Tracking"
