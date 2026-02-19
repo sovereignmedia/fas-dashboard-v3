@@ -31,7 +31,7 @@ export default function RiskAnalysisPage() {
 
       <CollapsibleSection
         overline="Institutional Diligence"
-        title="Risk Mitigation Q&A"
+        title="Risk Mitigation FAQs"
         subtitle="30 institutional-grade risk mitigation questions across 10 categories — addressing concerns sophisticated investors raise during diligence."
         summaryBadge="30 questions"
       >

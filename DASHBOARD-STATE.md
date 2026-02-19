@@ -15,7 +15,7 @@
 **Header:** "Executive Summary" / "Frontieras North America"
 **Subtitle:** "Patented clean energy technology converting coal into six high-value products. First commercial facility: Mason County, West Virginia."
 
-**Company Description:** Two-paragraph narrative covering FASForm™ technology overview, first facility location (Mason County, WV), all major partners under executed MSAs, pre-revenue status, IPO preparation, and $20M+ Reg A+ validation from 3,700+ shareholders.
+**Company Description:** Two-paragraph narrative covering FASForm™ technology overview with explicit CTL differentiation ("fundamentally distinct from coal-to-liquids gasification"), "without catalysts or combustion" framing, first facility location (Mason County, WV), all major partners under executed MSAs, pre-revenue status, IPO preparation, and $20M+ Reg A+ validation from 3,700+ shareholders.
 
 **Metric Cards (3):**
 | Label | Value | Subtitle | Source |
@@ -137,7 +137,7 @@ Total Current TAM: ~$1,528.8B → Projected: ~$2,094.5B
 **Sections rendered:**
 1. **RiskAnalysis** — 14 risk categories in 3-column grid with mitigation tracker
 2. **SWOTAnalysis** — 2×2 SWOT grid
-3. **DiligenceQA** — 30 institutional Q&A
+3. **DiligenceQA** — 30 institutional FAQs
 4. **MilestoneTracker** — 16 milestones
 
 **Risk Categories (14):**
@@ -166,7 +166,7 @@ Total Current TAM: ~$1,528.8B → Projected: ~$2,094.5B
 - **Opportunities (6):** Asia-Pacific expansion, steel/met market growth, waste plastic co-feeding, favorable regulatory environment, AI/data center energy demand, coal industry resurgence
 - **Threats (4):** Future environmental regulation, energy price fluctuations, renewable energy competition, negative fossil fuel perception
 
-**Diligence Q&A:** 30 questions across 10 categories: Capitalization & Funding, Technology Validation, Commercial Contracts, Supply Chain & Construction, Operational Execution, Regulatory & Environmental, Financial Modeling, Governance & Control, Project Execution & Timeline, Capital Structure & Financing
+**Diligence FAQs:** 30 questions across 10 categories: Capitalization & Funding, Technology Validation, Commercial Contracts, Supply Chain & Construction, Operational Execution, Regulatory & Environmental, Financial Modeling, Governance & Control, Project Execution & Timeline, Capital Structure & Financing
 
 ---
 
@@ -455,7 +455,7 @@ All 15 partners have `agreementStatus: 'executed'`.
 | Expansion | PenetrationCalculator | Slider: market penetration % (collapsed by default inside CollapsibleSection) |
 | Capital | CapExWaterfall | Toggle: Category View ↔ Line Items table |
 | Risk | RiskCard | Expand/collapse mitigation details |
-| Risk | DiligenceQA | Accordion Q&A, category filter tabs |
+| Risk | DiligenceQA | Accordion FAQs, category filter tabs |
 | Team | LeadershipGrid | Click "Read Full Bio" to expand/collapse |
 | Due Diligence | PartnerGrid | Category filter tabs (All, Operations, Engineering, etc.) |
 | FASForm™ | MarginExplainer | 5-step interactive walkthrough: step tabs, prev/next nav, animated bars/charts per step |
