@@ -5,6 +5,7 @@ import CapitalTimeline from '@/components/sections/CapitalTimeline';
 import RegAPerformanceSection from '@/components/sections/RegAPerformance';
 import UseOfProceedsSection from '@/components/sections/UseOfProceeds';
 import StrategicPartnersSection from '@/components/sections/StrategicPartners';
+import CapExWaterfall from '@/components/sections/CapExWaterfall';
 
 export default function CapitalStructurePage() {
   return (
@@ -19,6 +20,8 @@ export default function CapitalStructurePage() {
       <RegAPerformanceSection />
       <UseOfProceedsSection />
       <StrategicPartnersSection />
+
+      <CapExWaterfall />
     </div>
   );
 }

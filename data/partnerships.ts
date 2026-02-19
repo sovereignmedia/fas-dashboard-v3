@@ -4,7 +4,7 @@ export interface Partner {
   id: string;
   name: string;
   role: string;
-  category: 'operations' | 'engineering' | 'insurance' | 'procurement' | 'capital-markets';
+  category: 'operations' | 'engineering' | 'insurance' | 'procurement' | 'capital-markets' | 'infrastructure' | 'licensing';
   description: string;
   credentials: string;
   agreementStatus: 'executed' | 'in-progress' | 'planned';
@@ -94,6 +94,60 @@ export const PARTNERS: Partner[] = [
     category: 'capital-markets',
     description: 'Institutional investor relations — funds, family offices, asset managers.',
     credentials: '1,900 institutional investor contacts.',
+    agreementStatus: 'executed',
+  },
+  {
+    id: 'inserv',
+    name: 'InServ',
+    role: 'Asset Services',
+    category: 'operations',
+    description: 'Comprehensive asset services — inspection, maintenance, and turnaround support for industrial facilities.',
+    credentials: 'Experienced industrial service provider across energy and chemicals sectors.',
+    agreementStatus: 'executed',
+  },
+  {
+    id: 'topsoe',
+    name: 'TOPSOE',
+    role: 'Catalyst & Licensing',
+    category: 'licensing',
+    description: 'Catalyst technology and process licensing for hydrotreating and refining operations.',
+    credentials: 'Global leader in catalysis — supporting refineries and chemical plants worldwide.',
+    agreementStatus: 'executed',
+  },
+  {
+    id: 'aep',
+    name: 'AEP (American Electric Power)',
+    role: 'Power Supply',
+    category: 'infrastructure',
+    description: 'Electrical power supply and grid connection for facility operations.',
+    credentials: 'One of the largest electric utilities in the United States. Serves 5.6M customers.',
+    agreementStatus: 'executed',
+  },
+  {
+    id: 'transcanada',
+    name: 'TransCanada (TC Energy)',
+    role: 'Natural Gas Supply',
+    category: 'infrastructure',
+    description: 'Natural gas supply and pipeline access for facility start-up and supplemental process heat.',
+    credentials: 'Major North American energy infrastructure company. 93,300 km of natural gas pipelines.',
+    agreementStatus: 'executed',
+  },
+  {
+    id: 'greylock',
+    name: 'Greylock Energy',
+    role: 'Feedstock Supply',
+    category: 'procurement',
+    description: 'Coal feedstock procurement and logistics — 10-year contract for 27M tons of Pittsburgh #8 coal with collared pricing.',
+    credentials: 'Regional coal supplier with barge-delivery capabilities via Ohio River.',
+    agreementStatus: 'executed',
+  },
+  {
+    id: 'csx',
+    name: 'CSX Transportation',
+    role: 'Rail Logistics',
+    category: 'infrastructure',
+    description: 'On-site rail spur access for product distribution and feedstock delivery at Mason County facility.',
+    credentials: 'Class I railroad — 19,500 miles of track across 23 eastern US states.',
     agreementStatus: 'executed',
   },
 ];

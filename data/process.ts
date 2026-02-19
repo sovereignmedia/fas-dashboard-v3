@@ -90,6 +90,17 @@ export const PROCESS_OUTPUTS: ProcessOutput[] = [
     offtakeStatus: '10-year LOI — 100% of production',
   },
   {
+    id: 'jet-fuel',
+    name: 'Jet Fuel / Kerosene',
+    category: 'liquid',
+    annualProduction: 'TBD',
+    unitPrice: 'Market price',
+    annualRevenue: 0,
+    marketUse: 'Aviation-grade kerosene for commercial and military jet fuel markets. $204B+ global market.',
+    yieldPerTon: 'TBD — pending financial model integration',
+    offtakeStatus: 'Under evaluation',
+  },
+  {
     id: 'hydrogen',
     name: 'Hydrogen (FASGas™)',
     category: 'gas',

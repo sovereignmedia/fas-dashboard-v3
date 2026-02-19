@@ -15,8 +15,10 @@ const CATEGORY_TABS: { value: Category; label: string }[] = [
   { value: 'all', label: 'All' },
   { value: 'operations', label: 'Operations' },
   { value: 'engineering', label: 'Engineering' },
-  { value: 'insurance', label: 'Insurance' },
+  { value: 'infrastructure', label: 'Infrastructure' },
   { value: 'procurement', label: 'Procurement' },
+  { value: 'insurance', label: 'Insurance' },
+  { value: 'licensing', label: 'Licensing' },
   { value: 'capital-markets', label: 'Capital Markets' },
 ];
 

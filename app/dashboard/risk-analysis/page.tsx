@@ -2,6 +2,7 @@
 
 import SectionHeader from '@/components/ui/SectionHeader';
 import RiskAnalysis from '@/components/sections/RiskAnalysis';
+import SWOTAnalysis from '@/components/sections/SWOTAnalysis';
 import MilestoneTracker from '@/components/sections/MilestoneTracker';
 import DiligenceQA from '@/components/sections/DiligenceQA';
 import Disclaimer from '@/components/ui/Disclaimer';
@@ -12,10 +13,12 @@ export default function RiskAnalysisPage() {
       <SectionHeader
         overline="Risk Analysis"
         title="Risk Mitigation Framework"
-        subtitle="Institutional-grade risk assessment covering technology scale-up, capital structure, and construction execution. Each risk includes executed mitigations and partner commitments."
+        subtitle="Institutional-grade risk assessment across 14 categories — covering technology, capital, construction, environmental, cybersecurity, and more. Each risk includes executed mitigations and partner commitments."
       />
 
       <RiskAnalysis />
+
+      <SWOTAnalysis />
 
       <SectionHeader
         overline="Institutional Diligence"

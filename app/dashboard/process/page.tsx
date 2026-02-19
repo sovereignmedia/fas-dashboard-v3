@@ -3,6 +3,7 @@
 import SectionHeader from '@/components/ui/SectionHeader';
 import ProcessFlow from '@/components/sections/ProcessFlow';
 import CTLComparison from '@/components/sections/CTLComparison';
+import MarketOpportunity from '@/components/sections/MarketOpportunity';
 import Disclaimer from '@/components/ui/Disclaimer';
 
 export default function ProcessPage() {
@@ -11,7 +12,7 @@ export default function ProcessPage() {
       <SectionHeader
         overline="FASForm™ Process"
         title="Input → Process → Output"
-        subtitle="Single-feedstock thermal cracking process converting Pittsburgh #8 coal into seven distinct product streams with zero waste."
+        subtitle="Single-feedstock thermal cracking process converting Pittsburgh #8 coal into eight distinct product streams with zero waste."
       />
 
       <ProcessFlow />
@@ -23,6 +24,8 @@ export default function ProcessPage() {
       />
 
       <CTLComparison />
+
+      <MarketOpportunity />
 
       <div className="mt-12">
         <Disclaimer type="projectionDisclaimer" size="md" collapsed />

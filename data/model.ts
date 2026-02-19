@@ -43,7 +43,7 @@ export const CAPEX = {
 export const OPERATIONS = {
   coalThroughputTonsPerDay: 7_500,
   coalCostPerTon:              50,
-  annualCoalCost:      11_250_000,
+  annualCoalCost:      135_000_000,
 } as const;
 
 // ─── Rev&COGs Sheet: Product Economics (MONTHLY figures) ────────────

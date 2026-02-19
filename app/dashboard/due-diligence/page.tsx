@@ -2,6 +2,7 @@
 
 import SectionHeader from '@/components/ui/SectionHeader';
 import PartnerGrid from '@/components/sections/PartnerGrid';
+import CompetitorTable from '@/components/sections/CompetitorTable';
 import Disclaimer from '@/components/ui/Disclaimer';
 
 export default function DueDiligencePage() {
@@ -10,10 +11,12 @@ export default function DueDiligencePage() {
       <SectionHeader
         overline="Due Diligence"
         title="Strategic Partners & Agreements"
-        subtitle="Nine institutional-grade partners across operations, engineering, insurance, procurement, and capital markets. All MSAs executed."
+        subtitle="15 institutional-grade partners across operations, engineering, insurance, procurement, infrastructure, and capital markets. All MSAs executed."
       />
 
       <PartnerGrid />
+
+      <CompetitorTable />
 
       <div className="mt-12">
         <Disclaimer type="confidentiality" size="md" collapsed />
