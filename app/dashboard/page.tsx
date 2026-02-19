@@ -5,35 +5,14 @@ import { motion } from 'framer-motion';
 import SectionHeader from '@/components/ui/SectionHeader';
 import MetricCard from '@/components/ui/MetricCard';
 import { facilityEconomics } from '@/data/products';
-import { FACILITY, EXPANSION, CAPITAL, OPERATIONS } from '@/data/model';
+import { EXPANSION, CAPITAL, OPERATIONS, CAPEX } from '@/data/model';
 import Card from '@/components/ui/Card';
 import NACommercialization from '@/components/charts/NACommercialization';
 import { CHART_COLORS } from '@/lib/colors';
-import { formatCurrency, formatPercent, formatNumber } from '@/lib/formatters';
+import { formatCurrency, formatNumber } from '@/lib/formatters';
 import { container, item } from '@/lib/animations';
 
 const overviewMetrics = [
-  {
-    label: 'Single Facility Revenue',
-    value: formatCurrency(FACILITY.totalRevenue, true),
-    subtitle: 'Year 4 Steady State',
-    href: '/dashboard/financials',
-    color: CHART_COLORS.blue,
-  },
-  {
-    label: 'Single Facility EBITDA',
-    value: formatCurrency(FACILITY.ebitda, true),
-    subtitle: 'Year 4 Steady State',
-    href: '/dashboard/financials',
-    color: CHART_COLORS.green,
-  },
-  {
-    label: 'Gross Margin',
-    value: formatPercent(FACILITY.grossMargin),
-    subtitle: '6 Revenue Streams',
-    href: '/dashboard/economics',
-    color: CHART_COLORS.gold,
-  },
   {
     label: 'Patent-Protected Countries',
     value: String(EXPANSION.patentCountries),
@@ -52,7 +31,7 @@ const overviewMetrics = [
     label: 'Shareholders',
     value: `${formatNumber(CAPITAL.shareholders)}+`,
     subtitle: 'Proven Public Demand',
-    href: '/dashboard/team',
+    href: '/dashboard/capital',
     color: CHART_COLORS.orange,
   },
 ];
@@ -65,26 +44,42 @@ export default function DashboardOverview() {
       <SectionHeader
         overline="Executive Summary"
         title="Frontieras North America"
-        subtitle="Converting coal into six high-value products through patented clean energy technology. One facility. Nine countries. A new asset class."
+        subtitle="Patented clean energy technology converting coal into six high-value products. First commercial facility: Mason County, West Virginia."
       />
 
+      {/* Company description */}
       <motion.div
         variants={container}
         initial="hidden"
         animate="show"
-        className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8"
       >
-        {overviewMetrics.map((metric) => (
-          <motion.div key={metric.label} variants={item}>
-            <MetricCard
-              label={metric.label}
-              value={metric.value}
-              subtitle={metric.subtitle}
-              color={metric.color}
-              onClick={() => router.push(metric.href)}
-            />
-          </motion.div>
-        ))}
+        <motion.div variants={item}>
+          <Card className="mb-10" hover={false}>
+            <div className="max-w-3xl">
+              <p className="text-base leading-relaxed text-text-secondary">
+                Frontieras North America is developing the first commercial-scale deployment of its patented FASForm™ process — a thermal cracking technology that converts coal into six distinct, high-value product streams with zero waste and no direct CO₂ emissions. The company&apos;s first facility is under development in Mason County, West Virginia, with all major engineering, operations, and infrastructure partners under executed MSAs.
+              </p>
+              <p className="text-base leading-relaxed text-text-secondary mt-4">
+                Frontieras is pre-revenue and preparing for IPO. The company has raised $20M+ through Regulation A+ from 3,700+ shareholders, validating public market demand ahead of institutional capital deployment.
+              </p>
+            </div>
+          </Card>
+        </motion.div>
+
+        {/* Key metrics */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {overviewMetrics.map((metric) => (
+            <motion.div key={metric.label} variants={item}>
+              <MetricCard
+                label={metric.label}
+                value={metric.value}
+                subtitle={metric.subtitle}
+                color={metric.color}
+                onClick={() => router.push(metric.href)}
+              />
+            </motion.div>
+          ))}
+        </div>
       </motion.div>
 
       <Card className="!p-10 mt-12 mb-2" hover={false}>
@@ -99,11 +94,9 @@ export default function DashboardOverview() {
         <NACommercialization />
       </Card>
 
-      <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8">
-        <QuickStat label="Total CapEx" value={formatCurrency(facilityEconomics.totalCapex, true)} />
-        <QuickStat label="Net Margin" value={formatPercent(facilityEconomics.netMargin)} />
+      <div className="mt-16 grid grid-cols-2 gap-8">
+        <QuickStat label="Total CapEx" value={formatCurrency(CAPEX.total, true)} />
         <QuickStat label="Coal Throughput" value={`${formatNumber(OPERATIONS.coalThroughputTonsPerDay)} t/day`} />
-        <QuickStat label="Max Facilities" value={String(EXPANSION.totalFacilityPotential)} />
       </div>
     </div>
   );

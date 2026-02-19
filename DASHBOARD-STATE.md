@@ -13,27 +13,29 @@
 ### Overview (`/dashboard`)
 
 **Header:** "Executive Summary" / "Frontieras North America"
-**Subtitle:** "Converting coal into six high-value products through patented clean energy technology. One facility. Nine countries. A new asset class."
+**Subtitle:** "Patented clean energy technology converting coal into six high-value products. First commercial facility: Mason County, West Virginia."
 
-**Metric Cards (6):**
+**Company Description:** Two-paragraph narrative covering FASForm™ technology overview, first facility location (Mason County, WV), all major partners under executed MSAs, pre-revenue status, IPO preparation, and $20M+ Reg A+ validation from 3,700+ shareholders.
+
+**Metric Cards (3):**
 | Label | Value | Subtitle | Source |
 |-------|-------|----------|--------|
-| Single Facility Revenue | $1.1B | Year 4 Steady State | `FACILITY.totalRevenue` → $1,079,142,402 |
-| Single Facility EBITDA | $837.5M | Year 4 Steady State | `FACILITY.ebitda` → $837,513,709 |
-| Gross Margin | 87.5% | 6 Revenue Streams | `FACILITY.grossMargin` → 0.875 |
 | Patent-Protected Countries | 9 | Global IP Portfolio | `EXPANSION.patentCountries` → 9 |
 | Reg A+ Raised | $20.0M+ | 3,700+ Shareholders | `CAPITAL.totalRaised` → $20,000,000 |
 | Shareholders | 3,700+ | Proven Public Demand | `CAPITAL.shareholders` → 3,700 |
 
 **Commercialization Roadmap:** North America Facility Pipeline chart (NACommercialization component)
 
-**Quick Stats (4):**
+**Quick Stats (2):**
 | Label | Value | Source |
 |-------|-------|--------|
 | Total CapEx | $745.5M | `CAPEX.total` → $745,541,205 |
-| Net Margin | 67.0% | `FACILITY.netMargin` → 0.670 |
 | Coal Throughput | 7,500 t/day | `OPERATIONS.coalThroughputTonsPerDay` → 7,500 |
-| Max Facilities | 143 | `EXPANSION.totalFacilityPotential` → 143 |
+
+**Relocated to other pages (not deleted):**
+- Single Facility Revenue ($1.1B), EBITDA ($837.5M), Gross Margin (87.5%) → already on Economics page (FacilityEconomics section)
+- Net Margin (67.0%) → already on Financials page
+- Max Facilities (143) → already on Expansion page
 
 ---
 
