@@ -2,7 +2,7 @@
 
 > Plain-English content audit of every piece of text, metric, financial figure, and strategic claim displayed on the Frontieras Investor Dashboard. This is a strategic investor-relations document — treat it like a live data room index.
 
-**Last updated:** 2025-02-19
+**Last updated:** 2026-02-19
 **Model version:** Financial Model 4.1.25.xlsx (April 2025)
 **Dashboard version:** v1.0
 
@@ -34,135 +34,6 @@
 | Net Margin | 67.0% | `FACILITY.netMargin` → 0.670 |
 | Coal Throughput | 7,500 t/day | `OPERATIONS.coalThroughputTonsPerDay` → 7,500 |
 | Max Facilities | 143 | `EXPANSION.totalFacilityPotential` → 143 |
-
----
-
-### Economics (`/dashboard/economics`)
-
-**Header:** "Facility Economics" / "Product Economics & Revenue"
-**Subtitle:** "Single-facility steady-state economics across eight product lines. All figures represent Year 4+ annual projections at modeled pricing."
-
-**Sections rendered:**
-1. **FacilityEconomicsSection** — Key facility-level metrics
-2. **ProductGrid** — 5 revenue-generating products with pricing, volumes, margins
-3. **PricingSensitivity** — Spot vs. modeled pricing comparison
-4. **WaterfallChart** — Revenue waterfall visualization
-5. **OpExBreakdown** — Operating expense structure
-
-**OpEx Breakdown figures:**
-| Item | % of Revenue | Annual Est. |
-|------|-------------|-------------|
-| CAMS Operations Management | 5% | $54M |
-| Broker & Distribution Fees | 3.5% | $38M |
-| Natural Gas (Supplemental) | ~1% | $11M |
-| Professional Services | Fixed | $8M |
-| G&A / Corporate | Fixed | $12M |
-
-**OpEx Summary cards:** Total ~$123M, OpEx as % of Revenue ~11.4%, EBITDA Margin 77.6%
-
----
-
-### Financials (`/dashboard/financials`)
-
-**Header:** "Financial Model" / "Financials & Valuation"
-**Subtitle:** "Interactive financial projections, valuation scenarios, and share value modeling across multi-facility scale."
-
-**Sections rendered:**
-1. **ValuationMethodology** — 3 valuation scenarios (interactive toggle)
-2. **FacilityScaler** — Multi-facility EBITDA × multiple calculator
-3. **ProjectionAreaChart** — 5-year revenue/EBITDA/net income projection
-4. **ShareCalculator** — Per-share value at selected multiple
-
-**Valuation Scenarios:**
-| Scenario | Multiple | Description |
-|----------|----------|-------------|
-| Traditional Energy | 6x | ConocoPhillips, Marathon, Valero comps |
-| Clean Energy Tech | 12x | ESG positioning + carbon-negative outputs |
-| Paradigm Shift | 18x | Novel tech disrupting multiple commodity markets |
-
-**5-Year Projections (from `financials.ts`):**
-| Year | Label | Revenue | EBITDA | Net Income |
-|------|-------|---------|--------|------------|
-| Year 1 | Construction | $0 | -$1.4M | -$65.2M |
-| Year 2 | Construction / Commissioning | $0 | -$3.1M | -$118.1M |
-| Year 3 | Ramp-Up (75%→100%) | $1,043.7M | $808.8M | $688.8M |
-| Year 4 | Steady State | $1,079.1M | $837.5M | $722.9M |
-| Year 5 | Steady State + Escalation | $1,092.6M | $849.1M | $740.4M |
-
-**Disclaimer:** "These projections are forward-looking estimates based on internal financial models. Actual results may vary. This is not investment advice."
-
----
-
-### Expansion (`/dashboard/expansion`)
-
-**Header:** "Global Expansion" / "Market Command Center"
-**Subtitle:** "9 patent-protected markets spanning 143 facility opportunities across major coal-producing nations."
-
-**Sections rendered:**
-1. **InteractiveGlobeV3** — 3D rotating globe with patent countries
-2. **ExpansionGrid** — Country-level expansion data
-3. **PenetrationCalculator** — Market penetration slider
-4. **CoalProductionChart** — Coal production by country
-
----
-
-### Capital (`/dashboard/capital`)
-
-**Header:** "Capital Structure" / "Capital Roadmap & Fundraising"
-**Subtitle:** "Five-phase capital strategy from bridge financing through post-IPO execution. $1.275B total capital deployment across the full lifecycle."
-
-**Sections rendered:**
-1. **CapitalTimeline** — 5-phase capital strategy
-2. **RegAPerformanceSection** — Reg A+ campaign metrics
-3. **UseOfProceedsSection** — Use of proceeds breakdown
-4. **StrategicPartnersSection** — Strategic partners overview
-5. **CapExWaterfall** — Detailed CapEx breakdown (dual-view: chart + table)
-
-**CapEx Summary:**
-- Total: $745,541,205 (computed from 46 line items in `capex.ts`)
-- Categories: Engineering ($37.5M), Long-Lead Procurement ($97.5M), Construction ($295.3M), Other/Reserves ($399.2M)
-- 15% line-item contingency on most items + $150M contingency reserve
-
-**Capital Constants:**
-- Bridge Round: $25,000,000
-- Total Shares Outstanding: 100,000,000
-- Share Price: $7.77
-- Total Raised: $20,000,000
-- Shareholders: 3,700
-
----
-
-### Team (`/dashboard/team`)
-
-**Header:** "Team & Genesis" / "The People Behind Frontieras"
-**Subtitle:** "From a 30-year industrial engineering career to a world-class advisory network — the team assembling to deliver the reindustrialization thesis."
-
-**Sections rendered:**
-1. **CompanyOverview** — Company origin narrative
-2. **CompanyTimeline** — 8 milestones (2010–2026)
-3. **LeadershipGrid** — 5 executives with expandable bios
-4. **AdvisorGrid** — 8 advisors
-
-**Executive Team:**
-| Name | Title |
-|------|-------|
-| Matt McKean | Co-Founder & CEO |
-| Joe Witherspoon, P.E. | Co-Founder & CTO |
-| Jose Lopez | CFO |
-| Andrea Moran | CCO |
-| Doug Remy | VP Corporate Affairs |
-
-**Advisors:** Market Street Capital, RF Lafferty, Texas Capital, Hybrid Financial, GEM, Baker Botts LLP, CAMS, Performance Contractors
-
-**Timeline Milestones:**
-1. 2010 — Company Founded & Patents Filed
-2. 2013 — International Patent Expansion
-3. 2021 — 12-Month Pilot Completed
-4. 2023 — Regulation CF Campaign ($4.49M raised)
-5. 2024 — CAMS Partnership ($20B+ operator)
-6. 2025 — Regulation A+ Launch ($15M+ raised)
-7. 2025 — Insurance Validation (Lloyd's syndicate)
-8. 2026 — IPO Preparation
 
 ---
 
@@ -216,6 +87,31 @@
 | Sulfuric Acid | $15.0B | $20.0B | 4.2% | Sulfuric Acid |
 
 Total Current TAM: ~$1,528.8B → Projected: ~$2,094.5B
+
+---
+
+### Economics (`/dashboard/economics`)
+
+**Header:** "Facility Economics" / "Product Economics & Revenue"
+**Subtitle:** "Single-facility steady-state economics across eight product lines. All figures represent Year 4+ annual projections at modeled pricing."
+
+**Sections rendered:**
+1. **FacilityEconomicsSection** — Key facility-level metrics
+2. **ProductGrid** — 5 revenue-generating products with pricing, volumes, margins
+3. **PricingSensitivity** — Spot vs. modeled pricing comparison
+4. **WaterfallChart** — Revenue waterfall visualization
+5. **OpExBreakdown** — Operating expense structure
+
+**OpEx Breakdown figures:**
+| Item | % of Revenue | Annual Est. |
+|------|-------------|-------------|
+| CAMS Operations Management | 5% | $54M |
+| Broker & Distribution Fees | 3.5% | $38M |
+| Natural Gas (Supplemental) | ~1% | $11M |
+| Professional Services | Fixed | $8M |
+| G&A / Corporate | Fixed | $12M |
+
+**OpEx Summary cards:** Total ~$123M, OpEx as % of Revenue ~11.4%, EBITDA Margin 77.6%
 
 ---
 
@@ -301,6 +197,110 @@ Total Current TAM: ~$1,528.8B → Projected: ~$2,094.5B
 | Thermal Coke | Peabody ($4.5B), Arch ($2.8B), Glencore ($90B) | Renewables (NextEra, Orsted) |
 | Sulfuric Acid | Amal Ltd ($7.48B) | Hydrochloric Acid (Detrex, Hawkins) |
 | Fertilizer | Wesfarmers ($42.49B), Nutrien ($24.22B) | Organic (Haifa Group, IFFCO) |
+
+---
+
+### Team (`/dashboard/team`)
+
+**Header:** "Team & Genesis" / "The People Behind Frontieras"
+**Subtitle:** "From a 30-year industrial engineering career to a world-class advisory network — the team assembling to deliver the reindustrialization thesis."
+
+**Sections rendered:**
+1. **CompanyOverview** — Company origin narrative
+2. **CompanyTimeline** — 8 milestones (2010–2026)
+3. **LeadershipGrid** — 5 executives with expandable bios
+4. **AdvisorGrid** — 8 advisors
+
+**Executive Team:**
+| Name | Title |
+|------|-------|
+| Matt McKean | Co-Founder & CEO |
+| Joe Witherspoon, P.E. | Co-Founder & CTO |
+| Jose Lopez | CFO |
+| Andrea Moran | CCO |
+| Doug Remy | VP Corporate Affairs |
+
+**Advisors:** Market Street Capital, RF Lafferty, Texas Capital, Hybrid Financial, GEM, Baker Botts LLP, CAMS, Performance Contractors
+
+**Timeline Milestones:**
+1. 2010 — Company Founded & Patents Filed
+2. 2013 — International Patent Expansion
+3. 2021 — 12-Month Pilot Completed
+4. 2023 — Regulation CF Campaign ($4.49M raised)
+5. 2024 — CAMS Partnership ($20B+ operator)
+6. 2025 — Regulation A+ Launch ($15M+ raised)
+7. 2025 — Insurance Validation (Lloyd's syndicate)
+8. 2026 — IPO Preparation
+
+---
+
+### Financials (`/dashboard/financials`)
+
+**Header:** "Financial Model" / "Financials & Valuation"
+**Subtitle:** "Interactive financial projections, valuation scenarios, and share value modeling across multi-facility scale."
+
+**Sections rendered:**
+1. **ValuationMethodology** — 3 valuation scenarios (interactive toggle)
+2. **FacilityScaler** — Multi-facility EBITDA × multiple calculator
+3. **ProjectionAreaChart** — 5-year revenue/EBITDA/net income projection
+4. **ShareCalculator** — Per-share value at selected multiple
+
+**Valuation Scenarios:**
+| Scenario | Multiple | Description |
+|----------|----------|-------------|
+| Traditional Energy | 6x | ConocoPhillips, Marathon, Valero comps |
+| Clean Energy Tech | 12x | ESG positioning + carbon-negative outputs |
+| Paradigm Shift | 18x | Novel tech disrupting multiple commodity markets |
+
+**5-Year Projections (from `financials.ts`):**
+| Year | Label | Revenue | EBITDA | Net Income |
+|------|-------|---------|--------|------------|
+| Year 1 | Construction | $0 | -$1.4M | -$65.2M |
+| Year 2 | Construction / Commissioning | $0 | -$3.1M | -$118.1M |
+| Year 3 | Ramp-Up (75%→100%) | $1,043.7M | $808.8M | $688.8M |
+| Year 4 | Steady State | $1,079.1M | $837.5M | $722.9M |
+| Year 5 | Steady State + Escalation | $1,092.6M | $849.1M | $740.4M |
+
+**Disclaimer:** "These projections are forward-looking estimates based on internal financial models. Actual results may vary. This is not investment advice."
+
+---
+
+### Capital (`/dashboard/capital`)
+
+**Header:** "Capital Structure" / "Capital Roadmap & Fundraising"
+**Subtitle:** "Five-phase capital strategy from bridge financing through post-IPO execution. $1.275B total capital deployment across the full lifecycle."
+
+**Sections rendered:**
+1. **CapitalTimeline** — 5-phase capital strategy
+2. **RegAPerformanceSection** — Reg A+ campaign metrics
+3. **UseOfProceedsSection** — Use of proceeds breakdown
+4. **StrategicPartnersSection** — Strategic partners overview
+5. **CapExWaterfall** — Detailed CapEx breakdown (dual-view: chart + table)
+
+**CapEx Summary:**
+- Total: $745,541,205 (computed from 46 line items in `capex.ts`)
+- Categories: Engineering ($37.5M), Long-Lead Procurement ($97.5M), Construction ($295.3M), Other/Reserves ($399.2M)
+- 15% line-item contingency on most items + $150M contingency reserve
+
+**Capital Constants:**
+- Bridge Round: $25,000,000
+- Total Shares Outstanding: 100,000,000
+- Share Price: $7.77
+- Total Raised: $20,000,000
+- Shareholders: 3,700
+
+---
+
+### Expansion (`/dashboard/expansion`)
+
+**Header:** "Global Expansion" / "Market Command Center"
+**Subtitle:** "9 patent-protected markets spanning 143 facility opportunities across major coal-producing nations."
+
+**Sections rendered:**
+1. **InteractiveGlobeV3** — 3D rotating globe with patent countries
+2. **ExpansionGrid** — Country-level expansion data
+3. **PenetrationCalculator** — Market penetration slider
+4. **CoalProductionChart** — Coal production by country
 
 ---
 
@@ -512,4 +512,4 @@ All 5 executives have `fullBio` fields enabling expandable bios in LeadershipGri
 3. **Bio-Oil** — Referenced in ARCHITECTURE.md as existing in dashboard with `inExcelModel: false` flag but not found in current `products.ts` (may have been removed in v3)
 4. **Process Economics `valueMultiplier: '8x'`** — Claims $1 coal input → $8 product revenue, but `process.ts` says "seven distinct product streams" while there are actually 8 outputs listed
 5. **Subtitle inconsistencies** — Overview says "six high-value products", Process page says "eight distinct product streams", Economics says "eight product lines"
-6. **NAV_ITEMS duplication** — `lib/constants.ts` has 6 nav items, `Sidebar.tsx` has 10 (Sidebar is authoritative)
+6. **NAV_ITEMS in `lib/constants.ts`** now matches `Sidebar.tsx` (10 items, institutional narrative order)

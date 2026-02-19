@@ -19,14 +19,14 @@ const iconMap = {
 
 const NAV_ITEMS = [
   { label: 'Overview', href: '/dashboard', icon: 'LayoutDashboard' as const },
-  { label: 'Economics', href: '/dashboard/economics', icon: 'FlaskConical' as const },
-  { label: 'Financials', href: '/dashboard/financials', icon: 'TrendingUp' as const },
-  { label: 'Expansion', href: '/dashboard/expansion', icon: 'Globe' as const },
-  { label: 'Capital', href: '/dashboard/capital', icon: 'Landmark' as const },
-  { label: 'Team', href: '/dashboard/team', icon: 'Users' as const },
   { label: 'FASForm™', href: '/dashboard/process', icon: 'GitBranch' as const },
+  { label: 'Economics', href: '/dashboard/economics', icon: 'FlaskConical' as const },
   { label: 'Risk Mitigation', href: '/dashboard/risk-analysis', icon: 'ShieldCheck' as const },
   { label: 'Due Diligence', href: '/dashboard/due-diligence', icon: 'FileSearch' as const },
+  { label: 'Team', href: '/dashboard/team', icon: 'Users' as const },
+  { label: 'Financials', href: '/dashboard/financials', icon: 'TrendingUp' as const },
+  { label: 'Capital', href: '/dashboard/capital', icon: 'Landmark' as const },
+  { label: 'Expansion', href: '/dashboard/expansion', icon: 'Globe' as const },
   { label: 'Execution Roadmap', href: '/dashboard/roadmap', icon: 'Map' as const },
 ];
 
