@@ -12,7 +12,7 @@ const pageTitles: Record<string, string> = {
   '/dashboard/team': 'Genesis & Management',
   '/dashboard/process': 'FASForm™ Process',
   '/dashboard/risk-analysis': 'Risk Mitigation',
-  '/dashboard/due-diligence': 'Due Diligence',
+  '/dashboard/due-diligence': 'Strategic Partners',
   '/dashboard/roadmap': 'Fundraising & Execution',
 };
 
@@ -26,9 +26,9 @@ export default function Topbar() {
   };
 
   return (
-    <header className="h-20 bg-bg-primary/80 backdrop-blur-md flex items-center justify-between px-8 sticky top-0 z-30 shadow-[0_1px_0_rgba(255,255,255,0.04)]">
+    <header className="h-24 bg-bg-primary/80 backdrop-blur-md flex items-center justify-between px-8 sticky top-0 z-30 shadow-[0_1px_0_rgba(255,255,255,0.04)]">
       <div>
-        <h2 className="text-xl font-light tracking-tight text-text-primary">{title}</h2>
+        <h2 className="text-2xl font-light tracking-tight text-text-primary">{title}</h2>
       </div>
       <div className="flex items-center gap-5">
         <span className="text-[10px] uppercase tracking-[0.2em] text-text-tertiary font-medium rounded-full px-3 py-1 bg-white/[0.04]">

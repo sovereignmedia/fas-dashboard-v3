@@ -135,10 +135,9 @@ Total Current TAM: ~$1,528.8B → Projected: ~$2,094.5B
 **Subtitle:** "Institutional-grade risk assessment across 14 categories — covering technology, capital, construction, environmental, cybersecurity, and more."
 
 **Sections rendered:**
-1. **RiskAnalysis** — 14 risk categories in 3-column grid with mitigation tracker
-2. **SWOTAnalysis** — 2×2 SWOT grid
+1. **SWOTAnalysis** — 2×2 SWOT grid
+2. **RiskAnalysis** — 14 risk categories in 3-column grid with mitigation tracker
 3. **DiligenceQA** — 30 institutional FAQs
-4. **MilestoneTracker** — 16 milestones
 
 **Risk Categories (14):**
 | Category | Severity | Mitigations |
@@ -170,9 +169,9 @@ Total Current TAM: ~$1,528.8B → Projected: ~$2,094.5B
 
 ---
 
-### Due Diligence (`/dashboard/due-diligence`)
+### Strategic Partners (`/dashboard/due-diligence`)
 
-**Header:** "Due Diligence" / "Strategic Partners & Agreements"
+**Header:** "Strategic Partners" / "Strategic Partners & Agreements"
 **Subtitle:** "15 institutional-grade partners across operations, engineering, insurance, procurement, infrastructure, and capital markets. All MSAs executed."
 
 **Sections rendered:**
@@ -431,7 +430,7 @@ All 15 partners have `agreementStatus: 'executed'`.
 | FASForm™ | ✅ | projectionDisclaimer (md, collapsed) |
 | Economics | ✅ | projectionDisclaimer (md, collapsed) |
 | Risk Mitigation | ✅ | forwardLooking (md, collapsed) |
-| Due Diligence | ✅ | confidentiality (md, collapsed) |
+| Strategic Partners | ✅ | confidentiality (md, collapsed) |
 | Team | — | No projections shown |
 | Financials | ✅ | Inline text disclaimer |
 | Capital | ✅ | forwardLooking (md, collapsed) |
@@ -457,7 +456,7 @@ All 15 partners have `agreementStatus: 'executed'`.
 | Risk | RiskCard | Expand/collapse mitigation details |
 | Risk | DiligenceQA | Accordion FAQs, category filter tabs |
 | Team | LeadershipGrid | Click "Read Full Bio" to expand/collapse |
-| Due Diligence | PartnerGrid | Category filter tabs (All, Operations, Engineering, etc.) |
+| Strategic Partners | PartnerGrid | Category filter tabs (All, Operations, Engineering, etc.) |
 | FASForm™ | MarginExplainer | 5-step interactive walkthrough: step tabs, prev/next nav, animated bars/charts per step |
 | FASForm™ | CTLComparison | Side-by-side comparison table |
 
@@ -553,7 +552,7 @@ All 5 executives have `fullBio` fields enabling expandable bios in LeadershipGri
 | Main Compliance | `lib/constants.ts` COMPLIANCE_DISCLAIMER | Not an offer/solicitation, forward-looking risks, confidential |
 | Forward-Looking | Overview, Risk Mitigation, Capital, Roadmap | Section 27A/21E risk/uncertainty warning |
 | Projection | FASForm™, Economics, Expansion | Model estimate caveat — commodity/regulatory/timeline risks |
-| Confidentiality | Due Diligence | Not for redistribution |
+| Confidentiality | Strategic Partners | Not for redistribution |
 | Financials Inline | Financials page | "Not investment advice" + Year 4 EBITDA assumption |
 | ShareCalculator Inline | Financials page | "Theoretical valuation metric, not a market/offer price" |
 

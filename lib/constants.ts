@@ -8,7 +8,7 @@ export const NAV_ITEMS = [
   { label: 'FASForm™', href: '/dashboard/process', icon: 'GitBranch' },
   { label: 'Economics', href: '/dashboard/economics', icon: 'FlaskConical' },
   { label: 'Risk Mitigation', href: '/dashboard/risk-analysis', icon: 'ShieldCheck' },
-  { label: 'Due Diligence', href: '/dashboard/due-diligence', icon: 'FileSearch' },
+  { label: 'Strategic Partners', href: '/dashboard/due-diligence', icon: 'FileSearch' },
   { label: 'Team', href: '/dashboard/team', icon: 'Users' },
   { label: 'Financials', href: '/dashboard/financials', icon: 'TrendingUp' },
   { label: 'Capital', href: '/dashboard/capital', icon: 'Landmark' },

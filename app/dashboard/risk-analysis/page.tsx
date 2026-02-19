@@ -1,10 +1,8 @@
 'use client';
 
-import SectionHeader from '@/components/ui/SectionHeader';
 import CollapsibleSection from '@/components/ui/CollapsibleSection';
 import RiskAnalysis from '@/components/sections/RiskAnalysis';
 import SWOTAnalysis from '@/components/sections/SWOTAnalysis';
-import MilestoneTracker from '@/components/sections/MilestoneTracker';
 import DiligenceQA from '@/components/sections/DiligenceQA';
 import Disclaimer from '@/components/ui/Disclaimer';
 
@@ -37,15 +35,6 @@ export default function RiskAnalysisPage() {
       >
         <DiligenceQA />
       </CollapsibleSection>
-
-      <div className="mt-4">
-        <SectionHeader
-          overline="Execution Tracking"
-          title="Milestone Timeline"
-          subtitle="16 milestones tracked against original guidance. 100% accuracy rate on completed items — no delays, no missed targets."
-        />
-        <MilestoneTracker />
-      </div>
 
       <div className="mt-12">
         <Disclaimer type="forwardLooking" size="md" collapsed />
