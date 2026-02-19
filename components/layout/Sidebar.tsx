@@ -38,7 +38,7 @@ export default function Sidebar() {
           <img
             src="/logo-frontieras.png"
             alt="Frontieras North America"
-            className="h-10 w-auto lg:h-7 xl:h-10"
+            className="h-14 w-auto lg:h-8 xl:h-14"
           />
         </Link>
       </div>
