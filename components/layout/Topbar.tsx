@@ -10,6 +10,9 @@ const pageTitles: Record<string, string> = {
   '/dashboard/expansion': 'Global Expansion',
   '/dashboard/capital': 'Capital Structure',
   '/dashboard/team': 'Genesis & Management',
+  '/dashboard/process': 'FASForm™ Process',
+  '/dashboard/risk-analysis': 'Risk Analysis',
+  '/dashboard/due-diligence': 'Due Diligence',
 };
 
 export default function Topbar() {
