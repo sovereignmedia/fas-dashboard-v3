@@ -99,7 +99,7 @@ export default function DiligenceQA() {
         >
           {Object.entries(grouped).map(([category, questions]) => (
             <div key={category}>
-              <h3 className="text-sm uppercase tracking-[0.15em] font-medium text-text-tertiary mb-3">
+              <h3 className="text-base uppercase tracking-[0.15em] font-bold text-text-primary mb-3">
                 {DILIGENCE_CATEGORY_LABELS[category as DiligenceCategory]}
               </h3>
               <div className="space-y-3">
@@ -168,25 +168,25 @@ function QuestionCard({
             <div className="mt-4 pt-4 border-t border-border-subtle space-y-4">
               {/* Underlying concern */}
               <div>
-                <p className="text-[10px] uppercase tracking-[0.15em] text-text-tertiary mb-1.5">
+                <p className="text-xs uppercase tracking-[0.15em] text-text-tertiary font-medium mb-1.5">
                   Underlying Concern
                 </p>
-                <p className="text-xs text-text-secondary leading-relaxed italic">
+                <p className="text-sm text-text-secondary leading-relaxed italic">
                   {question.concern}
                 </p>
               </div>
 
               {/* Implications */}
               <div>
-                <div className="flex items-center gap-1.5 mb-2">
-                  <AlertTriangle size={12} style={{ color: CHART_COLORS.orange }} />
-                  <p className="text-[10px] uppercase tracking-[0.15em] text-text-tertiary">
+                <div className="flex items-center gap-2 mb-2">
+                  <AlertTriangle size={18} style={{ color: CHART_COLORS.orange }} />
+                  <p className="text-xs uppercase tracking-[0.15em] text-text-tertiary font-medium">
                     Implications if Unresolved
                   </p>
                 </div>
-                <div className="space-y-1.5 pl-[18px]">
+                <div className="space-y-2 pl-[26px]">
                   {question.implications.map((imp, i) => (
-                    <p key={i} className="text-xs text-text-tertiary leading-relaxed">
+                    <p key={i} className="text-sm text-text-secondary leading-relaxed">
                       • {imp}
                     </p>
                   ))}
@@ -195,25 +195,25 @@ function QuestionCard({
 
               {/* Answer */}
               <div>
-                <div className="flex items-center gap-1.5 mb-2">
-                  <CheckCircle2 size={12} style={{ color: CHART_COLORS.green }} />
-                  <p className="text-[10px] uppercase tracking-[0.15em] text-text-tertiary">
+                <div className="flex items-center gap-2 mb-2">
+                  <CheckCircle2 size={18} style={{ color: CHART_COLORS.green }} />
+                  <p className="text-xs uppercase tracking-[0.15em] text-text-tertiary font-medium">
                     Frontieras Response
                   </p>
                 </div>
-                <p className="text-sm text-text-primary leading-relaxed pl-[18px]">
+                <p className="text-base text-text-primary leading-relaxed pl-[26px]">
                   {question.answer}
                 </p>
               </div>
 
               {/* Supplemental answer */}
               {question.supplementalAnswer && (
-                <div className="pl-[18px]">
+                <div className="pl-[26px]">
                   <div className="rounded-lg bg-accent-gold/5 border border-accent-gold/15 px-4 py-3">
-                    <p className="text-[10px] uppercase tracking-[0.15em] text-accent-gold/70 mb-1.5">
+                    <p className="text-xs uppercase tracking-[0.15em] text-accent-gold/70 font-medium mb-1.5">
                       Management Commentary
                     </p>
-                    <p className="text-xs text-text-secondary leading-relaxed">
+                    <p className="text-sm text-text-secondary leading-relaxed">
                       {question.supplementalAnswer}
                     </p>
                   </div>
