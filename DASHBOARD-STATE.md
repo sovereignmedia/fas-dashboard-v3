@@ -247,6 +247,7 @@ Total Current TAM: ~$1,528.8B → Projected: ~$2,094.5B
 2. **FacilityScaler** — Multi-facility economics slider (1–5 facilities, capped for institutional credibility). Facility count state shared with ShareCalculator.
 3. **ProjectionAreaChart** — 5-year revenue/EBITDA/net income projection
 4. **ShareCalculator** — Enterprise valuation model showing implied price per share (EV ÷ total shares outstanding). Reframed from personal investment return calculator to institutional valuation tool. No personal share count input — shows enterprise-level metrics only. Includes forward-looking disclaimer.
+5. **FinancialStatements** (CollapsibleSection, collapsed by default) — Toggle between Projected Balance Sheet and Projected Cash Flow. 5-year pro forma statements sourced from business plan pp.71-72.
 
 **Valuation Scenarios:**
 | Scenario | Multiple | Description |
@@ -263,6 +264,24 @@ Total Current TAM: ~$1,528.8B → Projected: ~$2,094.5B
 | Year 3 | Ramp-Up (75%→100%) | $1,043.7M | $808.8M | $688.8M |
 | Year 4 | Steady State | $1,079.1M | $837.5M | $722.9M |
 | Year 5 | Steady State + Escalation | $1,092.6M | $849.1M | $740.4M |
+
+**Pro Forma Balance Sheet (from `financials.ts`):**
+| Year | Total Assets | Total Liabilities | Total Equity |
+|------|-------------|-------------------|-------------|
+| Year 1 | $756.0M | $508.3M | $247.8M |
+| Year 2 | $711.0M | $581.3M | $129.7M |
+| Year 3 | $1,355.2M | $536.7M | $818.5M |
+| Year 4 | $2,040.8M | $499.4M | $1,541.4M |
+| Year 5 | $2,743.9M | $458.6M | $2,285.2M |
+
+**Pro Forma Cash Flow (from `financials.ts`):**
+| Year | Operating CF | CapEx | Net Cash Flow | Ending Cash |
+|------|-------------|-------|--------------|-------------|
+| Year 1 | -$1.4M | -$745.5M | $28.1M | $23.5M |
+| Year 2 | -$3.1M | -$4.7M | -$7.8M | $15.8M |
+| Year 3 | $726.5M | $0 | $681.9M | $697.7M |
+| Year 4 | $767.4M | $0 | $722.9M | $1,420.6M |
+| Year 5 | $785.2M | $0 | $740.7M | $2,161.2M |
 
 **Disclaimer:** "These projections are forward-looking estimates based on internal financial models. Actual results may vary. This is not investment advice."
 
@@ -532,7 +551,7 @@ All 5 executives have `fullBio` fields enabling expandable bios in LeadershipGri
 ## 13. Known Gaps & Pending Items
 
 1. **Jet Fuel / Kerosene** — Added as product output but revenue = $0, production = "TBD", yield = "TBD — pending financial model integration", status = "Under evaluation"
-2. **Balance Sheet / Cash Flow** — Not yet added to Financials page (mentioned in plan but not implemented)
+2. ~~**Balance Sheet / Cash Flow**~~ — **RESOLVED**: Pro forma balance sheet and cash flow statements added to Financials page as collapsible FinancialStatements section with toggle between views
 3. **Bio-Oil** — Referenced in ARCHITECTURE.md as existing in dashboard with `inExcelModel: false` flag but not found in current `products.ts` (may have been removed in v3)
 4. ~~**Process Economics product count**~~ — **RESOLVED**: All pages now consistently say "six high-value product streams" (5 revenue + Jet Fuel under evaluation), with internal gas streams noted separately where relevant
 5. ~~**Subtitle inconsistencies**~~ — **RESOLVED**: Consistent "six" language across Overview, Process, Economics, CompanyTimeline, and data/process.ts

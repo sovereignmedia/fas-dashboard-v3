@@ -10,6 +10,8 @@ import ValuationMethodology from '@/components/sections/ValuationMethodology';
 import FacilityScaler from '@/components/charts/FacilityScaler';
 import ProjectionAreaChart from '@/components/charts/ProjectionAreaChart';
 import ShareCalculator from '@/components/sections/ShareCalculator';
+import FinancialStatements from '@/components/sections/FinancialStatements';
+import CollapsibleSection from '@/components/ui/CollapsibleSection';
 import { containerSlow as container, item } from '@/lib/animations';
 
 export default function FinancialsPage() {
@@ -56,6 +58,18 @@ export default function FinancialsPage() {
 
         <ProjectionAreaChart />
         <ShareCalculator selectedMultiple={selectedMultiple} facilityCount={facilityCount} />
+
+        {/* Pro Forma Financial Statements */}
+        <motion.div variants={item}>
+          <CollapsibleSection
+            overline="Deep Dive"
+            title="Pro Forma Financial Statements"
+            subtitle="Projected balance sheet and cash flow statements — Years 1 through 5"
+            summaryBadge="5-Year Projections"
+          >
+            <FinancialStatements />
+          </CollapsibleSection>
+        </motion.div>
 
         {/* Disclaimer */}
         <motion.div variants={item}>
