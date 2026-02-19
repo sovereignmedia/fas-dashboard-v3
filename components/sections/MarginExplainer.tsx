@@ -117,19 +117,20 @@ export default function MarginExplainer() {
             </div>
 
             {/* Navigation Arrows */}
-            <div className="flex items-center justify-between px-8 pb-8 pt-2">
+            <div className="flex items-center justify-between px-8 pb-8 pt-4">
               <button
                 onClick={() => canGoBack && setActiveStep((s) => s - 1)}
                 className={`
-                  w-11 h-11 rounded-full flex items-center justify-center transition-all duration-300
+                  group flex items-center gap-2.5 h-12 pl-4 pr-5 rounded-full transition-all duration-300
                   ${canGoBack
-                    ? 'bg-white/[0.06] border border-white/10 text-text-secondary hover:bg-white/[0.12] hover:border-white/20 hover:text-text-primary hover:scale-105 active:scale-95'
+                    ? 'bg-white/[0.07] border border-white/[0.12] text-text-secondary hover:bg-white/[0.14] hover:border-accent-gold/30 hover:text-text-primary active:scale-[0.97]'
                     : 'bg-white/[0.02] border border-white/[0.04] text-text-tertiary/20 cursor-default'
                   }
                 `}
                 disabled={!canGoBack}
               >
-                <ChevronLeft size={20} />
+                <ChevronLeft size={18} className={canGoBack ? 'transition-transform duration-200 group-hover:-translate-x-0.5' : ''} />
+                <span className="text-xs font-medium uppercase tracking-[0.12em]">Previous</span>
               </button>
               <span className="text-[10px] uppercase tracking-[0.2em] text-text-tertiary font-medium">
                 Step {activeStep} of 5
@@ -137,15 +138,16 @@ export default function MarginExplainer() {
               <button
                 onClick={() => canGoForward && setActiveStep((s) => s + 1)}
                 className={`
-                  w-11 h-11 rounded-full flex items-center justify-center transition-all duration-300
+                  group flex items-center gap-2.5 h-12 pl-5 pr-4 rounded-full transition-all duration-300
                   ${canGoForward
-                    ? 'bg-white/[0.06] border border-white/10 text-text-secondary hover:bg-white/[0.12] hover:border-white/20 hover:text-text-primary hover:scale-105 active:scale-95'
+                    ? 'bg-white/[0.07] border border-white/[0.12] text-text-secondary hover:bg-white/[0.14] hover:border-accent-gold/30 hover:text-text-primary active:scale-[0.97]'
                     : 'bg-white/[0.02] border border-white/[0.04] text-text-tertiary/20 cursor-default'
                   }
                 `}
                 disabled={!canGoForward}
               >
-                <ChevronRight size={20} />
+                <span className="text-xs font-medium uppercase tracking-[0.12em]">Next</span>
+                <ChevronRight size={18} className={canGoForward ? 'transition-transform duration-200 group-hover:translate-x-0.5' : ''} />
               </button>
             </div>
           </Card>
