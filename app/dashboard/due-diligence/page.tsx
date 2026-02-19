@@ -18,8 +18,8 @@ export default function DueDiligencePage() {
 
       <SectionHeader
         overline="Institutional Diligence"
-        title="Due Diligence Q&A Matrix"
-        subtitle="30 institutional-grade diligence questions across 10 categories with detailed responses and management commentary."
+        title="Risk Mitigation Q&A"
+        subtitle="30 institutional-grade risk mitigation questions across 10 categories — addressing the concerns sophisticated investors raise during diligence, with detailed responses and management commentary."
       />
 
       <DiligenceQA />
