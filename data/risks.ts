@@ -35,7 +35,7 @@ export const RISK_CATEGORIES: RiskCategory[] = [
   {
     id: 'capital',
     name: 'Capital & Debt Financing Risk',
-    severity: 'medium',
+    severity: 'high',
     description: 'Can the company secure the full $850M capital stack?',
     institutionalConcern: 'Complex capital structure requiring coordination of equity and debt financing.',
     mitigations: [
@@ -60,7 +60,7 @@ export const RISK_CATEGORIES: RiskCategory[] = [
   {
     id: 'scale',
     name: 'Technology Scale-Up Risk',
-    severity: 'medium',
+    severity: 'high',
     description: 'Can FASForm\u2122 operate at commercial scale (7,500 tons/day)?',
     institutionalConcern: 'Demo unit validated but commercial-scale production is unproven.',
     mitigations: [

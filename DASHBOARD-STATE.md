@@ -133,9 +133,9 @@ Total Current TAM: ~$1,528.8B → Projected: ~$2,094.5B
 | Category | Severity | Mitigations |
 |----------|----------|-------------|
 | Real Estate & Site Readiness | Low | 3 |
-| Capital & Debt Financing | Medium | 4 |
+| Capital & Debt Financing | **High** | 4 |
 | Licensing Agreement | Medium | 3 |
-| Technology Scale-Up | Medium | 3 |
+| Technology Scale-Up | **High** | 3 |
 | Construction & Execution | Medium | 4 |
 | Environmental & Regulatory | Medium | 3 |
 | Revenue & Commercialization | Medium | 3 |
@@ -296,14 +296,17 @@ Total Current TAM: ~$1,528.8B → Projected: ~$2,094.5B
 
 ### Expansion (`/dashboard/expansion`)
 
-**Header:** "Global Expansion" / "Market Command Center"
-**Subtitle:** "9 patent-protected markets spanning 143 facility opportunities across major coal-producing nations."
+**Header:** "Global IP Portfolio" / "Expansion Optionality"
+**Subtitle:** "Patent-protected market access across 9 countries. The company's global IP portfolio secures the right to deploy FASForm™ technology as the first facility proves the commercial model."
+
+**Strategic framing text:** Two paragraphs emphasizing optionality (not near-term plan), focus on Facility 1 execution, land-and-expand thesis.
 
 **Sections rendered:**
-1. **InteractiveGlobeV3** — 3D rotating globe with patent countries
-2. **ExpansionGrid** — Country-level expansion data
-3. **PenetrationCalculator** — Market penetration slider
+1. **Strategic framing Card** — "prove the model domestically, then exercise global optionality"
+2. **InteractiveGlobeV3** — 3D rotating globe with patent countries
+3. **ExpansionGrid** — 4 stat pills: Patent Markets (9), Patents Granted, Addressable Sites, Global Coal (Mt). Reframed from "Total Facilities" to "Addressable Sites".
 4. **CoalProductionChart** — Coal production by country
+5. **PenetrationCalculator** — Moved inside CollapsibleSection (collapsed by default), labeled "Deep Dive / Market Penetration Modeling"
 
 ---
 
@@ -380,7 +383,8 @@ All 15 partners have `agreementStatus: 'executed'`.
 
 **14 risk categories** with 44 total mitigations tracked.
 
-**Severity distribution:** 4 Low, 9 Medium, 0 High, 0 Critical
+**Severity distribution:** 4 Low, 7 Medium, 2 High, 0 Critical
+- **High:** Technology Scale-Up Risk, Capital & Debt Financing Risk
 
 **Regulatory & compliance text displayed:**
 1. **Compliance Disclaimer** (from `lib/constants.ts`): "This dashboard is provided for informational purposes only and does not constitute an offer to sell or a solicitation of an offer to buy any securities..."
@@ -418,7 +422,7 @@ All 15 partners have `agreementStatus: 'executed'`.
 | Financials | FacilityScaler | Slider: 1–5 facilities × selected EBITDA multiple (state shared with ShareCalculator) |
 | Financials | ShareCalculator | Implied price per share — enterprise valuation ÷ total shares outstanding (no personal share count input) |
 | Expansion | InteractiveGlobeV3 | 3D rotating globe, hover/click countries |
-| Expansion | PenetrationCalculator | Slider: market penetration % |
+| Expansion | PenetrationCalculator | Slider: market penetration % (collapsed by default inside CollapsibleSection) |
 | Capital | CapExWaterfall | Toggle: Category View ↔ Line Items table |
 | Risk | RiskCard | Expand/collapse mitigation details |
 | Risk | DiligenceQA | Accordion Q&A, category filter tabs |

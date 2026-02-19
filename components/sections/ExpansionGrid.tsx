@@ -15,9 +15,9 @@ export default function ExpansionGrid() {
       transition={{ duration: 0.5 }}
       className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10"
     >
-      <StatPill icon={<Globe className="w-4 h-4" />} label="Target Markets" value="9" />
-      <StatPill icon={<Factory className="w-4 h-4" />} label="Total Facilities" value={String(TOTAL_FACILITY_POTENTIAL)} />
+      <StatPill icon={<Globe className="w-4 h-4" />} label="Patent Markets" value="9" />
       <StatPill icon={<Shield className="w-4 h-4" />} label="Patents Granted" value={String(countries.filter((c) => c.patentStatus === 'Granted').length)} />
+      <StatPill icon={<Factory className="w-4 h-4" />} label="Addressable Sites" value={String(TOTAL_FACILITY_POTENTIAL)} />
       <StatPill icon={<MapPin className="w-4 h-4" />} label="Global Coal (Mt)" value={formatNumber(TOTAL_GLOBAL_COAL)} />
     </motion.div>
   );

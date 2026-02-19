@@ -7,7 +7,7 @@ const pageTitles: Record<string, string> = {
   '/dashboard': 'Executive Overview',
   '/dashboard/economics': 'Product Economics',
   '/dashboard/financials': 'Financial Projections & Valuation',
-  '/dashboard/expansion': 'Global Expansion',
+  '/dashboard/expansion': 'Expansion Optionality',
   '/dashboard/capital': 'Capital Structure',
   '/dashboard/team': 'Genesis & Management',
   '/dashboard/process': 'FASForm™ Process',
