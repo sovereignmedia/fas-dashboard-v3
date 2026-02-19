@@ -12,21 +12,21 @@ export default function RiskAnalysisPage() {
   return (
     <div>
       <CollapsibleSection
-        overline="Risk Analysis"
-        title="Risk Mitigation Framework"
-        subtitle="Institutional-grade risk assessment across 14 categories — covering technology, capital, construction, environmental, cybersecurity, and more."
-        summaryBadge="14 categories"
-      >
-        <RiskAnalysis />
-      </CollapsibleSection>
-
-      <CollapsibleSection
         overline="Strategic Analysis"
         title="SWOT Analysis"
         subtitle="Strengths, weaknesses, opportunities, and threats — institutional-grade strategic assessment of Frontieras' competitive position."
         summaryBadge="19 items"
       >
         <SWOTAnalysis />
+      </CollapsibleSection>
+
+      <CollapsibleSection
+        overline="Risk Analysis"
+        title="Risk Mitigation Framework"
+        subtitle="Institutional-grade risk assessment across 14 categories — covering technology, capital, construction, environmental, cybersecurity, and more."
+        summaryBadge="14 categories"
+      >
+        <RiskAnalysis />
       </CollapsibleSection>
 
       <CollapsibleSection
