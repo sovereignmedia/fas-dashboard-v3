@@ -35,12 +35,19 @@ export default function Sidebar() {
 
   return (
     <aside className="fixed left-0 top-0 h-screen w-64 xl:w-64 lg:w-16 bg-bg-primary border-r border-border-subtle z-40 flex flex-col">
-      <div className="p-6 lg:p-4 xl:p-6 border-b border-border-subtle flex items-center justify-center">
+      <div className="p-6 lg:p-3 xl:p-6 border-b border-border-subtle flex items-center justify-center">
         <Link href="/dashboard">
+          {/* Full logo — visible at xl+ (expanded sidebar) */}
           <img
             src="/logo-frontieras.png"
             alt="Frontieras North America"
-            className="h-14 w-auto lg:h-8 xl:h-14"
+            className="h-14 w-auto hidden xl:block"
+          />
+          {/* Icon mark — visible at lg (collapsed sidebar) */}
+          <img
+            src="/logo-frontieras-icon.png"
+            alt="Frontieras"
+            className="h-9 w-auto hidden lg:block xl:hidden"
           />
         </Link>
       </div>

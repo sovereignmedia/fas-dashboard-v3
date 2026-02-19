@@ -148,6 +148,28 @@ import { CHART_COLORS } from '@/lib/colors';
 
 **Bio-Oil note:** Bio-Oil exists in the dashboard but NOT in the Excel model. It is flagged with `inExcelModel: false` in the Product interface.
 
+**Data file inventory:**
+| File | Key Exports | Item Count |
+|------|-------------|------------|
+| `model.ts` | FACILITY, CAPEX, OPERATIONS, MONTHLY_VOLUMES, MODELED_PRICES, SPOT_PRICES, EXPANSION, CAPITAL, VALUATION | — |
+| `products.ts` | products[], facilityEconomics | 5 revenue products |
+| `process.ts` | PROCESS_OUTPUTS[], CTL_DIFFERENTIATION | 8 outputs (5 revenue + 1 TBD + 2 internal) |
+| `financials.ts` | yearlyProjections[], valuationScenarios[] | 5 years, 3 scenarios |
+| `partnerships.ts` | PARTNERS[] | 15 partners, 7 categories |
+| `risks.ts` | RISK_CATEGORIES[] | 14 categories |
+| `team.ts` | team[], advisors[], timeline[] | 5 execs, 8 advisors, 8 milestones |
+| `swot.ts` | SWOT | 6 strengths, 3 weaknesses, 6 opportunities, 4 threats |
+| `competitors.ts` | MARKET_SEGMENTS[] | 8 segments |
+| `markets.ts` | MARKETS[], TOTAL_ADDRESSABLE_MARKET, TOTAL_PROJECTED_MARKET | 6 markets |
+| `capex.ts` | CAPEX_ITEMS[], CAPEX_TOTAL, getCapExByCategory() | 46 line items, 4 categories |
+| `diligence-qa.ts` | DILIGENCE_QUESTIONS[] | 30 Q&A, 10 categories |
+
+**Key gotchas:**
+- `getCapExByCategory()` returns `{ baseCost, totalCost, items }` aggregated per category — NOT arrays. Use `CAPEX_ITEMS.filter()` for line items.
+- `MONTHLY_VOLUMES` are monthly — multiply by 12 for annual.
+- Products array in `products.ts` has 5 items (revenue-generating). `process.ts` has 8 outputs.
+- Sidebar nav in `Sidebar.tsx` differs from `lib/constants.ts` NAV_ITEMS (Sidebar is authoritative, 10 items).
+
 ---
 
 ## Responsive Design Rules

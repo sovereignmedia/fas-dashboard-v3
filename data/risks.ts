@@ -22,14 +22,14 @@ export interface RiskCategory {
 export const RISK_CATEGORIES: RiskCategory[] = [
   {
     id: 'real-estate',
-    name: 'Real Estate Acquisition Risk',
+    name: 'Real Estate & Site Readiness',
     severity: 'low',
-    description: 'Inability to close on the identified Mason County, WV site.',
-    institutionalConcern: 'Failure to secure the site could delay the entire project timeline.',
+    description: 'Land acquired. Focus shifts to site preparation, permitting, and infrastructure readiness for the Mason County, WV facility.',
+    institutionalConcern: 'Site readiness — permitting, utility interconnects, and environmental clearances — must proceed on schedule to support construction timeline.',
     mitigations: [
-      { strategy: 'Alternative Site Planning', detail: 'Shortlist of potential alternative sites with comparable strategic advantages maintained.', status: 'executed' },
-      { strategy: 'Extended Option Agreement', detail: 'Proactively negotiated extensions on the Real Estate Option Agreement.', status: 'executed' },
-      { strategy: 'Phased Fundraising Prioritization', detail: 'Funding allocation for land acquisition prioritized through phased fundraising approach.', status: 'in-progress' },
+      { strategy: 'Land Acquisition Completed', detail: 'Mason County, WV site purchased and under company ownership. Site selection risk fully retired.', status: 'executed', evidence: 'Land purchase closed' },
+      { strategy: 'Strategic Site Advantages', detail: 'On-site CSX rail spur, Ohio River barge access, AEP power grid, TC Energy natural gas pipeline — all infrastructure partners under executed MSAs.', status: 'executed', evidence: 'CSX, AEP, TC Energy MSAs executed' },
+      { strategy: 'Permitting & Environmental Compliance', detail: 'Working with West Virginia Department of Environmental Protection on permitting. Environmental management plans developed with CAMS.', partner: 'CAMS', status: 'in-progress' },
     ],
   },
   {
