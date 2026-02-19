@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { LayoutDashboard, FlaskConical, TrendingUp, Globe, Landmark, Users } from 'lucide-react';
+import { LayoutDashboard, FlaskConical, TrendingUp, Globe, Landmark, Users, GitBranch, ShieldCheck, FileSearch } from 'lucide-react';
 
 const iconMap = {
   LayoutDashboard,
@@ -11,6 +11,9 @@ const iconMap = {
   Globe,
   Landmark,
   Users,
+  GitBranch,
+  ShieldCheck,
+  FileSearch,
 } as const;
 
 const NAV_ITEMS = [
@@ -20,6 +23,9 @@ const NAV_ITEMS = [
   { label: 'Expansion', href: '/dashboard/expansion', icon: 'Globe' as const },
   { label: 'Capital', href: '/dashboard/capital', icon: 'Landmark' as const },
   { label: 'Team', href: '/dashboard/team', icon: 'Users' as const },
+  { label: 'FASForm™', href: '/dashboard/process', icon: 'GitBranch' as const },
+  { label: 'Risk', href: '/dashboard/risk-analysis', icon: 'ShieldCheck' as const },
+  { label: 'Due Diligence', href: '/dashboard/due-diligence', icon: 'FileSearch' as const },
 ];
 
 export default function Sidebar() {
