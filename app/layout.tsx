@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import ThemeProvider from '@/components/providers/ThemeProvider';
+import ThemeToggle from '@/components/ui/ThemeToggle';
 
 export const metadata: Metadata = {
   title: 'Frontieras North America | Investor Dashboard',
@@ -17,6 +18,7 @@ export default function RootLayout({
       <body className="font-sans antialiased bg-bg-primary text-text-primary">
         <ThemeProvider>
           {children}
+          <ThemeToggle />
         </ThemeProvider>
       </body>
     </html>
