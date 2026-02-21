@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { LayoutDashboard, FlaskConical, TrendingUp, Globe, Landmark, Users } from 'lucide-react';
+import { LayoutDashboard, FlaskConical, TrendingUp, Globe, Landmark, Users, GitBranch, ShieldCheck, FileSearch, Map } from 'lucide-react';
 
 const iconMap = {
   LayoutDashboard,
@@ -11,15 +11,23 @@ const iconMap = {
   Globe,
   Landmark,
   Users,
+  GitBranch,
+  ShieldCheck,
+  FileSearch,
+  Map,
 } as const;
 
 const NAV_ITEMS = [
   { label: 'Overview', href: '/dashboard', icon: 'LayoutDashboard' as const },
+  { label: 'FASForm™', href: '/dashboard/process', icon: 'GitBranch' as const },
   { label: 'Economics', href: '/dashboard/economics', icon: 'FlaskConical' as const },
-  { label: 'Financials', href: '/dashboard/financials', icon: 'TrendingUp' as const },
-  { label: 'Expansion', href: '/dashboard/expansion', icon: 'Globe' as const },
-  { label: 'Capital', href: '/dashboard/capital', icon: 'Landmark' as const },
+  { label: 'Risk Mitigation', href: '/dashboard/risk-analysis', icon: 'ShieldCheck' as const },
+  { label: 'Strategic Partners', href: '/dashboard/due-diligence', icon: 'FileSearch' as const },
   { label: 'Team', href: '/dashboard/team', icon: 'Users' as const },
+  { label: 'Financials', href: '/dashboard/financials', icon: 'TrendingUp' as const },
+  { label: 'Capital', href: '/dashboard/capital', icon: 'Landmark' as const },
+  { label: 'Expansion', href: '/dashboard/expansion', icon: 'Globe' as const },
+  { label: 'Fundraising & Execution', href: '/dashboard/roadmap', icon: 'Map' as const },
 ];
 
 export default function Sidebar() {
@@ -27,15 +35,20 @@ export default function Sidebar() {
 
   return (
     <aside className="fixed left-0 top-0 h-screen w-64 xl:w-64 lg:w-16 bg-bg-primary border-r border-border-subtle z-40 flex flex-col">
-      <div className="p-6 lg:p-4 xl:p-6 border-b border-border-subtle">
-        <Link href="/dashboard" className="flex items-center gap-3">
-          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-accent-gold to-accent-gold-hover flex items-center justify-center flex-shrink-0">
-            <span className="text-text-inverse font-bold text-sm">F</span>
-          </div>
-          <div className="lg:hidden xl:block">
-            <h1 className="text-sm font-semibold text-text-primary leading-tight">FRONTIERAS</h1>
-            <p className="text-[10px] uppercase tracking-[0.15em] text-text-tertiary">North America</p>
-          </div>
+      <div className="p-6 lg:p-3 xl:p-6 border-b border-border-subtle flex items-center justify-center">
+        <Link href="/dashboard">
+          {/* Full logo — visible at xl+ (expanded sidebar) */}
+          <img
+            src="/logo-frontieras.png"
+            alt="Frontieras North America"
+            className="h-14 w-auto hidden xl:block"
+          />
+          {/* Icon mark — visible at lg (collapsed sidebar) */}
+          <img
+            src="/logo-frontieras-icon.png"
+            alt="Frontieras"
+            className="h-9 w-auto hidden lg:block xl:hidden"
+          />
         </Link>
       </div>
 
@@ -53,7 +66,7 @@ export default function Sidebar() {
                 flex items-center gap-3 px-6 lg:px-4 xl:px-6 py-3 mx-2 rounded-lg
                 transition-all duration-200 group
                 ${isActive || isExactActive
-                  ? 'bg-accent-gold-muted text-accent-gold'
+                  ? 'bg-white/[0.04] text-accent-gold'
                   : 'text-text-tertiary hover:text-text-secondary hover:bg-bg-tertiary'
                 }
               `}
@@ -61,7 +74,7 @@ export default function Sidebar() {
               <Icon size={20} className="flex-shrink-0" />
               <span className="text-sm font-medium lg:hidden xl:block">{item.label}</span>
               {(isActive || isExactActive) && (
-                <div className="absolute left-0 w-[2px] h-8 bg-accent-gold rounded-r" />
+                <div className="absolute left-0 w-[2px] h-5 bg-accent-gold rounded-r" />
               )}
             </Link>
           );

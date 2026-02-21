@@ -16,5 +16,4 @@ export const PRODUCT_COLORS = {
   naphtha: CHART_COLORS.blue,
   sulfuricAcid: CHART_COLORS.orange,
   ammoniumSulfate: CHART_COLORS.purple,
-  bioOil: CHART_COLORS.red,
 } as const;

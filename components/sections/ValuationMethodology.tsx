@@ -3,10 +3,11 @@
 import { motion } from 'framer-motion';
 
 import { valuationScenarios } from '@/data/financials';
+import { FACILITY } from '@/data/model';
 import { formatCurrency } from '@/lib/formatters';
 import Card from '@/components/ui/Card';
 
-const SINGLE_FACILITY_EBITDA = 837_513_709;
+const SINGLE_FACILITY_EBITDA = FACILITY.ebitda;
 
 const item = {
   hidden: { opacity: 0, y: 20 },

@@ -8,17 +8,17 @@ interface SectionHeaderProps {
 
 export default function SectionHeader({ overline, title, subtitle }: SectionHeaderProps) {
   return (
-    <div className="mb-8">
+    <div className="mb-12">
       {overline && (
-        <p className="text-xs uppercase tracking-[0.2em] font-medium text-accent-gold mb-2">
+        <p className="text-[11px] uppercase tracking-[0.25em] font-medium text-accent-gold/70 mb-2">
           {overline}
         </p>
       )}
-      <h2 className="text-3xl font-semibold tracking-tight text-text-primary">
+      <h2 className="text-4xl font-light tracking-tight text-text-primary">
         {title}
       </h2>
       {subtitle && (
-        <p className="text-base leading-relaxed text-text-secondary mt-2 max-w-2xl">
+        <p className="text-lg leading-relaxed text-text-secondary/80 mt-3 max-w-3xl">
           {subtitle}
         </p>
       )}

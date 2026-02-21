@@ -1,47 +1,64 @@
 'use client';
 
 import { useState } from 'react';
-import { AnimatePresence } from 'framer-motion';
 
 import SectionHeader from '@/components/ui/SectionHeader';
 import Card from '@/components/ui/Card';
-import InteractiveGlobe from '@/components/charts/InteractiveGlobe';
+import InteractiveGlobeV3 from '@/components/charts/InteractiveGlobeV3';
 import ExpansionGrid from '@/components/sections/ExpansionGrid';
-import CountryDetailPanel from '@/components/cards/CountryDetailPanel';
 import CoalProductionChart from '@/components/charts/CoalProductionChart';
 import PenetrationCalculator from '@/components/sections/PenetrationCalculator';
-import { Country } from '@/data/countries';
+import CollapsibleSection from '@/components/ui/CollapsibleSection';
+import Disclaimer from '@/components/ui/Disclaimer';
 
 export default function ExpansionPage() {
-  const [selectedCountry, setSelectedCountry] = useState<Country | null>(null);
   const [penetration, setPenetration] = useState(25);
 
   return (
     <div>
       <SectionHeader
-        overline="Global Expansion"
-        title="Market Command Center"
-        subtitle="9 patent-protected markets spanning 143 facility opportunities across major coal-producing nations. Click a country to explore."
+        overline="Global IP Portfolio"
+        title="Expansion Optionality"
+        subtitle="Patent-protected market access across 9 countries. The company's global IP portfolio secures the right to deploy FASForm™ technology as the first facility proves the commercial model."
       />
 
-      <Card className="!p-8 mb-10 flex justify-center" hover={false}>
-        <InteractiveGlobe />
+      {/* Strategic framing */}
+      <Card className="mb-10" hover={false}>
+        <div className="max-w-3xl">
+          <p className="text-base leading-relaxed text-text-secondary">
+            Frontieras holds granted patents across 9 major coal-producing nations — representing strategic optionality, not a near-term deployment plan. The company&apos;s immediate focus is executing Facility 1 in Mason County, West Virginia. These patents protect Frontieras&apos; ability to license or deploy the FASForm™ process internationally once the first commercial facility validates the technology at scale.
+          </p>
+          <p className="text-sm leading-relaxed text-text-tertiary mt-4">
+            This is a land-and-expand thesis: prove the model domestically, then exercise global optionality from a position of demonstrated performance.
+          </p>
+        </div>
       </Card>
 
-      <ExpansionGrid selectedCountry={selectedCountry} onSelect={setSelectedCountry} />
+      <Card className="!p-10 mb-12 flex justify-center !overflow-visible" hover={false}>
+        <InteractiveGlobeV3 />
+      </Card>
 
-      <AnimatePresence mode="wait">
-        {selectedCountry && (
-          <CountryDetailPanel
-            country={selectedCountry}
-            onClose={() => setSelectedCountry(null)}
-          />
-        )}
-      </AnimatePresence>
+      <ExpansionGrid />
 
-      <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
-        <PenetrationCalculator penetration={penetration} onChange={setPenetration} />
-        <CoalProductionChart selectedCountry={selectedCountry} />
+      <div className="mt-14">
+        <CoalProductionChart selectedCountry={null} />
+      </div>
+
+      <div className="mt-14">
+        <CollapsibleSection
+          overline="Deep Dive"
+          title="Market Penetration Modeling"
+          subtitle="Theoretical modeling tool for global deployment scenarios"
+        >
+          <div className="grid grid-cols-1 xl:grid-cols-2 gap-8">
+            <PenetrationCalculator penetration={penetration} onChange={setPenetration} />
+            <div />
+          </div>
+        </CollapsibleSection>
+      </div>
+
+      <div className="mt-12">
+        <Disclaimer type="projectionDisclaimer" size="md" collapsed />
       </div>
     </div>
   );

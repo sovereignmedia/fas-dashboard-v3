@@ -7,15 +7,7 @@ import { CHART_COLORS } from '@/lib/colors';
 import { formatCurrency, formatPercent, formatNumber } from '@/lib/formatters';
 import Card from '@/components/ui/Card';
 
-const container = {
-  hidden: { opacity: 0 },
-  show: { opacity: 1, transition: { staggerChildren: 0.06 } },
-};
-
-const item = {
-  hidden: { opacity: 0, y: 20 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.4 } },
-};
+import { containerFast as container, item, viewport } from '@/lib/animations';
 
 const keyMetrics = [
   { label: 'Total Revenue', value: formatCurrency(facilityEconomics.totalRevenue, true), color: CHART_COLORS.blue },
@@ -34,8 +26,9 @@ export default function FacilityEconomicsSection() {
     <motion.div
       variants={container}
       initial="hidden"
-      animate="show"
-      className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5 mb-10"
+      whileInView="show"
+      viewport={viewport.section}
+      className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6 mb-10"
     >
       {keyMetrics.map((metric) => (
         <motion.div key={metric.label} variants={item}>

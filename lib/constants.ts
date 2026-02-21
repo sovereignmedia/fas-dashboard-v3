@@ -5,9 +5,13 @@ export const COMPLIANCE_DISCLAIMER = 'This dashboard is provided for information
 
 export const NAV_ITEMS = [
   { label: 'Overview', href: '/dashboard', icon: 'LayoutDashboard' },
+  { label: 'FASForm™', href: '/dashboard/process', icon: 'GitBranch' },
   { label: 'Economics', href: '/dashboard/economics', icon: 'FlaskConical' },
-  { label: 'Financials', href: '/dashboard/financials', icon: 'TrendingUp' },
-  { label: 'Expansion', href: '/dashboard/expansion', icon: 'Globe' },
-  { label: 'Capital', href: '/dashboard/capital', icon: 'Landmark' },
+  { label: 'Risk Mitigation', href: '/dashboard/risk-analysis', icon: 'ShieldCheck' },
+  { label: 'Strategic Partners', href: '/dashboard/due-diligence', icon: 'FileSearch' },
   { label: 'Team', href: '/dashboard/team', icon: 'Users' },
+  { label: 'Financials', href: '/dashboard/financials', icon: 'TrendingUp' },
+  { label: 'Capital', href: '/dashboard/capital', icon: 'Landmark' },
+  { label: 'Expansion', href: '/dashboard/expansion', icon: 'Globe' },
+  { label: 'Fundraising & Execution', href: '/dashboard/roadmap', icon: 'Map' },
 ] as const;

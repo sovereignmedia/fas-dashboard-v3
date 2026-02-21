@@ -4,67 +4,38 @@ import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
 import SectionHeader from '@/components/ui/SectionHeader';
 import MetricCard from '@/components/ui/MetricCard';
-import { facilityEconomics } from '@/data/products';
+import { EXPANSION, CAPITAL, OPERATIONS, CAPEX } from '@/data/model';
+import Card from '@/components/ui/Card';
+import NACommercialization from '@/components/charts/NACommercialization';
 import { CHART_COLORS } from '@/lib/colors';
-import { formatCurrency, formatPercent } from '@/lib/formatters';
+import { formatCurrency, formatNumber } from '@/lib/formatters';
+import { container, item } from '@/lib/animations';
+import MacroTailwinds from '@/components/sections/MacroTailwinds';
+import Disclaimer from '@/components/ui/Disclaimer';
 
 const overviewMetrics = [
   {
-    label: 'Single Facility Revenue',
-    value: '$1.08B',
-    subtitle: 'Year 4 Steady State',
-    href: '/dashboard/financials',
-    color: CHART_COLORS.blue,
-  },
-  {
-    label: 'Single Facility EBITDA',
-    value: '$838M',
-    subtitle: 'Year 4 Steady State',
-    href: '/dashboard/financials',
-    color: CHART_COLORS.green,
-  },
-  {
-    label: 'Gross Margin',
-    value: '87.5%',
-    subtitle: '6 Revenue Streams',
-    href: '/dashboard/economics',
-    color: CHART_COLORS.gold,
-  },
-  {
     label: 'Patent-Protected Countries',
-    value: '9',
+    value: String(EXPANSION.patentCountries),
     subtitle: 'Global IP Portfolio',
     href: '/dashboard/expansion',
     color: CHART_COLORS.purple,
   },
   {
     label: 'Reg A+ Raised',
-    value: '$9M+',
-    subtitle: '3,700+ Shareholders',
+    value: `${formatCurrency(CAPITAL.totalRaised, true)}+`,
+    subtitle: `${formatNumber(CAPITAL.shareholders)}+ Shareholders`,
     href: '/dashboard/capital',
     color: CHART_COLORS.green,
   },
   {
     label: 'Shareholders',
-    value: '3,700+',
+    value: `${formatNumber(CAPITAL.shareholders)}+`,
     subtitle: 'Proven Public Demand',
-    href: '/dashboard/team',
+    href: '/dashboard/capital',
     color: CHART_COLORS.orange,
   },
 ];
-
-const container = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: { staggerChildren: 0.08 },
-  },
-};
-
-const item = {
-  hidden: { opacity: 0, y: 20 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.4 } },
-};
 
 export default function DashboardOverview() {
   const router = useRouter();
@@ -74,33 +45,67 @@ export default function DashboardOverview() {
       <SectionHeader
         overline="Executive Summary"
         title="Frontieras North America"
-        subtitle="Converting coal into six high-value products through patented clean energy technology. One facility. Nine countries. A new asset class."
+        subtitle="Patented clean energy technology converting coal into six high-value products. First commercial facility: Mason County, West Virginia."
       />
 
+      {/* Company description */}
       <motion.div
         variants={container}
         initial="hidden"
         animate="show"
-        className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6"
       >
-        {overviewMetrics.map((metric) => (
-          <motion.div key={metric.label} variants={item}>
-            <MetricCard
-              label={metric.label}
-              value={metric.value}
-              subtitle={metric.subtitle}
-              color={metric.color}
-              onClick={() => router.push(metric.href)}
-            />
-          </motion.div>
-        ))}
+        <motion.div variants={item}>
+          <Card className="mb-10" hover={false}>
+            <div className="max-w-3xl">
+              <p className="text-base leading-relaxed text-text-secondary">
+                Frontieras North America is developing the first commercial-scale deployment of its patented FASForm™ process — a thermal cracking technology fundamentally distinct from coal-to-liquids gasification — that fractionates coal into six high-value product streams without catalysts or combustion, producing zero waste and no direct CO₂ emissions. The company&apos;s first facility is under development in Mason County, West Virginia, with all major engineering, operations, and infrastructure partners under executed MSAs.
+              </p>
+              <p className="text-base leading-relaxed text-text-secondary mt-4">
+                Frontieras is pre-revenue and preparing for IPO. The company has raised $20M+ through Regulation A+ from 3,700+ shareholders, validating public market demand ahead of institutional capital deployment.
+              </p>
+            </div>
+          </Card>
+        </motion.div>
+
+        {/* Key metrics */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {overviewMetrics.map((metric) => (
+            <motion.div key={metric.label} variants={item}>
+              <MetricCard
+                label={metric.label}
+                value={metric.value}
+                subtitle={metric.subtitle}
+                color={metric.color}
+                onClick={() => router.push(metric.href)}
+              />
+            </motion.div>
+          ))}
+        </div>
       </motion.div>
 
-      <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-6">
-        <QuickStat label="Total CapEx" value={formatCurrency(facilityEconomics.totalCapex, true)} />
-        <QuickStat label="Net Margin" value={formatPercent(facilityEconomics.netMargin)} />
-        <QuickStat label="Coal Throughput" value="7,500 t/day" />
-        <QuickStat label="Max Facilities" value="143" />
+      <Card className="!p-10 mt-12 mb-2" hover={false}>
+        <div className="text-center mb-6">
+          <p className="text-xs uppercase tracking-[0.2em] font-medium text-text-tertiary">
+            Commercialization Roadmap
+          </p>
+          <h3 className="text-lg font-semibold text-text-primary mt-1">
+            North America Facility Pipeline
+          </h3>
+        </div>
+        <NACommercialization />
+      </Card>
+
+      <div className="mt-16 grid grid-cols-2 gap-8">
+        <QuickStat label="Total CapEx" value={formatCurrency(CAPEX.total, true)} />
+        <QuickStat label="Coal Throughput" value={`${formatNumber(OPERATIONS.coalThroughputTonsPerDay)} t/day`} />
+      </div>
+
+      <div className="mt-16">
+        <MacroTailwinds />
+      </div>
+
+      <div className="mt-12">
+        <Disclaimer type="forwardLooking" size="sm" collapsed />
       </div>
     </div>
   );

@@ -8,6 +8,7 @@ import {
   SINGLE_FACILITY_REVENUE,
   TOTAL_GLOBAL_COAL,
 } from '@/data/expansion';
+import { VALUATION } from '@/data/model';
 import { CHART_COLORS } from '@/lib/colors';
 import { formatCurrency, formatNumber } from '@/lib/formatters';
 import Card from '@/components/ui/Card';
@@ -107,9 +108,9 @@ export default function CountryDetailPanel({ country, onClose }: CountryDetailPa
                 </p>
               </div>
               <div>
-                <p className="text-xs text-text-tertiary mb-1">Enterprise Value (12x)</p>
+                <p className="text-xs text-text-tertiary mb-1">Enterprise Value ({VALUATION.defaultEbitdaMultiple}x)</p>
                 <p className="font-mono text-xl font-bold text-accent-gold">
-                  {formatCurrency(country.facilityPotential * SINGLE_FACILITY_EBITDA * 12, true)}
+                  {formatCurrency(country.facilityPotential * SINGLE_FACILITY_EBITDA * VALUATION.defaultEbitdaMultiple, true)}
                 </p>
               </div>
             </div>

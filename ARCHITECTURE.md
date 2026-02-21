@@ -66,14 +66,18 @@ export default function PageName() {
   // Minimal state (tab selection, filters — NOT business logic)
 
   return (
-    <div className="space-y-8">
+    <div>
       <SectionHeader ... />
       <SomeSection ... />
-      <AnotherSection ... />
+      <div className="mt-14">
+        <AnotherSection ... />
+      </div>
     </div>
   );
 }
 ```
+
+**Spacing convention:** Use explicit `mt-14` or `mt-16` wrapper divs between major sections. Do NOT use `space-y-*` on the page container — it conflicts with built-in margins in `CollapsibleSection` (`mb-16`) and `SectionHeader` (`mb-12`).
 
 Pages should NOT contain:
 - Chart configurations or Recharts imports
@@ -115,6 +119,61 @@ import { CHART_COLORS } from '@/lib/colors';
 - All computed/derived data uses custom hooks in lib/hooks/
 - No business logic in page files
 - No magic numbers in components — define constants in data files
+
+### Financial Model Mapping
+
+`data/model.ts` is the **single source of truth** for all financial constants. It maps 1:1 to the company's Excel model (Financial Model 4.1.25.xlsx).
+
+**Update workflow:** When the company releases updated financials:
+1. Open `data/model.ts`
+2. Update the constants to match the new Excel model
+3. Update `MODEL_VERSION` to match the new file name
+4. Done — all other files import from model.ts and propagate automatically
+
+**Structure:** model.ts is organized by Excel tab:
+- `FACILITY` — Year 4 steady-state P&L (IS sheet)
+- `FACILITY_RAMP_YEAR` — Year 3 ramp-up figures (IS sheet)
+- `CAPEX` — Total CapEx, EPC costs, contingency (CapEx sheet)
+- `OPERATIONS` — Coal throughput, cost per ton (Rev&COGs sheet)
+- `MONTHLY_VOLUMES` — Per-product monthly volumes (Rev&COGs sheet)
+- `MODELED_PRICES` / `SPOT_PRICES` — Per-product pricing (Rev&COGs sheet)
+- `EXPANSION` — Patent countries, total facility potential
+- `CAPITAL` — Bridge round, shares outstanding, share price, raised, shareholders
+- `VALUATION` — EBITDA multiples (6x, 12x, 18x)
+
+**Forbidden patterns:**
+- No raw financial constants in component files (import from model.ts or a data file that re-exports from model.ts)
+- No hardcoded dollar strings like `"$838M"` — use `formatCurrency(FACILITY.ebitda, true)`
+- No hardcoded EBITDA multiples — use `VALUATION.defaultEbitdaMultiple`
+
+**Volume convention:** model.ts stores MONTHLY volumes (matching Excel Rev&COGs). The `Product` interface has both `monthlyVolume` and `annualVolume` (= monthlyVolume * 12).
+
+**Globe special case:** `globe.ts` intentionally uses `FACILITY_RAMP_YEAR.revenue` (Year 3 ramp-up) for conservative 1% market penetration estimates, not Year 4 steady-state revenue. This is documented in model.ts.
+
+**Bio-Oil note:** Bio-Oil exists in the dashboard but NOT in the Excel model. It is flagged with `inExcelModel: false` in the Product interface.
+
+**Data file inventory:**
+| File | Key Exports | Item Count |
+|------|-------------|------------|
+| `model.ts` | FACILITY, CAPEX, OPERATIONS, MONTHLY_VOLUMES, MODELED_PRICES, SPOT_PRICES, EXPANSION, CAPITAL, VALUATION | — |
+| `products.ts` | products[], facilityEconomics | 5 revenue products |
+| `process.ts` | PROCESS_OUTPUTS[], CTL_DIFFERENTIATION | 8 outputs (5 revenue + 1 TBD + 2 internal) |
+| `financials.ts` | yearlyProjections[], valuationScenarios[], balanceSheet[], cashFlow[] | 5 years, 3 scenarios, 5-year BS/CF |
+| `macro.ts` | MACRO_TAILWINDS[] | 6 tailwinds |
+| `partnerships.ts` | PARTNERS[] | 15 partners, 7 categories |
+| `risks.ts` | RISK_CATEGORIES[] | 14 categories |
+| `team.ts` | team[], advisors[], timeline[] | 5 execs, 8 advisors, 8 milestones |
+| `swot.ts` | SWOT | 6 strengths, 3 weaknesses, 6 opportunities, 4 threats |
+| `competitors.ts` | MARKET_SEGMENTS[] | 8 segments |
+| `markets.ts` | MARKETS[], TOTAL_ADDRESSABLE_MARKET, TOTAL_PROJECTED_MARKET | 6 markets |
+| `capex.ts` | CAPEX_ITEMS[], CAPEX_TOTAL, getCapExByCategory() | 46 line items, 4 categories |
+| `diligence-qa.ts` | DILIGENCE_QUESTIONS[] | 30 Q&A, 10 categories |
+
+**Key gotchas:**
+- `getCapExByCategory()` returns `{ baseCost, totalCost, items }` aggregated per category — NOT arrays. Use `CAPEX_ITEMS.filter()` for line items.
+- `MONTHLY_VOLUMES` are monthly — multiply by 12 for annual.
+- Products array in `products.ts` has 5 items (revenue-generating). `process.ts` has 8 outputs.
+- Sidebar nav in `Sidebar.tsx` and `lib/constants.ts` NAV_ITEMS should stay in sync (10 items). Tab names: Executive Overview, FASForm™ Process, Product Economics, Financial Projections & Valuation, Capital Structure, Risk Mitigation, Strategic Partners, Team, Expansion, Fundraising & Execution.
 
 ---
 
@@ -174,3 +233,101 @@ import { countries } from '@/data/countries';
 import { formatCurrency } from '@/lib/formatters';
 import { CHART_COLORS } from '@/lib/colors';
 ```
+
+---
+
+## Deployment Pipeline
+
+### Architecture
+
+```
+Local (main) → git push → GitHub (main) → webhook → Vercel (Production)
+```
+
+All deployments go through GitHub. **Never deploy directly to Vercel via CLI** (`vercel --prod` bypasses the Git integration and can cause inconsistencies).
+
+### Repositories & Services
+
+| Service | URL / Identifier |
+|---------|-----------------|
+| GitHub repo | `sovereignmedia/fas-dashboard-v3` |
+| GitHub default branch | `main` |
+| Vercel project | `sovereign-media-projects/fas-dashboard-v3` |
+| Vercel production URL | https://fas-dashboard-v3-fncb.vercel.app |
+| Vercel production branch | `main` (synced to GitHub default) |
+
+### Build Config
+
+- `next.config.mjs` has `eslint: { ignoreDuringBuilds: true }` to prevent lint warnings (e.g. unused imports) from failing Vercel builds. Always remove unused imports anyway, but this guard prevents deploy failures.
+
+### Workflow
+
+1. Make changes locally on `main`
+2. `git add <files> && git commit -m "message"`
+3. `git push origin main`
+4. Vercel auto-detects the push and builds (~35s)
+5. Production URL updates automatically
+
+### Branch Strategy
+
+- **`main`** — Production branch. All pushes here auto-deploy to Vercel.
+- **`backup/*`** — Snapshot branches for preserving previous versions before major changes. Example: `backup/pre-apple-elevation` at commit `0c2f264`. These are local-only and never trigger deploys.
+- Create a backup before any large refactor: `git branch backup/pre-<feature-name>`
+
+### Static Assets
+
+- Logo and brand images live in `public/` (served at root path)
+- `public/logo-frontieras.png` — Official Frontieras North America logo (transparent PNG, white text)
+- `public/fonts/` — MicroSquare font files for D3 canvas rendering
+
+### Authentication
+
+- Login gate: `components/layout/PasswordGate.tsx`
+- Password stored in `lib/constants.ts` as `DASHBOARD_PASSWORD`
+- Session auth via `sessionStorage` key `fas-authenticated`
+- Logout clears session and redirects to `/`
+
+---
+
+## Animation System
+
+### Shared Library — `lib/animations.ts`
+
+All Framer Motion variants and spring presets are centralized here. Components import from this file rather than defining their own animation configs.
+
+```tsx
+import { container, item, spring, viewport } from '@/lib/animations';
+```
+
+### Spring Presets
+
+| Name | Stiffness | Damping | Use Case |
+|------|-----------|---------|----------|
+| `spring.snappy` | 400 | 30 | Fast interactions (buttons, toggles) |
+| `spring.default` | 300 | 30 | General-purpose animations |
+| `spring.gentle` | 200 | 28 | Slow reveals, page-level transitions |
+| `spring.hover` | 500 | 30 | Hover lift effects |
+
+### Stagger Containers
+
+- `container` — Default stagger (0.06s delay between children)
+- `containerFast` — Quick stagger (0.03s)
+- `containerSlow` — Slow stagger (0.1s)
+- `staggerContainer(delay)` — Custom factory function
+
+### Scroll-Triggered Reveals
+
+Section components use `whileInView` with viewport configs:
+
+```tsx
+<motion.div variants={container} initial="hidden" whileInView="show" viewport={viewport.section}>
+  <motion.div variants={item}>...</motion.div>
+</motion.div>
+```
+
+- `viewport.section` — `{ once: true, margin: '-80px' }` (triggers 80px before entering viewport)
+- `viewport.eager` — `{ once: true, margin: '0px' }` (triggers at viewport edge)
+
+### Page Transitions
+
+`components/layout/PageTransition.tsx` wraps page content with AnimatePresence for fade+slide transitions between routes.

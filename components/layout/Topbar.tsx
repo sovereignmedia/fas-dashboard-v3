@@ -7,9 +7,13 @@ const pageTitles: Record<string, string> = {
   '/dashboard': 'Executive Overview',
   '/dashboard/economics': 'Product Economics',
   '/dashboard/financials': 'Financial Projections & Valuation',
-  '/dashboard/expansion': 'Global Expansion',
+  '/dashboard/expansion': 'Expansion Optionality',
   '/dashboard/capital': 'Capital Structure',
   '/dashboard/team': 'Genesis & Management',
+  '/dashboard/process': 'FASForm™ Process',
+  '/dashboard/risk-analysis': 'Risk Mitigation',
+  '/dashboard/due-diligence': 'Strategic Partners',
+  '/dashboard/roadmap': 'Fundraising & Execution',
 };
 
 export default function Topbar() {
@@ -22,15 +26,14 @@ export default function Topbar() {
   };
 
   return (
-    <header className="h-16 border-b border-border-subtle bg-bg-primary/80 backdrop-blur-md flex items-center justify-between px-8 sticky top-0 z-30">
+    <header className="h-24 bg-bg-primary/80 backdrop-blur-md flex items-center justify-between px-8 sticky top-0 z-30 shadow-[0_1px_0_rgba(255,255,255,0.04)]">
       <div>
-        <h2 className="text-lg font-semibold text-text-primary">{title}</h2>
+        <h2 className="text-2xl font-light tracking-tight text-text-primary">{title}</h2>
       </div>
-      <div className="flex items-center gap-4">
-        <span className="text-xs uppercase tracking-[0.15em] text-text-tertiary font-medium">
+      <div className="flex items-center gap-5">
+        <span className="text-[10px] uppercase tracking-[0.2em] text-text-tertiary font-medium rounded-full px-3 py-1 bg-white/[0.04]">
           Confidential
         </span>
-        <div className="w-px h-6 bg-border-subtle" />
         <button
           onClick={handleLogout}
           className="flex items-center gap-2 text-text-tertiary hover:text-text-secondary transition-colors text-sm"

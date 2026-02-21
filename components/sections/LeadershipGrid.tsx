@@ -1,23 +1,18 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 import { team } from '@/data/team';
 import SectionHeader from '@/components/ui/SectionHeader';
 import Card from '@/components/ui/Card';
 import InitialsAvatar from '@/components/ui/InitialsAvatar';
-
-const container = {
-  hidden: { opacity: 0 },
-  show: { opacity: 1, transition: { staggerChildren: 0.07 } },
-};
-
-const item = {
-  hidden: { opacity: 0, y: 20 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.4, ease: 'easeOut' as const } },
-};
+import { container, item, viewport, spring } from '@/lib/animations';
 
 function ExecutiveCard({ member }: { member: (typeof team)[number] }) {
+  const [expanded, setExpanded] = useState(false);
+  const hasFullBio = 'fullBio' in member && member.fullBio;
+
   return (
     <motion.div variants={item}>
       <Card className="h-full">
@@ -31,6 +26,36 @@ function ExecutiveCard({ member }: { member: (typeof team)[number] }) {
           </div>
         </div>
         <p className="text-sm leading-relaxed text-text-secondary mt-4">{member.description}</p>
+
+        {hasFullBio && (
+          <>
+            <button
+              onClick={() => setExpanded(!expanded)}
+              className="mt-3 text-xs font-medium uppercase tracking-wider transition-colors duration-200"
+              style={{ color: expanded ? '#d4a852' : 'var(--text-tertiary)' }}
+            >
+              {expanded ? '▲ Hide Full Bio' : '▼ Read Full Bio'}
+            </button>
+
+            <AnimatePresence>
+              {expanded && (
+                <motion.div
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={{ height: 'auto', opacity: 1 }}
+                  exit={{ height: 0, opacity: 0 }}
+                  transition={spring.default}
+                  className="overflow-hidden"
+                >
+                  <div className="pt-3 mt-3 border-t border-white/5">
+                    <p className="text-sm leading-relaxed text-text-secondary">
+                      {member.fullBio}
+                    </p>
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </>
+        )}
       </Card>
     </motion.div>
   );
@@ -47,8 +72,9 @@ export default function LeadershipGrid() {
       <motion.div
         variants={container}
         initial="hidden"
-        animate="show"
-        className="grid grid-cols-1 md:grid-cols-2 gap-6"
+        whileInView="show"
+        viewport={viewport.section}
+        className="grid grid-cols-1 md:grid-cols-2 gap-8"
       >
         {team.map((member) => (
           <ExecutiveCard key={member.name} member={member} />

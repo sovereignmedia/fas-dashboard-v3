@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import Sidebar from '@/components/layout/Sidebar';
 import Topbar from '@/components/layout/Topbar';
 import ComplianceFooter from '@/components/ui/ComplianceFooter';
+import PageTransition from '@/components/layout/PageTransition';
 
 export default function DashboardLayout({
   children,
@@ -41,7 +42,9 @@ export default function DashboardLayout({
             background: 'radial-gradient(ellipse at 20% 50%, rgba(0,204,136,0.06), rgba(0,204,136,0.02) 35%, transparent 70%), radial-gradient(ellipse at 80% 20%, rgba(212,168,82,0.03), transparent 60%)'
           }} />
           <div className="relative z-10">
-            {children}
+            <PageTransition>
+              {children}
+            </PageTransition>
           </div>
         </main>
         <ComplianceFooter />

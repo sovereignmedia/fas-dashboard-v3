@@ -1,8 +1,10 @@
+import { CAPITAL } from './model';
+
 export const capitalPhases = [
   {
     phase: 1,
     name: 'Bridge Capital',
-    amount: 25_000_000,
+    amount: CAPITAL.bridgeRoundTotal,
     status: 'active' as const,
     description: 'Current raise. Preferred equity with warrant coverage. Funds FEL3, long-lead procurement, permits, corporate overhead.',
     use: ['FEL3 Engineering ($11.2M)', 'Long-Lead Equipment ($5M)', 'Permits & Applications', 'Corporate & Legal', 'Working Capital'],
@@ -80,12 +82,30 @@ export const strategicPartners = [
     iconKey: 'Briefcase' as const,
     detail: '$150M committed equity facility. Provides post-IPO growth capital on demand without dilutive financing terms.',
   },
+  {
+    name: 'Baker Botts LLP',
+    role: 'IP & Patent Counsel',
+    iconKey: 'Shield' as const,
+    detail: 'Premier IP law firm managing Frontieras\u2019 patent portfolio across 9 international jurisdictions.',
+  },
+  {
+    name: 'CAMS',
+    role: 'Operational Management',
+    iconKey: 'Settings' as const,
+    detail: '$20B+ industrial operator committed to operational management of facilities. Removes execution risk.',
+  },
+  {
+    name: 'Performance Contractors',
+    role: 'EPC / Construction',
+    iconKey: 'Hammer' as const,
+    detail: 'Engineering, procurement, and construction partner for facility build-out.',
+  },
 ];
 
 export const regAPerformance = {
-  totalRaised: 9_000_000,
-  shareholders: 3_700,
-  sharePrice: 7.77,
+  totalRaised: CAPITAL.totalRaised,
+  shareholders: CAPITAL.shareholders,
+  sharePrice: CAPITAL.sharePrice,
   singleDayRecord: 3_000_000,
   regCFRaised: 4_491_176,
   regCFSpend: 904_115,

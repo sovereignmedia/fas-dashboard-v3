@@ -3,18 +3,10 @@
 import { motion } from 'framer-motion';
 
 import { useOfProceeds } from '@/data/capital';
+import { CAPITAL } from '@/data/model';
 import { formatCurrency } from '@/lib/formatters';
 import Card from '@/components/ui/Card';
-
-const container = {
-  hidden: { opacity: 0 },
-  show: { opacity: 1, transition: { staggerChildren: 0.08 } },
-};
-
-const item = {
-  hidden: { opacity: 0, y: 20 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.4 } },
-};
+import { container, item, viewport } from '@/lib/animations';
 
 export default function UseOfProceedsSection() {
   return (
@@ -22,12 +14,12 @@ export default function UseOfProceedsSection() {
       variants={container}
       initial="hidden"
       whileInView="show"
-      viewport={{ once: true, margin: '-50px' }}
+      viewport={viewport.section}
       className="mb-16"
     >
       <motion.div variants={item}>
         <h3 className="text-sm uppercase tracking-[0.2em] font-medium text-text-tertiary mb-6">
-          Use of Proceeds — $25M Bridge Round
+          Use of Proceeds — {formatCurrency(CAPITAL.bridgeRoundTotal, true)} Bridge Round
         </h3>
       </motion.div>
 
@@ -66,7 +58,7 @@ export default function UseOfProceedsSection() {
 
           <div className="mt-4 pt-4 border-t border-border-subtle flex items-center justify-between">
             <span className="text-sm font-semibold text-text-primary">Total Bridge Round</span>
-            <span className="font-mono text-sm font-bold tabular-nums text-accent-gold">{formatCurrency(25_000_000, true)}</span>
+            <span className="font-mono text-sm font-bold tabular-nums text-accent-gold">{formatCurrency(CAPITAL.bridgeRoundTotal, true)}</span>
           </div>
         </Card>
       </motion.div>

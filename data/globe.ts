@@ -4,6 +4,8 @@
  * Source: V2 lines 2592–2604, 317–331.
  */
 
+import { FACILITY_RAMP_YEAR } from './model';
+
 export const GLOBE_SIZE = 648;
 export const TAU = 2 * Math.PI;
 
@@ -83,7 +85,9 @@ export const GLOBE_COUNTRIES: GlobeCountry[] = [
 ];
 
 export const TOTAL_PLANTS = GLOBE_COUNTRIES.reduce((a, c) => a + c.plants, 0);
-export const PER_PLANT_REVENUE = 1043742806;
+// Intentionally uses Year 3 ramp-up revenue (conservative estimate).
+// Steady-state Year 4 revenue is FACILITY.totalRevenue in model.ts.
+export const PER_PLANT_REVENUE = FACILITY_RAMP_YEAR.revenue;
 export const TOTAL_REVENUE = TOTAL_PLANTS * PER_PLANT_REVENUE;
 
 export const GEOJSON_URL =
