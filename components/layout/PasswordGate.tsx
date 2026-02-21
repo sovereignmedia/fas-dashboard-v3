@@ -1,50 +1,60 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { DASHBOARD_PASSWORD } from '@/lib/constants';
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { Lock } from 'lucide-react';
 
-interface PasswordGateProps {
-  children: React.ReactNode;
-}
-
-export default function PasswordGate({ children }: PasswordGateProps) {
-  const [authenticated, setAuthenticated] = useState(false);
+export default function PasswordGate() {
+  const router = useRouter();
   const [password, setPassword] = useState('');
   const [error, setError] = useState(false);
-  const [checking, setChecking] = useState(true);
+  const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    const stored = sessionStorage.getItem('fas-authenticated');
-    if (stored === 'true') {
-      setAuthenticated(true);
-    }
-    setChecking(false);
-  }, []);
-
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (password === DASHBOARD_PASSWORD) {
-      sessionStorage.setItem('fas-authenticated', 'true');
-      setAuthenticated(true);
-      setError(false);
-    } else {
+    setLoading(true);
+    setError(false);
+
+    try {
+      const res = await fetch('/api/auth', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ password }),
+      });
+
+      if (res.ok) {
+        router.push('/dashboard');
+      } else {
+        setError(true);
+        setPassword('');
+      }
+    } catch {
       setError(true);
-      setPassword('');
+    } finally {
+      setLoading(false);
     }
   };
 
-  if (checking) {
-    return (
-      <div className="min-h-screen bg-bg-primary flex items-center justify-center">
-        <div className="w-8 h-8 border-2 border-accent-gold border-t-transparent rounded-full animate-spin" />
-      </div>
-    );
-  }
+  const handleDevBypass = async () => {
+    setLoading(true);
+    try {
+      const res = await fetch('/api/auth', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ devBypass: true }),
+      });
 
-  if (authenticated) {
-    return <>{children}</>;
-  }
+      if (res.ok) {
+        router.push('/dashboard');
+      } else {
+        setError(true);
+      }
+    } catch {
+      setError(true);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-bg-primary flex items-center justify-center relative overflow-hidden">
@@ -85,6 +95,7 @@ export default function PasswordGate({ children }: PasswordGateProps) {
                   setError(false);
                 }}
                 placeholder="Password"
+                disabled={loading}
                 className={`
                   w-full bg-bg-primary border rounded-lg py-3 pl-11 pr-4
                   text-text-primary placeholder-text-tertiary
@@ -102,10 +113,12 @@ export default function PasswordGate({ children }: PasswordGateProps) {
 
             <button
               type="submit"
+              disabled={loading}
               className="w-full border border-accent-green/40 text-accent-green font-semibold py-3 rounded-lg
-                hover:border-accent-green/60 hover:bg-accent-green/5 transition-all duration-200 flex items-center justify-center gap-2"
+                hover:border-accent-green/60 hover:bg-accent-green/5 transition-all duration-200 flex items-center justify-center gap-2
+                disabled:opacity-50"
             >
-              Access Dashboard
+              {loading ? 'Verifying...' : 'Access Dashboard'}
             </button>
           </form>
 
@@ -115,10 +128,8 @@ export default function PasswordGate({ children }: PasswordGateProps) {
 
           <button
             type="button"
-            onClick={() => {
-              sessionStorage.setItem('fas-authenticated', 'true');
-              setAuthenticated(true);
-            }}
+            onClick={handleDevBypass}
+            disabled={loading}
             className="w-full mt-3 text-xs text-text-tertiary hover:text-accent-gold transition-colors duration-200 py-2"
           >
             Dev Bypass &rarr;
