@@ -92,6 +92,7 @@ export default function PricingSensitivity() {
                 <div className="flex items-center gap-2">
                   <div className="w-2 h-2 rounded-full shrink-0" style={{ backgroundColor: product.color }} />
                   <span className="text-sm font-medium text-text-primary truncate">{product.displayName}</span>
+                  <span className="text-[10px] text-text-tertiary font-mono">{product.priceUnit}</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <span className="text-xs font-mono text-text-tertiary w-14 text-right">{formatCurrency(bounds.min)}</span>

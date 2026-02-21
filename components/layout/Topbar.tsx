@@ -20,8 +20,8 @@ export default function Topbar() {
   const pathname = usePathname();
   const title = pageTitles[pathname] || 'Dashboard';
 
-  const handleLogout = () => {
-    sessionStorage.removeItem('fas-authenticated');
+  const handleLogout = async () => {
+    await fetch('/api/auth', { method: 'DELETE' });
     window.location.href = '/';
   };
 

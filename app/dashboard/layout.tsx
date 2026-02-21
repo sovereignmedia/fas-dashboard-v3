@@ -1,7 +1,5 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
 import Sidebar from '@/components/layout/Sidebar';
 import Topbar from '@/components/layout/Topbar';
 import ComplianceFooter from '@/components/ui/ComplianceFooter';
@@ -12,25 +10,8 @@ export default function DashboardLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const router = useRouter();
-  const [checked, setChecked] = useState(false);
-
-  useEffect(() => {
-    const auth = sessionStorage.getItem('fas-authenticated');
-    if (auth !== 'true') {
-      router.push('/');
-    } else {
-      setChecked(true);
-    }
-  }, [router]);
-
-  if (!checked) {
-    return (
-      <div className="min-h-screen bg-bg-primary flex items-center justify-center">
-        <div className="w-8 h-8 border-2 border-accent-gold border-t-transparent rounded-full animate-spin" />
-      </div>
-    );
-  }
+  // Authentication is enforced by middleware.ts (server-side)
+  // before this layout ever renders. No client-side check needed.
 
   return (
     <div className="min-h-screen bg-bg-primary">
