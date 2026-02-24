@@ -4,44 +4,80 @@ import { useRef } from 'react';
 import { motion } from 'framer-motion';
 import DottedMap from 'dotted-map';
 
-// Mason County, WV — Facility #1
-const ORIGIN = { lat: 38.77, lng: -82.03 };
-
-// Global product distribution destinations — major ports, industrial hubs, energy markets
-const DISTRIBUTION_ARCS = [
-  // North America
-  { lat: 29.76, lng: -95.37, label: 'Houston' },
-  { lat: 56.1, lng: -106.3, label: 'Canada' },
-  { lat: 19.43, lng: -99.13, label: 'Mexico City' },
-  // South America
-  { lat: -23.55, lng: -46.63, label: 'São Paulo' },
-  { lat: -34.6, lng: -58.38, label: 'Buenos Aires' },
-  { lat: -33.45, lng: -70.67, label: 'Santiago' },
-  // Europe
-  { lat: 51.51, lng: -0.13, label: 'London' },
-  { lat: 51.2, lng: 10.4, label: 'Germany' },
-  { lat: 52.23, lng: 21.01, label: 'Warsaw' },
-  { lat: 41.9, lng: 12.5, label: 'Rome' },
-  { lat: 59.33, lng: 18.07, label: 'Stockholm' },
-  // Middle East
-  { lat: 25.28, lng: 55.3, label: 'Dubai' },
-  { lat: 24.47, lng: 54.37, label: 'Abu Dhabi' },
-  // Africa
-  { lat: -30.6, lng: 22.9, label: 'South Africa' },
-  { lat: 30.04, lng: 31.24, label: 'Cairo' },
-  { lat: 6.52, lng: 3.38, label: 'Lagos' },
-  // Asia
-  { lat: 35.0, lng: 105.0, label: 'China' },
-  { lat: 20.6, lng: 78.9, label: 'India' },
-  { lat: 35.68, lng: 139.69, label: 'Tokyo' },
-  { lat: 37.57, lng: 126.98, label: 'Seoul' },
-  { lat: 1.35, lng: 103.82, label: 'Singapore' },
-  { lat: -2.5, lng: 118.0, label: 'Indonesia' },
-  // Oceania
-  { lat: -33.87, lng: 151.21, label: 'Sydney' },
+// Trade route chains — products hop from city to city across the globe
+// Each route is an array of points; arcs connect consecutive points
+const TRADE_ROUTES = [
+  // Route 1: Americas
+  [
+    { lat: 38.77, lng: -82.03, label: 'Mason County' },
+    { lat: 29.76, lng: -95.37, label: 'Houston' },
+    { lat: 19.43, lng: -99.13, label: 'Mexico City' },
+    { lat: -23.55, lng: -46.63, label: 'São Paulo' },
+    { lat: -34.6, lng: -58.38, label: 'Buenos Aires' },
+  ],
+  // Route 2: Transatlantic → Europe → Nordics
+  [
+    { lat: 38.77, lng: -82.03, label: 'Mason County' },
+    { lat: 51.51, lng: -0.13, label: 'London' },
+    { lat: 51.2, lng: 10.4, label: 'Germany' },
+    { lat: 52.23, lng: 21.01, label: 'Warsaw' },
+    { lat: 59.33, lng: 18.07, label: 'Stockholm' },
+  ],
+  // Route 3: Europe south → Middle East → East Africa
+  [
+    { lat: 38.77, lng: -82.03, label: 'Mason County' },
+    { lat: 41.9, lng: 12.5, label: 'Rome' },
+    { lat: 30.04, lng: 31.24, label: 'Cairo' },
+    { lat: 25.28, lng: 55.3, label: 'Dubai' },
+    { lat: 6.52, lng: 3.38, label: 'Lagos' },
+    { lat: -30.6, lng: 22.9, label: 'South Africa' },
+  ],
+  // Route 4: Middle East → South Asia → Southeast Asia
+  [
+    { lat: 25.28, lng: 55.3, label: 'Dubai' },
+    { lat: 20.6, lng: 78.9, label: 'India' },
+    { lat: 1.35, lng: 103.82, label: 'Singapore' },
+    { lat: -2.5, lng: 118.0, label: 'Indonesia' },
+    { lat: -33.87, lng: 151.21, label: 'Sydney' },
+  ],
+  // Route 5: East Asia chain
+  [
+    { lat: 1.35, lng: 103.82, label: 'Singapore' },
+    { lat: 35.0, lng: 105.0, label: 'China' },
+    { lat: 37.57, lng: 126.98, label: 'Seoul' },
+    { lat: 35.68, lng: 139.69, label: 'Tokyo' },
+  ],
+  // Route 6: Canada branch
+  [
+    { lat: 38.77, lng: -82.03, label: 'Mason County' },
+    { lat: 56.1, lng: -106.3, label: 'Canada' },
+  ],
+  // Route 7: West coast South America
+  [
+    { lat: -23.55, lng: -46.63, label: 'São Paulo' },
+    { lat: -33.45, lng: -70.67, label: 'Santiago' },
+  ],
 ];
 
 const LINE_COLOR = '#00cc88'; // CHART_COLORS.green — matches NA Pipeline map
+
+// Build arc pairs and unique point set from routes
+function buildArcsAndPoints() {
+  const arcs: { start: { lat: number; lng: number }; end: { lat: number; lng: number }; routeIdx: number; segIdx: number }[] = [];
+  const pointMap = new Map<string, { lat: number; lng: number; label: string }>();
+
+  TRADE_ROUTES.forEach((route, routeIdx) => {
+    route.forEach((pt, i) => {
+      const key = `${pt.lat},${pt.lng}`;
+      if (!pointMap.has(key)) pointMap.set(key, pt);
+      if (i < route.length - 1) {
+        arcs.push({ start: pt, end: route[i + 1], routeIdx, segIdx: i });
+      }
+    });
+  });
+
+  return { arcs, points: Array.from(pointMap.values()) };
+}
 
 export default function WorldMapArcs() {
   const svgRef = useRef<SVGSVGElement>(null);
@@ -69,7 +105,8 @@ export default function WorldMapArcs() {
     return `M ${start.x} ${start.y} Q ${midX} ${midY} ${end.x} ${end.y}`;
   };
 
-  const origin = projectPoint(ORIGIN.lat, ORIGIN.lng);
+  const { arcs, points } = buildArcsAndPoints();
+  const originPt = projectPoint(38.77, -82.03);
 
   return (
     <div className="w-full aspect-[2/1] rounded-xl relative overflow-hidden">
@@ -95,39 +132,44 @@ export default function WorldMapArcs() {
           </linearGradient>
         </defs>
 
-        {/* Arcs from Mason County to global distribution points */}
-        {DISTRIBUTION_ARCS.map((target, i) => {
-          const end = projectPoint(target.lat, target.lng);
+        {/* Trade route arcs — products hop city to city */}
+        {arcs.map((arc, i) => {
+          const start = projectPoint(arc.start.lat, arc.start.lng);
+          const end = projectPoint(arc.end.lat, arc.end.lng);
+          // Stagger: each segment in a route waits for the previous one
+          const delay = arc.routeIdx * 0.5 + arc.segIdx * 1.2;
           return (
             <motion.path
               key={`arc-${i}`}
-              d={createCurvedPath(origin, end)}
+              d={createCurvedPath(start, end)}
               fill="none"
               stroke="url(#arc-gradient)"
               strokeWidth="1"
               initial={{ pathLength: 0 }}
               animate={{ pathLength: 1 }}
-              transition={{ duration: 1, delay: 0.12 * i, ease: 'easeOut' }}
+              transition={{ duration: 1.4, delay, ease: 'easeOut' }}
             />
           );
         })}
 
-        {/* Origin point — Mason County */}
-        <circle cx={origin.x} cy={origin.y} r="3" fill={LINE_COLOR} />
-        <circle cx={origin.x} cy={origin.y} r="3" fill={LINE_COLOR} opacity="0.5">
+        {/* Origin point — Mason County (larger pulse) */}
+        <circle cx={originPt.x} cy={originPt.y} r="3" fill={LINE_COLOR} />
+        <circle cx={originPt.x} cy={originPt.y} r="3" fill={LINE_COLOR} opacity="0.5">
           <animate attributeName="r" from="3" to="10" dur="2s" repeatCount="indefinite" />
           <animate attributeName="opacity" from="0.5" to="0" dur="2s" repeatCount="indefinite" />
         </circle>
 
-        {/* Target points */}
-        {DISTRIBUTION_ARCS.map((target, i) => {
-          const pt = projectPoint(target.lat, target.lng);
+        {/* All distribution points */}
+        {points.map((pt, i) => {
+          const projected = projectPoint(pt.lat, pt.lng);
+          const isOrigin = pt.lat === 38.77 && pt.lng === -82.03;
+          if (isOrigin) return null;
           return (
             <g key={`pt-${i}`}>
-              <circle cx={pt.x} cy={pt.y} r="2" fill={LINE_COLOR} />
-              <circle cx={pt.x} cy={pt.y} r="2" fill={LINE_COLOR} opacity="0.4">
-                <animate attributeName="r" from="2" to="7" dur="1.5s" begin={`${0.12 * i}s`} repeatCount="indefinite" />
-                <animate attributeName="opacity" from="0.4" to="0" dur="1.5s" begin={`${0.12 * i}s`} repeatCount="indefinite" />
+              <circle cx={projected.x} cy={projected.y} r="2" fill={LINE_COLOR} />
+              <circle cx={projected.x} cy={projected.y} r="2" fill={LINE_COLOR} opacity="0.4">
+                <animate attributeName="r" from="2" to="7" dur="1.5s" begin={`${0.15 * i}s`} repeatCount="indefinite" />
+                <animate attributeName="opacity" from="0.4" to="0" dur="1.5s" begin={`${0.15 * i}s`} repeatCount="indefinite" />
               </circle>
             </g>
           );
