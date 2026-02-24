@@ -11,6 +11,7 @@ import { CHART_COLORS } from '@/lib/colors';
 import { formatCurrency, formatNumber } from '@/lib/formatters';
 import { container, item } from '@/lib/animations';
 import MacroTailwinds from '@/components/sections/MacroTailwinds';
+import WorldMapArcs from '@/components/charts/WorldMapArcs';
 import Disclaimer from '@/components/ui/Disclaimer';
 
 const overviewMetrics = [
@@ -93,6 +94,18 @@ export default function DashboardOverview() {
           </h3>
         </div>
         <NACommercialization />
+      </Card>
+
+      <Card className="!p-10 mt-6 mb-2" hover={false}>
+        <div className="text-center mb-6">
+          <p className="text-xs uppercase tracking-[0.2em] font-medium text-text-tertiary">
+            Global Patent Portfolio
+          </p>
+          <h3 className="text-lg font-semibold text-text-primary mt-1">
+            9-Country Expansion Footprint
+          </h3>
+        </div>
+        <WorldMapArcs />
       </Card>
 
       <div className="mt-16 grid grid-cols-2 gap-8">
