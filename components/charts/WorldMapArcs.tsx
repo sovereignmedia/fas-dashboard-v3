@@ -7,19 +7,41 @@ import DottedMap from 'dotted-map';
 // Mason County, WV — Facility #1
 const ORIGIN = { lat: 38.77, lng: -82.03 };
 
-// Patent territory targets (from globe.ts PATENT_COORDS)
-const EXPANSION_ARCS = [
+// Global product distribution destinations — major ports, industrial hubs, energy markets
+const DISTRIBUTION_ARCS = [
+  // North America
+  { lat: 29.76, lng: -95.37, label: 'Houston' },
+  { lat: 56.1, lng: -106.3, label: 'Canada' },
+  { lat: 19.43, lng: -99.13, label: 'Mexico City' },
+  // South America
+  { lat: -23.55, lng: -46.63, label: 'São Paulo' },
+  { lat: -34.6, lng: -58.38, label: 'Buenos Aires' },
+  { lat: -33.45, lng: -70.67, label: 'Santiago' },
+  // Europe
+  { lat: 51.51, lng: -0.13, label: 'London' },
+  { lat: 51.2, lng: 10.4, label: 'Germany' },
+  { lat: 52.23, lng: 21.01, label: 'Warsaw' },
+  { lat: 41.9, lng: 12.5, label: 'Rome' },
+  { lat: 59.33, lng: 18.07, label: 'Stockholm' },
+  // Middle East
+  { lat: 25.28, lng: 55.3, label: 'Dubai' },
+  { lat: 24.47, lng: 54.37, label: 'Abu Dhabi' },
+  // Africa
+  { lat: -30.6, lng: 22.9, label: 'South Africa' },
+  { lat: 30.04, lng: 31.24, label: 'Cairo' },
+  { lat: 6.52, lng: 3.38, label: 'Lagos' },
+  // Asia
   { lat: 35.0, lng: 105.0, label: 'China' },
   { lat: 20.6, lng: 78.9, label: 'India' },
+  { lat: 35.68, lng: 139.69, label: 'Tokyo' },
+  { lat: 37.57, lng: 126.98, label: 'Seoul' },
+  { lat: 1.35, lng: 103.82, label: 'Singapore' },
   { lat: -2.5, lng: 118.0, label: 'Indonesia' },
-  { lat: -25.3, lng: 133.8, label: 'Australia' },
-  { lat: 61.5, lng: 105.3, label: 'Russia' },
-  { lat: -30.6, lng: 22.9, label: 'South Africa' },
-  { lat: 51.2, lng: 10.4, label: 'Germany' },
-  { lat: 56.1, lng: -106.3, label: 'Canada' },
+  // Oceania
+  { lat: -33.87, lng: 151.21, label: 'Sydney' },
 ];
 
-const LINE_COLOR = '#d4a852'; // accent-gold
+const LINE_COLOR = '#00cc88'; // CHART_COLORS.green — matches NA Pipeline map
 
 export default function WorldMapArcs() {
   const svgRef = useRef<SVGSVGElement>(null);
@@ -73,8 +95,8 @@ export default function WorldMapArcs() {
           </linearGradient>
         </defs>
 
-        {/* Arcs from Mason County to each patent territory */}
-        {EXPANSION_ARCS.map((target, i) => {
+        {/* Arcs from Mason County to global distribution points */}
+        {DISTRIBUTION_ARCS.map((target, i) => {
           const end = projectPoint(target.lat, target.lng);
           return (
             <motion.path
@@ -85,7 +107,7 @@ export default function WorldMapArcs() {
               strokeWidth="1"
               initial={{ pathLength: 0 }}
               animate={{ pathLength: 1 }}
-              transition={{ duration: 1.2, delay: 0.3 * i, ease: 'easeOut' }}
+              transition={{ duration: 1, delay: 0.12 * i, ease: 'easeOut' }}
             />
           );
         })}
@@ -98,14 +120,14 @@ export default function WorldMapArcs() {
         </circle>
 
         {/* Target points */}
-        {EXPANSION_ARCS.map((target, i) => {
+        {DISTRIBUTION_ARCS.map((target, i) => {
           const pt = projectPoint(target.lat, target.lng);
           return (
             <g key={`pt-${i}`}>
-              <circle cx={pt.x} cy={pt.y} r="2.5" fill={LINE_COLOR} />
-              <circle cx={pt.x} cy={pt.y} r="2.5" fill={LINE_COLOR} opacity="0.4">
-                <animate attributeName="r" from="2.5" to="8" dur="1.5s" begin={`${0.3 * i}s`} repeatCount="indefinite" />
-                <animate attributeName="opacity" from="0.4" to="0" dur="1.5s" begin={`${0.3 * i}s`} repeatCount="indefinite" />
+              <circle cx={pt.x} cy={pt.y} r="2" fill={LINE_COLOR} />
+              <circle cx={pt.x} cy={pt.y} r="2" fill={LINE_COLOR} opacity="0.4">
+                <animate attributeName="r" from="2" to="7" dur="1.5s" begin={`${0.12 * i}s`} repeatCount="indefinite" />
+                <animate attributeName="opacity" from="0.4" to="0" dur="1.5s" begin={`${0.12 * i}s`} repeatCount="indefinite" />
               </circle>
             </g>
           );

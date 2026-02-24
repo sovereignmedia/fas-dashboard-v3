@@ -99,10 +99,10 @@ export default function DashboardOverview() {
       <Card className="!p-10 mt-6 mb-2" hover={false}>
         <div className="text-center mb-6">
           <p className="text-xs uppercase tracking-[0.2em] font-medium text-text-tertiary">
-            Global Patent Portfolio
+            Global Distribution
           </p>
           <h3 className="text-lg font-semibold text-text-primary mt-1">
-            9-Country Expansion Footprint
+            Worldwide Product Reach
           </h3>
         </div>
         <WorldMapArcs />
