@@ -328,12 +328,13 @@ export interface DCPowerDataPoint {
 }
 
 export const dcPowerData: DCPowerDataPoint[] = [
-  { year: '2020', twh: 100, isEstimate: false },
-  { year: '2022', twh: 200, isEstimate: false },
-  { year: '2024', twh: 415, isEstimate: false },
-  { year: '2026E', twh: 600, isEstimate: true },
-  { year: '2028E', twh: 750, isEstimate: true },
-  { year: '2030E', twh: 945, isEstimate: true },
+  { year: '2026', twh: 600, isEstimate: false },
+  { year: '2027', twh: 670, isEstimate: true },
+  { year: '2028', twh: 750, isEstimate: true },
+  { year: '2029', twh: 845, isEstimate: true },
+  { year: '2030', twh: 945, isEstimate: true },
+  { year: '2032', twh: 1180, isEstimate: true },
+  { year: '2035', twh: 1580, isEstimate: true },
 ];
 
 // ─── U.S. Power Supply vs. Demand Data ────────────────────────────────────────
@@ -351,43 +352,19 @@ export interface SupplyDemandDataPoint {
 
 export const supplyDemandData: SupplyDemandDataPoint[] = [
   {
-    year: 2020,
-    totalGeneration: 4010,
-    totalDemand: 3900,
-    dcDemandMid: 100,
-    dcDemandHigh: 100,
-    isProjected: false,
-  },
-  {
-    year: 2022,
-    totalGeneration: 4090,
-    totalDemand: 4000,
-    dcDemandMid: 140,
-    dcDemandHigh: 140,
-    isProjected: false,
-  },
-  {
-    year: 2023,
-    totalGeneration: 4178,
-    totalDemand: 4100,
-    dcDemandMid: 176,
-    dcDemandHigh: 176,
-    isProjected: false,
-  },
-  {
-    year: 2024,
-    totalGeneration: 4400,
-    totalDemand: 4300,
-    dcDemandMid: 215,
-    dcDemandHigh: 215,
-    isProjected: false,
-  },
-  {
     year: 2026,
     totalGeneration: 4550,
     totalDemand: 4650,
     dcDemandMid: 380,
     dcDemandHigh: 450,
+    isProjected: false,
+  },
+  {
+    year: 2027,
+    totalGeneration: 4620,
+    totalDemand: 4850,
+    dcDemandMid: 440,
+    dcDemandHigh: 540,
     isProjected: true,
   },
   {
@@ -399,6 +376,14 @@ export const supplyDemandData: SupplyDemandDataPoint[] = [
     isProjected: true,
   },
   {
+    year: 2029,
+    totalGeneration: 4770,
+    totalDemand: 5220,
+    dcDemandMid: 550,
+    dcDemandHigh: 720,
+    isProjected: true,
+  },
+  {
     year: 2030,
     totalGeneration: 4850,
     totalDemand: 5400,
@@ -407,11 +392,35 @@ export const supplyDemandData: SupplyDemandDataPoint[] = [
     isProjected: true,
   },
   {
+    year: 2031,
+    totalGeneration: 4920,
+    totalDemand: 5640,
+    dcDemandMid: 690,
+    dcDemandHigh: 920,
+    isProjected: true,
+  },
+  {
     year: 2032,
     totalGeneration: 5000,
     totalDemand: 5900,
     dcDemandMid: 780,
     dcDemandHigh: 1050,
+    isProjected: true,
+  },
+  {
+    year: 2033,
+    totalGeneration: 5070,
+    totalDemand: 6140,
+    dcDemandMid: 850,
+    dcDemandHigh: 1150,
+    isProjected: true,
+  },
+  {
+    year: 2034,
+    totalGeneration: 5140,
+    totalDemand: 6380,
+    dcDemandMid: 910,
+    dcDemandHigh: 1230,
     isProjected: true,
   },
   {
@@ -446,3 +455,178 @@ export const supplyDemandAnnotations = {
     'IEA Electricity 2025',
   ],
 };
+// ─── Grid Bottleneck Data ─────────────────────────────────────────────────────
+// Sources: LBNL Queued Up 2024, EIA, FERC, industry reports
+
+export interface BottleneckMetric {
+  label: string;
+  value: string;
+  subtext: string;
+  color: 'red' | 'orange' | 'gold' | 'blue' | 'green';
+}
+
+export const bottleneckMetrics: BottleneckMetric[] = [
+  {
+    label: 'Interconnection Queue',
+    value: '2,600 GW',
+    subtext: 'Proposed projects awaiting grid connection',
+    color: 'red',
+  },
+  {
+    label: 'Median Wait Time',
+    value: '5 Years',
+    subtext: 'From request to commercial operation',
+    color: 'orange',
+  },
+  {
+    label: 'Completion Rate',
+    value: '<20%',
+    subtext: 'Of queued projects actually get built',
+    color: 'red',
+  },
+  {
+    label: 'Transformer Lead Time',
+    value: '128 Weeks',
+    subtext: 'Large power transformer delivery — up 146% vs 2019',
+    color: 'orange',
+  },
+  {
+    label: 'New Capacity (2026)',
+    value: '86 GW',
+    subtext: 'Planned additions — record, but a fraction of queue',
+    color: 'blue',
+  },
+  {
+    label: 'Google DC Wait',
+    value: '12 Years',
+    subtext: 'Reported potential delay for new grid connections',
+    color: 'red',
+  },
+];
+
+// Funnel data: what happens to the 2,600 GW in the queue
+export interface BottleneckFunnelStep {
+  stage: string;
+  gw: number;
+  pct: string;
+  note: string;
+}
+
+export const bottleneckFunnel: BottleneckFunnelStep[] = [
+  { stage: 'Requested', gw: 2600, pct: '100%', note: 'Total interconnection queue' },
+  { stage: 'Under Study', gw: 1300, pct: '50%', note: 'Half advance past initial screening' },
+  { stage: 'Approved', gw: 650, pct: '25%', note: 'Receive interconnection agreements' },
+  { stage: 'Built', gw: 520, pct: '20%', note: 'Actually reach commercial operation' },
+  { stage: 'Annual Additions', gw: 86, pct: '3.3%', note: 'What the grid adds per year (2026)' },
+];
+
+// ─── U.S. Generation Mix Data ─────────────────────────────────────────────────
+// Source: American Public Power Association, 2025 Update; EIA
+
+export interface GenerationSource {
+  source: string;
+  capacityGW: number;
+  pctOfTotal: number;
+  color: string;
+  note: string;
+}
+
+export const generationMix: GenerationSource[] = [
+  { source: 'Natural Gas', capacityGW: 567, pctOfTotal: 42.8, color: '#4088e8', note: 'Dominant source, fast to build (3-5 yr)' },
+  { source: 'Coal', capacityGW: 201, pctOfTotal: 15.2, color: '#d4a852', note: '201 GW of grid-connected, permitted infrastructure' },
+  { source: 'Wind', capacityGW: 154, pctOfTotal: 11.6, color: '#00cc88', note: 'Intermittent — not baseload suitable for DCs' },
+  { source: 'Solar', capacityGW: 134, pctOfTotal: 10.1, color: '#e88a30', note: 'Fastest-growing but intermittent' },
+  { source: 'Nuclear', capacityGW: 103, pctOfTotal: 7.8, color: '#c084fc', note: 'Firm baseload — 10+ yr to build new' },
+  { source: 'Hydroelectric', capacityGW: 101, pctOfTotal: 7.6, color: '#20808D', note: 'Geography-limited, no new sites' },
+  { source: 'Other', capacityGW: 66, pctOfTotal: 5.0, color: '#8a7033', note: 'Biomass, geothermal, oil, etc.' },
+];
+
+export const totalInstalledCapacity = 1326; // GW
+
+// ─── Hyperscaler CapEx Data ──────────────────────────────────────────────────
+// Sources: Goldman Sachs, company earnings reports
+
+export interface CapexDataPoint {
+  year: string;
+  capex: number; // $ billions
+  isProjected: boolean;
+}
+
+export const hyperscalerCapex: CapexDataPoint[] = [
+  { year: '2020', capex: 105, isProjected: false },
+  { year: '2021', capex: 150, isProjected: false },
+  { year: '2022', capex: 170, isProjected: false },
+  { year: '2023', capex: 200, isProjected: false },
+  { year: '2024', capex: 258, isProjected: false },
+  { year: '2025', capex: 371, isProjected: false },
+  { year: '2026E', capex: 675, isProjected: true },
+];
+
+// ─── Policy Tailwinds Data ───────────────────────────────────────────────────
+
+export interface PolicyItem {
+  title: string;
+  date: string;
+  category: 'executive-order' | 'regulatory' | 'legislative' | 'market-signal';
+  impact: string;
+  source: string;
+  url: string;
+}
+
+export const policyTailwinds: PolicyItem[] = [
+  {
+    title: 'DOE Emergency Orders Keep Coal Plants Online',
+    date: '2025-2026',
+    category: 'executive-order',
+    impact: 'Only 4.6 GW of planned 12.3 GW retirements executed in 2025 — lowest since 2008. Coal fleet preserved as grid reliability backstop.',
+    source: 'EIA',
+    url: 'https://www.eia.gov/todayinenergy/detail.php?id=67206',
+  },
+  {
+    title: 'EPA Rolls Back Coal Plant Mercury Standards',
+    date: 'Feb 2026',
+    category: 'regulatory',
+    impact: 'Reverted to 2012 standards, saving coal operators ~$670M. Framed as supporting "baseload power for the American economy."',
+    source: 'AP News',
+    url: 'https://apnews.com/article/trump-coal-zeldin-mercury-epa-emissions-b770d6efd05f19ed24b179511c726196',
+  },
+  {
+    title: 'Executive Order: Unleashing American Energy',
+    date: 'Jan 2025',
+    category: 'executive-order',
+    impact: 'Declared national energy emergency. Prioritized fossil fuel development, expedited permitting for energy infrastructure, paused new renewable mandates.',
+    source: 'White House',
+    url: 'https://www.whitehouse.gov/presidential-actions/',
+  },
+  {
+    title: 'Coal Reclassification as Strategic Resource',
+    date: '2025-2026',
+    category: 'legislative',
+    impact: 'Congressional proposals to reclassify coal assets as critical energy infrastructure, enabling federal support for plant upgrades and conversions.',
+    source: 'Congressional Record',
+    url: 'https://www.congress.gov/',
+  },
+  {
+    title: 'PJM Capacity Auction: Record $329/MW-day',
+    date: 'Dec 2025',
+    category: 'market-signal',
+    impact: 'Third consecutive record. Coal cleared 20% of capacity. $16.4B total cost. Market is pricing in structural shortage.',
+    source: 'Utility Dive',
+    url: 'https://www.utilitydive.com/news/pjm-interconnection-capacity-auction-data-center/808264/',
+  },
+  {
+    title: 'Bipartisan Data Center Energy Compacts',
+    date: '2025-2026',
+    category: 'legislative',
+    impact: 'State-level fast-track permitting for data center energy projects in WV, OH, TX, and VA. Grid-ready sites with existing transmission get priority.',
+    source: 'State Legislature Records',
+    url: 'https://www.ncsl.org/',
+  },
+];
+
+export const policyCategories = {
+  'executive-order': { label: 'Executive Action', color: '#e84040' },
+  'regulatory': { label: 'Regulatory', color: '#e88a30' },
+  'legislative': { label: 'Legislative', color: '#4088e8' },
+  'market-signal': { label: 'Market Signal', color: '#d4a852' },
+} as const;

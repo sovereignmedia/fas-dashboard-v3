@@ -6,9 +6,13 @@ import { Clock } from 'lucide-react';
 import SectionHeader from '@/components/ui/SectionHeader';
 import { container, item } from '@/lib/animations';
 import MarketOverviewStats from '@/components/sections/MarketOverviewStats';
-import DCPowerChart from '@/components/charts/DCPowerChart';
 import SupplyDemandChart from '@/components/charts/SupplyDemandChart';
+import DCPowerChart from '@/components/charts/DCPowerChart';
+import CapexChart from '@/components/charts/CapexChart';
+import GenerationMix from '@/components/charts/GenerationMix';
+import GridBottleneck from '@/components/sections/GridBottleneck';
 import PeerComparison from '@/components/sections/PeerComparison';
+import PolicyTailwinds from '@/components/sections/PolicyTailwinds';
 import SectorIntelligence from '@/components/sections/SectorIntelligence';
 
 export default function MarketContextPage() {
@@ -37,24 +41,42 @@ export default function MarketContextPage() {
           </div>
         </motion.div>
 
+        {/* ── Market Overview Stats ── */}
         <motion.div variants={item}>
           <MarketOverviewStats />
         </motion.div>
 
-        {/* ── Supply/Demand Gap — full width, hero visualization ── */}
+        {/* ── Hero Chart: Supply vs. Demand Gap (2026–2035) ── */}
         <motion.div variants={item}>
           <SupplyDemandChart />
         </motion.div>
 
-        {/* ── Side-by-side: DC Power Chart + Peer Comparison ── */}
+        {/* ── Side-by-side: Data Center Power + Hyperscaler CapEx ── */}
         <motion.div variants={item} className="mt-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             <DCPowerChart />
-            <PeerComparison compact />
+            <CapexChart />
           </div>
+        </motion.div>
+
+        {/* ── Side-by-side: Generation Mix + Grid Bottleneck ── */}
+        <motion.div variants={item} className="mt-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <GenerationMix />
+            <GridBottleneck />
+          </div>
+        </motion.div>
+
+        {/* ── Peer Comparison Table (full width) ── */}
+        <motion.div variants={item} className="mt-4">
+          <PeerComparison />
         </motion.div>
       </motion.div>
 
+      {/* ── Policy Tailwinds ── */}
+      <PolicyTailwinds />
+
+      {/* ── Sector Intelligence (articles) ── */}
       <SectorIntelligence />
     </div>
   );

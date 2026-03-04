@@ -10,7 +10,6 @@ import {
   CartesianGrid,
   Tooltip,
   ResponsiveContainer,
-  ReferenceLine,
   ReferenceArea,
 } from 'recharts';
 
@@ -78,7 +77,7 @@ function CustomTooltip({ active, payload, label }: any) {
           </span>
         </div>
         <div className="flex items-center justify-between gap-4">
-          <span className="text-[11px] text-text-tertiary">DC Demand (Mid)</span>
+          <span className="text-[11px] text-text-tertiary">Data Center Demand (Mid)</span>
           <span
             className="font-mono text-[12px] font-semibold tabular-nums"
             style={{ color: CHART_COLORS.blue }}
@@ -120,9 +119,7 @@ export default function SupplyDemandChart() {
     }));
   }, []);
 
-  // Find first projected year for reference line
-  const firstProjected = chartData.find((d) => d.isProjected);
-  // Find the crossover point
+  // Find the crossover point (where demand exceeds supply)
   const crossoverYear = chartData.find((d) => d.totalDemand > d.totalGeneration);
 
   return (
@@ -178,8 +175,8 @@ export default function SupplyDemandChart() {
           />
 
           <YAxis
-            domain={[3000, 7000]}
-            tickCount={9}
+            domain={[0, 7000]}
+            tickCount={8}
             tick={{ fill: CHART_COLORS.goldDim, fontSize: 11, fontFamily: 'monospace' }}
             tickFormatter={(v: number) => `${(v / 1000).toFixed(1)}k`}
             axisLine={false}
@@ -200,32 +197,16 @@ export default function SupplyDemandChart() {
             cursor={{ stroke: `${CHART_COLORS.gold}30`, strokeWidth: 1 }}
           />
 
-          {/* Gap shading (projected area where demand > supply) */}
+          {/* Gap shading (area where demand > supply) */}
           {crossoverYear && (
             <ReferenceArea
               x1={crossoverYear.year}
               x2={2035}
-              y1={3000}
+              y1={0}
               y2={7000}
               fill={CHART_COLORS.red}
               fillOpacity={0.03}
               strokeOpacity={0}
-            />
-          )}
-
-          {/* Projected divider */}
-          {firstProjected && (
-            <ReferenceLine
-              x={firstProjected.year}
-              stroke={`${CHART_COLORS.gold}30`}
-              strokeDasharray="4 4"
-              label={{
-                value: 'Projected →',
-                position: 'top',
-                fill: CHART_COLORS.goldDim,
-                fontSize: 9,
-                fontFamily: 'monospace',
-              }}
             />
           )}
 
@@ -282,7 +263,7 @@ export default function SupplyDemandChart() {
         </div>
         <div>
           <p className="text-[10px] uppercase tracking-[0.15em] text-text-tertiary mb-0.5">
-            DC Share by 2030
+            Data Center Share by 2030
           </p>
           <p className="font-mono text-base font-bold tabular-nums" style={{ color: CHART_COLORS.blue }}>
             {supplyDemandAnnotations.dcShare2030Mid}

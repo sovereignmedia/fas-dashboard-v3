@@ -8,7 +8,6 @@ import {
   CartesianGrid,
   Tooltip,
   ResponsiveContainer,
-  ReferenceLine,
 } from 'recharts';
 
 import { dcPowerData, type DCPowerDataPoint } from '@/data/market-context';
@@ -59,7 +58,7 @@ export default function DCPowerChart() {
           Global Data Center Electricity Consumption
         </h3>
         <p className="text-sm text-text-tertiary mt-0.5">
-          Source: IEA, company guidance
+          Source: IEA, S&amp;P Global, Gartner
         </p>
       </div>
 
@@ -90,13 +89,13 @@ export default function DCPowerChart() {
           />
 
           <YAxis
-            domain={[0, 1000]}
-            tickCount={6}
+            domain={[0, 1800]}
+            tickCount={7}
             tick={{ fill: CHART_COLORS.goldDim, fontSize: 11, fontFamily: 'monospace' }}
             tickFormatter={(v: number) => `${v}`}
             axisLine={false}
             tickLine={false}
-            width={38}
+            width={42}
             label={{
               value: 'TWh',
               position: 'insideTopLeft',
@@ -108,20 +107,6 @@ export default function DCPowerChart() {
           />
 
           <Tooltip content={<CustomTooltip />} cursor={{ stroke: `${CHART_COLORS.gold}30`, strokeWidth: 1 }} />
-
-          {/* Dashed divider at the estimate transition */}
-          <ReferenceLine
-            x="2026E"
-            stroke={`${CHART_COLORS.gold}30`}
-            strokeDasharray="4 4"
-            label={{
-              value: 'Projected →',
-              position: 'top',
-              fill: CHART_COLORS.goldDim,
-              fontSize: 9,
-              fontFamily: 'monospace',
-            }}
-          />
 
           <Area
             type="monotone"
@@ -139,17 +124,13 @@ export default function DCPowerChart() {
       <div className="flex items-center gap-6 mt-4 pt-4 border-t border-border-subtle">
         <div className="flex items-center gap-2">
           <div className="w-4 h-0.5" style={{ backgroundColor: CHART_COLORS.blue }} />
-          <span className="text-[10px] text-text-tertiary uppercase tracking-[0.15em]">Actual</span>
-        </div>
-        <div className="flex items-center gap-2">
-          <div className="w-4 h-0.5 border-t border-dashed" style={{ borderColor: CHART_COLORS.blue }} />
-          <span className="text-[10px] text-text-tertiary uppercase tracking-[0.15em]">IEA Estimate</span>
+          <span className="text-[10px] text-text-tertiary uppercase tracking-[0.15em]">Projection</span>
         </div>
         <div className="ml-auto">
           <span className="text-[10px] text-text-tertiary font-mono tabular-nums">
-            2030E target:{' '}
+            2035 projection:{' '}
             <span className="font-semibold" style={{ color: CHART_COLORS.blue }}>
-              945 TWh
+              1,580 TWh
             </span>
           </span>
         </div>
