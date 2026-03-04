@@ -4,6 +4,7 @@ import Sidebar from '@/components/layout/Sidebar';
 import Topbar from '@/components/layout/Topbar';
 import ComplianceFooter from '@/components/ui/ComplianceFooter';
 import PageTransition from '@/components/layout/PageTransition';
+import DisclaimerModal from '@/components/ui/DisclaimerModal';
 
 export default function DashboardLayout({
   children,
@@ -15,6 +16,7 @@ export default function DashboardLayout({
 
   return (
     <div className="min-h-screen bg-bg-primary">
+      <DisclaimerModal />
       <Sidebar />
       <div className="ml-64 lg:ml-16 xl:ml-64 min-h-screen flex flex-col">
         <Topbar />
