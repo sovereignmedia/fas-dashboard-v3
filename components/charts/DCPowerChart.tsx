@@ -9,9 +9,7 @@ import {
   Tooltip,
   ResponsiveContainer,
   ReferenceLine,
-  type TooltipProps,
 } from 'recharts';
-import { type ValueType, type NameType } from 'recharts/types/component/DefaultTooltipContent';
 
 import { dcPowerData, type DCPowerDataPoint } from '@/data/market-context';
 import { CHART_COLORS } from '@/lib/colors';
@@ -19,7 +17,8 @@ import Card from '@/components/ui/Card';
 
 // ─── Custom Tooltip ──────────────────────────────────────────────────────────
 
-function CustomTooltip({ active, payload, label }: TooltipProps<ValueType, NameType>) {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function CustomTooltip({ active, payload, label }: any) {
   if (!active || !payload || !payload.length) return null;
 
   const value = payload[0]?.value as number | undefined;
