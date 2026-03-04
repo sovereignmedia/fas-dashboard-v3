@@ -2,7 +2,19 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { LayoutDashboard, FlaskConical, TrendingUp, Globe, Landmark, Users, GitBranch, ShieldCheck, FileSearch, Map } from 'lucide-react';
+import {
+  LayoutDashboard,
+  FlaskConical,
+  TrendingUp,
+  Globe,
+  Landmark,
+  Users,
+  GitBranch,
+  ShieldCheck,
+  FileSearch,
+  Map,
+  Newspaper,
+} from 'lucide-react';
 
 const iconMap = {
   LayoutDashboard,
@@ -15,10 +27,12 @@ const iconMap = {
   ShieldCheck,
   FileSearch,
   Map,
+  Newspaper,
 } as const;
 
 const NAV_ITEMS = [
   { label: 'Overview', href: '/dashboard', icon: 'LayoutDashboard' as const },
+  { label: 'Market Context', href: '/dashboard/market-context', icon: 'Newspaper' as const },
   { label: 'FASForm™', href: '/dashboard/process', icon: 'GitBranch' as const },
   { label: 'Economics', href: '/dashboard/economics', icon: 'FlaskConical' as const },
   { label: 'Risk Mitigation', href: '/dashboard/risk-analysis', icon: 'ShieldCheck' as const },
