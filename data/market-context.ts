@@ -1,0 +1,337 @@
+// ─── Market Context Data ────────────────────────────────────────────────────
+// Energy & AI Infrastructure sector data for the Market Context tab.
+// All figures sourced from public research, company guidance, and market data.
+
+// ─── Market Overview Stats ───────────────────────────────────────────────────
+
+export interface MarketStat {
+  label: string;
+  value: string;
+  delta: string;
+  deltaColor: 'green' | 'blue' | 'gold' | 'orange' | 'red' | 'purple';
+  deltaContext: string;
+}
+
+export const marketStats: MarketStat[] = [
+  {
+    label: 'Hyperscaler CapEx',
+    value: '$660–690B',
+    delta: '+55% YoY',
+    deltaColor: 'green',
+    deltaContext: '2026 combined Big Five spend vs. $443B in 2025',
+  },
+  {
+    label: 'DC Power Demand',
+    value: '945 TWh',
+    deltaColor: 'blue',
+    delta: '2030E',
+    deltaContext: 'Global data center electricity consumption (IEA)',
+  },
+  {
+    label: 'PJM Capacity Price',
+    value: '$329/MW-day',
+    delta: 'Record High',
+    deltaColor: 'gold',
+    deltaContext: 'Third consecutive auction at all-time high — $16.4B total',
+  },
+  {
+    label: 'Grid Queue',
+    value: '2,600 GW',
+    delta: '5-yr Median Wait',
+    deltaColor: 'orange',
+    deltaContext: 'US interconnection backlog — 80% of projects withdraw',
+  },
+  {
+    label: 'Coal Retirements',
+    value: '4.6 / 12.3 GW',
+    delta: '37% Executed',
+    deltaColor: 'red',
+    deltaContext: '2025 planned vs. actual — DOE emergency orders kept plants online',
+  },
+  {
+    label: 'Transformer Lead Time',
+    value: '128 Weeks',
+    delta: '+146% vs 2019',
+    deltaColor: 'purple',
+    deltaContext: 'Large power transformer delivery times — critical grid bottleneck',
+  },
+];
+
+// ─── Peer Company Quotes ──────────────────────────────────────────────────────
+
+export interface PeerQuote {
+  symbol: string;
+  name: string;
+  price: number;
+  changePct: number;
+  marketCap: number;
+  pe: number;
+  yearLow: number;
+  yearHigh: number;
+  sector: string;
+  relevance: string;
+}
+
+export const peerQuotes: PeerQuote[] = [
+  {
+    symbol: 'GEV',
+    name: 'GE Vernova',
+    price: 842.00,
+    changePct: -4.45,
+    marketCap: 228451811322,
+    pe: 47.54,
+    yearLow: 252.25,
+    yearHigh: 894.93,
+    sector: 'Power Equipment',
+    relevance: 'Gas/steam turbines, grid equipment, power generation tech',
+  },
+  {
+    symbol: 'CEG',
+    name: 'Constellation Energy',
+    price: 324.87,
+    changePct: -0.70,
+    marketCap: 101453675041,
+    pe: 43.96,
+    yearLow: 161.35,
+    yearHigh: 412.70,
+    sector: 'Nuclear Power',
+    relevance: 'Largest US nuclear fleet, Microsoft/Meta PPAs',
+  },
+  {
+    symbol: 'NEE',
+    name: 'NextEra Energy',
+    price: 92.59,
+    changePct: -0.13,
+    marketCap: 192913116800,
+    pe: 28.06,
+    yearLow: 61.72,
+    yearHigh: 95.91,
+    sector: 'Renewable / Utility',
+    relevance: 'Largest US utility, renewables + grid infrastructure',
+  },
+  {
+    symbol: 'ETN',
+    name: 'Eaton Corporation',
+    price: 355.56,
+    changePct: -5.79,
+    marketCap: 138099504000,
+    pe: 34.02,
+    yearLow: 231.85,
+    yearHigh: 408.45,
+    sector: 'Electrical Equipment',
+    relevance: 'Power management, data center electrical infrastructure',
+  },
+  {
+    symbol: 'VRT',
+    name: 'Vertiv Holdings',
+    price: 244.44,
+    changePct: -5.16,
+    marketCap: 93522255120,
+    pe: 71.47,
+    yearLow: 53.60,
+    yearHigh: 264.86,
+    sector: 'DC Infrastructure',
+    relevance: 'Power/cooling for data centers, AI infrastructure',
+  },
+  {
+    symbol: 'VST',
+    name: 'Vistra Corp.',
+    price: 161.70,
+    changePct: -2.58,
+    marketCap: 54788081733,
+    pe: 58.38,
+    yearLow: 90.51,
+    yearHigh: 219.82,
+    sector: 'Power Generation',
+    relevance: 'Nuclear fleet operator, data center power supplier',
+  },
+  {
+    symbol: 'CCJ',
+    name: 'Cameco Corp.',
+    price: 117.79,
+    changePct: -6.32,
+    marketCap: 51286590530,
+    pe: 120.19,
+    yearLow: 35.00,
+    yearHigh: 135.24,
+    sector: 'Uranium Mining',
+    relevance: 'Uranium supply chain, nuclear fuel',
+  },
+  {
+    symbol: 'BE',
+    name: 'Bloom Energy',
+    price: 153.02,
+    changePct: -7.82,
+    marketCap: 36190913220,
+    pe: -413.57,
+    yearLow: 15.15,
+    yearHigh: 180.90,
+    sector: 'Fuel Cells',
+    relevance: 'Behind-the-meter power, hydrogen fuel cells, distributed generation',
+  },
+  {
+    symbol: 'NRG',
+    name: 'NRG Energy',
+    price: 162.06,
+    changePct: -7.70,
+    marketCap: 34790642619,
+    pe: 40.52,
+    yearLow: 79.57,
+    yearHigh: 189.96,
+    sector: 'Power Generation',
+    relevance: 'Independent power producer, data center PPAs',
+  },
+  {
+    symbol: 'OKLO',
+    name: 'Oklo Inc.',
+    price: 63.30,
+    changePct: -2.13,
+    marketCap: 9890439848,
+    pe: -113.04,
+    yearLow: 17.42,
+    yearHigh: 193.84,
+    sector: 'Advanced Nuclear',
+    relevance: 'Next-gen nuclear, Meta 1.2GW deal, Sam Altman-backed',
+  },
+  {
+    symbol: 'SMR',
+    name: 'NuScale Power',
+    price: 12.53,
+    changePct: -3.98,
+    marketCap: 3736169563,
+    pe: -5.86,
+    yearLow: 11.08,
+    yearHigh: 57.42,
+    sector: 'Small Modular Reactors',
+    relevance: 'SMR technology developer',
+  },
+];
+
+// ─── Curated Articles ──────────────────────────────────────────────────────────
+
+export interface MarketArticle {
+  id: number;
+  headline: string;
+  source: string;
+  url: string;
+  date: string; // ISO 8601: YYYY-MM-DD
+  category: string;
+  summary: string;
+  whyItMatters: string;
+}
+
+export const marketArticles: MarketArticle[] = [
+  {
+    id: 1,
+    headline: 'Big Tech to Spend $650 Billion This Year as AI Race Intensifies',
+    source: 'Bloomberg',
+    url: 'https://www.bloomberg.com/news/articles/2026-02-06/how-much-is-big-tech-spending-on-ai-computing-a-staggering-650-billion-in-2026',
+    date: '2026-02-06',
+    category: 'AI POWER DEMAND',
+    summary:
+      'The Big Five hyperscalers will deploy $660–690B in combined capex in 2026 — nearly 100% of operating cash flows. Microsoft alone spent $11.1B leasing data center space in a single quarter, with GPUs sitting idle because the company lacks the electricity to install them.',
+    whyItMatters:
+      'Validates unprecedented demand for AI infrastructure power, with spending nearly doubling YoY. Power constraints — not demand — are the limiting factor.',
+  },
+  {
+    id: 2,
+    headline: 'US AI Boom Faces Electric Shock',
+    source: 'Reuters',
+    url: 'https://www.reuters.com/markets/commodities/us-ai-boom-faces-electric-shock-2026-02-25/',
+    date: '2026-02-25',
+    category: 'GRID & INFRASTRUCTURE',
+    summary:
+      'US electricity demand is expected to rise ~2% annually through 2030, more than double the pace of the past decade. Data centers are the primary driver, with IEA projecting global DC power consumption doubling to 945 TWh by 2030.',
+    whyItMatters:
+      'Grid infrastructure was not built for this demand surge. Power availability now determines data center deployment timelines, not construction speed.',
+  },
+  {
+    id: 3,
+    headline: 'Meta Inks Nuclear Deals for Up to 6.6 GW from Oklo, Vistra, TerraPower',
+    source: 'Utility Dive',
+    url: 'https://www.utilitydive.com/news/meta-nuclear-deal-oklo-vistra-terrapower-ai-data-centers/809215/',
+    date: '2026-01-09',
+    category: 'NUCLEAR & BASELOAD',
+    summary:
+      'Meta signed 20-year agreements for 6.6 GW of nuclear power by 2035 — enough to power ~5M homes. Includes existing Vistra plants in OH/PA plus advanced reactors from Oklo and TerraPower. Follows June 2025 Constellation deal for Illinois nuclear.',
+    whyItMatters:
+      'Hyperscalers are locking in decades-long baseload power contracts at unprecedented scale, validating that firm, dispatchable generation is essential for AI infrastructure.',
+  },
+  {
+    id: 4,
+    headline: 'EPA Finalizes Repeal of Coal Plant Mercury Rule Amendments',
+    source: 'AP News',
+    url: 'https://apnews.com/article/trump-coal-zeldin-mercury-epa-emissions-b770d6efd05f19ed24b179511c726196',
+    date: '2026-02-20',
+    category: 'POLICY & REGULATION',
+    summary:
+      'EPA rolled back Biden-era mercury emission standards at a coal plant along the Ohio River, reverting to 2012 standards. The move saves an estimated $670M for coal operators and is framed as supporting "baseload power for the American economy."',
+    whyItMatters:
+      'Regulatory tailwinds for coal-adjacent infrastructure are strengthening. Existing coal assets are being reframed as essential grid reliability resources rather than phase-out candidates.',
+  },
+  {
+    id: 5,
+    headline: 'PJM Capacity Auction Hits Record $329/MW-Day for Third Straight Auction',
+    source: 'Utility Dive',
+    url: 'https://www.utilitydive.com/news/pjm-interconnection-capacity-auction-data-center/808264/',
+    date: '2025-12-18',
+    category: 'ENERGY MARKETS',
+    summary:
+      "PJM's capacity auction cleared at a record $329/MW-day, with total cost hitting $16.4B. Coal cleared 20% of capacity. Almost no new generation entered the auction because 'projects in PJM are still struggling to get built.' Constellation alone cleared 17,950 MW ($2.2B revenue).",
+    whyItMatters:
+      'Record capacity prices signal acute supply shortages. Existing dispatchable generation — including coal — commands premium valuations as new build struggles with interconnection delays.',
+  },
+  {
+    id: 6,
+    headline: 'Coal Plant Retirements Stall as DOE Issues Emergency Orders',
+    source: 'EIA',
+    url: 'https://www.eia.gov/todayinenergy/detail.php?id=67206',
+    date: '2026-02-23',
+    category: 'GRID & INFRASTRUCTURE',
+    summary:
+      'Only 4.6 GW of planned 12.3 GW retirements actually occurred in 2025 — the lowest since 2008. DOE emergency orders kept major coal plants online. 6.4 GW of coal retirements scheduled for 2026 face similar delays. Analysts expect only 3–5 GW will actually close.',
+    whyItMatters:
+      'The 176,000 MW US coal fleet is being preserved as a reliability backstop. Plants once slated for demolition are now receiving capital extensions, creating a runway for conversion technologies.',
+  },
+  {
+    id: 7,
+    headline: 'Grid Interconnection Queue Swells to 2,600 GW with 5–12 Year Wait Times',
+    source: 'EnkiAI',
+    url: 'https://enkiai.com/ai-market-intelligence/grid-interconnection-delays-2026-a-threat-to-us-energy',
+    date: '2026-01-28',
+    category: 'GRID & INFRASTRUCTURE',
+    summary:
+      'The US interconnection queue has ballooned to 2,600 GW with median wait times of 5 years. Google reported potential 12-year delays for new data center grid connections. Nearly 80% of new projects withdraw before completion. Power transformer lead times are 128 weeks.',
+    whyItMatters:
+      'New generation cannot get built fast enough. Existing grid-connected assets — especially those with available capacity headroom — carry enormous strategic value.',
+  },
+  {
+    id: 8,
+    headline: 'North America Fertilizers Market to Reach $85.7B by 2031',
+    source: 'ResearchAndMarkets',
+    url: 'https://finance.yahoo.com/news/fertilizers-market-north-america-2026-162100194.html',
+    date: '2026-01-22',
+    category: 'INDUSTRIAL DEMAND',
+    summary:
+      'The North American fertilizer market is projected to grow from $63.8B (2025) to $85.7B by 2031 at 5.06% CAGR. US corn and soybean acreage will reach 96.2M acres by 2026. Growing demand for ammonium sulfate and reshoring of critical mineral supply chains adds tailwinds.',
+    whyItMatters:
+      'Validates growing domestic demand for fertilizer products — a key output of coal-to-chemicals conversion. Reshoring trends strengthen the case for US-based production capacity.',
+  },
+];
+
+// ─── DC Power Chart Data ───────────────────────────────────────────────────────
+
+export interface DCPowerDataPoint {
+  year: string;
+  twh: number;
+  isEstimate: boolean;
+}
+
+export const dcPowerData: DCPowerDataPoint[] = [
+  { year: '2020', twh: 100, isEstimate: false },
+  { year: '2022', twh: 200, isEstimate: false },
+  { year: '2024', twh: 415, isEstimate: false },
+  { year: '2026E', twh: 600, isEstimate: true },
+  { year: '2028E', twh: 750, isEstimate: true },
+  { year: '2030E', twh: 945, isEstimate: true },
+];
