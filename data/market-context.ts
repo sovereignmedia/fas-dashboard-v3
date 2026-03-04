@@ -335,3 +335,114 @@ export const dcPowerData: DCPowerDataPoint[] = [
   { year: '2028E', twh: 750, isEstimate: true },
   { year: '2030E', twh: 945, isEstimate: true },
 ];
+
+// ─── U.S. Power Supply vs. Demand Data ────────────────────────────────────────
+// Sources: EIA, Lawrence Berkeley National Lab, Deloitte, Goldman Sachs,
+// McKinsey, Belfer Center (Harvard), IEA Electricity 2025 Report
+
+export interface SupplyDemandDataPoint {
+  year: number;
+  totalGeneration: number;       // Total U.S. electricity generation (TWh)
+  totalDemand: number;           // Total projected demand incl. DC growth (TWh)
+  dcDemandMid: number;           // Data center demand — mid scenario (TWh)
+  dcDemandHigh: number;          // Data center demand — high scenario (TWh)
+  isProjected: boolean;
+}
+
+export const supplyDemandData: SupplyDemandDataPoint[] = [
+  {
+    year: 2020,
+    totalGeneration: 4010,
+    totalDemand: 3900,
+    dcDemandMid: 100,
+    dcDemandHigh: 100,
+    isProjected: false,
+  },
+  {
+    year: 2022,
+    totalGeneration: 4090,
+    totalDemand: 4000,
+    dcDemandMid: 140,
+    dcDemandHigh: 140,
+    isProjected: false,
+  },
+  {
+    year: 2023,
+    totalGeneration: 4178,
+    totalDemand: 4100,
+    dcDemandMid: 176,
+    dcDemandHigh: 176,
+    isProjected: false,
+  },
+  {
+    year: 2024,
+    totalGeneration: 4400,
+    totalDemand: 4300,
+    dcDemandMid: 215,
+    dcDemandHigh: 215,
+    isProjected: false,
+  },
+  {
+    year: 2026,
+    totalGeneration: 4550,
+    totalDemand: 4650,
+    dcDemandMid: 380,
+    dcDemandHigh: 450,
+    isProjected: true,
+  },
+  {
+    year: 2028,
+    totalGeneration: 4700,
+    totalDemand: 5050,
+    dcDemandMid: 500,
+    dcDemandHigh: 650,
+    isProjected: true,
+  },
+  {
+    year: 2030,
+    totalGeneration: 4850,
+    totalDemand: 5400,
+    dcDemandMid: 600,
+    dcDemandHigh: 790,
+    isProjected: true,
+  },
+  {
+    year: 2032,
+    totalGeneration: 5000,
+    totalDemand: 5900,
+    dcDemandMid: 780,
+    dcDemandHigh: 1050,
+    isProjected: true,
+  },
+  {
+    year: 2035,
+    totalGeneration: 5200,
+    totalDemand: 6600,
+    dcDemandMid: 960,
+    dcDemandHigh: 1300,
+    isProjected: true,
+  },
+];
+
+// Key data points for annotation callouts
+export const supplyDemandAnnotations = {
+  currentCapacity: '1,326 GW',
+  currentGeneration: '~4,400 TWh',
+  dcShare2024: '~5%',
+  dcShare2030Mid: '~12%',
+  dcShare2035High: '~25%',
+  gapBy2030: '~550 TWh',
+  gapBy2035: '~1,400 TWh',
+  gridInvestmentNeeded: '$720B',
+  interconnectionQueue: '2,600 GW',
+  queueCompletionRate: '<20%',
+  sources: [
+    'EIA (2025)',
+    'Lawrence Berkeley National Lab',
+    'Deloitte',
+    'Goldman Sachs',
+    'McKinsey',
+    'Belfer Center (Harvard)',
+    'IEA Electricity 2025',
+  ],
+};

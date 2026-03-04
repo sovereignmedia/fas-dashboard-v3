@@ -7,6 +7,7 @@ import SectionHeader from '@/components/ui/SectionHeader';
 import { container, item } from '@/lib/animations';
 import MarketOverviewStats from '@/components/sections/MarketOverviewStats';
 import DCPowerChart from '@/components/charts/DCPowerChart';
+import SupplyDemandChart from '@/components/charts/SupplyDemandChart';
 import PeerComparison from '@/components/sections/PeerComparison';
 import SectorIntelligence from '@/components/sections/SectorIntelligence';
 
@@ -40,12 +41,20 @@ export default function MarketContextPage() {
           <MarketOverviewStats />
         </motion.div>
 
+        {/* ── Supply/Demand Gap — full width, hero visualization ── */}
         <motion.div variants={item}>
-          <DCPowerChart />
+          <SupplyDemandChart />
+        </motion.div>
+
+        {/* ── Side-by-side: DC Power Chart + Peer Comparison ── */}
+        <motion.div variants={item} className="mt-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <DCPowerChart />
+            <PeerComparison compact />
+          </div>
         </motion.div>
       </motion.div>
 
-      <PeerComparison />
       <SectorIntelligence />
     </div>
   );

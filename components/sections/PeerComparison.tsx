@@ -133,7 +133,7 @@ function RelevanceTooltip({ text }: { text: string }) {
 
 // ─── Table Row ────────────────────────────────────────────────────────────────
 
-function PeerRow({ quote, index }: { quote: EnrichedPeerQuote; index: number }) {
+function PeerRow({ quote, index, compact = false }: { quote: EnrichedPeerQuote; index: number; compact?: boolean }) {
   const isNegative = quote.changePct < 0;
   const changeColor = isNegative ? CHART_COLORS.red : CHART_COLORS.green;
   const peColor = getPEColor(quote.pe);
@@ -146,20 +146,20 @@ function PeerRow({ quote, index }: { quote: EnrichedPeerQuote; index: number }) 
       }`}
     >
       {/* Company */}
-      <td className="py-3 pl-6 pr-4 whitespace-nowrap">
+      <td className={`${compact ? 'py-2 pl-4 pr-2' : 'py-3 pl-6 pr-4'} whitespace-nowrap`}>
         <div className="flex items-center">
           <div className="flex flex-col">
-            <span className="text-sm font-medium text-text-primary">{quote.name}</span>
-            <span className="text-[10px] text-text-tertiary mt-0.5">{quote.sector}</span>
+            <span className={`${compact ? 'text-xs' : 'text-sm'} font-medium text-text-primary`}>{quote.name}</span>
+            {!compact && <span className="text-[10px] text-text-tertiary mt-0.5">{quote.sector}</span>}
           </div>
-          <RelevanceTooltip text={quote.relevance} />
+          {!compact && <RelevanceTooltip text={quote.relevance} />}
         </div>
       </td>
 
       {/* Ticker */}
-      <td className="py-3 px-4 whitespace-nowrap">
+      <td className={`${compact ? 'py-2 px-2' : 'py-3 px-4'} whitespace-nowrap`}>
         <span
-          className="font-mono text-sm font-semibold tabular-nums"
+          className={`font-mono ${compact ? 'text-xs' : 'text-sm'} font-semibold tabular-nums`}
           style={{ color: CHART_COLORS.blue }}
         >
           {quote.symbol}
@@ -167,16 +167,16 @@ function PeerRow({ quote, index }: { quote: EnrichedPeerQuote; index: number }) 
       </td>
 
       {/* Price */}
-      <td className="py-3 px-4 whitespace-nowrap">
-        <span className="font-mono text-sm text-text-primary tabular-nums">
+      <td className={`${compact ? 'py-2 px-2' : 'py-3 px-4'} whitespace-nowrap`}>
+        <span className={`font-mono ${compact ? 'text-xs' : 'text-sm'} text-text-primary tabular-nums`}>
           {formatPrice(quote.price)}
         </span>
       </td>
 
       {/* Change % */}
-      <td className="py-3 px-4 whitespace-nowrap">
+      <td className={`${compact ? 'py-2 px-2' : 'py-3 px-4'} whitespace-nowrap`}>
         <span
-          className="font-mono text-sm font-semibold tabular-nums"
+          className={`font-mono ${compact ? 'text-xs' : 'text-sm'} font-semibold tabular-nums`}
           style={{ color: changeColor }}
         >
           {isNegative ? '' : '+'}{quote.changePct.toFixed(2)}%
@@ -184,26 +184,28 @@ function PeerRow({ quote, index }: { quote: EnrichedPeerQuote; index: number }) 
       </td>
 
       {/* Market Cap */}
-      <td className="py-3 px-4 whitespace-nowrap">
-        <span className="font-mono text-sm text-text-secondary tabular-nums">
+      <td className={`${compact ? 'py-2 px-2' : 'py-3 px-4'} whitespace-nowrap`}>
+        <span className={`font-mono ${compact ? 'text-xs' : 'text-sm'} text-text-secondary tabular-nums`}>
           {formatMarketCap(quote.marketCap)}
         </span>
       </td>
 
       {/* P/E with conditional coloring */}
-      <td className="py-3 px-4 whitespace-nowrap">
+      <td className={`${compact ? 'py-2 px-2' : 'py-3 px-4'} whitespace-nowrap`}>
         <span
-          className="font-mono text-sm tabular-nums"
+          className={`font-mono ${compact ? 'text-xs' : 'text-sm'} tabular-nums`}
           style={{ color: peColor }}
         >
           {formatPE(quote.pe)}
         </span>
       </td>
 
-      {/* 52W Range */}
-      <td className="py-3 px-4">
-        <RangeBar price={quote.price} yearLow={quote.yearLow} yearHigh={quote.yearHigh} />
-      </td>
+      {/* 52W Range — hidden in compact */}
+      {!compact && (
+        <td className="py-3 px-4">
+          <RangeBar price={quote.price} yearLow={quote.yearLow} yearHigh={quote.yearHigh} />
+        </td>
+      )}
     </motion.tr>
   );
 }
@@ -217,6 +219,7 @@ function ColHeader({
   currentDirection,
   onSort,
   align = 'left',
+  compact = false,
 }: {
   children: ReactNode;
   sortKey?: SortKey;
@@ -224,6 +227,7 @@ function ColHeader({
   currentDirection: SortDirection;
   onSort: (key: SortKey) => void;
   align?: 'left' | 'right';
+  compact?: boolean;
 }) {
   const isSorted = sortKey && sortKey === currentSort;
   const canSort = !!sortKey;
@@ -231,7 +235,7 @@ function ColHeader({
   return (
     <th
       className={`pb-3 text-[10px] uppercase tracking-[0.2em] font-semibold text-text-tertiary whitespace-nowrap ${
-        align === 'right' ? 'text-right pr-6' : 'text-left pl-4 first:pl-6'
+        align === 'right' ? `text-right ${compact ? 'pr-4' : 'pr-6'}` : `text-left ${compact ? 'pl-2 first:pl-4' : 'pl-4 first:pl-6'}`
       } ${canSort ? 'cursor-pointer select-none transition-colors hover:text-text-secondary' : ''}`}
       onClick={canSort && sortKey ? () => onSort(sortKey) : undefined}
     >
@@ -256,7 +260,11 @@ function ColHeader({
 
 // ─── Component ───────────────────────────────────────────────────────────────
 
-export default function PeerComparison() {
+interface PeerComparisonProps {
+  compact?: boolean;
+}
+
+export default function PeerComparison({ compact = false }: PeerComparisonProps) {
   const { quotes, lastUpdated, isLive, isLoading, refresh } = useMarketQuotes();
   const [sortKey, setSortKey] = useState<SortKey>('marketCap');
   const [sortDir, setSortDir] = useState<SortDirection>('desc');
@@ -275,6 +283,78 @@ export default function PeerComparison() {
     return sortDir === 'desc' ? sorted.reverse() : sorted;
   }, [quotes, sortKey, sortDir]);
 
+  // ── Compact mode (embedded inline, no section header) ──
+  if (compact) {
+    return (
+      <Card hover={false} className="!p-0 overflow-hidden h-full flex flex-col">
+        {/* Compact header inside card */}
+        <div className="px-4 pt-5 pb-3">
+          <p className="text-[10px] uppercase tracking-[0.25em] font-semibold text-accent-gold/70 mb-1">
+            Sector Comps
+          </p>
+          <h3 className="text-lg font-semibold text-text-primary">
+            Energy & Infrastructure Peers
+          </h3>
+          <p className="text-sm text-text-tertiary mt-0.5">
+            Public market comparables
+          </p>
+        </div>
+
+        {/* Scrollable table */}
+        <div className="overflow-x-auto overflow-y-auto flex-1 max-h-[400px]">
+          <table className="w-full min-w-[500px]">
+            <thead className="sticky top-0 z-10" style={{ background: 'var(--bg-secondary, #0e1420)' }}>
+              <tr className="border-b border-border-medium">
+                <ColHeader compact sortKey="name" currentSort={sortKey} currentDirection={sortDir} onSort={handleSort}>Company</ColHeader>
+                <ColHeader compact sortKey="symbol" currentSort={sortKey} currentDirection={sortDir} onSort={handleSort}>Ticker</ColHeader>
+                <ColHeader compact sortKey="price" currentSort={sortKey} currentDirection={sortDir} onSort={handleSort}>Price</ColHeader>
+                <ColHeader compact sortKey="changePct" currentSort={sortKey} currentDirection={sortDir} onSort={handleSort}>Chg %</ColHeader>
+                <ColHeader compact sortKey="marketCap" currentSort={sortKey} currentDirection={sortDir} onSort={handleSort}>Mkt Cap</ColHeader>
+                <ColHeader compact sortKey="pe" currentSort={sortKey} currentDirection={sortDir} onSort={handleSort}>P/E</ColHeader>
+              </tr>
+            </thead>
+            <tbody>
+              {sortedPeers.map((quote, index) => (
+                <PeerRow key={quote.symbol} quote={quote} index={index} compact />
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        {/* Compact footer */}
+        <div className="px-4 py-2 border-t border-border-subtle flex items-center justify-between mt-auto">
+          <span className="inline-flex items-center gap-1.5">
+            {isLive ? (
+              <>
+                <Wifi size={10} style={{ color: CHART_COLORS.green }} />
+                <span className="text-[10px] font-semibold uppercase tracking-[0.15em]" style={{ color: CHART_COLORS.green }}>
+                  Live
+                </span>
+              </>
+            ) : (
+              <>
+                <WifiOff size={10} className="text-text-tertiary" />
+                <span className="text-[10px] font-semibold uppercase tracking-[0.15em] text-text-tertiary">
+                  Static
+                </span>
+              </>
+            )}
+          </span>
+
+          <button
+            onClick={refresh}
+            className="inline-flex items-center gap-1 text-[10px] text-text-tertiary hover:text-text-secondary transition-colors"
+            disabled={isLoading}
+          >
+            <RefreshCw size={10} className={isLoading ? 'animate-spin' : ''} />
+            Refresh
+          </button>
+        </div>
+      </Card>
+    );
+  }
+
+  // ── Full mode (standalone section with header) ──
   return (
     <section className="mt-12">
       <SectionHeader
