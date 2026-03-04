@@ -129,20 +129,7 @@ export default function DCPowerChart() {
             stroke={CHART_COLORS.blue}
             strokeWidth={2}
             fill="url(#dcPowerGradient)"
-            dot={(props: { cx: number; cy: number; index: number }) => {
-              const isLast = props.index === dcPowerData.length - 1;
-              return (
-                <circle
-                  key={`dot-${props.index}`}
-                  cx={props.cx}
-                  cy={props.cy}
-                  r={isLast ? 5 : 3.5}
-                  fill={isLast ? CHART_COLORS.blue : 'var(--bg-primary, #0a0a0f)'}
-                  stroke={CHART_COLORS.blue}
-                  strokeWidth={isLast ? 0 : 1.5}
-                />
-              );
-            }}
+            dot={{ r: 3.5, fill: 'var(--bg-primary, #0a0a0f)', stroke: CHART_COLORS.blue, strokeWidth: 1.5 }}
             activeDot={{ r: 5, fill: CHART_COLORS.blue, strokeWidth: 0 }}
           />
         </AreaChart>
