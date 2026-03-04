@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { Clock } from 'lucide-react';
 
 import SectionHeader from '@/components/ui/SectionHeader';
 import { container, item } from '@/lib/animations';
@@ -17,7 +18,6 @@ export default function MarketContextPage() {
         initial="hidden"
         animate="show"
       >
-        {/* Page header */}
         <motion.div variants={item}>
           <SectionHeader
             overline="Market Context"
@@ -26,21 +26,26 @@ export default function MarketContextPage() {
           />
         </motion.div>
 
-        {/* Stats row — 6 key metrics */}
+        <motion.div variants={item} className="-mt-8 mb-8">
+          <div className="flex items-center gap-1.5">
+            <Clock size={11} className="text-text-tertiary/60" />
+            <span className="text-[10px] text-text-tertiary/60 font-mono tabular-nums">
+              Dashboard refreshed {new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+              {' \u00b7 '}Market data updates every 5 min during trading hours
+            </span>
+          </div>
+        </motion.div>
+
         <motion.div variants={item}>
           <MarketOverviewStats />
         </motion.div>
 
-        {/* DC Power consumption trajectory chart */}
         <motion.div variants={item}>
           <DCPowerChart />
         </motion.div>
       </motion.div>
 
-      {/* Peer comparison table */}
       <PeerComparison />
-
-      {/* Sector intelligence news grid */}
       <SectorIntelligence />
     </div>
   );
