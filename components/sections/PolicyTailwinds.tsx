@@ -70,20 +70,19 @@ function PolicyCard({ policy }: PolicyCardProps) {
 
 export default function PolicyTailwinds() {
   return (
-    <section aria-labelledby="policy-tailwinds-heading">
+    <section>
       <SectionHeader
         overline="REGULATORY LANDSCAPE"
         title="Policy Tailwinds"
         subtitle="Executive actions, regulatory shifts, and market signals supporting energy infrastructure investment."
-        id="policy-tailwinds-heading"
       />
 
       <motion.div
         className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-2"
         variants={container}
         initial="hidden"
-        whileInView="visible"
-        viewport={viewport}
+        whileInView="show"
+        viewport={viewport.section}
       >
         {policyTailwinds.map((policy) => (
           <motion.div key={policy.title} variants={item} className="flex">

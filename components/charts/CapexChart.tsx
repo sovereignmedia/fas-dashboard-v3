@@ -9,7 +9,6 @@ import {
   CartesianGrid,
   Tooltip,
   Cell,
-  LabelList,
   ResponsiveContainer,
 } from 'recharts';
 import Card from '@/components/ui/Card';
@@ -44,29 +43,9 @@ function CustomTooltip({ active, payload, label }: any) {
   );
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-function BarLabel({ x, y, width, value, index }: any) {
-  const dataPoint = hyperscalerCapex[index] as CapexDataPoint | undefined;
-  const isProjected = dataPoint?.isProjected ?? false;
-
-  return (
-    <text
-      x={(x as number) + (width as number) / 2}
-      y={(y as number) - 6}
-      textAnchor="middle"
-      fill={isProjected ? CHART_COLORS.gold : '#9ca3af'}
-      fontSize={11}
-      fontFamily="'JetBrains Mono', monospace"
-      fontWeight={isProjected ? 700 : 400}
-    >
-      ${value}B
-    </text>
-  );
-}
-
 export default function CapexChart() {
   return (
-    <motion.div variants={container} initial="hidden" animate="visible">
+    <motion.div variants={container} initial="hidden" animate="show">
       <motion.div variants={item}>
         <Card>
           {/* Header */}
@@ -131,7 +110,6 @@ export default function CapexChart() {
                   radius={[3, 3, 0, 0]}
                   maxBarSize={64}
                 >
-                  <LabelList dataKey="capex" content={<BarLabel />} />
                   {hyperscalerCapex.map((entry) => (
                     <Cell
                       key={`cell-${entry.year}`}
