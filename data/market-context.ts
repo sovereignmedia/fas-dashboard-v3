@@ -317,6 +317,91 @@ export const marketArticles: MarketArticle[] = [
     whyItMatters:
       'Validates growing domestic demand for fertilizer products — a key output of coal-to-chemicals conversion. Reshoring trends strengthen the case for US-based production capacity.',
   },
+  {
+    id: 9,
+    headline: "NextEra expects to add up to 30 gigawatts of power for data centers by 2035",
+    source: "Reuters",
+    url: "https://www.reuters.com/business/energy/nextera-expects-add-up-30-gigawatts-power-data-centers-by-2035-2026-03-03/",
+    date: "2026-03-03",
+    category: "AI POWER DEMAND",
+    summary:
+      "NextEra Energy told investors it expects to build 15\u201330 gigawatts of new generation to serve U.S. data centers through 2035. The company framed electricity availability as the binding constraint for AI data center deployment, pointing to a large natural-gas generation pipeline as a near-term supply source.",
+    whyItMatters:
+      "Investor takeaway: AI load is translating into utility-scale build plans measured in tens of gigawatts. The marginal MWh is increasingly tied to dispatchable capacity and fuel availability, not just incremental renewables.",
+  },
+  {
+    id: 10,
+    headline: "US grid watchdog objects to Maryland power plant sale, cites data center demand concerns",
+    source: "Reuters",
+    url: "https://www.reuters.com/business/energy/us-grid-watchdog-objects-maryland-power-plant-sale-cites-data-center-demand-2026-03-05/",
+    date: "2026-03-05",
+    category: "GRID & INFRASTRUCTURE",
+    summary:
+      "PJM's independent market monitor urged FERC to reject a Maryland power plant sale, warning that generation could be redirected to data centers at a time of tightening supply. The filing highlighted uncertainty over whether future plans would rely on reactivating retired units, building new supply, or altering existing interconnection rights.",
+    whyItMatters:
+      "This underscores how scarce, grid-connected dispatchable assets are becoming in constrained regions like PJM. Regulatory scrutiny is rising around large-load growth, interconnection rights, and who gets priority for limited supply.",
+  },
+  {
+    id: 11,
+    headline: "What to Know About Trump's AI Deal",
+    source: "POLITICO",
+    url: "https://www.politico.com/news/2026/03/04/trump-ai-data-centers-electricity-00811909",
+    date: "2026-03-04",
+    category: "POLICY & REGULATION",
+    summary:
+      "The White House is promoting a framework where large-load customers like data centers fund their own power and grid upgrades to reduce pressure on reliability and limit cost-shifting to households. The article details how utilities and states are exploring special tariffs and contractual commitments so large loads pay for capacity they reserve, even if usage is lower than forecast.",
+    whyItMatters:
+      "Large-load cost allocation is turning into a policy battleground that can accelerate or delay data center buildouts. Winning projects will likely be those paired with firm power and clear \u201cpay-your-own-way\u201d structures.",
+  },
+  {
+    id: 12,
+    headline: "AEP expands spending plan, beats profit estimates as electricity demand surges",
+    source: "Reuters",
+    url: "https://www.reuters.com/business/energy/aep-expands-spending-plan-beats-profit-estimates-electricity-demand-surges-2026-02-12/",
+    date: "2026-02-12",
+    category: "ENERGY MARKETS",
+    summary:
+      "Major U.S. utilities are increasing capital plans to meet data-center-driven load growth, with AEP expanding a five-year program beyond $72 billion and Exelon lifting its plan to $41 billion. AEP disclosed agreements totaling 56 gigawatts of data center load and noted intensifying debate over affordability as PJM-region power bills rise.",
+    whyItMatters:
+      "Utility capex, rate design, and market-structure changes are now directly linked to AI-era load growth. Infrastructure spending (generation + transmission) is becoming a multi-decade theme with political constraints centered on customer bills.",
+  },
+  {
+    id: 13,
+    headline: "Trump EPA to weaken rule limiting harmful mercury, air toxins from coal plants",
+    source: "Reuters",
+    url: "https://www.reuters.com/legal/litigation/trump-epa-weaken-rule-limiting-harmful-mercury-air-toxics-coal-plants-2026-02-20/",
+    date: "2026-02-20",
+    category: "POLICY & REGULATION",
+    summary:
+      "The EPA said it will weaken the 2024 Mercury and Air Toxics Standards for coal plants, effectively reverting toward the older 2012 framework. The agency argued the change could lower costs for operators of aging plants and support baseload availability as electricity demand rises with AI data centers.",
+    whyItMatters:
+      "Regulatory risk around legacy thermal generation is shifting, extending the economic life of existing assets. That increases the value of solutions that can upgrade, repower, or monetize entrenched brownfield infrastructure.",
+  },
+  {
+    id: 14,
+    headline: "Rising US industrial load intensifies power generation need",
+    source: "Reuters",
+    url: "https://www.reuters.com/business/energy/rising-us-industrial-load-intensifies-power-generation-need--reeii-2026-02-09/",
+    date: "2026-02-09",
+    category: "INDUSTRIAL DEMAND",
+    summary:
+      "Analysts cited by Reuters forecast a 120-gigawatt rise in U.S. peak demand over the next five years, with industrial consumption contributing about 24 gigawatts. Beyond data centers, drivers include oil and gas electrification and domestic manufacturing buildouts (semiconductors, batteries/EVs, and chemicals), all competing for interconnection capacity and equipment.",
+    whyItMatters:
+      "The investment case for new dispatchable supply is not \u201cjust AI.\u201d Industrial electrification and re-shoring add durable load that supports multi-output energy/industrial hubs and long-dated contracted cash flows.",
+  },
+  {
+    id: 15,
+    headline: "Iran war threatens Asia fertiliser supplies ahead of planting season",
+    source: "Reuters",
+    url: "https://www.reuters.com/business/energy/iran-war-threatens-asia-fertiliser-supplies-ahead-planting-season-2026-03-05/",
+    date: "2026-03-05",
+    category: "INDUSTRIAL DEMAND",
+    summary:
+      "The escalation in the Middle East is disrupting fertilizer production and shipping routes, including transit through the Strait of Hormuz, which Reuters described as a conduit for about one-third of global nutrient trade. Market participants warned that supplies of urea and phosphate fertilizers could tighten sharply ahead of planting season, with urea prices reported up roughly 80% from pre-conflict levels.",
+    whyItMatters:
+      "Fertilizer and industrial chemical markets remain exposed to geopolitical chokepoints and feedstock volatility. That strengthens the strategic premium on domestic, secure production pathways for nitrogen and related chemical value chains.",
+  },
+
 ];
 
 // ─── DC Power Chart Data ───────────────────────────────────────────────────────
