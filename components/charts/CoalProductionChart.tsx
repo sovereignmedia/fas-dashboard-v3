@@ -76,6 +76,23 @@ export default function CoalProductionChart() {
         </p>
       </div>
 
+      {/* Context paragraph */}
+      <div className="mb-6 max-w-3xl">
+        <p className="text-sm leading-relaxed text-text-secondary">
+          Despite the global push toward renewables, coal production has climbed
+          steadily — rising nearly 89% since 2000 to a record 8,773 million
+          metric tons in 2024. This growth is driven by surging electricity
+          demand in Asia, the expansion of AI-scale data centers requiring
+          firm baseload power, and the ongoing role of coal in steel,
+          fertilizer, and chemical manufacturing. For the energy
+          infrastructure sector, this trend underscores a structural reality:
+          coal remains deeply embedded in the global energy mix, and
+          technologies that can convert coal reserves into higher-value
+          products sit at the intersection of existing supply chains and
+          accelerating demand.
+        </p>
+      </div>
+
       {/* KPI Row */}
       <div className="flex flex-wrap gap-x-8 gap-y-3 mb-6">
         <div>

@@ -47,8 +47,13 @@ export default function MarketContextPage() {
           <MarketOverviewStats />
         </motion.div>
 
-        {/* ── Hero Chart: Supply vs. Demand Gap (2026–2035) ── */}
+        {/* ── Global Coal Production (full width) ── */}
         <motion.div variants={item}>
+          <CoalProductionChart />
+        </motion.div>
+
+        {/* ── US Power Generation vs. Projected Demand (2026–2035) ── */}
+        <motion.div variants={item} className="mt-8">
           <SupplyDemandChart />
         </motion.div>
 
@@ -66,11 +71,6 @@ export default function MarketContextPage() {
             <GenerationMix />
             <GridBottleneck />
           </div>
-        </motion.div>
-
-        {/* ── Global Coal Production (full width) ── */}
-        <motion.div variants={item} className="mt-8">
-          <CoalProductionChart />
         </motion.div>
 
         {/* ── Peer Comparison Table (full width) ── */}
