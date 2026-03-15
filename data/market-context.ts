@@ -710,8 +710,8 @@ export const policyTailwinds: PolicyItem[] = [
 ];
 
 export const policyCategories = {
-  'executive-order': { label: 'Executive Action', color: '#e84040' },
-  'regulatory': { label: 'Regulatory', color: '#e88a30' },
-  'legislative': { label: 'Legislative', color: '#4088e8' },
-  'market-signal': { label: 'Market Signal', color: '#d4a852' },
+  'executive-order': { label: 'Executive Action', color: '#00cc88' },
+  'regulatory': { label: 'Regulatory', color: '#00cc88' },
+  'legislative': { label: 'Legislative', color: '#00cc88' },
+  'market-signal': { label: 'Market Signal', color: '#00cc88' },
 } as const;
