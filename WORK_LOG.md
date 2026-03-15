@@ -321,4 +321,4 @@ Add a full-width Global Coal Production chart to the Market Context tab, showing
 
 ### Commits
 - `19f314f` — "feat: add Global Coal Production chart to Market Context tab"
-- `[this commit]` — "fix: remove stale selectedCountry prop from expansion page + update docs"
+- `9e4e791` — "fix: remove stale selectedCountry prop from expansion page + update docs"
