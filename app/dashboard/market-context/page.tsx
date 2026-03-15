@@ -10,6 +10,7 @@ import SupplyDemandChart from '@/components/charts/SupplyDemandChart';
 import DCPowerChart from '@/components/charts/DCPowerChart';
 import CapexChart from '@/components/charts/CapexChart';
 import GenerationMix from '@/components/charts/GenerationMix';
+import CoalProductionChart from '@/components/charts/CoalProductionChart';
 import GridBottleneck from '@/components/sections/GridBottleneck';
 import PeerComparison from '@/components/sections/PeerComparison';
 import PolicyTailwinds from '@/components/sections/PolicyTailwinds';
@@ -65,6 +66,11 @@ export default function MarketContextPage() {
             <GenerationMix />
             <GridBottleneck />
           </div>
+        </motion.div>
+
+        {/* ── Global Coal Production (full width) ── */}
+        <motion.div variants={item} className="mt-8">
+          <CoalProductionChart />
         </motion.div>
 
         {/* ── Peer Comparison Table (full width) ── */}
