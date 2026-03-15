@@ -41,7 +41,7 @@ export default function ExpansionPage() {
       <ExpansionGrid />
 
       <div className="mt-14">
-        <CoalProductionChart selectedCountry={null} />
+        <CoalProductionChart />
       </div>
 
       <div className="mt-14">

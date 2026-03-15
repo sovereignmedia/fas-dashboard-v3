@@ -2,7 +2,7 @@
 
 > Plain-English content audit of every piece of text, metric, financial figure, and strategic claim displayed on the Frontieras Investor Dashboard. This is a strategic investor-relations document — treat it like a live data room index.
 
-**Last updated:** 2026-02-19
+**Last updated:** 2026-03-15
 **Model version:** Financial Model 4.1.25.xlsx (April 2025)
 **Dashboard version:** v1.0
 
@@ -334,7 +334,7 @@ Total Current TAM: ~$1,528.8B → Projected: ~$2,094.5B
 1. **Strategic framing Card** — "prove the model domestically, then exercise global optionality"
 2. **InteractiveGlobeV3** — 3D rotating globe with patent countries
 3. **ExpansionGrid** — 4 stat pills: Patent Markets (9), Patents Granted, Addressable Sites, Global Coal (Mt). Reframed from "Total Facilities" to "Addressable Sites".
-4. **CoalProductionChart** — Coal production by country
+4. **CoalProductionChart** — Global coal production (1950–2024), green AreaChart showing TWh with Mt on tooltip hover. KPI row: 2024 production, % change since 1950, % change since 2000. Source: Our World in Data / EI Statistical Review 2025 / IEA.
 5. **PenetrationCalculator** — Moved inside CollapsibleSection (collapsed by default), labeled "Deep Dive / Market Penetration Modeling"
 
 ---
