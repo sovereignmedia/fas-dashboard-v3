@@ -402,6 +402,61 @@ export const marketArticles: MarketArticle[] = [
       "Fertilizer and industrial chemical markets remain exposed to geopolitical chokepoints and feedstock volatility. That strengthens the strategic premium on domestic, secure production pathways for nitrogen and related chemical value chains.",
   },
 
+  {
+    id: 16,
+    headline: 'US power demand surge from data centers could lift fossil fuel generation, EIA says',
+    source: 'Reuters',
+    url: 'https://www.reuters.com/business/energy/us-power-demand-surge-data-centers-could-lift-fossil-fuel-generation-eia-says-2026-03-12/',
+    date: '2026-03-12',
+    category: 'AI POWER DEMAND',
+    summary: 'Reuters reports that EIA analysis finds U.S. electricity demand is accelerating again after a long period of flat growth, with data centers a key driver. In EIA’s high-demand scenario, natural-gas generation rises materially through 2027 and coal declines more slowly than in the baseline case.',
+    whyItMatters: 'Higher large-load growth rates can tighten capacity and favor fast-to-deploy, dispatchable generation that can clear interconnection constraints and support grid reliability.',
+  },
+
+  {
+    id: 17,
+    headline: 'US power use to beat record highs in 2026 and 2027 as AI use surges, EIA says',
+    source: 'Reuters',
+    url: 'https://www.reuters.com/business/energy/us-power-use-beat-record-highs-2026-2027-ai-use-surges-eia-says-2026-03-10/',
+    date: '2026-03-10',
+    category: 'AI POWER DEMAND',
+    summary: 'Reuters summarizes EIA’s Short-Term Energy Outlook projecting U.S. electricity consumption reaching new records in 2026 and 2027. The outlook keeps natural gas as the largest generation source while nuclear’s share rises in 2026 and renewables continue gaining share into 2027.',
+    whyItMatters: 'Record-load forecasts reinforce the investment case for scalable baseload and firm power solutions, as well as infrastructure upgrades needed to serve incremental demand.',
+  },
+
+  {
+    id: 18,
+    headline: 'US utilities scale up grid-boosting tech to meet surging demand',
+    source: 'Reuters',
+    url: 'https://www.reuters.com/business/energy/us-utilities-scale-up-grid-boosting-tech-meet-surging-demand--reeii-2026-03-09/',
+    date: '2026-03-09',
+    category: 'GRID & INFRASTRUCTURE',
+    summary: 'Reuters reports utilities are deploying grid-enhancing technologies (such as dynamic line ratings and advanced power flow controls) and virtual power plants to increase usable transmission capacity faster than building new lines. The piece cites DOE and RMI estimates highlighting the gap between transmission build needs and recent build rates, and the potential for these technologies to unlock additional peak capacity.',
+    whyItMatters: 'Near-term grid constraints are becoming a binding limiter on load growth, increasing the premium on projects that can deliver reliability with minimal new transmission build.',
+  },
+
+  {
+    id: 19,
+    headline: 'Fact Sheet: President Donald J. Trump Advances Energy Affordability with the Ratepayer Protection Pledge',
+    source: 'The White House',
+    url: 'https://www.whitehouse.gov/fact-sheets/2026/03/fact-sheet-president-donald-j-trump-advances-energy-affordability-with-the-ratepayer-protection-pledge/',
+    date: '2026-03-04',
+    category: 'POLICY & REGULATION',
+    summary: 'The White House says major hyperscalers agreed to “build, bring, or buy” new generation resources for data centers and to fully fund necessary power delivery upgrades, with separate rate structures and payment commitments even if electricity is not ultimately used. The fact sheet also references federal engagement in PJM market design intended to accelerate new power plant development while shielding ratepayers from data-center-driven costs.',
+    whyItMatters: 'Policy is shifting toward forcing large loads to finance incremental supply and wires, potentially accelerating investment into new firm generation and grid expansion.',
+  },
+
+  {
+    id: 20,
+    headline: 'Fertilizer prices soar as Strait of Hormuz tensions rise—forcing U.S. farmers to rethink spring planting',
+    source: 'Fortune',
+    url: 'https://fortune.com/2026/03/12/fertilizer-prices-strait-of-hormuz-farming-spring-planting-iran-war/',
+    date: '2026-03-12',
+    category: 'INDUSTRIAL DEMAND',
+    summary: 'Fortune reports fertilizer prices jumped roughly 30% in late February to early March amid heightened risks to Persian Gulf shipping routes, highlighting exposure of urea and ammonia supply to geopolitical disruption. The story notes potential impacts on U.S. farmer planting decisions and renewed attention to input costs and supply security.',
+    whyItMatters: 'Volatile global supply chains for critical industrial inputs can increase strategic value of domestic, flexible production capacity for fuels and chemicals.',
+  },
+
 ];
 
 // ─── DC Power Chart Data ───────────────────────────────────────────────────────
