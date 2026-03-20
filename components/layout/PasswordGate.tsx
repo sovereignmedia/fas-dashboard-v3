@@ -1,11 +1,9 @@
 'use client';
 
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
 import { Lock } from 'lucide-react';
 
 export default function PasswordGate() {
-  const router = useRouter();
   const [password, setPassword] = useState('');
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -23,7 +21,7 @@ export default function PasswordGate() {
       });
 
       if (res.ok) {
-        router.push('/dashboard');
+        window.location.href = '/dashboard';
       } else {
         setError(true);
         setPassword('');

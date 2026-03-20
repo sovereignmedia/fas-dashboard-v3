@@ -264,3 +264,61 @@ Replace placeholder logo with actual Frontieras brand image across the app. Rena
 - `b1a733f` — "Replace placeholder sidebar logo with actual Frontieras logo image"
 - `62f2ad2` — "Enlarge & center sidebar logo, add logo to login page"
 - `c45a086` — "Trigger production deploy on main branch"
+
+---
+
+## 2026-03-15 — Global Coal Production Chart (Market Context)
+
+**Branch:** `main`
+**Checkpoint (pre-work):** `abfac11` — "data: update market context articles — weekly curation 2026-03-08"
+
+### Objective
+Add a full-width Global Coal Production chart to the Market Context tab, showing 75 years of historical data (1950–2024) with dual-unit display (TWh + metric tons). The chart reinforces the sector thesis by visualizing persistent global coal demand — relevant for institutional investors evaluating the coal-to-products sector.
+
+### New Files Created
+
+| File | Purpose |
+|------|---------|
+| `data/coal-production.ts` | 75-year global coal production dataset (1950–2024). TWh from Our World in Data / Energy Institute Statistical Review 2025. Mt calibrated against IEA Coal 2025 (ratio: 5.77 TWh/Mt for global). Exports `coalProductionData`, `coalStats`, and `CoalProductionDataPoint` type. |
+| `components/charts/CoalProductionChart.tsx` | Recharts AreaChart component — replaces the previous horizontal bar chart at this path. Green (#00cc88) area fill with gradient, custom tooltip showing both TWh and Mt on hover, KPI row (2024 production, % change since 1950, % change since 2000), monospace axis labels, source attribution footer. Uses Card wrapper and CHART_COLORS from `lib/colors.ts`. |
+
+### Files Modified
+
+| File | What Changed |
+|------|-------------|
+| `app/dashboard/market-context/page.tsx` | Added `CoalProductionChart` import and placed full-width between Generation Mix / Grid Bottleneck row and Peer Comparison table. Wrapped in `motion.div` with `item` variant for scroll animation. |
+| `app/dashboard/expansion/page.tsx` | Removed `selectedCountry={null}` prop from `<CoalProductionChart />` — the new component takes no props. |
+
+### Data Details
+- **Source:** Our World in Data API (indicator 1077529, entity 355 = World)
+- **Range:** 1950–2024, 75 data points
+- **TWh values:** Raw from dataset (energy content of coal produced)
+- **Mt values:** Derived using IEA-calibrated conversion ratio (5.77 TWh/Mt for global average)
+- **Key stats:** 2024 = 50,618 TWh / 8,773 Mt, +347% since 1950, +88.8% since 2000
+
+### Chart Features
+1. Green (#00cc88) AreaChart with gradient fill (matching dashboard design system)
+2. Custom tooltip showing both TWh and Mt on hover (no unit toggle)
+3. KPI row: 2024 Production (TWh + Mt), % change since 1950, % change since 2000
+4. Monospace axis labels with gold-dim color, Y-axis formatted as "Xk" for thousands
+5. X-axis ticks at decade intervals (1950, 1960, ..., 2020, 2024)
+6. Source attribution: "Our World in Data · EI Statistical Review 2025 · IEA"
+7. Card wrapper with `hover={false}`, consistent with other Market Context charts
+
+### Build Fixes
+- `expansion/page.tsx`: Removed `selectedCountry={null}` prop — new CoalProductionChart replaced the old expansion-page bar chart (which accepted that prop) at the same file path. The new component takes no props.
+
+### Decisions
+- Chart placed on Market Context tab (not just Expansion) to support the sector thesis for institutional investors
+- Global data only — US tab removed per user preference
+- Both units (TWh + Mt) shown on hover instead of a toggle — cleaner UX
+- Mt conversion uses IEA-calibrated ratio rather than raw conversion to align with official reports
+- Overwrote the previous `CoalProductionChart.tsx` (expansion-page horizontal bar chart) — the new component serves a different purpose
+
+### Verification
+- `npm run build` — zero errors, all pages compile
+- Standalone preview deployed and iterated 3× before dashboard integration
+
+### Commits
+- `19f314f` — "feat: add Global Coal Production chart to Market Context tab"
+- `9e4e791` — "fix: remove stale selectedCountry prop from expansion page + update docs"
