@@ -35,26 +35,6 @@ export default function PasswordGate() {
     }
   };
 
-  const handleDevBypass = async () => {
-    setLoading(true);
-    try {
-      const res = await fetch('/api/auth', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ devBypass: true }),
-      });
-
-      if (res.ok) {
-        router.push('/dashboard');
-      } else {
-        setError(true);
-      }
-    } catch {
-      setError(true);
-    } finally {
-      setLoading(false);
-    }
-  };
 
   return (
     <div className="min-h-screen bg-bg-primary flex items-center justify-center relative overflow-hidden">
@@ -126,14 +106,6 @@ export default function PasswordGate() {
             This dashboard contains proprietary financial projections and is intended for authorized recipients only.
           </p>
 
-          <button
-            type="button"
-            onClick={handleDevBypass}
-            disabled={loading}
-            className="w-full mt-3 text-xs text-text-tertiary hover:text-accent-gold transition-colors duration-200 py-2"
-          >
-            Dev Bypass &rarr;
-          </button>
         </div>
       </div>
     </div>

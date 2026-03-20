@@ -19,14 +19,7 @@ function setAuthCookie(response: NextResponse) {
 
 export async function POST(request: Request) {
   const body = await request.json();
-  const { password, devBypass } = body;
-
-  // Dev bypass — only works in non-production environments
-  if (devBypass && !IS_PROD) {
-    const response = NextResponse.json({ success: true });
-    setAuthCookie(response);
-    return response;
-  }
+  const { password } = body;
 
   if (password !== DASHBOARD_PASSWORD) {
     return NextResponse.json({ error: 'Invalid password' }, { status: 401 });
