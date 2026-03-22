@@ -457,6 +457,73 @@ export const marketArticles: MarketArticle[] = [
     whyItMatters: 'Volatile global supply chains for critical industrial inputs can increase strategic value of domestic, flexible production capacity for fuels and chemicals.',
   },
 
+
+  {
+    id: 21,
+    headline: 'US power demand surge from data centers could lift fossil fuel generation, EIA says',
+    source: 'Reuters',
+    url: 'https://www.reuters.com/business/energy/us-power-demand-surge-data-centers-could-lift-fossil-fuel-generation-eia-says-2026-03-12/',
+    date: '2026-03-12',
+    category: 'AI POWER DEMAND',
+    summary: 'Reuters reports EIA analysis expects U.S. electricity demand to rise 1.9% in 2026 and 2% in 2027 as data centers tighten supply. In a higher-demand scenario, EIA modeled natural-gas generation rising 7.3% from 2025 to 2027 (vs. 1.7% baseline), with coal generation declining more slowly than otherwise expected.',
+    whyItMatters: 'Accelerating load growth and higher modeled gas/coal utilization increase the scarcity value of dispatchable, grid-connected assets and can lift regional power prices—especially in constrained markets like ERCOT and PJM.',
+  },
+
+  {
+    id: 22,
+    headline: 'US utilities scale up grid-boosting tech to meet surging demand',
+    source: 'Reuters',
+    url: 'https://www.reuters.com/business/energy/us-utilities-scale-up-grid-boosting-tech-meet-surging-demand--reeii-2026-03-09/',
+    date: '2026-03-09',
+    category: 'GRID & INFRASTRUCTURE',
+    summary: 'Reuters reports utilities are deploying grid-enhancing technologies (dynamic line ratings, advanced power flow controls, topology optimization) and virtual power plants to relieve congestion faster than building new transmission. The story cites RMI research estimating these tools could unlock more than 80 GW of incremental peak capacity, against a backdrop where DOE estimates ~5,000 miles of transmission per year are needed but only 888 miles were built in 2024.',
+    whyItMatters: 'With permitting and equipment constraints slowing new wires, strategies that increase usable capacity on existing corridors (and projects that minimize new transmission needs) can be advantaged in the race to serve large-load growth.',
+  },
+
+  {
+    id: 23,
+    headline: 'Utilities want a power line monopoly. Is that affordable?',
+    source: 'POLITICO',
+    url: 'https://www.politico.com/newsletters/power-switch/2026/03/04/utilities-want-a-power-line-monopoly-is-that-affordable-00812739',
+    date: '2026-03-04',
+    category: 'POLICY & REGULATION',
+    summary: 'POLITICO reports major utilities are asking the Trump administration to suspend competitive bidding for high-voltage transmission projects, arguing it would speed buildouts needed for AI-driven electricity demand. The article notes the Midcontinent region has authorized more than $30 billion of long-range transmission projects, while consumer and large-user groups warn reduced competition could raise costs embedded in bills for decades.',
+    whyItMatters: 'Transmission cost allocation and ‘right-of-first-refusal’ policy debates can materially affect buildout timing and customer bills, shaping where and how quickly new generation and large loads can connect.',
+  },
+
+  {
+    id: 24,
+    headline: '2026/2027 RPM Third Incremental Auction Results',
+    source: 'PJM',
+    url: 'https://www.pjm.com/-/media/DotCom/markets-ops/rpm/rpm-auction-info/2026-2027/2026-2027-3ia-report.pdf',
+    date: '2026-03-09',
+    category: 'ENERGY MARKETS',
+    summary: 'PJM’s report says its 2026/2027 Third Incremental Auction opened Feb. 24, 2026 and posted results March 9, 2026. PJM procured 285.4 MW of net capacity (285.4 MW of buy bids and zero MW of sell offers), with the Capacity Performance resource clearing price for the RTO reported at $164.70/MW-day.',
+    whyItMatters: 'Capacity procurement and clearing prices offer an objective read on reliability needs in the nation’s largest wholesale power market, helping investors gauge the economics of keeping or adding dispatchable capacity.',
+  },
+
+  {
+    id: 25,
+    headline: 'A Global Nuclear Power Renaissance Isn\'t Living Up to the Hype',
+    source: 'Bloomberg',
+    url: 'https://www.bloomberg.com/news/articles/2026-03-05/a-global-nuclear-power-renaissance-isn-t-living-up-to-the-hype',
+    date: '2026-03-05',
+    category: 'NUCLEAR & BASELOAD',
+    summary: 'Bloomberg argues that while nuclear is gaining support as 24/7 carbon-free power for an AI-driven demand surge, most of the world’s buildout is lagging China’s reactor pipeline. The piece notes U.S. nuclear output is expected to plateau over the next decade and highlights a gap between political ambition and practical delivery.',
+    whyItMatters: 'If nuclear additions remain slower than demand growth, the market may rely more heavily on other forms of firm power—supporting long-duration contracts and premium pricing for dependable baseload supply.',
+  },
+
+  {
+    id: 26,
+    headline: 'War in Iran threatens fresh food-price shock across developing world',
+    source: 'Reuters',
+    url: 'https://www.reuters.com/world/middle-east/war-iran-threatens-fresh-food-price-shock-across-developing-world-2026-03-20/',
+    date: '2026-03-20',
+    category: 'INDUSTRIAL DEMAND',
+    summary: 'Reuters reports that disrupted fertilizer shipments and higher energy prices from the Iran conflict are raising food-inflation risks, citing the Strait of Hormuz as a route for about 30% of globally traded fertilizers. The story cites Bank of America estimates that the conflict could impact 65%–70% of global urea supplies and drive 30%–40% price increases.',
+    whyItMatters: 'Geopolitical chokepoints can rapidly reprice essential industrial inputs (fertilizer, fuels) and strengthen the strategic premium on secure, domestic production pathways and feedstocks.',
+  },
+
 ];
 
 // ─── DC Power Chart Data ───────────────────────────────────────────────────────
