@@ -524,6 +524,73 @@ export const marketArticles: MarketArticle[] = [
     whyItMatters: 'Geopolitical chokepoints can rapidly reprice essential industrial inputs (fertilizer, fuels) and strengthen the strategic premium on secure, domestic production pathways and feedstocks.',
   },
 
+
+  {
+    id: 27,
+    headline: 'Stressed US grid forcing data centers to get more flexible',
+    source: 'Reuters',
+    url: 'https://www.reuters.com/sustainability/boards-policy-regulation/ceraweek-stressed-us-grid-forcing-data-centers-get-more-flexible-2026-03-26/',
+    date: '2026-03-26',
+    category: 'AI POWER DEMAND',
+    summary: 'U.S. grid operators and regulators are pushing large data centers to participate in demand response—reducing load or switching to backup generation during peak periods—to avoid outages and dampen consumer bill impacts. EPRI estimates data centers could exceed four times current electricity use by decade-end, potentially reaching ~17% of U.S. power supply.',
+    whyItMatters: 'Load flexibility is becoming a precondition for interconnection and a way to reduce the capex burden of grid expansion, raising the value of dispatchable capacity and on-site generation for AI-era infrastructure.',
+  },
+
+  {
+    id: 28,
+    headline: 'AI power dash transforms clean energy offtake market',
+    source: 'Reuters',
+    url: 'https://www.reuters.com/business/energy/ai-power-dash-transforms-clean-energy-offtake-market--reeii-2026-03-17/',
+    date: '2026-03-17',
+    category: 'AI POWER DEMAND',
+    summary: 'Rising data center demand and a pullback in tax-supported clean energy development are increasing prices and complexity in long-term corporate power purchase agreements (PPAs). The piece cites higher North America solar and wind PPA pricing and notes hyperscalers are shifting toward multi-gigawatt portfolios, co-located generation, and more dispatchable/firmed structures.',
+    whyItMatters: 'As hyperscalers prioritize speed-to-power and reliability, markets are rewarding large, financeable, dispatchable supply solutions—including co-located and firm capacity—rather than intermittent-only procurement.',
+  },
+
+  {
+    id: 29,
+    headline: 'Exclusive: CERAWEEK Constellation exec says grid operator told company Three Mile Island can\'t connect until 2031',
+    source: 'Reuters',
+    url: 'https://www.reuters.com/business/energy/ceraweek-constellation-exec-says-grid-operator-told-company-three-mile-island-2026-03-26/',
+    date: '2026-03-26',
+    category: 'NUCLEAR & BASELOAD',
+    summary: 'PJM told Constellation Energy the revived Three Mile Island (rebranded as the Crane Clean Energy Center) likely cannot interconnect until 2031 due to needed transmission upgrades, four years later than the company’s plan. The plant is intended to supply electricity for Microsoft data centers, and Constellation said it is working with PJM and transmission stakeholders to accelerate the timeline.',
+    whyItMatters: 'Even high-profile baseload projects can be constrained by transmission and interconnection timelines, elevating the premium for near-term, grid-compatible baseload capacity solutions.',
+  },
+
+  {
+    id: 30,
+    headline: '2026/2027 RPM Third Incremental Auction Results',
+    source: 'PJM',
+    url: 'https://www.pjm.com/-/media/DotCom/markets-ops/rpm/rpm-auction-info/2026-2027/2026-2027-3ia-report.pdf',
+    date: '2026-03-09',
+    category: 'ENERGY MARKETS',
+    summary: 'PJM’s 2026/2027 Third Incremental Auction opened Feb. 24, 2026 and posted results March 9, 2026. PJM procured a net 285.4 MW of capacity across the RTO, and the 3IA RTO/System Marginal Price for Capacity Performance resources is shown as $164.70/MW-day.',
+    whyItMatters: 'Capacity procurement and pricing signals in PJM continue to emphasize scarcity value and the monetization pathway for reliable capacity in constrained regions.',
+  },
+
+  {
+    id: 31,
+    headline: 'The Clean Air Act was always Plan B',
+    source: 'POLITICO',
+    url: 'https://www.politico.com/newsletters/power-switch/2026/03/10/the-clean-air-act-was-always-plan-b-00821167',
+    date: '2026-03-10',
+    category: 'POLICY & REGULATION',
+    summary: 'POLITICO reports the Trump EPA is working to repeal the greenhouse-gas endangerment finding that has underpinned federal climate regulation since 2009. The newsletter frames this as an attempt to eliminate EPA’s authority to regulate climate pollution and notes legal uncertainty over whether courts will uphold the change.',
+    whyItMatters: 'Regulatory rollback increases the probability that near-term generation buildouts and plant life extensions are driven more by reliability and economics than emissions mandates, reshaping the opportunity set for dispatchable, multi-output energy infrastructure.',
+  },
+
+  {
+    id: 32,
+    headline: 'Spiking US diesel prices keep trucking industry stuck in years-long slump',
+    source: 'Reuters',
+    url: 'https://www.reuters.com/business/energy/spiking-us-diesel-prices-keep-trucking-industry-stuck-years-long-slump-2026-03-27/',
+    date: '2026-03-27',
+    category: 'INDUSTRIAL DEMAND',
+    summary: 'Diesel prices rose sharply during the U.S.-Israeli conflict with Iran, squeezing independent truckers and delaying a sector recovery even as spot freight rates have improved versus a year ago. Reuters cites AAA data showing national diesel averages near recent-cycle highs, highlighting diesel’s central role in logistics costs and industrial supply chains.',
+    whyItMatters: 'Volatile distillate pricing reinforces the strategic value of resilient domestic fuels supply and the industrial sensitivity to reliable, scalable hydrocarbon outputs alongside electricity.',
+  },
+
 ];
 
 // ─── DC Power Chart Data ───────────────────────────────────────────────────────
