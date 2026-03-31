@@ -4,6 +4,66 @@
 
 Read and follow `ARCHITECTURE.md` before writing any code. It is the single authority on file organization, naming conventions, component patterns, color theming, data layer rules, financial model mapping, animation system, and deployment workflow.
 
+---
+
+## Strategic Context Sources (Frontieras Second Brain)
+
+This dashboard does not exist in isolation. It is one deliverable within a larger IPO marketing engagement managed by Chase Paisley. Meeting intelligence, stakeholder context, strategic decisions, and a change backlog all live in the **Frontieras Second Brain** — a separate repo on Chase's machine.
+
+**Before starting work, check the dashboard backlog for pending items that should inform your session.**
+
+### How to Access
+
+The Second Brain lives at a sibling path in iCloud:
+
+```
+~/Library/Mobile Documents/com~apple~CloudDocs/[3.5] Frontieras Second Brain/
+```
+
+### Key Files to Consult
+
+| Second Brain File | What It Contains | When to Read |
+|---|---|---|
+| `01-projects/ipo-marketing-prep/dashboard-backlog.md` | **Change backlog** — prioritized list of dashboard modifications requested across meetings. Check status field: `pending` items are your work queue. | **Every session.** This is your primary intake for new work. |
+| `00-company/overview.md` | Company knowledge base — history, technology, products, strategy, key facts | When adding or updating any content about Frontieras (product descriptions, market claims, partner names, financial figures) |
+| `00-company/people.md` | People & relationship intelligence — team bios, stakeholder dynamics, who advocated for what | When adding team bios, updating leadership content, or understanding who requested a change and why |
+| `03-meetings/` | Meeting summaries with decisions and action items | When you need strategic reasoning behind a backlog item — the meeting summary explains the "why" |
+| `decisions.jsonl` | Append-only decision log with reasoning and alternatives | When a change touches something that was previously decided — check here before contradicting a prior decision |
+| `00-company/glossary.md` | Acronyms, nicknames, internal shorthand | When you encounter unfamiliar terms in backlog items or meeting references |
+| `06-research/institutional-pitch-deck-extraction.md` | Comprehensive extraction of the 61-page institutional pitch deck — financials, projections, competitive positioning, executive bios, market sizing | **Primary data source** for dashboard content. But read the MNPI rules below before using any of it. |
+
+### MNPI Compliance Rules (NON-NEGOTIABLE)
+
+This dashboard is **pre-NDA and public-facing**. It is shown to prospective investors BEFORE they sign a non-disclosure agreement. This means it CANNOT contain Material Non-Public Information (MNPI).
+
+**NEVER include on this dashboard:**
+- Specific valuation figures or enterprise value estimates
+- Cap table data, ownership percentages, or share counts
+- Detailed financial projections beyond what's in public filings or press releases
+- Internal strategic plans not yet announced
+- Specific terms of pending deals, LOIs, or negotiations
+- Any data marked "confidential" in the pitch deck extraction
+
+**Safe to include:**
+- General market sizing and industry data (publicly available)
+- Published engineering partnerships and named partners
+- Product descriptions and technology overview (patent is public)
+- Team bios and credentials
+- General project timeline and milestones (publicly announced)
+- Aggregated financial metrics that don't reveal specific valuation
+
+**When in doubt:** Check with Chase before adding sensitive data. It's better to leave a gap than to put MNPI on a public-facing dashboard.
+
+### Backlog Workflow
+
+When you complete a backlog item:
+1. Do the work in this project
+2. Update `DASHBOARD-STATE.md` per the rules above
+3. Update `[Second Brain]/01-projects/ipo-marketing-prep/dashboard-backlog.md` — change the item's status from `pending` to `implemented` and add a note about what was done
+4. Log the change in this project's work log as usual
+
+This keeps both projects in sync without duplicating intelligence.
+
 ## Stack
 
 - Next.js 14 (App Router) + TypeScript + Tailwind CSS + Framer Motion
