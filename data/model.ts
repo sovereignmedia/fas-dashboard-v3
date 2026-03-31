@@ -75,7 +75,7 @@ export const SPOT_PRICES = {
 // ─── Expansion & IP ─────────────────────────────────────────────────
 export const EXPANSION = {
   patentCountries:             9,
-  totalFacilityPotential:    143,
+  totalFacilityPotential:  3_107,  // sum of country facilityPotentials in countries.ts
 } as const;
 
 // ─── Capital / Reg A+ ───────────────────────────────────────────────

@@ -1,8 +1,10 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Country } from '@/data/countries';
+import { Country, countries } from '@/data/countries';
 import { formatNumber } from '@/lib/formatters';
+
+const MAX_FACILITIES = Math.max(...countries.map(c => c.facilityPotential));
 
 const cardVariant = {
   hidden: { opacity: 0, y: 24 },
@@ -91,7 +93,7 @@ export default function CountryCard({ country, gridRow, gridColumn, isSelected, 
         <div className="mt-3 w-full h-1 rounded-full bg-border-subtle overflow-hidden">
           <motion.div
             initial={{ width: 0 }}
-            animate={{ width: `${(country.facilityPotential / 64) * 100}%` }}
+            animate={{ width: `${(country.facilityPotential / MAX_FACILITIES) * 100}%` }}
             transition={{ duration: 0.8, delay: 0.3 }}
             className="h-full rounded-full"
             style={{ backgroundColor: country.color }}
