@@ -21,7 +21,7 @@ export const MILESTONES: Milestone[] = [
   { id: 'offtake', category: 'legal', title: '10-Year Off-Take LOIs', description: '100% production covered — ULSD, Naphtha, FASCarbon, Sulfuric Acid, Fertilizer.', status: 'completed', guidanceAccuracy: 'Completed' },
   { id: 'feedstock', category: 'legal', title: 'Feedstock Supply Contract', description: '10-year contract for 27M tons Pittsburgh #8 coal with collared pricing.', status: 'completed', guidanceAccuracy: 'Completed' },
   { id: 'land', category: 'construction', title: 'Site Acquisition', description: 'Mason County, WV — Ohio River access, CSX rail spur.', status: 'completed', guidanceAccuracy: 'Completed' },
-  { id: 'reg-a', category: 'capital', title: 'Reg A+ Launched', description: '$10M+ raised from 3,700+ shareholders.', status: 'completed', guidanceAccuracy: 'Completed' },
+  { id: 'reg-a', category: 'capital', title: 'Reg A+ Launched', description: '$11.5M+ raised from 4,700+ shareholders.', status: 'completed', guidanceAccuracy: 'Completed' },
   { id: 'board', category: 'legal', title: 'Board Placement (3 of 4)', description: 'Independent board members placed.', status: 'completed', guidanceAccuracy: '3 of 4 — final seat in progress' },
   { id: 'ir-firms', category: 'capital', title: 'IR Firms Engaged', description: 'Market Street IR + Hybrid Financial engaged.', status: 'completed', guidanceAccuracy: 'Completed' },
   { id: 'fel-3', category: 'engineering', title: 'FEL-3 In Progress', description: 'Detailed engineering and Class 3 cost estimate.', status: 'on-track' },

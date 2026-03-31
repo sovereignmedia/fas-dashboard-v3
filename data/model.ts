@@ -83,8 +83,8 @@ export const CAPITAL = {
   bridgeRoundTotal:     25_000_000,
   totalSharesOutstanding: 100_000_000,
   sharePrice:                 7.77,
-  totalRaised:         20_000_000,
-  shareholders:             3_700,
+  totalRaised:         11_539_296,
+  shareholders:             4_775,
 } as const;
 
 // ─── Valuation Defaults ─────────────────────────────────────────────

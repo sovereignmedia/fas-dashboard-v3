@@ -53,7 +53,7 @@ export const timeline = [
   { year: '2021', title: '12-Month Pilot Completed', description: 'Successful pilot testing with ASTM protocol compliance, SGS Labs verification, Job EPC engineering review.' },
   { year: '2023', title: 'Regulation CF Campaign', description: '$4.49M raised on $904K spend. 4.97X ROAS. 1,615 funded investors. Proved public market demand.' },
   { year: '2024', title: 'CAMS Partnership', description: '$20B+ industrial operator commits to operational management. Removes execution risk.' },
-  { year: '2025', title: 'Regulation A+ Launch', description: '$15M+ raised via Reg A+. 3,700+ shareholders. Nearly $3M in a single day \u2014 one of the largest Reg A+ single-day raises on record.' },
+  { year: '2025', title: 'Regulation A+ Launch', description: '$11.5M+ raised via Reg A+. 4,700+ shareholders. Nearly $3M in a single day \u2014 one of the largest Reg A+ single-day raises on record.' },
   { year: '2025', title: 'Insurance Validation', description: "Ariel Green / Lloyd's syndicate performance bond. Technology and IP validated at underwriting level." },
   { year: '2026', title: 'IPO Preparation', description: 'Market Street, RF Lafferty, Hybrid Financial engaged. CFO onboarded. $25M bridge round. FEL3 engineering. Targeting IPO.' },
 ];

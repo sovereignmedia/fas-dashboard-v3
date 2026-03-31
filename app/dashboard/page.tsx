@@ -62,7 +62,7 @@ export default function DashboardOverview() {
                 Frontieras North America is developing the first commercial-scale deployment of its patented FASForm™ process — a thermal cracking technology fundamentally distinct from coal-to-liquids gasification — that fractionates coal into six high-value product streams without catalysts or combustion, producing zero waste and no direct CO₂ emissions. The company&apos;s first facility is under development in Mason County, West Virginia, with all major engineering, operations, and infrastructure partners under executed MSAs.
               </p>
               <p className="text-base leading-relaxed text-text-secondary mt-4">
-                Frontieras is pre-revenue and preparing for IPO. The company has raised $20M+ through Regulation A+ from 3,700+ shareholders, validating public market demand ahead of institutional capital deployment.
+                Frontieras is pre-revenue and preparing for IPO. The company has raised $11.5M+ through Regulation A+ from 4,700+ shareholders, validating public market demand ahead of institutional capital deployment.
               </p>
             </div>
           </Card>
