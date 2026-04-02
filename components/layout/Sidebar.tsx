@@ -14,6 +14,7 @@ import {
   FileSearch,
   Map,
   Newspaper,
+  BarChart3,
 } from 'lucide-react';
 
 const iconMap = {
@@ -28,6 +29,7 @@ const iconMap = {
   FileSearch,
   Map,
   Newspaper,
+  BarChart3,
 } as const;
 
 const NAV_ITEMS = [
@@ -41,6 +43,7 @@ const NAV_ITEMS = [
   { label: 'Financials', href: '/dashboard/financials', icon: 'TrendingUp' as const },
   { label: 'Capital', href: '/dashboard/capital', icon: 'Landmark' as const },
   { label: 'Expansion', href: '/dashboard/expansion', icon: 'Globe' as const },
+  { label: 'Total Addressable Market', href: '/dashboard/tam', icon: 'BarChart3' as const },
   { label: 'Fundraising & Execution', href: '/dashboard/roadmap', icon: 'Map' as const },
 ];
 
