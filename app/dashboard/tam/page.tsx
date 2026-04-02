@@ -4,13 +4,16 @@ import SectionHeader from '@/components/ui/SectionHeader';
 import MetricCard from '@/components/ui/MetricCard';
 import CollapsibleSection from '@/components/ui/CollapsibleSection';
 import Disclaimer from '@/components/ui/Disclaimer';
+import ValueTransformationHero from '@/components/sections/ValueTransformationHero';
+import CrudeOilComparison from '@/components/sections/CrudeOilComparison';
 import MarketOpportunity from '@/components/sections/MarketOpportunity';
 import TamTiers from '@/components/sections/TamTiers';
+import FacilityProofPoint from '@/components/sections/FacilityProofPoint';
 import ValueUplift from '@/components/sections/ValueUplift';
 import CountryEconomicsTable from '@/components/sections/CountryEconomicsTable';
 import ValuationBridge from '@/components/sections/ValuationBridge';
 import FacilityContext from '@/components/sections/FacilityContext';
-import { HEADLINES, VALUE_UPLIFT, FACILITY_CONTEXT } from '@/data/tam';
+import { VALUE_UPLIFT, FACILITY_CONTEXT } from '@/data/tam';
 
 export default function TamPage() {
   return (
@@ -21,7 +24,7 @@ export default function TamPage() {
         subtitle="Yield-adjusted economic analysis of the global FASForm™ opportunity across nine patent-protected countries representing 91% of global coal production."
       />
 
-      {/* Section 1: Headline Metrics */}
+      {/* Headline Metrics */}
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 mb-12">
         <MetricCard label="Annual Addressable Value" value="$2.1T" subtitle="9 patent countries, base case" />
         <MetricCard label="Average Value Uplift" value={`${VALUE_UPLIFT.weightedAverageUplift}x`} subtitle="Coal → FASForm products" />
@@ -29,13 +32,28 @@ export default function TamPage() {
         <MetricCard label="10-Year Plan Coverage" value={`${FACILITY_CONTEXT.plannedAsPercentOfMarket}%`} subtitle="16 facilities of 3,107" />
       </div>
 
-      {/* Product Markets */}
-      <MarketOpportunity />
+      {/* Value Transformation Hero */}
+      <ValueTransformationHero />
 
-      {/* Section 2: Four-Tier TAM */}
+      {/* Crude Oil Comparison */}
+      <div className="mt-10">
+        <CrudeOilComparison />
+      </div>
+
+      {/* Product Markets */}
+      <div className="mt-14">
+        <MarketOpportunity />
+      </div>
+
+      {/* Four-Tier TAM */}
       <TamTiers />
 
-      {/* Section 3: Value Uplift */}
+      {/* Facility Proof Point */}
+      <div className="mt-14">
+        <FacilityProofPoint />
+      </div>
+
+      {/* Value Uplift */}
       <div className="mt-14">
         <SectionHeader
           overline="Value Creation"
@@ -45,7 +63,7 @@ export default function TamPage() {
         <ValueUplift />
       </div>
 
-      {/* Section 4: Country Economics */}
+      {/* Country Economics */}
       <div className="mt-14">
         <CollapsibleSection
           overline="Deep Dive"
@@ -56,7 +74,7 @@ export default function TamPage() {
         </CollapsibleSection>
       </div>
 
-      {/* Section 5: Valuation Bridge */}
+      {/* Valuation Bridge */}
       <div className="mt-14">
         <CollapsibleSection
           overline="Deep Dive"
@@ -67,7 +85,7 @@ export default function TamPage() {
         </CollapsibleSection>
       </div>
 
-      {/* Section 6: Facility Context */}
+      {/* Facility Context */}
       <div className="mt-14">
         <SectionHeader
           overline="Context"
