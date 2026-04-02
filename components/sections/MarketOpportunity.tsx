@@ -16,8 +16,8 @@ export default function MarketOpportunity() {
   return (
     <section className="mb-16">
       <SectionHeader
-        overline="Market Opportunity"
-        title="Total Addressable Markets"
+        overline="Product Markets"
+        title="Commodity Markets Addressed"
         subtitle="Frontieras' products address multiple large-scale commodity markets simultaneously — a key differentiator from single-product competitors."
       />
 
