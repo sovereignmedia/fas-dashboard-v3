@@ -4,7 +4,7 @@ import SectionHeader from '@/components/ui/SectionHeader';
 import ProcessFlow from '@/components/sections/ProcessFlow';
 import MarginExplainer from '@/components/sections/MarginExplainer';
 import CTLComparison from '@/components/sections/CTLComparison';
-import MarketOpportunity from '@/components/sections/MarketOpportunity';
+
 import Disclaimer from '@/components/ui/Disclaimer';
 
 export default function ProcessPage() {
@@ -29,10 +29,6 @@ export default function ProcessPage() {
           subtitle="Side-by-side comparison of FASForm™ solid carbon fractionation against traditional Fischer-Tropsch coal-to-liquids technology."
         />
         <CTLComparison />
-      </div>
-
-      <div className="mt-16">
-        <MarketOpportunity />
       </div>
 
       <div className="mt-12">

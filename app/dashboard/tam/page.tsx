@@ -4,6 +4,7 @@ import SectionHeader from '@/components/ui/SectionHeader';
 import MetricCard from '@/components/ui/MetricCard';
 import CollapsibleSection from '@/components/ui/CollapsibleSection';
 import Disclaimer from '@/components/ui/Disclaimer';
+import MarketOpportunity from '@/components/sections/MarketOpportunity';
 import TamTiers from '@/components/sections/TamTiers';
 import ValueUplift from '@/components/sections/ValueUplift';
 import CountryEconomicsTable from '@/components/sections/CountryEconomicsTable';
@@ -27,6 +28,9 @@ export default function TamPage() {
         <MetricCard label="Facilities Supportable" value={FACILITY_CONTEXT.totalFacilitiesSupported.toLocaleString()} subtitle="Based on current production" />
         <MetricCard label="10-Year Plan Coverage" value={`${FACILITY_CONTEXT.plannedAsPercentOfMarket}%`} subtitle="16 facilities of 3,107" />
       </div>
+
+      {/* Product Markets */}
+      <MarketOpportunity />
 
       {/* Section 2: Four-Tier TAM */}
       <TamTiers />
