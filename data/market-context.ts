@@ -591,6 +591,58 @@ export const marketArticles: MarketArticle[] = [
     whyItMatters: 'Volatile distillate pricing reinforces the strategic value of resilient domestic fuels supply and the industrial sensitivity to reliable, scalable hydrocarbon outputs alongside electricity.',
   },
 
+  // ── Weekly Curation 2026-04-05 ──────────────────────────────────────────────
+  {
+    id: 33,
+    headline: 'AEP expands spending plan, beats profit estimates as electricity demand surges',
+    source: 'Reuters',
+    url: 'https://www.reuters.com/business/energy/aep-expands-spending-plan-beats-profit-estimates-electricity-demand-surges-2026-02-12/',
+    date: '2026-02-12',
+    category: 'AI POWER DEMAND',
+    summary: 'American Electric Power expanded its multi-year capital spending plan after reporting better-than-expected quarterly profits, citing accelerating electricity demand from data centers. The utility highlighted a break in the two-decade trend of flat U.S. power consumption as AI-driven loads reshape grid planning.',
+    whyItMatters: 'Utilities raising capex signals the market is pricing in structural load growth — validation for companies positioned to supply baseload power and industrial feedstocks.',
+  },
+  {
+    id: 34,
+    headline: 'Interconnection queues cut across new renewable and fossil source timelines',
+    source: 'pv magazine USA',
+    url: 'https://pv-magazine-usa.com/2026/03/12/interconnection-queues-cut-across-new-renewable-and-fossil-source-timelines/',
+    date: '2026-03-12',
+    category: 'GRID & INFRASTRUCTURE',
+    summary: 'An Enverus analysis finds that interconnection delays and study bottlenecks are becoming the primary constraint for new generation capacity, affecting both renewable and fossil projects alike. Queue timelines now stretch 4-5 years in major ISOs as data center load growth outpaces infrastructure buildout.',
+    whyItMatters: 'Grid bottlenecks create a premium for generation assets that can be co-located with demand or built on existing infrastructure footprints, bypassing the queue entirely.',
+  },
+  {
+    id: 35,
+    headline: 'US grid rules for faster data centers favor on-site gas plants',
+    source: 'Reuters',
+    url: 'https://www.reuters.com/business/energy/us-grid-rules-faster-data-centers-favor-on-site-gas-plants--reeii-2026-01-27/',
+    date: '2026-01-27',
+    category: 'POLICY & REGULATION',
+    summary: 'PJM Interconnection and FERC are reshaping tariff and interconnection rules to fast-track large-load customers, with emerging frameworks that effectively reward dispatchable, co-located generation. The regulatory shift reflects urgency to keep pace with data center deployment timelines.',
+    whyItMatters: 'Regulatory tailwinds for co-located dispatchable generation validate the thesis for repurposing existing plant sites with multi-output capability near load centers.',
+  },
+  {
+    id: 36,
+    headline: 'AI data centers are forcing obsolete peaker power plants back into service',
+    source: 'Reuters',
+    url: 'https://www.reuters.com/business/energy/ai-data-centers-are-forcing-obsolete-peaker-power-plants-back-into-service-2025-12-23/',
+    date: '2025-12-23',
+    category: 'GRID & INFRASTRUCTURE',
+    summary: 'Record capacity prices and grid reliability concerns are delaying planned retirements and bringing legacy oil, gas, and coal units back into operation. Grid operators are struggling to maintain reserve margins as AI-driven demand growth outstrips new supply additions.',
+    whyItMatters: 'Reversing plant retirements underscores the grid\'s desperation for dispatchable capacity — technologies that upgrade rather than retire existing fossil infrastructure address this gap directly.',
+  },
+  {
+    id: 37,
+    headline: 'US mandates record-high biofuel use',
+    source: 'Argus Media',
+    url: 'https://www.argusmedia.com/en/news-and-insights/latest-market-news/2807474-us-mandates-record-high-biofuel-use-update-2',
+    date: '2026-03-27',
+    category: 'INDUSTRIAL DEMAND',
+    summary: 'The U.S. EPA finalized higher renewable fuel blending requirements, pulling more biodiesel and renewable diesel volumes into the market. The mandate reprices feedstocks and refining economics, tightening supply for conventional diesel while expanding demand for alternative liquid fuel pathways.',
+    whyItMatters: 'Rising biofuel mandates squeeze conventional refining margins and increase the strategic value of alternative fuel production pathways that leverage domestic carbon-based feedstocks.',
+  },
+
 ];
 
 // ─── DC Power Chart Data ───────────────────────────────────────────────────────
